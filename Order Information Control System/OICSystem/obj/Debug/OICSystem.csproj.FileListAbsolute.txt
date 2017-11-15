@@ -19,3 +19,24 @@ C:\Users\mogumogu\Downloads\ITC\Order Information Control\OICSystem\obj\Debug\Wi
 C:\Users\mogumogu\Downloads\ITC\Order Information Control\OICSystem\obj\Debug\WindowsFormsApplication1.IOMgt.resources
 C:\Users\mogumogu\Downloads\ITC\Order Information Control\OICSystem\obj\Debug\WindowsFormsApplication1.OrderMgtRegister.resources
 C:\Users\mogumogu\Downloads\ITC\Order Information Control\OICSystem\obj\Debug\OICSystem.csproj.GenerateResource.Cache
+C:\Users\mogumogu\Documents\GitHub\OICSystem\Order Information Control System\OICSystem\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\mogumogu\Documents\GitHub\OICSystem\Order Information Control System\OICSystem\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\mogumogu\Documents\GitHub\OICSystem\Order Information Control System\OICSystem\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\mogumogu\Documents\GitHub\OICSystem\Order Information Control System\OICSystem\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\mogumogu\Documents\GitHub\OICSystem\Order Information Control System\OICSystem\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\mogumogu\Documents\GitHub\OICSystem\Order Information Control System\OICSystem\obj\Debug\OICSystem.csprojResolveAssemblyReference.cache
+C:\Users\mogumogu\Documents\GitHub\OICSystem\Order Information Control System\OICSystem\obj\Debug\WindowsFormsApplication1.EmpMgt.resources
+C:\Users\mogumogu\Documents\GitHub\OICSystem\Order Information Control System\OICSystem\obj\Debug\WindowsFormsApplication1.panel.Goods.GoodsList.resources
+C:\Users\mogumogu\Documents\GitHub\OICSystem\Order Information Control System\OICSystem\obj\Debug\WindowsFormsApplication1.GoodsMgt.resources
+C:\Users\mogumogu\Documents\GitHub\OICSystem\Order Information Control System\OICSystem\obj\Debug\WindowsFormsApplication1.panel.GoodsRegi.resources
+C:\Users\mogumogu\Documents\GitHub\OICSystem\Order Information Control System\OICSystem\obj\Debug\WindowsFormsApplication1.panel.Goods.GoodsStock.resources
+C:\Users\mogumogu\Documents\GitHub\OICSystem\Order Information Control System\OICSystem\obj\Debug\WindowsFormsApplication1.MemberMgt.resources
+C:\Users\mogumogu\Documents\GitHub\OICSystem\Order Information Control System\OICSystem\obj\Debug\WindowsFormsApplication1.OrderMgtInfo.resources
+C:\Users\mogumogu\Documents\GitHub\OICSystem\Order Information Control System\OICSystem\obj\Debug\WindowsFormsApplication1.SalMgt.resources
+C:\Users\mogumogu\Documents\GitHub\OICSystem\Order Information Control System\OICSystem\obj\Debug\WindowsFormsApplication1.SystmTop.resources
+C:\Users\mogumogu\Documents\GitHub\OICSystem\Order Information Control System\OICSystem\obj\Debug\WindowsFormsApplication1.Login.resources
+C:\Users\mogumogu\Documents\GitHub\OICSystem\Order Information Control System\OICSystem\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\mogumogu\Documents\GitHub\OICSystem\Order Information Control System\OICSystem\obj\Debug\WindowsFormsApplication1.OrderMgt.resources
+C:\Users\mogumogu\Documents\GitHub\OICSystem\Order Information Control System\OICSystem\obj\Debug\WindowsFormsApplication1.IOMgt.resources
+C:\Users\mogumogu\Documents\GitHub\OICSystem\Order Information Control System\OICSystem\obj\Debug\WindowsFormsApplication1.OrderMgtRegister.resources
+C:\Users\mogumogu\Documents\GitHub\OICSystem\Order Information Control System\OICSystem\obj\Debug\OICSystem.csproj.GenerateResource.Cache
