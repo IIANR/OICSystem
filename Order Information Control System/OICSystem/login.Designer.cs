@@ -28,99 +28,135 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.login_title = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.components = new System.ComponentModel.Container();
+            this.EmpTextbox = new System.Windows.Forms.TextBox();
+            this.PassTextbox = new System.Windows.Forms.TextBox();
+            this.EmpLabel = new System.Windows.Forms.Label();
+            this.PassLabel = new System.Windows.Forms.Label();
+            this.LoginBtn = new System.Windows.Forms.Button();
+            this.LoginTitle = new System.Windows.Forms.Label();
+            this.TimeLabel = new System.Windows.Forms.Label();
+            this.DateLabel = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.EmpErrMsg = new System.Windows.Forms.Label();
+            this.PassErrMsg = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox1
+            // EmpTextbox
             // 
-            this.textBox1.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBox1.Location = new System.Drawing.Point(292, 233);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(373, 20);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.EmpTextbox.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.EmpTextbox.Location = new System.Drawing.Point(292, 233);
+            this.EmpTextbox.Name = "EmpTextbox";
+            this.EmpTextbox.Size = new System.Drawing.Size(373, 20);
+            this.EmpTextbox.TabIndex = 0;
+            this.EmpTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EmpTextbox_KeyPress);
             // 
-            // textBox2
+            // PassTextbox
             // 
-            this.textBox2.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBox2.Location = new System.Drawing.Point(292, 301);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(373, 20);
-            this.textBox2.TabIndex = 1;
+            this.PassTextbox.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.PassTextbox.Location = new System.Drawing.Point(292, 301);
+            this.PassTextbox.Name = "PassTextbox";
+            this.PassTextbox.Size = new System.Drawing.Size(373, 20);
+            this.PassTextbox.TabIndex = 1;
             // 
-            // label1
+            // EmpLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(288, 211);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 19);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "従業員ID：";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.EmpLabel.AutoSize = true;
+            this.EmpLabel.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.EmpLabel.Location = new System.Drawing.Point(288, 211);
+            this.EmpLabel.Name = "EmpLabel";
+            this.EmpLabel.Size = new System.Drawing.Size(93, 19);
+            this.EmpLabel.TabIndex = 2;
+            this.EmpLabel.Text = "従業員ID：";
             // 
-            // label2
+            // PassLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(287, 279);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 19);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "パスワード：";
+            this.PassLabel.AutoSize = true;
+            this.PassLabel.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.PassLabel.Location = new System.Drawing.Point(287, 279);
+            this.PassLabel.Name = "PassLabel";
+            this.PassLabel.Size = new System.Drawing.Size(94, 19);
+            this.PassLabel.TabIndex = 3;
+            this.PassLabel.Text = "パスワード：";
             // 
-            // button2
+            // LoginBtn
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(535, 392);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(130, 36);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "ログイン";
-            this.button2.UseVisualStyleBackColor = true;
+            this.LoginBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LoginBtn.Location = new System.Drawing.Point(535, 392);
+            this.LoginBtn.Name = "LoginBtn";
+            this.LoginBtn.Size = new System.Drawing.Size(130, 36);
+            this.LoginBtn.TabIndex = 5;
+            this.LoginBtn.Text = "ログイン";
+            this.LoginBtn.UseVisualStyleBackColor = true;
+            this.LoginBtn.Click += new System.EventHandler(this.LoginBtn_Click);
             // 
-            // login_title
+            // LoginTitle
             // 
-            this.login_title.BackColor = System.Drawing.SystemColors.Control;
-            this.login_title.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.login_title.Font = new System.Drawing.Font("ＭＳ ゴシック", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.login_title.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.login_title.Location = new System.Drawing.Point(57, 52);
-            this.login_title.Name = "login_title";
-            this.login_title.Size = new System.Drawing.Size(148, 45);
-            this.login_title.TabIndex = 6;
-            this.login_title.Text = "ログイン";
-            this.login_title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LoginTitle.BackColor = System.Drawing.SystemColors.Control;
+            this.LoginTitle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.LoginTitle.Font = new System.Drawing.Font("ＭＳ ゴシック", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LoginTitle.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LoginTitle.Location = new System.Drawing.Point(57, 52);
+            this.LoginTitle.Name = "LoginTitle";
+            this.LoginTitle.Size = new System.Drawing.Size(148, 45);
+            this.LoginTitle.TabIndex = 6;
+            this.LoginTitle.Text = "ログイン";
+            this.LoginTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label4
+            // TimeLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label4.Location = new System.Drawing.Point(748, 71);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(144, 16);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "yyyy/mm/dd hh:mm";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.TimeLabel.AutoSize = true;
+            this.TimeLabel.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.TimeLabel.Location = new System.Drawing.Point(749, 71);
+            this.TimeLabel.Name = "TimeLabel";
+            this.TimeLabel.Size = new System.Drawing.Size(51, 16);
+            this.TimeLabel.TabIndex = 7;
+            this.TimeLabel.Text = "hh:mm";
+            // 
+            // DateLabel
+            // 
+            this.DateLabel.AutoSize = true;
+            this.DateLabel.Location = new System.Drawing.Point(674, 75);
+            this.DateLabel.Name = "DateLabel";
+            this.DateLabel.Size = new System.Drawing.Size(71, 12);
+            this.DateLabel.TabIndex = 8;
+            this.DateLabel.Text = "yyyy/mm/dd";
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // EmpErrMsg
+            // 
+            this.EmpErrMsg.AutoSize = true;
+            this.EmpErrMsg.Location = new System.Drawing.Point(292, 260);
+            this.EmpErrMsg.Name = "EmpErrMsg";
+            this.EmpErrMsg.Size = new System.Drawing.Size(0, 12);
+            this.EmpErrMsg.TabIndex = 9;
+            // 
+            // PassErrMsg
+            // 
+            this.PassErrMsg.AutoSize = true;
+            this.PassErrMsg.Location = new System.Drawing.Point(292, 328);
+            this.PassErrMsg.Name = "PassErrMsg";
+            this.PassErrMsg.Size = new System.Drawing.Size(0, 12);
+            this.PassErrMsg.TabIndex = 10;
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(954, 562);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.login_title);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.PassErrMsg);
+            this.Controls.Add(this.EmpErrMsg);
+            this.Controls.Add(this.DateLabel);
+            this.Controls.Add(this.TimeLabel);
+            this.Controls.Add(this.LoginTitle);
+            this.Controls.Add(this.LoginBtn);
+            this.Controls.Add(this.PassLabel);
+            this.Controls.Add(this.EmpLabel);
+            this.Controls.Add(this.PassTextbox);
+            this.Controls.Add(this.EmpTextbox);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Name = "Login";
@@ -133,13 +169,17 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label login_title;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox EmpTextbox;
+        private System.Windows.Forms.TextBox PassTextbox;
+        private System.Windows.Forms.Label EmpLabel;
+        private System.Windows.Forms.Label PassLabel;
+        private System.Windows.Forms.Button LoginBtn;
+        private System.Windows.Forms.Label LoginTitle;
+        private System.Windows.Forms.Label TimeLabel;
+        private System.Windows.Forms.Label DateLabel;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label EmpErrMsg;
+        private System.Windows.Forms.Label PassErrMsg;
     }
 }
 

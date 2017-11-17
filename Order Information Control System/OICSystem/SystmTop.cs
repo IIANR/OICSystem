@@ -12,6 +12,8 @@ namespace WindowsFormsApplication1
 {
     public partial class SystmTop : Form
     {
+        public Login frm1;
+
         public static OrderMgt order;
         public static IOMgt io;
         public static GoodsMgt goods;
@@ -43,13 +45,15 @@ namespace WindowsFormsApplication1
             member.Visible = false;
             emp.Visible = false;
             sal.Visible = false;
-        }
 
-        private void SystmTop_Load(object sender, EventArgs e)
-        {
-        }
-        private void ctrPanel_Paint(object sender, PaintEventArgs e)
-        {
+            DateTime dtNow = DateTime.Now;
+            DateTime dtToday = DateTime.Today;
+
+            dateLabel.Text = (dtToday.ToString());
+            timeLabel.Text = (dtNow.ToLongTimeString());
+
+            timer1.Interval = 1000;
+            timer1.Enabled = true;
         }
 
         private void orderMgtBtn_Click(object sender, EventArgs e)
@@ -112,6 +116,11 @@ namespace WindowsFormsApplication1
             member.Visible = false;
             emp.Visible = true;
             sal.Visible = false;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }
