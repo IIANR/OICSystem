@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SystmTop));
             this.navPanel = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.logoutBtn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.EmpBtn = new System.Windows.Forms.Button();
+            this.LogoutBtn = new System.Windows.Forms.Button();
+            this.MemberBtn = new System.Windows.Forms.Button();
             this.sanLabel = new System.Windows.Forms.Label();
             this.memberNameLabel = new System.Windows.Forms.Label();
             this.timeLabel = new System.Windows.Forms.Label();
@@ -42,6 +43,7 @@
             this.ioMgtBtn = new System.Windows.Forms.Button();
             this.orderMgtBtn = new System.Windows.Forms.Button();
             this.ctrPanel = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.navPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,9 +51,9 @@
             // 
             this.navPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.navPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.navPanel.Controls.Add(this.button2);
-            this.navPanel.Controls.Add(this.logoutBtn);
-            this.navPanel.Controls.Add(this.button1);
+            this.navPanel.Controls.Add(this.EmpBtn);
+            this.navPanel.Controls.Add(this.LogoutBtn);
+            this.navPanel.Controls.Add(this.MemberBtn);
             this.navPanel.Controls.Add(this.sanLabel);
             this.navPanel.Controls.Add(this.memberNameLabel);
             this.navPanel.Controls.Add(this.timeLabel);
@@ -65,47 +67,48 @@
             this.navPanel.Size = new System.Drawing.Size(195, 520);
             this.navPanel.TabIndex = 54;
             // 
-            // button2
+            // EmpBtn
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button2.Location = new System.Drawing.Point(-1, 282);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(195, 55);
-            this.button2.TabIndex = 61;
-            this.button2.Text = "従業員管理";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.EmpBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.EmpBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.EmpBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EmpBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.EmpBtn.Location = new System.Drawing.Point(-1, 282);
+            this.EmpBtn.Name = "EmpBtn";
+            this.EmpBtn.Size = new System.Drawing.Size(195, 55);
+            this.EmpBtn.TabIndex = 61;
+            this.EmpBtn.Text = "従業員管理";
+            this.EmpBtn.UseVisualStyleBackColor = false;
+            this.EmpBtn.Click += new System.EventHandler(this.EmpBtn_Click);
             // 
-            // logoutBtn
+            // LogoutBtn
             // 
-            this.logoutBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("logoutBtn.BackgroundImage")));
-            this.logoutBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.logoutBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.logoutBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.logoutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.logoutBtn.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.logoutBtn.Location = new System.Drawing.Point(152, 471);
-            this.logoutBtn.Name = "logoutBtn";
-            this.logoutBtn.Size = new System.Drawing.Size(40, 40);
-            this.logoutBtn.TabIndex = 59;
-            this.logoutBtn.UseVisualStyleBackColor = true;
+            this.LogoutBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LogoutBtn.BackgroundImage")));
+            this.LogoutBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.LogoutBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.LogoutBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.LogoutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LogoutBtn.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.LogoutBtn.Location = new System.Drawing.Point(152, 471);
+            this.LogoutBtn.Name = "LogoutBtn";
+            this.LogoutBtn.Size = new System.Drawing.Size(40, 40);
+            this.LogoutBtn.TabIndex = 59;
+            this.LogoutBtn.UseVisualStyleBackColor = true;
+            this.LogoutBtn.Click += new System.EventHandler(this.LogoutBtn_Click);
             // 
-            // button1
+            // MemberBtn
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(-1, 228);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(195, 55);
-            this.button1.TabIndex = 60;
-            this.button1.Text = "顧客管理";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.MemberBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.MemberBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.MemberBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MemberBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.MemberBtn.Location = new System.Drawing.Point(-1, 228);
+            this.MemberBtn.Name = "MemberBtn";
+            this.MemberBtn.Size = new System.Drawing.Size(195, 55);
+            this.MemberBtn.TabIndex = 60;
+            this.MemberBtn.Text = "顧客管理";
+            this.MemberBtn.UseVisualStyleBackColor = false;
+            this.MemberBtn.Click += new System.EventHandler(this.MemberBtn_Click);
             // 
             // sanLabel
             // 
@@ -215,6 +218,10 @@
             this.ctrPanel.Size = new System.Drawing.Size(760, 515);
             this.ctrPanel.TabIndex = 55;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // SystmTop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -224,6 +231,7 @@
             this.Controls.Add(this.navPanel);
             this.Name = "SystmTop";
             this.Text = "注文管理システム";
+            this.Load += new System.EventHandler(this.SystmTop_Load);
             this.navPanel.ResumeLayout(false);
             this.navPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -233,7 +241,7 @@
         #endregion
 
         private System.Windows.Forms.Panel navPanel;
-        private System.Windows.Forms.Button logoutBtn;
+        private System.Windows.Forms.Button LogoutBtn;
         private System.Windows.Forms.Label sanLabel;
         private System.Windows.Forms.Label memberNameLabel;
         private System.Windows.Forms.Label timeLabel;
@@ -243,7 +251,8 @@
         private System.Windows.Forms.Button ioMgtBtn;
         private System.Windows.Forms.Button orderMgtBtn;
         private System.Windows.Forms.Panel ctrPanel;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button EmpBtn;
+        private System.Windows.Forms.Button MemberBtn;
+        private System.Windows.Forms.Timer timer1;
     }
 }
