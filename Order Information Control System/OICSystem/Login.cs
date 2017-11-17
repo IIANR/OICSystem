@@ -19,10 +19,10 @@ namespace WindowsFormsApplication1
         OleDbCommand cmd = new OleDbCommand();
         DataTable dt = new DataTable();
 
-        int id;
+        int db_id;
         int inid;
-        public string name;
-        string pass;
+        public string db_name;
+        string db_pass;
         string inpass;
 
 
@@ -69,15 +69,16 @@ namespace WindowsFormsApplication1
 
         private void LoginBtn_Click(object sender, EventArgs e)
         {
-            EmpErrMsg.Text = "";
-            PassErrMsg.Text = "";
-            
+            ErrMsg.Text = "";
 
-            if (EmpTextbox.Text == null||EmpTextbox.Text=="")
+
+            if (EmpTextbox.Text == null || EmpTextbox.Text == "")   // IDの入力チェック
             {
-                EmpTextbox.Text = "";
-                EmpErrMsg.Text = "従業員IDを入力してください。";
-               
+                ErrMsg.Text = "従業員IDを入力してください。";
+            }
+            else if (PassTextbox.Text == null || PassTextbox.Text == "") // パスワードの入力チェック
+            {
+                ErrMsg.Text = "パスワードを入力してください。";
             }
             else
             {
@@ -96,18 +97,14 @@ namespace WindowsFormsApplication1
 
                 while (rd.Read())
                 {
-                    id = (int)rd.GetValue(0);
-                    name = (string)rd.GetValue(1);
-                    pass = (string)rd.GetValue(12);
-                        if (id == inid)
+                    db_id = (int)rd.GetValue(0);
+                    db_name = (string)rd.GetValue(1);
+                    db_pass = (string)rd.GetValue(12);
+                        if (db_id == inid)
                         {
                             inpass = PassTextbox.Text;
-                            if (PassTextbox.Text == null || PassTextbox.Text == "")
-                            {
-                                PassTextbox.Text = "";
-                                PassErrMsg.Text = "パスワードを入力してください。";
-                            }
-                            else if (pass == inpass)
+                            
+                            if (db_pass == inpass)
                             {
                                 this.Hide();
                                 frm2.frm1 = this;
@@ -115,21 +112,20 @@ namespace WindowsFormsApplication1
                             }
                             else
                             {
-                                EmpTextbox.Text = "";
-                                PassTextbox.Text = "";
-                                EmpErrMsg.Text = "従業員IDかパスワードが間違っています。";
+                                ErrMsg.Text = "従業員IDかパスワードが間違っています。";
                             }
                             break;
                         }      
 
                 }
-                EmpTextbox.Text = "";
-                PassTextbox.Text = "";
-                EmpErrMsg.Text = "従業員IDかパスワードが間違っています。";
 
                 cn.Close();
                 
             }
+
+            //入力情報のクリア
+            EmpTextbox.Text = "";
+            PassTextbox.Text = "";
         }
 
         private void Login_Load(object sender, EventArgs e)

@@ -98,7 +98,7 @@ namespace WindowsFormsApplication1
             sal.Visible = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void MemberBtn_Click(object sender, EventArgs e)
         {
             order.Visible = false;
             io.Visible = false;
@@ -108,7 +108,7 @@ namespace WindowsFormsApplication1
             sal.Visible = false;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void EmpBtn_Click(object sender, EventArgs e)
         {
             order.Visible = false;
             io.Visible = false;
@@ -120,7 +120,27 @@ namespace WindowsFormsApplication1
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            DateTime dtNow = DateTime.Now;
+            DateTime dtToday = DateTime.Today;
 
+            // 取得した日付と時刻を表示する
+            dateLabel.Text = (dtToday.ToString("MM月dd日"));
+            timeLabel.Text = (dtNow.ToLongTimeString());
+        }
+
+        private void SystmTop_Load(object sender, EventArgs e)
+        {
+            memberNameLabel.Text = frm1.db_name;
+
+            timer1.Interval = 1000;
+            timer1.Enabled = true;
+        }
+
+        private void LogoutBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Login frm1 = new Login();
+            frm1.Show();     
         }
     }
 }

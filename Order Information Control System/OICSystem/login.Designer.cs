@@ -38,8 +38,7 @@
             this.TimeLabel = new System.Windows.Forms.Label();
             this.DateLabel = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.EmpErrMsg = new System.Windows.Forms.Label();
-            this.PassErrMsg = new System.Windows.Forms.Label();
+            this.ErrMsg = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // EmpTextbox
@@ -56,6 +55,7 @@
             this.PassTextbox.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.PassTextbox.Location = new System.Drawing.Point(292, 301);
             this.PassTextbox.Name = "PassTextbox";
+            this.PassTextbox.PasswordChar = '*';
             this.PassTextbox.Size = new System.Drawing.Size(373, 20);
             this.PassTextbox.TabIndex = 1;
             // 
@@ -107,7 +107,7 @@
             // 
             this.TimeLabel.AutoSize = true;
             this.TimeLabel.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.TimeLabel.Location = new System.Drawing.Point(749, 71);
+            this.TimeLabel.Location = new System.Drawing.Point(781, 71);
             this.TimeLabel.Name = "TimeLabel";
             this.TimeLabel.Size = new System.Drawing.Size(51, 16);
             this.TimeLabel.TabIndex = 7;
@@ -126,29 +126,22 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // EmpErrMsg
+            // ErrMsg
             // 
-            this.EmpErrMsg.AutoSize = true;
-            this.EmpErrMsg.Location = new System.Drawing.Point(292, 260);
-            this.EmpErrMsg.Name = "EmpErrMsg";
-            this.EmpErrMsg.Size = new System.Drawing.Size(0, 12);
-            this.EmpErrMsg.TabIndex = 9;
-            // 
-            // PassErrMsg
-            // 
-            this.PassErrMsg.AutoSize = true;
-            this.PassErrMsg.Location = new System.Drawing.Point(292, 328);
-            this.PassErrMsg.Name = "PassErrMsg";
-            this.PassErrMsg.Size = new System.Drawing.Size(0, 12);
-            this.PassErrMsg.TabIndex = 10;
+            this.ErrMsg.ForeColor = System.Drawing.Color.Red;
+            this.ErrMsg.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ErrMsg.Location = new System.Drawing.Point(291, 347);
+            this.ErrMsg.Name = "ErrMsg";
+            this.ErrMsg.Size = new System.Drawing.Size(374, 19);
+            this.ErrMsg.TabIndex = 9;
+            this.ErrMsg.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(954, 562);
-            this.Controls.Add(this.PassErrMsg);
-            this.Controls.Add(this.EmpErrMsg);
+            this.Controls.Add(this.ErrMsg);
             this.Controls.Add(this.DateLabel);
             this.Controls.Add(this.TimeLabel);
             this.Controls.Add(this.LoginTitle);
@@ -178,8 +171,7 @@
         private System.Windows.Forms.Label TimeLabel;
         private System.Windows.Forms.Label DateLabel;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label EmpErrMsg;
-        private System.Windows.Forms.Label PassErrMsg;
+        private System.Windows.Forms.Label ErrMsg;
     }
 }
 
