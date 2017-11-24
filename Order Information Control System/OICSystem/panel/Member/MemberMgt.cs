@@ -21,6 +21,9 @@ namespace WindowsFormsApplication1
 
         string name;
         string tname;
+        string tell;
+        string ttell;
+        
 
 
         private void selectfunc(string cmdstr)
@@ -29,7 +32,7 @@ namespace WindowsFormsApplication1
             dt = new DataTable();
             MemberDataGridView.DataSource = null;
             da = new OleDbDataAdapter(cmdstr, cn);
-            da.Fill(dt);
+            da.Fill(dt);                                                                                        
             MemberDataGridView.DataSource = dt;
             MemberDataGridView.AutoResizeColumns();
         }
@@ -95,20 +98,44 @@ namespace WindowsFormsApplication1
             dt = CreateSchemaDataTable(rd);
             DataRow row = dt.NewRow();
 
-            name = MemberNameTBox.Text;
+            //name = MemberNameTBox.Text;
+            //tell = MemberTelTBox.Text;
 
             while (rd.Read())
             {
 
                 name = (string)rd.GetValue(1);
                 tname = MemberNameTBox.Text;
-                if (name == tname)
+                tell = (string)rd.GetValue(3);
+                ttell = MemberTelTBox.Text;
+                if (name == tname || tell == ttell)
                 {
-                    selectfunc("SELECT * FROM Member WHERE 名前 LIKE '%" + MemberNameTBox.Text + "%'");
-                    
+                    selectfunc("SELECT * FROM 顧客テーブル WHERE 名前 LIKE '%" + MemberNameTBox.Text + "%'");
+                    MemberDisLbl.Text = "";
+                    break;
                 }
+
+
+                
+                MemberDisLbl.Text = "その情報は登録されていません";     
             }
+
+            MemberNameTBox.Text = "";
+
             cn.Close();
+
          }
+
+
+
+
+
+        private void MemberClearBtn_Click(object sender, EventArgs e)
+        {
+            dataload();
+            MemberDisLbl.Text = "";
+        }
+
+        
     }
 }
