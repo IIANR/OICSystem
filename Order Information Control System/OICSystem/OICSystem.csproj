@@ -74,6 +74,18 @@
     <Compile Include="panel\Goods\GoodsStock.Designer.cs">
       <DependentUpon>GoodsStock.cs</DependentUpon>
     </Compile>
+    <Compile Include="panel\IO\IOInput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="panel\IO\IOInput.Designer.cs">
+      <DependentUpon>IOInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="panel\IO\IOOutput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="panel\IO\IOOutput.Designer.cs">
+      <DependentUpon>IOOutput.cs</DependentUpon>
+    </Compile>
     <Compile Include="panel\Member\MemberMgt.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -138,6 +150,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="panel\Goods\GoodsStock.resx">
       <DependentUpon>GoodsStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="panel\IO\IOInput.resx">
+      <DependentUpon>IOInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="panel\IO\IOOutput.resx">
+      <DependentUpon>IOOutput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="panel\Member\MemberMgt.resx">
       <DependentUpon>MemberMgt.cs</DependentUpon>
