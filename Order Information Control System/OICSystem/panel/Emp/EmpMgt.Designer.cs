@@ -43,16 +43,16 @@
             this.BirthdayLbl = new System.Windows.Forms.Label();
             this.BirthdayTextB = new System.Windows.Forms.TextBox();
             this.SexLbl = new System.Windows.Forms.Label();
-            this.ManB = new System.Windows.Forms.RadioButton();
-            this.WomanB = new System.Windows.Forms.RadioButton();
+            this.ManRB = new System.Windows.Forms.RadioButton();
+            this.WomanRB = new System.Windows.Forms.RadioButton();
             this.HuriganaLbl = new System.Windows.Forms.Label();
             this.HuriganaTextB = new System.Windows.Forms.TextBox();
             this.PostalNamLbl = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.EmpPostTextB = new System.Windows.Forms.TextBox();
             this.AddressLbl = new System.Windows.Forms.Label();
             this.AddressTextB = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.EmpTelLbl = new System.Windows.Forms.Label();
+            this.EmpTelTextB = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.EmpdataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -185,29 +185,29 @@
             this.SexLbl.TabIndex = 68;
             this.SexLbl.Text = "性別：";
             // 
-            // ManB
+            // ManRB
             // 
-            this.ManB.AutoSize = true;
-            this.ManB.Location = new System.Drawing.Point(496, 481);
-            this.ManB.Name = "ManB";
-            this.ManB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ManB.Size = new System.Drawing.Size(35, 16);
-            this.ManB.TabIndex = 69;
-            this.ManB.TabStop = true;
-            this.ManB.Text = "男";
-            this.ManB.UseVisualStyleBackColor = true;
+            this.ManRB.AutoSize = true;
+            this.ManRB.Location = new System.Drawing.Point(496, 481);
+            this.ManRB.Name = "ManRB";
+            this.ManRB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.ManRB.Size = new System.Drawing.Size(35, 16);
+            this.ManRB.TabIndex = 69;
+            this.ManRB.TabStop = true;
+            this.ManRB.Text = "男";
+            this.ManRB.UseVisualStyleBackColor = true;
             // 
-            // WomanB
+            // WomanRB
             // 
-            this.WomanB.AutoSize = true;
-            this.WomanB.Location = new System.Drawing.Point(537, 481);
-            this.WomanB.Name = "WomanB";
-            this.WomanB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.WomanB.Size = new System.Drawing.Size(35, 16);
-            this.WomanB.TabIndex = 70;
-            this.WomanB.TabStop = true;
-            this.WomanB.Text = "女";
-            this.WomanB.UseVisualStyleBackColor = true;
+            this.WomanRB.AutoSize = true;
+            this.WomanRB.Location = new System.Drawing.Point(537, 481);
+            this.WomanRB.Name = "WomanRB";
+            this.WomanRB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.WomanRB.Size = new System.Drawing.Size(35, 16);
+            this.WomanRB.TabIndex = 70;
+            this.WomanRB.TabStop = true;
+            this.WomanRB.Text = "女";
+            this.WomanRB.UseVisualStyleBackColor = true;
             // 
             // HuriganaLbl
             // 
@@ -234,12 +234,12 @@
             this.PostalNamLbl.TabIndex = 73;
             this.PostalNamLbl.Text = "郵便番号：";
             // 
-            // textBox1
+            // EmpPostTextB
             // 
-            this.textBox1.Location = new System.Drawing.Point(271, 449);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(120, 19);
-            this.textBox1.TabIndex = 74;
+            this.EmpPostTextB.Location = new System.Drawing.Point(271, 449);
+            this.EmpPostTextB.Name = "EmpPostTextB";
+            this.EmpPostTextB.Size = new System.Drawing.Size(120, 19);
+            this.EmpPostTextB.TabIndex = 74;
             // 
             // AddressLbl
             // 
@@ -257,36 +257,36 @@
             this.AddressTextB.Size = new System.Drawing.Size(120, 19);
             this.AddressTextB.TabIndex = 76;
             // 
-            // label1
+            // EmpTelLbl
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 487);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 12);
-            this.label1.TabIndex = 77;
-            this.label1.Text = "電話番号：";
+            this.EmpTelLbl.AutoSize = true;
+            this.EmpTelLbl.Location = new System.Drawing.Point(21, 487);
+            this.EmpTelLbl.Name = "EmpTelLbl";
+            this.EmpTelLbl.Size = new System.Drawing.Size(59, 12);
+            this.EmpTelLbl.TabIndex = 77;
+            this.EmpTelLbl.Text = "電話番号：";
             // 
-            // textBox2
+            // EmpTelTextB
             // 
-            this.textBox2.Location = new System.Drawing.Point(86, 484);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(117, 19);
-            this.textBox2.TabIndex = 78;
+            this.EmpTelTextB.Location = new System.Drawing.Point(86, 484);
+            this.EmpTelTextB.Name = "EmpTelTextB";
+            this.EmpTelTextB.Size = new System.Drawing.Size(117, 19);
+            this.EmpTelTextB.TabIndex = 78;
             // 
             // EmpMgt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.EmpTelTextB);
+            this.Controls.Add(this.EmpTelLbl);
             this.Controls.Add(this.AddressTextB);
             this.Controls.Add(this.AddressLbl);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.EmpPostTextB);
             this.Controls.Add(this.PostalNamLbl);
             this.Controls.Add(this.HuriganaTextB);
             this.Controls.Add(this.HuriganaLbl);
-            this.Controls.Add(this.WomanB);
-            this.Controls.Add(this.ManB);
+            this.Controls.Add(this.WomanRB);
+            this.Controls.Add(this.ManRB);
             this.Controls.Add(this.SexLbl);
             this.Controls.Add(this.BirthdayTextB);
             this.Controls.Add(this.BirthdayLbl);
@@ -328,15 +328,15 @@
         private System.Windows.Forms.Label BirthdayLbl;
         private System.Windows.Forms.TextBox BirthdayTextB;
         private System.Windows.Forms.Label SexLbl;
-        private System.Windows.Forms.RadioButton ManB;
-        private System.Windows.Forms.RadioButton WomanB;
+        private System.Windows.Forms.RadioButton ManRB;
+        private System.Windows.Forms.RadioButton WomanRB;
         private System.Windows.Forms.Label HuriganaLbl;
         private System.Windows.Forms.TextBox HuriganaTextB;
         private System.Windows.Forms.Label PostalNamLbl;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox EmpPostTextB;
         private System.Windows.Forms.Label AddressLbl;
         private System.Windows.Forms.TextBox AddressTextB;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label EmpTelLbl;
+        private System.Windows.Forms.TextBox EmpTelTextB;
     }
 }
