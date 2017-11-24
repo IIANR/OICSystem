@@ -92,7 +92,7 @@ namespace WindowsFormsApplication1
 
                 dt = CreateSchemaDataTable(rd);
                 DataRow row = dt.NewRow();
-    
+
                 inid = int.Parse(EmpTextbox.Text);
 
                 while (rd.Read())
@@ -100,27 +100,27 @@ namespace WindowsFormsApplication1
                     db_id = (int)rd.GetValue(0);
                     db_name = (string)rd.GetValue(1);
                     db_pass = (string)rd.GetValue(12);
-                        if (db_id == inid)
+                    if (db_id == inid)
+                    {
+                        inpass = PassTextbox.Text;
+
+                        if (db_pass == inpass)
                         {
-                            inpass = PassTextbox.Text;
-                            
-                            if (db_pass == inpass)
-                            {
-                                this.Hide();
-                                frm2.frm1 = this;
-                                frm2.Show();
-                            }
-                            else
-                            {
-                                ErrMsg.Text = "従業員IDかパスワードが間違っています。";
-                            }
-                            break;
-                        }      
+                            this.Hide();
+                            frm2.frm1 = this;
+                            frm2.Show();
+                        }
+                        else
+                        {
+                            ErrMsg.Text = "従業員IDかパスワードが間違っています。";
+                        }
+                        break;
+                    }
 
                 }
 
                 cn.Close();
-                
+
             }
 
             //入力情報のクリア
