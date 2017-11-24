@@ -35,9 +35,6 @@
             this.NameText = new System.Windows.Forms.TextBox();
             this.PriceText = new System.Windows.Forms.TextBox();
             this.regiBtn = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.picture = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
             this.RemText = new System.Windows.Forms.TextBox();
             this.UmberText = new System.Windows.Forms.TextBox();
             this.RemLbl = new System.Windows.Forms.Label();
@@ -45,6 +42,9 @@
             this.CategoryText = new System.Windows.Forms.ComboBox();
             this.CategoryLbl = new System.Windows.Forms.Label();
             this.ImageText = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.dropLbl = new System.Windows.Forms.Label();
+            this.picture = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.picture.SuspendLayout();
             this.SuspendLayout();
@@ -109,35 +109,6 @@
             this.regiBtn.Text = "登録";
             this.regiBtn.UseVisualStyleBackColor = true;
             this.regiBtn.Click += new System.EventHandler(this.regiBtn_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(466, 38);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(265, 265);
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
-            // 
-            // picture
-            // 
-            this.picture.AllowDrop = true;
-            this.picture.BackColor = System.Drawing.Color.White;
-            this.picture.Controls.Add(this.label10);
-            this.picture.Location = new System.Drawing.Point(466, 38);
-            this.picture.Name = "picture";
-            this.picture.Size = new System.Drawing.Size(265, 265);
-            this.picture.TabIndex = 24;
-            this.picture.DragDrop += new System.Windows.Forms.DragEventHandler(this.picture_DragDrop);
-            this.picture.DragEnter += new System.Windows.Forms.DragEventHandler(this.picture_DragEnter);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(95, 122);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(64, 12);
-            this.label10.TabIndex = 20;
-            this.label10.Text = "ここにドロップ";
             // 
             // RemText
             // 
@@ -206,6 +177,39 @@
             this.ImageText.Size = new System.Drawing.Size(100, 19);
             this.ImageText.TabIndex = 31;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(265, 265);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
+            // dropLbl
+            // 
+            this.dropLbl.AutoSize = true;
+            this.dropLbl.Location = new System.Drawing.Point(95, 134);
+            this.dropLbl.Name = "dropLbl";
+            this.dropLbl.Size = new System.Drawing.Size(64, 12);
+            this.dropLbl.TabIndex = 20;
+            this.dropLbl.Text = "ここにドロップ";
+            // 
+            // picture
+            // 
+            this.picture.AllowDrop = true;
+            this.picture.BackColor = System.Drawing.Color.White;
+            this.picture.Controls.Add(this.dropLbl);
+            this.picture.Controls.Add(this.pictureBox1);
+            this.picture.Location = new System.Drawing.Point(466, 38);
+            this.picture.Name = "picture";
+            this.picture.Size = new System.Drawing.Size(265, 265);
+            this.picture.TabIndex = 24;
+            this.picture.DragDrop += new System.Windows.Forms.DragEventHandler(this.picture_DragDrop);
+            this.picture.DragEnter += new System.Windows.Forms.DragEventHandler(this.picture_DragEnter);
+            // 
             // GoodsRegi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -217,8 +221,6 @@
             this.Controls.Add(this.RemLbl);
             this.Controls.Add(this.UmberText);
             this.Controls.Add(this.RemText);
-            this.Controls.Add(this.picture);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.regiBtn);
             this.Controls.Add(this.PriceText);
             this.Controls.Add(this.NameText);
@@ -226,6 +228,7 @@
             this.Controls.Add(this.goodsRegiPrice);
             this.Controls.Add(this.goodsRegiName);
             this.Controls.Add(this.goodsRegiId);
+            this.Controls.Add(this.picture);
             this.Name = "GoodsRegi";
             this.Size = new System.Drawing.Size(760, 430);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -245,9 +248,6 @@
         private System.Windows.Forms.TextBox NameText;
         private System.Windows.Forms.TextBox PriceText;
         private System.Windows.Forms.Button regiBtn;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel picture;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox RemText;
         private System.Windows.Forms.TextBox UmberText;
         private System.Windows.Forms.Label RemLbl;
@@ -255,5 +255,8 @@
         private System.Windows.Forms.ComboBox CategoryText;
         private System.Windows.Forms.Label CategoryLbl;
         private System.Windows.Forms.TextBox ImageText;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label dropLbl;
+        private System.Windows.Forms.Panel picture;
     }
 }
