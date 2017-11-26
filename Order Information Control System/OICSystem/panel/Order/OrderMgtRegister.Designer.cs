@@ -47,13 +47,12 @@
             this.TotalLabel = new System.Windows.Forms.Label();
             this.AddressTextbox2 = new System.Windows.Forms.TextBox();
             this.AddressLabel2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.KanaLabel = new System.Windows.Forms.Label();
             this.KanaTextbox = new System.Windows.Forms.TextBox();
             this.OrderRegiDataGridview = new System.Windows.Forms.DataGridView();
             this.NumCombo = new System.Windows.Forms.ComboBox();
             this.ErrMsg = new System.Windows.Forms.Label();
+            this.DeleteBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.OrderRegiDataGridview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,9 +86,9 @@
             // 
             // OrderCompBtn
             // 
-            this.OrderCompBtn.Location = new System.Drawing.Point(581, 341);
+            this.OrderCompBtn.Location = new System.Drawing.Point(630, 341);
             this.OrderCompBtn.Name = "OrderCompBtn";
-            this.OrderCompBtn.Size = new System.Drawing.Size(151, 40);
+            this.OrderCompBtn.Size = new System.Drawing.Size(102, 40);
             this.OrderCompBtn.TabIndex = 43;
             this.OrderCompBtn.Text = "注文完了";
             this.OrderCompBtn.UseVisualStyleBackColor = true;
@@ -177,7 +176,7 @@
             // 
             this.AddBtn.Location = new System.Drawing.Point(390, 341);
             this.AddBtn.Name = "AddBtn";
-            this.AddBtn.Size = new System.Drawing.Size(151, 40);
+            this.AddBtn.Size = new System.Drawing.Size(102, 40);
             this.AddBtn.TabIndex = 52;
             this.AddBtn.Text = "追加";
             this.AddBtn.UseVisualStyleBackColor = true;
@@ -216,23 +215,6 @@
             this.AddressLabel2.Size = new System.Drawing.Size(41, 12);
             this.AddressLabel2.TabIndex = 56;
             this.AddressLabel2.Text = "住所2：";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 12);
-            this.label1.TabIndex = 58;
-            this.label1.Text = "注文ID：";
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(74, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(187, 23);
-            this.label2.TabIndex = 59;
-            this.label2.Text = "0000";
             // 
             // KanaLabel
             // 
@@ -285,17 +267,26 @@
             this.ErrMsg.TabIndex = 64;
             this.ErrMsg.Text = "エラーメッセージ";
             // 
+            // DeleteBtn
+            // 
+            this.DeleteBtn.Location = new System.Drawing.Point(510, 341);
+            this.DeleteBtn.Name = "DeleteBtn";
+            this.DeleteBtn.Size = new System.Drawing.Size(102, 40);
+            this.DeleteBtn.TabIndex = 65;
+            this.DeleteBtn.Text = "削除";
+            this.DeleteBtn.UseVisualStyleBackColor = true;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
+            // 
             // OrderMgtRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.ErrMsg);
             this.Controls.Add(this.NumCombo);
             this.Controls.Add(this.OrderRegiDataGridview);
             this.Controls.Add(this.KanaTextbox);
             this.Controls.Add(this.KanaLabel);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.AddressTextbox2);
             this.Controls.Add(this.AddressLabel2);
             this.Controls.Add(this.TotalLabel);
@@ -345,12 +336,11 @@
         private System.Windows.Forms.Label TotalLabel;
         private System.Windows.Forms.TextBox AddressTextbox2;
         private System.Windows.Forms.Label AddressLabel2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label KanaLabel;
         private System.Windows.Forms.TextBox KanaTextbox;
         private System.Windows.Forms.DataGridView OrderRegiDataGridview;
         private System.Windows.Forms.ComboBox NumCombo;
         private System.Windows.Forms.Label ErrMsg;
+        private System.Windows.Forms.Button DeleteBtn;
     }
 }
