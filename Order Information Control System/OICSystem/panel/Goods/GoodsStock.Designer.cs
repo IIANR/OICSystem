@@ -40,6 +40,7 @@
             this.dataGridView1.RowTemplate.Height = 21;
             this.dataGridView1.Size = new System.Drawing.Size(695, 333);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
             // 
             // GoodsStock
             // 
@@ -48,6 +49,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "GoodsStock";
             this.Size = new System.Drawing.Size(760, 430);
+            this.Load += new System.EventHandler(this.GoodsStock_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
