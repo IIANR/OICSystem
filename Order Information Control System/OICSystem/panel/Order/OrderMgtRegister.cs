@@ -84,10 +84,15 @@ namespace WindowsFormsApplication1
 
             cn.Close();
 
+            //グリッドビューの空白行を非表示
+            OrderRegiDataGridview.AllowUserToAddRows = false;
         }
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
+            //グリッドビューに空白行を表示（追加可能）
+            OrderRegiDataGridview.AllowUserToAddRows = true;
+
             for (int i = 0; i < int.Parse(NumCombo.Text); i++)
             {
                 cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
@@ -131,6 +136,9 @@ namespace WindowsFormsApplication1
             }
             GoodsidTextBox.Text = "";
             NumCombo.SelectedIndex = 0;
+
+            //グリッドビューに新しい行を追加できなくする
+            OrderRegiDataGridview.AllowUserToAddRows = false;
         }
 
         private void DeleteBtn_Click(object sender, EventArgs e)
@@ -289,68 +297,70 @@ namespace WindowsFormsApplication1
                 return;
             }
 
-            ////商品名からIDを抽出し、注文されたIDのリストをカンマ区切りで作成する
-            //string goodsIDlist = "";
+            cn.Open();
 
-            //cn.Open();
-
-            //cmd.CommandText = "SELECT * FROM 商品マスタ";
-            //cmd.Connection = cn;
-
-            //OleDbDataReader rd = cmd.ExecuteReader();
-
-
-            //dt = CreateSchemaDataTable(rd);
-            //DataRow row = dt.NewRow();
-
-            //while (rd.Read())
-            //{
-            //    db_Goodsname = (string)rd.GetValue(1);
-            //    db_GoodsPrice = (int)rd.GetValue(2);
-            //    if (db_Goodsname == Goodsname)
-            //    {
-            //        sum -= db_GoodsPrice;
-            //    }
-            //}
-            //cn.Close();
-
-            //// 最後のカンマを取り除く
-            //goodsIDlist = goodsIDlist.Substring(0, goodsIDlist.Length - 1);
-
+            cmd.CommandText = "SELECT * FROM 商品マスタ";
             cmd.Connection = cn;
-            cmd.CommandText = "INSERT INTO 顧客テーブル (名前,ﾌﾘｶﾞﾅ,電話番号,郵便番号,住所1,住所2,登録日)" + "VALUES (@name,@kana,@tel,@pos,@addres1,@addres2,@date)";
-            OleDbParameter prname = new OleDbParameter("@name", NameTextbox.Text);
-            cmd.Parameters.Add(prname);
-            OleDbParameter prkana = new OleDbParameter("@kana", KanaTextbox.Text);
-            cmd.Parameters.Add(prkana);
-            OleDbParameter prtel = new OleDbParameter("@tel", TelTextbox.Text);
-            cmd.Parameters.Add(prtel);
-            OleDbParameter prpos = new OleDbParameter("@pos", PoscodeTextbox.Text);
-            cmd.Parameters.Add(prpos);
-            OleDbParameter praddres1 = new OleDbParameter("@addres1", AddressTextbox1.Text);
-            cmd.Parameters.Add(praddres1);
-            OleDbParameter praddres2 = new OleDbParameter("@addres2", AddressTextbox2.Text);
-            cmd.Parameters.Add(praddres2);
-            OleDbParameter prdate = new OleDbParameter("@date", dtNow.ToString("MM/dd"));
-            cmd.Parameters.Add(prdate);
 
-            //OleDbCommand cmd2 = new OleDbCommand();
-            //cmd2.Connection = cn;
-            //cmd2.CommandText = "INSERT INTO 注文テーブル (注文日,商品ID,顧客ID,従業員ID)" + "VALUES (@orderdate,@orderid,@memberid,@empid)";
-            //OleDbParameter prorderdate = new OleDbParameter("@orderdate", dtNow.ToString("MM/dd"));
-            //cmd2.Parameters.Add(prorderdate);
+            OleDbDataReader rd = cmd.ExecuteReader();
 
-            try
+
+            dt = CreateSchemaDataTable(rd);
+            DataRow row = dt.NewRow();
+
+            ////商品名からIDを抽出し、注文されたIDのリストをカンマ区切りで作成する
+            string goodsIDlist = "";
+            for (int i = 0; i < OrderRegiDataGridview.Rows.Count; i++)
             {
-                cn.Open();
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("登録しました", "OICSystem");
-                cmd.Parameters.Clear();
+                string Goodsname = OrderRegiDataGridview.Rows[i].Cells[0].Value.ToString();
+                
+                    db_Goodsname = (string)rd.GetValue(1);
+                    if (db_Goodsname == Goodsname)
+                    {
+                        goodsIDlist += (string)rd.GetValue(0).ToString()+",";
+                    }
+                
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message,"OICSystem");
-            }
+
+            // 最後のカンマを取り除く
+            goodsIDlist = goodsIDlist.Substring(0, goodsIDlist.Length - 1);
+
+            textBox1.Text = goodsIDlist.ToString();
+
+            //cmd.Connection = cn;
+            //cmd.CommandText = "INSERT INTO 顧客テーブル (名前,ﾌﾘｶﾞﾅ,電話番号,郵便番号,住所1,住所2,登録日)" + "VALUES (@name,@kana,@tel,@pos,@addres1,@addres2,@date)";
+            //OleDbParameter prname = new OleDbParameter("@name", NameTextbox.Text);
+            //cmd.Parameters.Add(prname);
+            //OleDbParameter prkana = new OleDbParameter("@kana", KanaTextbox.Text);
+            //cmd.Parameters.Add(prkana);
+            //OleDbParameter prtel = new OleDbParameter("@tel", TelTextbox.Text);
+            //cmd.Parameters.Add(prtel);
+            //OleDbParameter prpos = new OleDbParameter("@pos", PoscodeTextbox.Text);
+            //cmd.Parameters.Add(prpos);
+            //OleDbParameter praddres1 = new OleDbParameter("@addres1", AddressTextbox1.Text);
+            //cmd.Parameters.Add(praddres1);
+            //OleDbParameter praddres2 = new OleDbParameter("@addres2", AddressTextbox2.Text);
+            //cmd.Parameters.Add(praddres2);
+            //OleDbParameter prdate = new OleDbParameter("@date", dtNow.ToString("MM/dd"));
+            //cmd.Parameters.Add(prdate);
+
+            ////OleDbCommand cmd2 = new OleDbCommand();
+            ////cmd2.Connection = cn;
+            ////cmd2.CommandText = "INSERT INTO 注文テーブル (注文日,商品ID,顧客ID,従業員ID)" + "VALUES (@orderdate,@orderid,@memberid,@empid)";
+            ////OleDbParameter prorderdate = new OleDbParameter("@orderdate", dtNow.ToString("MM/dd"));
+            ////cmd2.Parameters.Add(prorderdate);
+
+            //try
+            //{
+            //    //cn.Open();
+            //    cmd.ExecuteNonQuery();
+            //    MessageBox.Show("登録しました", "OICSystem");
+            //    cmd.Parameters.Clear();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message,"OICSystem");
+            //}
             cn.Close();
 
             //入力データ初期化
