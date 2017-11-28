@@ -23,7 +23,12 @@ namespace WindowsFormsApplication1
         string tname;
         string tell;
         string ttell;
-        
+        string pnum;
+        string tpnum;
+        string add1;
+        string tadd1;
+        string add2;
+        string tadd2;
 
 
         private void selectfunc(string cmdstr)
@@ -98,23 +103,54 @@ namespace WindowsFormsApplication1
             dt = CreateSchemaDataTable(rd);
             DataRow row = dt.NewRow();
 
-            //name = MemberNameTBox.Text;
-            //tell = MemberTelTBox.Text;
-
             while (rd.Read())
             {
 
-                name = (string)rd.GetValue(1);
+                name = (string)rd.GetValue(1);  //名前
                 tname = MemberNameTBox.Text;
-                tell = (string)rd.GetValue(3);
+                /*
+                tell = (string)rd.GetValue(3);  //電話番号
                 ttell = MemberTelTBox.Text;
-                if (name == tname || tell == ttell)
+                pnum = (string)rd.GetValue(4);  //郵便番号
+                tpnum = MemberPostNumTBox.Text;
+                add1 = (string)rd.GetValue(5);   //住所1
+                tadd1 = MemberAddlessTBox.Text;
+                //add2 = (string)rd.GetValue(6);   //住所2
+                //tadd2 = MemberAddlessTBox.Text;
+                */
+
+                if (name == tname)
                 {
                     selectfunc("SELECT * FROM 顧客テーブル WHERE 名前 LIKE '%" + MemberNameTBox.Text + "%'");
                     MemberDisLbl.Text = "";
                     break;
                 }
+                /*
+                if (tell == ttell)
+                {
+                    selectfunc("SELECT * FROM 顧客テーブル WHERE 電話番号 LIKE '%" + MemberTelTBox.Text + "%'");
+                    MemberDisLbl.Text = "";
+                    break;
+                }
+                if (pnum == tpnum)
+                {
+                    selectfunc("SELECT * FROM 顧客テーブル WHERE 郵便番号 LIKE '%" + MemberPostNumTBox.Text + "%'");
+                    MemberDisLbl.Text = "";
+                    break;
+                }
 
+                if(add2 == null)
+                {
+                     add2 = "Null";
+                }
+                if (add1 == tadd1 || add2 == tadd2)
+                {
+                    
+                    selectfunc("SELECT * FROM 顧客テーブル WHERE 住所1 LIKE '%" + MemberAddlessTBox.Text + "%'");
+                    MemberDisLbl.Text = "";
+                    break;
+                }
+                */
 
                 
                 MemberDisLbl.Text = "その情報は登録されていません";     
@@ -129,11 +165,16 @@ namespace WindowsFormsApplication1
 
 
 
-
+        //クリア
         private void MemberClearBtn_Click(object sender, EventArgs e)
         {
             dataload();
             MemberDisLbl.Text = "";
+        }
+
+        private void MemberEditBtn_Click(object sender, EventArgs e)
+        {
+            MemberDataGridView.ReadOnly = false;
         }
 
         
