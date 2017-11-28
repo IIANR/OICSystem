@@ -28,32 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.text = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // text
-            // 
-            this.text.AutoSize = true;
-            this.text.Location = new System.Drawing.Point(241, 165);
-            this.text.Name = "text";
-            this.text.Size = new System.Drawing.Size(29, 12);
-            this.text.TabIndex = 0;
-            this.text.Text = "出庫";
             // 
             // IOOutput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.text);
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.Name = "IOOutput";
             this.Size = new System.Drawing.Size(760, 430);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label text;
     }
 }
