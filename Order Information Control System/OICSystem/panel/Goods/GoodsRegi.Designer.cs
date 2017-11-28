@@ -41,10 +41,10 @@
             this.CategoryText = new System.Windows.Forms.ComboBox();
             this.CategoryLbl = new System.Windows.Forms.Label();
             this.ImageText = new System.Windows.Forms.TextBox();
-            this.IDText = new System.Windows.Forms.TextBox();
             this.panel = new System.Windows.Forms.Panel();
             this.DropLbl = new System.Windows.Forms.Label();
             this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.IDText = new System.Windows.Forms.TextBox();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
@@ -164,19 +164,11 @@
             // 
             // ImageText
             // 
-            this.ImageText.Location = new System.Drawing.Point(579, 13);
+            this.ImageText.Location = new System.Drawing.Point(514, 56);
             this.ImageText.Name = "ImageText";
             this.ImageText.ReadOnly = true;
             this.ImageText.Size = new System.Drawing.Size(84, 19);
             this.ImageText.TabIndex = 31;
-            // 
-            // IDText
-            // 
-            this.IDText.Location = new System.Drawing.Point(100, 74);
-            this.IDText.Name = "IDText";
-            this.IDText.ReadOnly = true;
-            this.IDText.Size = new System.Drawing.Size(67, 19);
-            this.IDText.TabIndex = 32;
             // 
             // panel
             // 
@@ -184,15 +176,17 @@
             this.panel.BackColor = System.Drawing.Color.White;
             this.panel.Controls.Add(this.DropLbl);
             this.panel.Controls.Add(this.pictureBox);
-            this.panel.Location = new System.Drawing.Point(554, 74);
+            this.panel.Location = new System.Drawing.Point(434, 81);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(203, 167);
+            this.panel.Size = new System.Drawing.Size(245, 219);
             this.panel.TabIndex = 34;
+            this.panel.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel_DragDrop);
+            this.panel.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel_DragEnter);
             // 
             // DropLbl
             // 
             this.DropLbl.AutoSize = true;
-            this.DropLbl.Location = new System.Drawing.Point(58, 74);
+            this.DropLbl.Location = new System.Drawing.Point(90, 109);
             this.DropLbl.Name = "DropLbl";
             this.DropLbl.Size = new System.Drawing.Size(64, 12);
             this.DropLbl.TabIndex = 36;
@@ -204,19 +198,24 @@
             this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox.Location = new System.Drawing.Point(0, 0);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(203, 167);
+            this.pictureBox.Size = new System.Drawing.Size(245, 219);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 35;
             this.pictureBox.TabStop = false;
-            this.pictureBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.pictureBox_DragDrop);
-            this.pictureBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.pictureBox_DragEnter);
+            // 
+            // IDText
+            // 
+            this.IDText.Location = new System.Drawing.Point(111, 74);
+            this.IDText.Name = "IDText";
+            this.IDText.Size = new System.Drawing.Size(84, 19);
+            this.IDText.TabIndex = 35;
             // 
             // GoodsRegi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel);
             this.Controls.Add(this.IDText);
+            this.Controls.Add(this.panel);
             this.Controls.Add(this.ImageText);
             this.Controls.Add(this.CategoryLbl);
             this.Controls.Add(this.CategoryText);
@@ -232,6 +231,7 @@
             this.Controls.Add(this.goodsRegiId);
             this.Name = "GoodsRegi";
             this.Size = new System.Drawing.Size(760, 430);
+            this.Load += new System.EventHandler(this.GoodsRegi_Load);
             this.panel.ResumeLayout(false);
             this.panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
@@ -255,9 +255,9 @@
         private System.Windows.Forms.ComboBox CategoryText;
         private System.Windows.Forms.Label CategoryLbl;
         private System.Windows.Forms.TextBox ImageText;
-        private System.Windows.Forms.TextBox IDText;
         private System.Windows.Forms.Panel panel;
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.Label DropLbl;
+        private System.Windows.Forms.TextBox IDText;
     }
 }

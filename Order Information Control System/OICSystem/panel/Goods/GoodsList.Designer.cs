@@ -59,6 +59,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "GoodsList";
             this.Size = new System.Drawing.Size(760, 430);
+            this.Load += new System.EventHandler(this.GoodsList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

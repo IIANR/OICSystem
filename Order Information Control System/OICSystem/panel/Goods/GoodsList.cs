@@ -16,5 +16,10 @@ namespace WindowsFormsApplication1.panel.Goods
         {
             InitializeComponent();
         }
+
+        private void GoodsList_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
