@@ -19,7 +19,7 @@ namespace WindowsFormsApplication1
         OleDbCommand cmd = new OleDbCommand();
         DataTable dt = new DataTable();
 
-        int db_id;
+        public int db_id;
         int inid;
         public string db_name;
         string db_pass;

@@ -54,7 +54,6 @@
             this.ErrMsg = new System.Windows.Forms.Label();
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.SearchBtn = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.OrderRegiDataGridview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -175,6 +174,7 @@
             this.PoscodeTextbox.Name = "PoscodeTextbox";
             this.PoscodeTextbox.Size = new System.Drawing.Size(186, 19);
             this.PoscodeTextbox.TabIndex = 50;
+            this.PoscodeTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PoscodeTextbox_KeyPress);
             // 
             // AddBtn
             // 
@@ -291,18 +291,10 @@
             this.SearchBtn.UseVisualStyleBackColor = true;
             this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(121, 164);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(232, 19);
-            this.textBox1.TabIndex = 67;
-            // 
             // OrderMgtRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.SearchBtn);
             this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.ErrMsg);
@@ -366,6 +358,5 @@
         private System.Windows.Forms.Label ErrMsg;
         private System.Windows.Forms.Button DeleteBtn;
         private System.Windows.Forms.Button SearchBtn;
-        private System.Windows.Forms.TextBox textBox1;
     }
 }

@@ -13,6 +13,7 @@ namespace WindowsFormsApplication1
     public partial class SystmTop : Form
     {
         public Login frm1;
+        public OrderMgtRegister frm3 = new OrderMgtRegister();
 
         public static OrderMgt order;
         public static IOMgt io;
@@ -20,6 +21,8 @@ namespace WindowsFormsApplication1
         public static MemberMgt member;
         public static EmpMgt emp;
         public static SalMgt sal;
+
+        public int SystmTopdb_id = 0;
 
         public SystmTop()
         {
@@ -131,6 +134,7 @@ namespace WindowsFormsApplication1
         private void SystmTop_Load(object sender, EventArgs e)
         {
             memberNameLabel.Text = frm1.db_name;
+            SystmTopdb_id = frm1.db_id;
 
             timer1.Interval = 1000;
             timer1.Enabled = true;
