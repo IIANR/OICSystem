@@ -19,10 +19,19 @@ namespace WindowsFormsApplication1
         DataTable dt = new DataTable();
         OleDbDataAdapter da = new OleDbDataAdapter();
 
+        DataSet dsorder = new DataSet();
+        DataSet dsgoods = new DataSet();
      
         public SalMgt()
         {
             InitializeComponent();
+        }
+
+        public void Run()
+        {
+            
+
+           
         }
 
         private DataTable CreateSchemaDataTable(OleDbDataReader reader)
@@ -50,89 +59,10 @@ namespace WindowsFormsApplication1
             return dt;
         }
 
-        //private void Monthlybtn_Click(object sender, EventArgs e)
-        //{
-        //    cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2777.accdb;";
-        //    cn.Open();
 
-        //    cmd.CommandText = "SELECT * FROM 注文テーブル WHERE create_datetime>='2017-10-01'AND create_datetime<='2017-11-01'";
-        //    cmd.Connection = cn;
-
-        //    OleDbDataReader rd = cmd.ExecuteReader();
-
-        //    dt = CreateSchemaDataTable(rd);
-        //    DataRow row = dt.NewRow();
-
-        //    date2.Text = DateTime.Parse(dataGridView1[4, dataGridView1.CurrentCell.RowIndex].Value.ToString()).ToString("yyyy/MM/dd");
-
-        //    cn.Close();
-        //}
-
-        //private void Monthlybtn_Click(object sender, EventArgs e)
-        //{
-        //    cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
-        //    cn.Open();
-
-        //    cmd.CommandText = "SELECT * FROM 従業員マスタ";
-        //    cmd.Connection = cn;
-
-        //    OleDbDataReader rd = cmd.ExecuteReader();
-
-        //    dt = CreateSchemaDataTable(rd);
-        //    DataRow row = dt.NewRow();
-
-        //    inid = int.Parse(EmpTextbox.Text);
-
-        //    while (rd.Read())
-        //    {
-        //        db_id = (int)rd.GetValue(0);
-        //        db_name = (string)rd.GetValue(1);
-        //        db_pass = (string)rd.GetValue(12);
-        //        if (db_id == inid)
-        //        {
-        //            inpass = PassTextbox.Text;
-
-        //            if (db_pass == inpass)
-        //            {
-        //                this.Hide();
-        //                frm2.frm1 = this;
-        //                frm2.Show();
-        //            }
-        //            else
-        //            {
-        //                ErrMsg.Text = "従業員IDかパスワードが間違っています。";
-        //            }
-        //            break;
-        //        }
-
-        //    }
-
-        //    cn.Close();
-        //}
-
-        private void dataload(int n)
+        public void button5_Click(object sender, EventArgs e)
         {
-            dataGridView1.Columns.Clear();
-            dataGridView1.DataSource = null;
-            cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2777.accdb;";
-            da = new OleDbDataAdapter("SELECT * FROM Member ORDER BY ID", cn);
-            dt.Clear();
-            dt = new DataTable();
-            da.Fill(dt);
-            dataGridView1.DataSource = dt;
-            dataGridView1.AutoResizeColumns();
-            dataGridView1.ClearSelection();
-            dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells["ID"];
-            dataGridView1.Rows[n].Selected = true;
-            dataGridView1.FirstDisplayedScrollingRowIndex = n;
-            foreach (DataGridViewColumn c in dataGridView1.Columns)
-            {
-                c.SortMode = DataGridViewColumnSortMode.NotSortable;
-            }
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
+            //日付
             string DS1;
             string DS2;
             //
@@ -143,23 +73,82 @@ namespace WindowsFormsApplication1
             DS2 = DateSet2.Value.ToString("yyyy/MM/dd");
             Console.WriteLine(DS2);
 
-            
-         
+            cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
+
+            cn.Open();
+
+            cmd.CommandText = "SELECT * FROM 注文テーブル";
+            cmd.Connection = cn;
+
+            OleDbDataReader rd = cmd.ExecuteReader();
+
+            dt = CreateSchemaDataTable(rd);
+            DataRow row = dt.NewRow();
+
+            // 会社テーブルの定義
+            dsorder.Tables.Add("Order");
+            dsorder.Tables["Order"].Columns.Add("date", typeof(DateTime));
+            dsorder.Tables["Order"].Columns.Add("id", typeof(String));
+            dsorder.Tables["Order"].Columns.Add("authority", typeof(bool));
+
+            while (rd.Read())
+            {
+                row["date"] = (DateTime)rd.GetValue(1);
+                row["id"] = (string)rd.GetValue(2);
+                row["authority"] = (bool)rd.GetBoolean(6);
+            }
+
+            cn.Close();
+
+            cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
+
+            cn.Open();
+
+            cmd.CommandText = "SELECT * FROM 商品マスタ";
+            cmd.Connection = cn;
+
+
+
+            dt = CreateSchemaDataTable(rd);
+
+
+            // 従業員テーブルの定義
+            dsgoods.Tables.Add("Goods");
+            dsgoods.Tables["Goods"].Columns.Add("id", typeof(String));
+            dsgoods.Tables["Goods"].Columns.Add("name", typeof(String));
+            dsgoods.Tables["Goods"].Columns.Add("price", typeof(int));
+
+            while (rd.Read())
+            {
+                row["id"] = (string)rd.GetValue(0);
+                row["name"] = (string)rd.GetValue(1);
+                row["price"] = (int)rd.GetValue(2);
+            }
+
+            cn.Close();
+
+            dsgoods.Relations.Add("GoodsOrder",
+            dsorder.Tables["Order"].Columns["goodsID"],
+            dsgoods.Tables["Goods"].Columns["goodsID"]);
+
+            foreach (DataRow Goods in dsgoods.Tables["Goods"].Rows)
+            {
+                Console.WriteLine("Order who work for {0}:", Goods["name"]);
+                foreach (DataRow emps in Goods.GetChildRows("GoodsOrder"))
+                {
+                    Console.WriteLine("\t{0}", emps["name"]);
+                }
+            }
+            foreach (DataRow Order in dsorder.Tables["Orders"].Rows)
+            {
+                DataRow Goods = Order.GetParentRow("GoodsOrder");
+                Console.WriteLine("{0} belongs to {1}.", Order["name"], Goods["name"]);
+            }
+
         }
 
-        private void Weeklybtn_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.注文テーブルBindingSource.EndEdit();
-            this.注文テーブルTableAdapter.UpdateAll(this.iM2DataSet);
-        }
 
-        private void SalMgt_Load(object sender, EventArgs e)
-        {
-            // TODO: このコード行はデータを 'dBJapanDataSet.Member' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-            this.注文テーブルTableAdapter.Fill(this.iM2DataSet.注文テーブル);
-            dataGridView1.AutoResizeColumns();
-        }
+
 
     }
 }
