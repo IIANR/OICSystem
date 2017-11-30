@@ -14,8 +14,6 @@ namespace WindowsFormsApplication1
 {
     public partial class OrderMgtRegister : UserControl
     {
-        public SystmTop frm4;
-
         OleDbConnection cn = new OleDbConnection();
         OleDbCommand cmd = new OleDbCommand();
         OleDbDataAdapter da = new OleDbDataAdapter();
@@ -200,95 +198,11 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void SearchBtn_Click(object sender, EventArgs e)
-        {
-            string Address;         //住所
-            Boolean blnFlag = false;  //見つかったかどうかのフラグ
-
-            //郵便番号が入力されていないとき
-            if (PoscodeTextbox.Text == "")
-            {
-                MessageBox.Show("郵便番号が入力されていません。");
-                this.PoscodeTextbox.Focus();
-                return; //処理を抜ける
-            }
-            //マウスカーソルを砂時計にする
-            Cursor.Current = Cursors.WaitCursor;
-            string sKey = PoscodeTextbox.Text;
-            //文字列の前後のスペースをとる
-            sKey = sKey.Trim(' ');
-            //Microsoft.VisualBasic名前空間のStrConv関数を使って、
-            //全角文字を半角文字に変換
-            //sKey = Strings.StrConv(sKey, VbStrConv.Narrow, 0);
-            // 文字列の長さを取得する
-            int iLength = sKey.Length;
-            if (iLength == 8)　//"-"が含まれている
-            {
-                // 先頭文字目の後から '-' を検索し、見つかった位置を取得する
-                int iFind = sKey.IndexOf('-', 0);
-                //左から3文字+"-"文字以降をtmpZip変数に代入
-                sKey = sKey.Substring(0, 3) + sKey.Substring(iFind + 1);
-            }
-            try
-            {
-                //StreamReaderオブジェクトの作成
-                StreamReader sr = new StreamReader(@"..\..\assets\CSV\KEN_ALL.CSV",
-                                                Encoding.Default);
-                //1行ずつ読み込み
-                string dat;
-                while ((dat = sr.ReadLine()) != null)
-                {
-                    string tmpZip;
-
-                    //カンマで区切られた文字列を取得
-                    string[] sbuf = dat.Split(',');
-                    //配列の3番目が郵便番号
-                    tmpZip = sbuf[2].Trim('"');
-
-                    //入力された郵便番号と比較
-                    if (sKey == tmpZip)
-                    {
-                        //住所を作成
-                        //都道府県名+市区町村名+町域名
-                        Address = sbuf[6].Trim('"') +
-                                  sbuf[7].Trim('"') +
-                                  sbuf[8].Trim('"');
-
-                        //テキストボックスに住所を表示
-                        AddressTextbox1.Text = Address;
-                        blnFlag = true; //フラグをTrueにして
-                        break;          //ループを抜ける
-                    }
-                    Application.DoEvents();
-                }
-                //ファイルを閉じる
-                sr.Close();
-            }
-            catch (Exception ex)
-            {
-                //ファイルエラーが発生
-                MessageBox.Show(ex.Message, "ファイルエラー",
-                               MessageBoxButtons.OK,
-                               MessageBoxIcon.Error);
-                return; //処理を抜ける
-            }
-            finally
-            {
-                //マウスカーソルをデフォルトにする
-                Cursor.Current = Cursors.Default;
-
-            }
-            if (blnFlag == false)
-            {
-                MessageBox.Show("該当の郵便番号は見つかりませんでした。",
-                                "郵便番号検索",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-            }
-        }
-
         private void OrderCompBtn_Click(object sender, EventArgs e)
         {
+            //ログイン中の従業員IDを取得する
+            int Empid = Login.LoginInstance.Empid;
+
             //現在の日付
             DateTime dtNow = DateTime.Now;
 
@@ -296,8 +210,6 @@ namespace WindowsFormsApplication1
             {
                 return;
             }
-
-            
 
             ////商品名からIDを抽出し、注文されたIDのリストをカンマ区切りで作成する
             string goodsIDlist = "";
@@ -350,29 +262,11 @@ namespace WindowsFormsApplication1
             OleDbParameter prdate = new OleDbParameter("@date", dtNow.ToString("MM/dd"));
             cmd.Parameters.Add(prdate);
 
-            OleDbCommand cmd2 = new OleDbCommand();
-            cmd2.Connection = cn;
-            cmd2.CommandText = "INSERT INTO 注文テーブル (注文日,商品ID,顧客ID,従業員ID)" + "VALUES (@orderdate,@goodsid,@memberid,@empid)";
-            OleDbParameter prorderdate = new OleDbParameter("@orderdate", dtNow.ToString("MM/dd"));
-            cmd2.Parameters.Add(prorderdate);
-            OleDbParameter prgoodsid = new OleDbParameter("@goodsid", goodsIDlist.ToString());
-            cmd2.Parameters.Add(prgoodsid);
-            OleDbParameter prmemberid = new OleDbParameter("@memberid", db_memberid.ToString());
-            cmd2.Parameters.Add(prmemberid);
-            OleDbParameter prempid = new OleDbParameter("@empid", frm4.SystmTopdb_id.ToString());
-            cmd2.Parameters.Add(prempid);
-
-            
-
-
-
             try
             {
                 cn.Open();
                 cmd.ExecuteNonQuery();
 
-
-                //
                 OleDbCommand cmd3 = new OleDbCommand();
                 cmd3.Connection = cn;
                 cmd3.CommandText = "SELECT * FROM 顧客テーブル";
@@ -386,7 +280,19 @@ namespace WindowsFormsApplication1
                 {
                     db_memberid = (int)rd.GetValue(0);
                 }
-                //
+
+                OleDbCommand cmd2 = new OleDbCommand();
+                cmd2.Connection = cn;
+                cmd2.CommandText = "INSERT INTO 注文テーブル (注文日,商品ID,顧客ID,従業員ID)" + "VALUES (@orderdate,@goodsid,@memberid,@empid)";
+                OleDbParameter prorderdate = new OleDbParameter("@orderdate", dtNow.ToString("MM/dd"));
+                cmd2.Parameters.Add(prorderdate);
+                OleDbParameter prgoodsid = new OleDbParameter("@goodsid", goodsIDlist.ToString());
+                cmd2.Parameters.Add(prgoodsid);
+                OleDbParameter prmemberid = new OleDbParameter("@memberid", db_memberid.ToString());
+                cmd2.Parameters.Add(prmemberid);
+                OleDbParameter prempid = new OleDbParameter("@empid", Empid);
+                cmd2.Parameters.Add(prempid);
+
 
                 cmd2.ExecuteNonQuery();
 
@@ -410,6 +316,10 @@ namespace WindowsFormsApplication1
             TelTextbox.Text = "";
             //データグリッドビュー初期化
             dtclear();
+
+            //トータルラベルを非表示
+            TotalLabel.Text = "";
+            TotalLabel.Visible = false;
         }
 
         private void dtclear()
@@ -428,6 +338,97 @@ namespace WindowsFormsApplication1
             {
                 //押されたキーが 0～9でない場合は、イベントをキャンセルする
                 e.Handled = true;
+            }
+        }
+
+        private void PoscodeTextbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                    string Address;         //住所
+                    Boolean blnFlag = false;  //見つかったかどうかのフラグ
+
+                    //郵便番号が入力されていないとき
+                    if (PoscodeTextbox.Text == "")
+                    {
+                        MessageBox.Show("郵便番号が入力されていません。");
+                        this.PoscodeTextbox.Focus();
+                        return; //処理を抜ける
+                    }
+                    //マウスカーソルを砂時計にする
+                    Cursor.Current = Cursors.WaitCursor;
+                    string sKey = PoscodeTextbox.Text;
+                    //文字列の前後のスペースをとる
+                    sKey = sKey.Trim(' ');
+                    //Microsoft.VisualBasic名前空間のStrConv関数を使って、
+                    //全角文字を半角文字に変換
+                    //sKey = Strings.StrConv(sKey, VbStrConv.Narrow, 0);
+                    // 文字列の長さを取得する
+                    int iLength = sKey.Length;
+                    if (iLength == 8) //"-"が含まれている
+                    {
+                        // 先頭文字目の後から '-' を検索し、見つかった位置を取得する
+                        int iFind = sKey.IndexOf('-', 0);
+                        //左から3文字+"-"文字以降をtmpZip変数に代入
+                        sKey = sKey.Substring(0, 3) + sKey.Substring(iFind + 1);
+                    }
+                    try
+                    {
+                        //StreamReaderオブジェクトの作成
+                        StreamReader sr = new StreamReader(@"..\..\assets\CSV\KEN_ALL.CSV",
+                                                        Encoding.Default);
+                        //1行ずつ読み込み
+                        string dat;
+                        while ((dat = sr.ReadLine()) != null)
+                        {
+                            string tmpZip;
+
+                            //カンマで区切られた文字列を取得
+                            string[] sbuf = dat.Split(',');
+                            //配列の3番目が郵便番号
+                            tmpZip = sbuf[2].Trim('"');
+
+                            //入力された郵便番号と比較
+                            if (sKey == tmpZip)
+                            {
+                                //住所を作成
+                                //都道府県名+市区町村名+町域名
+                                Address = sbuf[6].Trim('"') +
+                                          sbuf[7].Trim('"') +
+                                          sbuf[8].Trim('"');
+
+                                //テキストボックスに住所を表示
+                                AddressTextbox1.Text = Address;
+                                blnFlag = true; //フラグをTrueにして
+                                break;          //ループを抜ける
+                            }
+                            Application.DoEvents();
+                        }
+                        //ファイルを閉じる
+                        sr.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        //ファイルエラーが発生
+                        MessageBox.Show(ex.Message, "ファイルエラー",
+                                       MessageBoxButtons.OK,
+                                       MessageBoxIcon.Error);
+                        return; //処理を抜ける
+                    }
+                    finally
+                    {
+                        //マウスカーソルをデフォルトにする
+                        Cursor.Current = Cursors.Default;
+
+                    }
+                    if (blnFlag == false)
+                    {
+                        MessageBox.Show("該当の郵便番号は見つかりませんでした。",
+                                        "郵便番号検索",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Error);
+                    }
+                
             }
         }
     }

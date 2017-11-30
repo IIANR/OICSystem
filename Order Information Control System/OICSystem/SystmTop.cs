@@ -13,7 +13,6 @@ namespace WindowsFormsApplication1
     public partial class SystmTop : Form
     {
         public Login frm1;
-        public OrderMgtRegister frm3 = new OrderMgtRegister();
 
         public static OrderMgt order;
         public static IOMgt io;

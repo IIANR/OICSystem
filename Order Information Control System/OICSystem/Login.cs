@@ -25,7 +25,31 @@ namespace WindowsFormsApplication1
         string db_pass;
         string inpass;
 
+        private static Login _loginInstance;
 
+        public static Login LoginInstance
+        {
+            get
+            {
+                return _loginInstance;
+            }
+            set
+            {
+                _loginInstance = value;
+            }
+        }
+
+        public int Empid
+        {
+            get
+            {
+                return db_id;
+            }
+            set
+            {
+                db_id = value;
+            }
+        }
 
         public Login()
         {
@@ -132,6 +156,8 @@ namespace WindowsFormsApplication1
         {
             timer1.Interval = 1000;
             timer1.Enabled = true;
+
+            Login.LoginInstance = this;
         }
 
         private void EmpTextbox_KeyPress(object sender, KeyPressEventArgs e)

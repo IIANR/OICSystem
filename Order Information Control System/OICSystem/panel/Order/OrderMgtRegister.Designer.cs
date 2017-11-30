@@ -53,44 +53,48 @@
             this.NumCombo = new System.Windows.Forms.ComboBox();
             this.ErrMsg = new System.Windows.Forms.Label();
             this.DeleteBtn = new System.Windows.Forms.Button();
-            this.SearchBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.OrderRegiDataGridview)).BeginInit();
             this.SuspendLayout();
             // 
             // TelTextbox
             // 
-            this.TelTextbox.Location = new System.Drawing.Point(115, 362);
+            this.TelTextbox.Location = new System.Drawing.Point(249, 724);
+            this.TelTextbox.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.TelTextbox.Name = "TelTextbox";
-            this.TelTextbox.Size = new System.Drawing.Size(186, 19);
-            this.TelTextbox.TabIndex = 48;
+            this.TelTextbox.Size = new System.Drawing.Size(398, 31);
+            this.TelTextbox.TabIndex = 8;
             // 
             // AddressTextbox1
             // 
-            this.AddressTextbox1.Location = new System.Drawing.Point(115, 306);
+            this.AddressTextbox1.Location = new System.Drawing.Point(249, 612);
+            this.AddressTextbox1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.AddressTextbox1.Name = "AddressTextbox1";
-            this.AddressTextbox1.Size = new System.Drawing.Size(186, 19);
-            this.AddressTextbox1.TabIndex = 47;
+            this.AddressTextbox1.Size = new System.Drawing.Size(398, 31);
+            this.AddressTextbox1.TabIndex = 6;
             // 
             // NameTextbox
             // 
-            this.NameTextbox.Location = new System.Drawing.Point(115, 222);
+            this.NameTextbox.Location = new System.Drawing.Point(249, 444);
+            this.NameTextbox.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.NameTextbox.Name = "NameTextbox";
-            this.NameTextbox.Size = new System.Drawing.Size(186, 19);
-            this.NameTextbox.TabIndex = 46;
+            this.NameTextbox.Size = new System.Drawing.Size(398, 31);
+            this.NameTextbox.TabIndex = 3;
             // 
             // GoodsidTextBox
             // 
-            this.GoodsidTextBox.Location = new System.Drawing.Point(115, 86);
+            this.GoodsidTextBox.Location = new System.Drawing.Point(249, 172);
+            this.GoodsidTextBox.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.GoodsidTextBox.Name = "GoodsidTextBox";
-            this.GoodsidTextBox.Size = new System.Drawing.Size(186, 19);
-            this.GoodsidTextBox.TabIndex = 44;
+            this.GoodsidTextBox.Size = new System.Drawing.Size(398, 31);
+            this.GoodsidTextBox.TabIndex = 1;
             this.GoodsidTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.GoodsidTextBox_KeyPress);
             // 
             // OrderCompBtn
             // 
-            this.OrderCompBtn.Location = new System.Drawing.Point(630, 341);
+            this.OrderCompBtn.Location = new System.Drawing.Point(1365, 682);
+            this.OrderCompBtn.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.OrderCompBtn.Name = "OrderCompBtn";
-            this.OrderCompBtn.Size = new System.Drawing.Size(102, 40);
+            this.OrderCompBtn.Size = new System.Drawing.Size(221, 80);
             this.OrderCompBtn.TabIndex = 43;
             this.OrderCompBtn.Text = "注文完了";
             this.OrderCompBtn.UseVisualStyleBackColor = true;
@@ -99,88 +103,99 @@
             // TelLabel
             // 
             this.TelLabel.AutoSize = true;
-            this.TelLabel.Location = new System.Drawing.Point(50, 362);
+            this.TelLabel.Location = new System.Drawing.Point(108, 724);
+            this.TelLabel.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.TelLabel.Name = "TelLabel";
-            this.TelLabel.Size = new System.Drawing.Size(59, 12);
+            this.TelLabel.Size = new System.Drawing.Size(118, 24);
             this.TelLabel.TabIndex = 41;
             this.TelLabel.Text = "電話番号：";
             // 
             // AddressLabel1
             // 
             this.AddressLabel1.AutoSize = true;
-            this.AddressLabel1.Location = new System.Drawing.Point(67, 306);
+            this.AddressLabel1.Location = new System.Drawing.Point(145, 612);
+            this.AddressLabel1.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.AddressLabel1.Name = "AddressLabel1";
-            this.AddressLabel1.Size = new System.Drawing.Size(41, 12);
+            this.AddressLabel1.Size = new System.Drawing.Size(82, 24);
             this.AddressLabel1.TabIndex = 40;
             this.AddressLabel1.Text = "住所1：";
             // 
             // NameLabel
             // 
             this.NameLabel.AutoSize = true;
-            this.NameLabel.Location = new System.Drawing.Point(73, 222);
+            this.NameLabel.Location = new System.Drawing.Point(158, 444);
+            this.NameLabel.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(35, 12);
+            this.NameLabel.Size = new System.Drawing.Size(70, 24);
             this.NameLabel.TabIndex = 39;
             this.NameLabel.Text = "名前：";
             // 
             // MemberLabel
             // 
             this.MemberLabel.AutoSize = true;
-            this.MemberLabel.Location = new System.Drawing.Point(45, 193);
+            this.MemberLabel.Location = new System.Drawing.Point(98, 386);
+            this.MemberLabel.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.MemberLabel.Name = "MemberLabel";
-            this.MemberLabel.Size = new System.Drawing.Size(53, 12);
+            this.MemberLabel.Size = new System.Drawing.Size(106, 24);
             this.MemberLabel.TabIndex = 38;
             this.MemberLabel.Text = "顧客情報";
             // 
             // NumLabel
             // 
             this.NumLabel.AutoSize = true;
-            this.NumLabel.Location = new System.Drawing.Point(73, 126);
+            this.NumLabel.Location = new System.Drawing.Point(158, 252);
+            this.NumLabel.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.NumLabel.Name = "NumLabel";
-            this.NumLabel.Size = new System.Drawing.Size(35, 12);
+            this.NumLabel.Size = new System.Drawing.Size(70, 24);
             this.NumLabel.TabIndex = 37;
             this.NumLabel.Text = "個数：";
             // 
             // GoodsidLabel
             // 
             this.GoodsidLabel.AutoSize = true;
-            this.GoodsidLabel.Location = new System.Drawing.Point(62, 86);
+            this.GoodsidLabel.Location = new System.Drawing.Point(134, 172);
+            this.GoodsidLabel.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.GoodsidLabel.Name = "GoodsidLabel";
-            this.GoodsidLabel.Size = new System.Drawing.Size(46, 12);
+            this.GoodsidLabel.Size = new System.Drawing.Size(92, 24);
             this.GoodsidLabel.TabIndex = 36;
             this.GoodsidLabel.Text = "商品ID：";
             // 
             // OrderGoodsLabel
             // 
             this.OrderGoodsLabel.AutoSize = true;
-            this.OrderGoodsLabel.Location = new System.Drawing.Point(41, 53);
+            this.OrderGoodsLabel.Location = new System.Drawing.Point(89, 106);
+            this.OrderGoodsLabel.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.OrderGoodsLabel.Name = "OrderGoodsLabel";
-            this.OrderGoodsLabel.Size = new System.Drawing.Size(53, 12);
+            this.OrderGoodsLabel.Size = new System.Drawing.Size(106, 24);
             this.OrderGoodsLabel.TabIndex = 35;
             this.OrderGoodsLabel.Text = "注文商品";
             // 
             // PoscodeLabel
             // 
             this.PoscodeLabel.AutoSize = true;
-            this.PoscodeLabel.Location = new System.Drawing.Point(50, 278);
+            this.PoscodeLabel.Location = new System.Drawing.Point(108, 556);
+            this.PoscodeLabel.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.PoscodeLabel.Name = "PoscodeLabel";
-            this.PoscodeLabel.Size = new System.Drawing.Size(59, 12);
+            this.PoscodeLabel.Size = new System.Drawing.Size(118, 24);
             this.PoscodeLabel.TabIndex = 49;
             this.PoscodeLabel.Text = "郵便番号：";
             // 
             // PoscodeTextbox
             // 
-            this.PoscodeTextbox.Location = new System.Drawing.Point(115, 278);
+            this.PoscodeTextbox.Location = new System.Drawing.Point(249, 556);
+            this.PoscodeTextbox.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.PoscodeTextbox.Name = "PoscodeTextbox";
-            this.PoscodeTextbox.Size = new System.Drawing.Size(186, 19);
-            this.PoscodeTextbox.TabIndex = 50;
+            this.PoscodeTextbox.Size = new System.Drawing.Size(398, 31);
+            this.PoscodeTextbox.TabIndex = 5;
+            this.PoscodeTextbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PoscodeTextbox_KeyDown);
             this.PoscodeTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PoscodeTextbox_KeyPress);
             // 
             // AddBtn
             // 
-            this.AddBtn.Location = new System.Drawing.Point(390, 341);
+            this.AddBtn.Location = new System.Drawing.Point(845, 682);
+            this.AddBtn.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.AddBtn.Name = "AddBtn";
-            this.AddBtn.Size = new System.Drawing.Size(102, 40);
+            this.AddBtn.Size = new System.Drawing.Size(221, 80);
             this.AddBtn.TabIndex = 52;
             this.AddBtn.Text = "追加";
             this.AddBtn.UseVisualStyleBackColor = true;
@@ -189,60 +204,67 @@
             // TotalTitleLabel
             // 
             this.TotalTitleLabel.AutoSize = true;
-            this.TotalTitleLabel.Location = new System.Drawing.Point(406, 310);
+            this.TotalTitleLabel.Location = new System.Drawing.Point(880, 620);
+            this.TotalTitleLabel.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.TotalTitleLabel.Name = "TotalTitleLabel";
-            this.TotalTitleLabel.Size = new System.Drawing.Size(59, 12);
+            this.TotalTitleLabel.Size = new System.Drawing.Size(118, 24);
             this.TotalTitleLabel.TabIndex = 54;
             this.TotalTitleLabel.Text = "合計金額：";
             // 
             // TotalLabel
             // 
             this.TotalLabel.AutoSize = true;
-            this.TotalLabel.Location = new System.Drawing.Point(486, 310);
+            this.TotalLabel.Location = new System.Drawing.Point(1053, 620);
+            this.TotalLabel.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.TotalLabel.Name = "TotalLabel";
-            this.TotalLabel.Size = new System.Drawing.Size(11, 12);
+            this.TotalLabel.Size = new System.Drawing.Size(22, 24);
             this.TotalLabel.TabIndex = 55;
             this.TotalLabel.Text = "0";
             // 
             // AddressTextbox2
             // 
-            this.AddressTextbox2.Location = new System.Drawing.Point(115, 334);
+            this.AddressTextbox2.Location = new System.Drawing.Point(249, 668);
+            this.AddressTextbox2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.AddressTextbox2.Name = "AddressTextbox2";
-            this.AddressTextbox2.Size = new System.Drawing.Size(186, 19);
-            this.AddressTextbox2.TabIndex = 57;
+            this.AddressTextbox2.Size = new System.Drawing.Size(398, 31);
+            this.AddressTextbox2.TabIndex = 7;
             // 
             // AddressLabel2
             // 
             this.AddressLabel2.AutoSize = true;
-            this.AddressLabel2.Location = new System.Drawing.Point(67, 334);
+            this.AddressLabel2.Location = new System.Drawing.Point(145, 668);
+            this.AddressLabel2.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.AddressLabel2.Name = "AddressLabel2";
-            this.AddressLabel2.Size = new System.Drawing.Size(41, 12);
+            this.AddressLabel2.Size = new System.Drawing.Size(82, 24);
             this.AddressLabel2.TabIndex = 56;
             this.AddressLabel2.Text = "住所2：";
             // 
             // KanaLabel
             // 
             this.KanaLabel.AutoSize = true;
-            this.KanaLabel.Location = new System.Drawing.Point(67, 250);
+            this.KanaLabel.Location = new System.Drawing.Point(145, 500);
+            this.KanaLabel.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.KanaLabel.Name = "KanaLabel";
-            this.KanaLabel.Size = new System.Drawing.Size(42, 12);
+            this.KanaLabel.Size = new System.Drawing.Size(82, 24);
             this.KanaLabel.TabIndex = 60;
             this.KanaLabel.Text = "ﾌﾘｶﾞﾅ：";
             // 
             // KanaTextbox
             // 
-            this.KanaTextbox.Location = new System.Drawing.Point(115, 250);
+            this.KanaTextbox.Location = new System.Drawing.Point(249, 500);
+            this.KanaTextbox.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.KanaTextbox.Name = "KanaTextbox";
-            this.KanaTextbox.Size = new System.Drawing.Size(186, 19);
-            this.KanaTextbox.TabIndex = 61;
+            this.KanaTextbox.Size = new System.Drawing.Size(398, 31);
+            this.KanaTextbox.TabIndex = 4;
             // 
             // OrderRegiDataGridview
             // 
             this.OrderRegiDataGridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.OrderRegiDataGridview.Location = new System.Drawing.Point(390, 53);
+            this.OrderRegiDataGridview.Location = new System.Drawing.Point(845, 106);
+            this.OrderRegiDataGridview.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.OrderRegiDataGridview.Name = "OrderRegiDataGridview";
             this.OrderRegiDataGridview.RowTemplate.Height = 21;
-            this.OrderRegiDataGridview.Size = new System.Drawing.Size(342, 222);
+            this.OrderRegiDataGridview.Size = new System.Drawing.Size(741, 444);
             this.OrderRegiDataGridview.TabIndex = 62;
             // 
             // NumCombo
@@ -255,47 +277,37 @@
             "4",
             "5",
             "6"});
-            this.NumCombo.Location = new System.Drawing.Point(138, 124);
-            this.NumCombo.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.NumCombo.Location = new System.Drawing.Point(249, 249);
+            this.NumCombo.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.NumCombo.Name = "NumCombo";
-            this.NumCombo.Size = new System.Drawing.Size(33, 20);
-            this.NumCombo.TabIndex = 63;
+            this.NumCombo.Size = new System.Drawing.Size(67, 32);
+            this.NumCombo.TabIndex = 2;
             this.NumCombo.Text = "1";
             // 
             // ErrMsg
             // 
-            this.ErrMsg.Location = new System.Drawing.Point(119, 104);
-            this.ErrMsg.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.ErrMsg.Location = new System.Drawing.Point(258, 208);
+            this.ErrMsg.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ErrMsg.Name = "ErrMsg";
-            this.ErrMsg.Size = new System.Drawing.Size(182, 18);
+            this.ErrMsg.Size = new System.Drawing.Size(394, 36);
             this.ErrMsg.TabIndex = 64;
             this.ErrMsg.Text = "エラーメッセージ";
             // 
             // DeleteBtn
             // 
-            this.DeleteBtn.Location = new System.Drawing.Point(510, 341);
+            this.DeleteBtn.Location = new System.Drawing.Point(1105, 682);
+            this.DeleteBtn.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.DeleteBtn.Name = "DeleteBtn";
-            this.DeleteBtn.Size = new System.Drawing.Size(102, 40);
+            this.DeleteBtn.Size = new System.Drawing.Size(221, 80);
             this.DeleteBtn.TabIndex = 65;
             this.DeleteBtn.Text = "削除";
             this.DeleteBtn.UseVisualStyleBackColor = true;
             this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
-            // SearchBtn
-            // 
-            this.SearchBtn.Location = new System.Drawing.Point(304, 278);
-            this.SearchBtn.Name = "SearchBtn";
-            this.SearchBtn.Size = new System.Drawing.Size(49, 20);
-            this.SearchBtn.TabIndex = 66;
-            this.SearchBtn.Text = "検索";
-            this.SearchBtn.UseVisualStyleBackColor = true;
-            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
-            // 
             // OrderMgtRegister
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.SearchBtn);
             this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.ErrMsg);
             this.Controls.Add(this.NumCombo);
@@ -321,8 +333,9 @@
             this.Controls.Add(this.NumLabel);
             this.Controls.Add(this.GoodsidLabel);
             this.Controls.Add(this.OrderGoodsLabel);
+            this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Name = "OrderMgtRegister";
-            this.Size = new System.Drawing.Size(760, 430);
+            this.Size = new System.Drawing.Size(1647, 860);
             this.Load += new System.EventHandler(this.OrderMgtRegister_Load);
             ((System.ComponentModel.ISupportInitialize)(this.OrderRegiDataGridview)).EndInit();
             this.ResumeLayout(false);
@@ -357,6 +370,5 @@
         private System.Windows.Forms.ComboBox NumCombo;
         private System.Windows.Forms.Label ErrMsg;
         private System.Windows.Forms.Button DeleteBtn;
-        private System.Windows.Forms.Button SearchBtn;
     }
 }
