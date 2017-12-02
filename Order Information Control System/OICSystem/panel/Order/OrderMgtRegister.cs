@@ -62,6 +62,7 @@ namespace WindowsFormsApplication1
         public void OrderMgtRegister_Load(object sender, EventArgs e)
         {
             ErrMsg.Visible = false;
+            ErrMsg2.Visible = false;
             TotalLabel.Visible = false;
 
             dtclear();
@@ -90,53 +91,71 @@ namespace WindowsFormsApplication1
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
-            OrderRegiDataGridview.AllowUserToAddRows = true;
-
-            for (int i = 0; i < int.Parse(NumCombo.Text); i++)
+            if (GoodsidTextBox.Text == null || GoodsidTextBox.Text == "")
             {
-                cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
-                cn.Open();
+                ErrMsg.Visible = true;
+                ErrMsg.Text = "";
+                ErrMsg.Text = "※商品IDを入力してください";
+            }
+            else if (NumCombo.Text==null|| NumCombo.Text == "")
+            {
+                ErrMsg.Visible = true;
+                ErrMsg.Text = "";
+                ErrMsg.Text = "※商品数量を入力してください";
+            }
 
-                cmd.CommandText = "SELECT * FROM 商品マスタ";
-                cmd.Connection = cn;
+            else
+            {
+                ErrMsg.Visible = false;
+                ErrMsg2.Visible = false;
 
-                OleDbDataReader rd = cmd.ExecuteReader();
+                //データーグリットビューにデータの追加を許可
+                OrderRegiDataGridview.AllowUserToAddRows = true;
 
-
-                dt = CreateSchemaDataTable(rd);
-                DataRow row = dt.NewRow();
-
-                InGoodsid = GoodsidTextBox.Text;
-
-
-
-                while (rd.Read())
+                for (int i = 0; i < int.Parse(NumCombo.Text); i++)
                 {
-                    db_Goodsid = (string)rd.GetValue(0);
-                    db_Goodsname = (string)rd.GetValue(1);
-                    db_GoodsPrice = (int)rd.GetValue(2);
-                    if (db_Goodsid == InGoodsid)
+                    cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
+                    cn.Open();
+
+                    cmd.CommandText = "SELECT * FROM 商品マスタ";
+                    cmd.Connection = cn;
+
+                    OleDbDataReader rd = cmd.ExecuteReader();
+
+                    dt = CreateSchemaDataTable(rd);
+                    DataRow row = dt.NewRow();
+
+                    InGoodsid = GoodsidTextBox.Text;
+
+                    while (rd.Read())
                     {
-                        OrderRegiDataGridview.Rows.Add();
-                        OrderRegiDataGridview["GoodsName", cnt].Value = db_Goodsname;
-                        OrderRegiDataGridview["GoodsPrice", cnt].Value = db_GoodsPrice;
-                        cnt++;
-                        sum += db_GoodsPrice;
+                        db_Goodsid = (string)rd.GetValue(0);
+                        db_Goodsname = (string)rd.GetValue(1);
+                        db_GoodsPrice = (int)rd.GetValue(2);
+                        if (db_Goodsid == InGoodsid)
+                        {
+                            OrderRegiDataGridview.Rows.Add();
+                            OrderRegiDataGridview["GoodsName", cnt].Value = db_Goodsname;
+                            OrderRegiDataGridview["GoodsPrice", cnt].Value = db_GoodsPrice;
+                            cnt++;
+                            sum += db_GoodsPrice;
+                        }
+
                     }
 
+                    //合計金額を表示
+                    TotalLabel.Visible = true;
+                    TotalLabel.Text = string.Format("{0:#,###}円", sum + sum * Tax);
+
+                    cn.Close();
+                    //OrderRegiDataGridview.AutoResizeColumns();
                 }
+                GoodsidTextBox.Text = "";
+                NumCombo.SelectedIndex = 0;
 
-                //合計金額を表示
-                TotalLabel.Visible = true;
-                TotalLabel.Text = string.Format("{0:#,###}円", sum + sum * Tax);
-
-                cn.Close();
-                //OrderRegiDataGridview.AutoResizeColumns();
+                //データーグリットビューにデータの追加を許可(空白行削除)
+                OrderRegiDataGridview.AllowUserToAddRows = false;
             }
-            GoodsidTextBox.Text = "";
-            NumCombo.SelectedIndex = 0;
-
-            OrderRegiDataGridview.AllowUserToAddRows = false;
         }
 
         private void DeleteBtn_Click(object sender, EventArgs e)
@@ -200,126 +219,144 @@ namespace WindowsFormsApplication1
 
         private void OrderCompBtn_Click(object sender, EventArgs e)
         {
-            //ログイン中の従業員IDを取得する
-            int Empid = Login.LoginInstance.Empid;
-
-            //現在の日付
-            DateTime dtNow = DateTime.Now;
-
-            if (MessageBox.Show("注文を確定してもよろしいですか？", "OICSystem", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            if (OrderRegiDataGridview.Rows.Count == 0)
             {
-                return;
+                ErrMsg.Visible = true;
+                ErrMsg.Text = "";
+                ErrMsg.Text = "※商品が一つも追加されていません";
             }
 
-            ////商品名からIDを抽出し、注文されたIDのリストをカンマ区切りで作成する
-            string goodsIDlist = "";
-            for (int i = 0; i < OrderRegiDataGridview.Rows.Count; i++)
+            else if (NameTextbox.Text == null || NameTextbox.Text == "" || KanaTextbox.Text == null || KanaTextbox.Text == "" || PoscodeTextbox.Text == null || PoscodeTextbox.Text == "" || AddressTextbox1.Text == null || AddressTextbox1.Text == "" || TelTextbox.Text == null || TelTextbox.Text == "")
             {
-                string Goodsname = OrderRegiDataGridview.Rows[i].Cells[0].Value.ToString();
-
-                cn.Open();
-
-                cmd.CommandText = "SELECT * FROM 商品マスタ";
-                cmd.Connection = cn;
-
-                OleDbDataReader rd = cmd.ExecuteReader();
+                ErrMsg2.Visible = true;
+                ErrMsg2.Text = "";
+                ErrMsg2.Text = "※必須項目で抜けている項目があります";
+            }
 
 
-                dt = CreateSchemaDataTable(rd);
-                DataRow row = dt.NewRow();
+            else
+            {
+                //ログイン中の従業員IDを取得する
+                int Empid = Login.LoginInstance.Empid;
 
-                while (rd.Read())
+                //現在の日付
+                DateTime dtNow = DateTime.Now;
+
+                if (MessageBox.Show("注文を確定してもよろしいですか？", "OICSystem", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 {
-                    db_Goodsname = (string)rd.GetValue(1);
-                    if (db_Goodsname == Goodsname)
+                    return;
+                }
+
+                ////商品名からIDを抽出し、注文されたIDのリストをカンマ区切りで作成する
+                string goodsIDlist = "";
+                for (int i = 0; i < OrderRegiDataGridview.Rows.Count; i++)
+                {
+                    string Goodsname = OrderRegiDataGridview.Rows[i].Cells[0].Value.ToString();
+
+                    cn.Open();
+
+                    cmd.CommandText = "SELECT * FROM 商品マスタ";
+                    cmd.Connection = cn;
+
+                    OleDbDataReader rd = cmd.ExecuteReader();
+
+
+                    dt = CreateSchemaDataTable(rd);
+                    DataRow row = dt.NewRow();
+
+                    while (rd.Read())
                     {
-                        goodsIDlist += (string)rd.GetValue(0).ToString() + ",";
+                        db_Goodsname = (string)rd.GetValue(1);
+                        if (db_Goodsname == Goodsname)
+                        {
+                            goodsIDlist += (string)rd.GetValue(0).ToString() + ",";
+                        }
                     }
+
+                    cn.Close();
+
                 }
 
-                cn.Close();
-                
-            }
-
-            // 最後のカンマを取り除く
-            goodsIDlist = goodsIDlist.Substring(0, goodsIDlist.Length - 1);
-
-            
-            cmd.Connection = cn;
-            cmd.CommandText = "INSERT INTO 顧客テーブル (名前,ﾌﾘｶﾞﾅ,電話番号,郵便番号,住所1,住所2,登録日)" + "VALUES (@name,@kana,@tel,@pos,@addres1,@addres2,@date)";
-            OleDbParameter prname = new OleDbParameter("@name", NameTextbox.Text);
-            cmd.Parameters.Add(prname);
-            OleDbParameter prkana = new OleDbParameter("@kana", KanaTextbox.Text);
-            cmd.Parameters.Add(prkana);
-            OleDbParameter prtel = new OleDbParameter("@tel", TelTextbox.Text);
-            cmd.Parameters.Add(prtel);
-            OleDbParameter prpos = new OleDbParameter("@pos", PoscodeTextbox.Text);
-            cmd.Parameters.Add(prpos);
-            OleDbParameter praddres1 = new OleDbParameter("@addres1", AddressTextbox1.Text);
-            cmd.Parameters.Add(praddres1);
-            OleDbParameter praddres2 = new OleDbParameter("@addres2", AddressTextbox2.Text);
-            cmd.Parameters.Add(praddres2);
-            OleDbParameter prdate = new OleDbParameter("@date", dtNow.ToString("MM/dd"));
-            cmd.Parameters.Add(prdate);
-
-            try
-            {
-                cn.Open();
-                cmd.ExecuteNonQuery();
-
-                OleDbCommand cmd3 = new OleDbCommand();
-                cmd3.Connection = cn;
-                cmd3.CommandText = "SELECT * FROM 顧客テーブル";
-                OleDbDataReader rd = cmd3.ExecuteReader();
+                // 最後のカンマを取り除く
+                goodsIDlist = goodsIDlist.Substring(0, goodsIDlist.Length - 1);
 
 
-                dt = CreateSchemaDataTable(rd);
-                DataRow row = dt.NewRow();
-                
-                while (rd.Read())
+                cmd.Connection = cn;
+                cmd.CommandText = "INSERT INTO 顧客テーブル (名前,ﾌﾘｶﾞﾅ,電話番号,郵便番号,住所1,住所2,登録日)" + "VALUES (@name,@kana,@tel,@pos,@addres1,@addres2,@date)";
+                OleDbParameter prname = new OleDbParameter("@name", NameTextbox.Text);
+                cmd.Parameters.Add(prname);
+                OleDbParameter prkana = new OleDbParameter("@kana", KanaTextbox.Text);
+                cmd.Parameters.Add(prkana);
+                OleDbParameter prtel = new OleDbParameter("@tel", TelTextbox.Text);
+                cmd.Parameters.Add(prtel);
+                OleDbParameter prpos = new OleDbParameter("@pos", PoscodeTextbox.Text);
+                cmd.Parameters.Add(prpos);
+                OleDbParameter praddres1 = new OleDbParameter("@addres1", AddressTextbox1.Text);
+                cmd.Parameters.Add(praddres1);
+                OleDbParameter praddres2 = new OleDbParameter("@addres2", AddressTextbox2.Text);
+                cmd.Parameters.Add(praddres2);
+                OleDbParameter prdate = new OleDbParameter("@date", dtNow.ToString("MM/dd"));
+                cmd.Parameters.Add(prdate);
+
+                try
                 {
-                    db_memberid = (int)rd.GetValue(0);
+                    cn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    OleDbCommand cmd3 = new OleDbCommand();
+                    cmd3.Connection = cn;
+                    cmd3.CommandText = "SELECT * FROM 顧客テーブル";
+                    OleDbDataReader rd = cmd3.ExecuteReader();
+
+
+                    dt = CreateSchemaDataTable(rd);
+                    DataRow row = dt.NewRow();
+
+                    while (rd.Read())
+                    {
+                        db_memberid = (int)rd.GetValue(0);
+                    }
+
+                    OleDbCommand cmd2 = new OleDbCommand();
+                    cmd2.Connection = cn;
+                    cmd2.CommandText = "INSERT INTO 注文テーブル (注文日,商品ID,顧客ID,従業員ID)" + "VALUES (@orderdate,@goodsid,@memberid,@empid)";
+                    OleDbParameter prorderdate = new OleDbParameter("@orderdate", dtNow.ToString("MM/dd"));
+                    cmd2.Parameters.Add(prorderdate);
+                    OleDbParameter prgoodsid = new OleDbParameter("@goodsid", goodsIDlist.ToString());
+                    cmd2.Parameters.Add(prgoodsid);
+                    OleDbParameter prmemberid = new OleDbParameter("@memberid", db_memberid.ToString());
+                    cmd2.Parameters.Add(prmemberid);
+                    OleDbParameter prempid = new OleDbParameter("@empid", Empid);
+                    cmd2.Parameters.Add(prempid);
+
+
+                    cmd2.ExecuteNonQuery();
+
+                    MessageBox.Show("登録しました", "OICSystem");
+                    cmd.Parameters.Clear();
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "OICSystem");
+                }
+                cn.Close();
 
-                OleDbCommand cmd2 = new OleDbCommand();
-                cmd2.Connection = cn;
-                cmd2.CommandText = "INSERT INTO 注文テーブル (注文日,商品ID,顧客ID,従業員ID)" + "VALUES (@orderdate,@goodsid,@memberid,@empid)";
-                OleDbParameter prorderdate = new OleDbParameter("@orderdate", dtNow.ToString("MM/dd"));
-                cmd2.Parameters.Add(prorderdate);
-                OleDbParameter prgoodsid = new OleDbParameter("@goodsid", goodsIDlist.ToString());
-                cmd2.Parameters.Add(prgoodsid);
-                OleDbParameter prmemberid = new OleDbParameter("@memberid", db_memberid.ToString());
-                cmd2.Parameters.Add(prmemberid);
-                OleDbParameter prempid = new OleDbParameter("@empid", Empid);
-                cmd2.Parameters.Add(prempid);
+                //入力データ初期化
+                GoodsidTextBox.Text = "";
+                NumCombo.SelectedIndex = 0;
+                NameTextbox.Text = "";
+                KanaTextbox.Text = "";
+                PoscodeTextbox.Text = "";
+                AddressTextbox1.Text = "";
+                AddressTextbox2.Text = "";
+                TelTextbox.Text = "";
+                //データグリッドビュー初期化
+                dtclear();
 
-
-                cmd2.ExecuteNonQuery();
-
-                MessageBox.Show("登録しました", "OICSystem");
-                cmd.Parameters.Clear();
+                //トータルラベルを非表示
+                TotalLabel.Text = "";
+                TotalLabel.Visible = false;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "OICSystem");
-            }
-            cn.Close();
-
-            //入力データ初期化
-            GoodsidTextBox.Text = "";
-            NumCombo.SelectedIndex = 0;
-            NameTextbox.Text = "";
-            KanaTextbox.Text = "";
-            PoscodeTextbox.Text = "";
-            AddressTextbox1.Text = "";
-            AddressTextbox2.Text = "";
-            TelTextbox.Text = "";
-            //データグリッドビュー初期化
-            dtclear();
-
-            //トータルラベルを非表示
-            TotalLabel.Text = "";
-            TotalLabel.Visible = false;
         }
 
         private void dtclear()
