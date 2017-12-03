@@ -21,15 +21,18 @@ namespace WindowsFormsApplication1
 
         DataSet dsorder = new DataSet();
         DataSet dsgoods = new DataSet();
-     
-        public SalMgt()
+
+		DateTime time;
+		string name;
+
+		public SalMgt()
         {
             InitializeComponent();
         }
 
         public void Run()
         {
-            
+		  
 
            
         }
@@ -65,90 +68,115 @@ namespace WindowsFormsApplication1
             //日付
             string DS1;
             string DS2;
-            //
-            // Valueプロパティの値をそのまま表示します
-            //
-            DS1 = DateSet1.Value.ToString("yyyy/MM/dd");
+
+			//
+			//
+			// Valueプロパティの値をそのまま表示します
+			//
+			DS1 = DateSet1.Value.ToString("yyyy/MM/dd");
             Console.WriteLine(DS1);
             DS2 = DateSet2.Value.ToString("yyyy/MM/dd");
             Console.WriteLine(DS2);
 
-            cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
+			cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
 
-            cn.Open();
+			cn.Open();
+			
+			cmd.CommandText = "SELECT 注文テーブル.注文日,商品マスタ.商品名 FROM 注文テーブル,商品マスタ where 注文テーブル.商品ID=商品マスタ.商品ID";
+			cmd.Connection = cn;
 
-            cmd.CommandText = "SELECT * FROM 注文テーブル";
-            cmd.Connection = cn;
+			OleDbDataReader rd = cmd.ExecuteReader();
 
-            OleDbDataReader rd = cmd.ExecuteReader();
+			dt = CreateSchemaDataTable(rd);
+			DataRow row = dt.NewRow();
 
-            dt = CreateSchemaDataTable(rd);
-            DataRow row = dt.NewRow();
+			while (rd.Read())
+			{
+				time = (DateTime)rd.GetValue(0);
+				name = (String)rd.GetValue(1);
+			}
 
-            // 会社テーブルの定義
-            dsorder.Tables.Add("Order");
-            dsorder.Tables["Order"].Columns.Add("date", typeof(DateTime));
-            dsorder.Tables["Order"].Columns.Add("id", typeof(String));
-            dsorder.Tables["Order"].Columns.Add("authority", typeof(bool));
+			label3.Text = time.ToString();
+			label4.Text = name;
 
-            while (rd.Read())
-            {
-                row["date"] = (DateTime)rd.GetValue(1);
-                row["id"] = (string)rd.GetValue(2);
-                row["authority"] = (bool)rd.GetBoolean(6);
-            }
+			cn.Close();
 
-            cn.Close();
+			//cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
 
-            cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
+			//cn.Open();
 
-            cn.Open();
+			//cmd.CommandText = "SELECT * FROM 注文テーブル";
+			//cmd.Connection = cn;
 
-            cmd.CommandText = "SELECT * FROM 商品マスタ";
-            cmd.Connection = cn;
+			//OleDbDataReader rd = cmd.ExecuteReader();
 
+			//dt = CreateSchemaDataTable(rd);
+			//DataRow row = dt.NewRow();
 
+			//// 注文テーブルの定義
+			//dsorder.Tables.Add("Order");
+			//dsorder.Tables["Order"].Columns.Add("date", typeof(DateTime));
+			//dsorder.Tables["Order"].Columns.Add("id", typeof(String));
+			//dsorder.Tables["Order"].Columns.Add("authority", typeof(bool));
 
-            dt = CreateSchemaDataTable(rd);
+			//while (rd.Read())
+			//{
+			//    row["date"] = (DateTime)rd.GetValue(1);
+			//    row["id"] = (string)rd.GetValue(2);
+			//    row["authority"] = (bool)rd.GetBoolean(6);
+			//}
 
+			//cn.Close();
 
-            // 従業員テーブルの定義
-            dsgoods.Tables.Add("Goods");
-            dsgoods.Tables["Goods"].Columns.Add("id", typeof(String));
-            dsgoods.Tables["Goods"].Columns.Add("name", typeof(String));
-            dsgoods.Tables["Goods"].Columns.Add("price", typeof(int));
+			//cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
 
-            while (rd.Read())
-            {
-                row["id"] = (string)rd.GetValue(0);
-                row["name"] = (string)rd.GetValue(1);
-                row["price"] = (int)rd.GetValue(2);
-            }
+			//cn.Open();
 
-            cn.Close();
-
-            dsgoods.Relations.Add("GoodsOrder",
-            dsorder.Tables["Order"].Columns["goodsID"],
-            dsgoods.Tables["Goods"].Columns["goodsID"]);
-
-            foreach (DataRow Goods in dsgoods.Tables["Goods"].Rows)
-            {
-                Console.WriteLine("Order who work for {0}:", Goods["name"]);
-                foreach (DataRow emps in Goods.GetChildRows("GoodsOrder"))
-                {
-                    Console.WriteLine("\t{0}", emps["name"]);
-                }
-            }
-            foreach (DataRow Order in dsorder.Tables["Orders"].Rows)
-            {
-                DataRow Goods = Order.GetParentRow("GoodsOrder");
-                Console.WriteLine("{0} belongs to {1}.", Order["name"], Goods["name"]);
-            }
-
-        }
+			//cmd.CommandText = "SELECT * FROM 商品マスタ";
+			//cmd.Connection = cn;
 
 
 
+			//dt = CreateSchemaDataTable(rd);
 
-    }
+
+			////商品テーブルの定義
+			//dsgoods.Tables.Add("Goods");
+			//dsgoods.Tables["Goods"].Columns.Add("id", typeof(String));
+			//dsgoods.Tables["Goods"].Columns.Add("name", typeof(String));
+			//dsgoods.Tables["Goods"].Columns.Add("price", typeof(int));
+
+			//while (rd.Read())
+			//{
+			//    row["id"] = (string)rd.GetValue(0);
+			//    row["name"] = (string)rd.GetValue(1);
+			//    row["price"] = (int)rd.GetValue(2);
+			//}
+
+			//cn.Close();
+
+			//dsgoods.Relations.Add("GoodsOrder",
+			//dsorder.Tables["Order"].Columns["goodsID"],
+			//dsgoods.Tables["Goods"].Columns["goodsID"]);
+
+			//foreach (DataRow Goods in dsgoods.Tables["Goods"].Rows)
+			//{
+			//    Console.WriteLine("Order who work for {0}:", Goods["name"]);
+			//    foreach (DataRow emps in Goods.GetChildRows("GoodsOrder"))
+			//    {
+			//        Console.WriteLine("\t{0}", emps["name"]);
+			//    }
+			//}
+			//foreach (DataRow Order in dsorder.Tables["Orders"].Rows)
+			//{
+			//    DataRow Goods = Order.GetParentRow("GoodsOrder");
+			//    Console.WriteLine("{0} belongs to {1}.", Order["name"], Goods["name"]);
+			//}
+
+		}
+
+
+
+
+	}
 }
