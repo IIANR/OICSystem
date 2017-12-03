@@ -28,127 +28,83 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button4 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.SearchBtn = new System.Windows.Forms.Button();
+            this.KanaTextbox = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.OrderInfoGritview = new System.Windows.Forms.DataGridView();
+            this.UpdateBtn = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.OrderInfoGritview)).BeginInit();
             this.SuspendLayout();
             // 
-            // button4
+            // SearchBtn
             // 
-            this.button4.Location = new System.Drawing.Point(586, 322);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(151, 37);
-            this.button4.TabIndex = 46;
-            this.button4.Text = "表示";
-            this.button4.UseVisualStyleBackColor = true;
+            this.SearchBtn.Location = new System.Drawing.Point(595, 322);
+            this.SearchBtn.Name = "SearchBtn";
+            this.SearchBtn.Size = new System.Drawing.Size(151, 37);
+            this.SearchBtn.TabIndex = 46;
+            this.SearchBtn.Text = "検索";
+            this.SearchBtn.UseVisualStyleBackColor = true;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
-            // listBox1
+            // KanaTextbox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(14, 23);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(723, 292);
-            this.listBox1.TabIndex = 45;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(246, 344);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(117, 19);
-            this.textBox5.TabIndex = 44;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(53, 388);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(310, 19);
-            this.textBox4.TabIndex = 43;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(53, 344);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(117, 19);
-            this.textBox3.TabIndex = 42;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(421, 344);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(117, 19);
-            this.textBox1.TabIndex = 41;
+            this.KanaTextbox.Location = new System.Drawing.Point(53, 344);
+            this.KanaTextbox.Name = "KanaTextbox";
+            this.KanaTextbox.Size = new System.Drawing.Size(117, 19);
+            this.KanaTextbox.TabIndex = 42;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(586, 370);
+            this.button3.Location = new System.Drawing.Point(595, 379);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(151, 37);
             this.button3.TabIndex = 40;
             this.button3.Text = "注文取消";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(176, 347);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(59, 12);
-            this.label8.TabIndex = 39;
-            this.label8.Text = "電話番号：";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 391);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 12);
-            this.label7.TabIndex = 38;
-            this.label7.Text = "住所：";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(12, 347);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 12);
+            this.label6.Size = new System.Drawing.Size(42, 12);
             this.label6.TabIndex = 37;
-            this.label6.Text = "名前：";
+            this.label6.Text = "ﾌﾘｶﾞﾅ：";
             // 
-            // label3
+            // OrderInfoGritview
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(369, 347);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 12);
-            this.label3.TabIndex = 36;
-            this.label3.Text = "商品ID：";
+            this.OrderInfoGritview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.OrderInfoGritview.Location = new System.Drawing.Point(14, 12);
+            this.OrderInfoGritview.Name = "OrderInfoGritview";
+            this.OrderInfoGritview.RowTemplate.Height = 21;
+            this.OrderInfoGritview.Size = new System.Drawing.Size(732, 272);
+            this.OrderInfoGritview.TabIndex = 47;
+            // 
+            // UpdateBtn
+            // 
+            this.UpdateBtn.Location = new System.Drawing.Point(418, 322);
+            this.UpdateBtn.Name = "UpdateBtn";
+            this.UpdateBtn.Size = new System.Drawing.Size(151, 37);
+            this.UpdateBtn.TabIndex = 48;
+            this.UpdateBtn.Text = "更新";
+            this.UpdateBtn.UseVisualStyleBackColor = true;
+            this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
             // 
             // OrderMgtInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.UpdateBtn);
+            this.Controls.Add(this.OrderInfoGritview);
+            this.Controls.Add(this.SearchBtn);
+            this.Controls.Add(this.KanaTextbox);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label3);
             this.Name = "OrderMgtInfo";
             this.Size = new System.Drawing.Size(760, 430);
+            this.Load += new System.EventHandler(this.OrderMgtInfo_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.OrderInfoGritview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -156,16 +112,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button SearchBtn;
+        private System.Windows.Forms.TextBox KanaTextbox;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridView OrderInfoGritview;
+        private System.Windows.Forms.Button UpdateBtn;
     }
 }
