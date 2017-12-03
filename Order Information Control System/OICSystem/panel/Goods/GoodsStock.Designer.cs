@@ -28,33 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.GoodsDataGridView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.GoodsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // GoodsDataGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(29, 19);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 21;
-            this.dataGridView1.Size = new System.Drawing.Size(695, 333);
-            this.dataGridView1.TabIndex = 0;
+            this.GoodsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GoodsDataGridView.Location = new System.Drawing.Point(39, 24);
+            this.GoodsDataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GoodsDataGridView.Name = "GoodsDataGridView";
+            this.GoodsDataGridView.RowTemplate.Height = 21;
+            this.GoodsDataGridView.Size = new System.Drawing.Size(927, 416);
+            this.GoodsDataGridView.TabIndex = 0;
             // 
             // GoodsStock
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.GoodsDataGridView);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "GoodsStock";
-            this.Size = new System.Drawing.Size(760, 430);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Size = new System.Drawing.Size(1013, 538);
+            this.Load += new System.EventHandler(this.GoodsStock_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.GoodsDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView GoodsDataGridView;
     }
 }
