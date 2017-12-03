@@ -29,7 +29,7 @@ namespace WindowsFormsApplication1.panel.Goods
             GoodsDataGridView.Columns.Clear();
             GoodsDataGridView.DataSource = null;
             cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
-            da = new OleDbDataAdapter("SELECT * FROM 顧客テーブル", cn);
+            da = new OleDbDataAdapter("SELECT Z.商品ID,S.商品名,Z.在庫数 FROM 在庫テーブル Z,商品マスタ S WHERE Z.商品ID=S.商品ID ORDER BY Z.商品ID ASC", cn);
             dt.Clear();
             dt = new DataTable();
             da.Fill(dt);
