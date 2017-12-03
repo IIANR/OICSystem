@@ -30,14 +30,9 @@ namespace WindowsFormsApplication1
             InitializeComponent();
         }
 
-        public void Run()
-        {
-		  
+		
 
-           
-        }
-
-        private DataTable CreateSchemaDataTable(OleDbDataReader reader)
+		private DataTable CreateSchemaDataTable(OleDbDataReader reader)
         {
             if (reader == null) { return null; }
             if (reader.IsClosed) { return null; }
@@ -73,16 +68,16 @@ namespace WindowsFormsApplication1
 			//
 			// Valueプロパティの値をそのまま表示します
 			//
-			DS1 = DateSet1.Value.ToString("yyyy/MM/dd");
+			DS1 = DateSet1.Value.ToString("yyyy-MM-dd");
             Console.WriteLine(DS1);
-            DS2 = DateSet2.Value.ToString("yyyy/MM/dd");
+            DS2 = DateSet2.Value.ToString("yyyy-MM-dd");
             Console.WriteLine(DS2);
 
 			cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
 
 			cn.Open();
 			
-			cmd.CommandText = "SELECT 注文テーブル.注文日,商品マスタ.商品名 FROM 注文テーブル,商品マスタ where 注文テーブル.商品ID=商品マスタ.商品ID";
+			cmd.CommandText = "SELECT 注文テーブル.注文日,商品マスタ.商品名 FROM 注文テーブル,商品マスタ where 注文テーブル.商品ID=商品マスタ.商品ID  BETWEEN 'DS1' AND 'DS2'";
 			cmd.Connection = cn;
 
 			OleDbDataReader rd = cmd.ExecuteReader();
