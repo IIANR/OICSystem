@@ -44,11 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IM2DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>IM2DataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="IM2DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -182,17 +177,6 @@
     <EmbeddedResource Include="panel\Order\OrderMgtRegister.resx">
       <DependentUpon>OrderMgtRegister.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="IM2DataSet.xsc">
-      <DependentUpon>IM2DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="IM2DataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>IM2DataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="IM2DataSet.xss">
-      <DependentUpon>IM2DataSet.xsd</DependentUpon>
-    </None>
     <None Include="IM2DataSet1.xsc">
       <DependentUpon>IM2DataSet1.xsd</DependentUpon>
     </None>

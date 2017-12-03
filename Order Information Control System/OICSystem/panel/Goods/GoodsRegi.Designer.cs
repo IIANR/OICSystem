@@ -52,7 +52,7 @@
             // goodsRegiId
             // 
             this.goodsRegiId.AutoSize = true;
-            this.goodsRegiId.Location = new System.Drawing.Point(76, 81);
+            this.goodsRegiId.Location = new System.Drawing.Point(80, 49);
             this.goodsRegiId.Name = "goodsRegiId";
             this.goodsRegiId.Size = new System.Drawing.Size(18, 12);
             this.goodsRegiId.TabIndex = 0;
@@ -62,7 +62,7 @@
             // goodsRegiName
             // 
             this.goodsRegiName.AutoSize = true;
-            this.goodsRegiName.Location = new System.Drawing.Point(63, 130);
+            this.goodsRegiName.Location = new System.Drawing.Point(78, 74);
             this.goodsRegiName.Name = "goodsRegiName";
             this.goodsRegiName.Size = new System.Drawing.Size(31, 12);
             this.goodsRegiName.TabIndex = 1;
@@ -72,7 +72,7 @@
             // goodsRegiPrice
             // 
             this.goodsRegiPrice.AutoSize = true;
-            this.goodsRegiPrice.Location = new System.Drawing.Point(63, 179);
+            this.goodsRegiPrice.Location = new System.Drawing.Point(78, 99);
             this.goodsRegiPrice.Name = "goodsRegiPrice";
             this.goodsRegiPrice.Size = new System.Drawing.Size(31, 12);
             this.goodsRegiPrice.TabIndex = 2;
@@ -81,23 +81,23 @@
             // 
             // NameText
             // 
-            this.NameText.Location = new System.Drawing.Point(100, 123);
+            this.NameText.Location = new System.Drawing.Point(115, 67);
             this.NameText.Name = "NameText";
             this.NameText.Size = new System.Drawing.Size(228, 19);
             this.NameText.TabIndex = 4;
             // 
             // PriceText
             // 
-            this.PriceText.Location = new System.Drawing.Point(100, 172);
+            this.PriceText.Location = new System.Drawing.Point(115, 92);
             this.PriceText.Name = "PriceText";
             this.PriceText.Size = new System.Drawing.Size(228, 19);
             this.PriceText.TabIndex = 5;
             // 
             // regiBtn
             // 
-            this.regiBtn.Location = new System.Drawing.Point(593, 353);
+            this.regiBtn.Location = new System.Drawing.Point(664, 257);
             this.regiBtn.Name = "regiBtn";
-            this.regiBtn.Size = new System.Drawing.Size(138, 47);
+            this.regiBtn.Size = new System.Drawing.Size(96, 29);
             this.regiBtn.TabIndex = 6;
             this.regiBtn.Text = "登録";
             this.regiBtn.UseVisualStyleBackColor = true;
@@ -105,14 +105,14 @@
             // 
             // RemText
             // 
-            this.RemText.Location = new System.Drawing.Point(100, 271);
+            this.RemText.Location = new System.Drawing.Point(115, 143);
             this.RemText.Name = "RemText";
             this.RemText.Size = new System.Drawing.Size(228, 19);
             this.RemText.TabIndex = 25;
             // 
             // UmberText
             // 
-            this.UmberText.Location = new System.Drawing.Point(100, 320);
+            this.UmberText.Location = new System.Drawing.Point(115, 168);
             this.UmberText.Name = "UmberText";
             this.UmberText.Size = new System.Drawing.Size(67, 19);
             this.UmberText.TabIndex = 26;
@@ -120,7 +120,7 @@
             // RemLbl
             // 
             this.RemLbl.AutoSize = true;
-            this.RemLbl.Location = new System.Drawing.Point(63, 278);
+            this.RemLbl.Location = new System.Drawing.Point(78, 150);
             this.RemLbl.Name = "RemLbl";
             this.RemLbl.Size = new System.Drawing.Size(31, 12);
             this.RemLbl.TabIndex = 27;
@@ -129,7 +129,7 @@
             // UmberLbl
             // 
             this.UmberLbl.AutoSize = true;
-            this.UmberLbl.Location = new System.Drawing.Point(27, 327);
+            this.UmberLbl.Location = new System.Drawing.Point(42, 175);
             this.UmberLbl.Name = "UmberLbl";
             this.UmberLbl.Size = new System.Drawing.Size(67, 12);
             this.UmberLbl.TabIndex = 28;
@@ -148,7 +148,7 @@
             "DF",
             "FW",
             "MF"});
-            this.CategoryText.Location = new System.Drawing.Point(100, 221);
+            this.CategoryText.Location = new System.Drawing.Point(115, 117);
             this.CategoryText.Name = "CategoryText";
             this.CategoryText.Size = new System.Drawing.Size(121, 20);
             this.CategoryText.TabIndex = 29;
@@ -156,7 +156,7 @@
             // CategoryLbl
             // 
             this.CategoryLbl.AutoSize = true;
-            this.CategoryLbl.Location = new System.Drawing.Point(53, 229);
+            this.CategoryLbl.Location = new System.Drawing.Point(68, 125);
             this.CategoryLbl.Name = "CategoryLbl";
             this.CategoryLbl.Size = new System.Drawing.Size(41, 12);
             this.CategoryLbl.TabIndex = 30;
@@ -164,7 +164,7 @@
             // 
             // ImageText
             // 
-            this.ImageText.Location = new System.Drawing.Point(514, 56);
+            this.ImageText.Location = new System.Drawing.Point(429, 42);
             this.ImageText.Name = "ImageText";
             this.ImageText.ReadOnly = true;
             this.ImageText.Size = new System.Drawing.Size(84, 19);
@@ -176,7 +176,7 @@
             this.panel.BackColor = System.Drawing.Color.White;
             this.panel.Controls.Add(this.DropLbl);
             this.panel.Controls.Add(this.pictureBox);
-            this.panel.Location = new System.Drawing.Point(434, 81);
+            this.panel.Location = new System.Drawing.Point(349, 67);
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(245, 219);
             this.panel.TabIndex = 34;
@@ -205,7 +205,7 @@
             // 
             // IDText
             // 
-            this.IDText.Location = new System.Drawing.Point(111, 74);
+            this.IDText.Location = new System.Drawing.Point(115, 42);
             this.IDText.Name = "IDText";
             this.IDText.Size = new System.Drawing.Size(84, 19);
             this.IDText.TabIndex = 35;
