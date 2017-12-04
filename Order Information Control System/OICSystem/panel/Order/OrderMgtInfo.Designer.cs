@@ -30,7 +30,7 @@
         {
             this.SearchBtn = new System.Windows.Forms.Button();
             this.KanaTextbox = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.DeleteBtn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.OrderInfoGritview = new System.Windows.Forms.DataGridView();
             this.UpdateBtn = new System.Windows.Forms.Button();
@@ -39,9 +39,9 @@
             // 
             // SearchBtn
             // 
-            this.SearchBtn.Location = new System.Drawing.Point(595, 322);
+            this.SearchBtn.Location = new System.Drawing.Point(392, 379);
             this.SearchBtn.Name = "SearchBtn";
-            this.SearchBtn.Size = new System.Drawing.Size(151, 37);
+            this.SearchBtn.Size = new System.Drawing.Size(109, 37);
             this.SearchBtn.TabIndex = 46;
             this.SearchBtn.Text = "検索";
             this.SearchBtn.UseVisualStyleBackColor = true;
@@ -49,24 +49,25 @@
             // 
             // KanaTextbox
             // 
-            this.KanaTextbox.Location = new System.Drawing.Point(53, 344);
+            this.KanaTextbox.Location = new System.Drawing.Point(74, 379);
             this.KanaTextbox.Name = "KanaTextbox";
             this.KanaTextbox.Size = new System.Drawing.Size(117, 19);
             this.KanaTextbox.TabIndex = 42;
             // 
-            // button3
+            // DeleteBtn
             // 
-            this.button3.Location = new System.Drawing.Point(595, 379);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(151, 37);
-            this.button3.TabIndex = 40;
-            this.button3.Text = "注文取消";
-            this.button3.UseVisualStyleBackColor = true;
+            this.DeleteBtn.Location = new System.Drawing.Point(632, 379);
+            this.DeleteBtn.Name = "DeleteBtn";
+            this.DeleteBtn.Size = new System.Drawing.Size(109, 37);
+            this.DeleteBtn.TabIndex = 40;
+            this.DeleteBtn.Text = "注文取消";
+            this.DeleteBtn.UseVisualStyleBackColor = true;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 347);
+            this.label6.Location = new System.Drawing.Point(33, 382);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(42, 12);
             this.label6.TabIndex = 37;
@@ -78,14 +79,14 @@
             this.OrderInfoGritview.Location = new System.Drawing.Point(14, 12);
             this.OrderInfoGritview.Name = "OrderInfoGritview";
             this.OrderInfoGritview.RowTemplate.Height = 21;
-            this.OrderInfoGritview.Size = new System.Drawing.Size(732, 272);
+            this.OrderInfoGritview.Size = new System.Drawing.Size(732, 334);
             this.OrderInfoGritview.TabIndex = 47;
             // 
             // UpdateBtn
             // 
-            this.UpdateBtn.Location = new System.Drawing.Point(418, 322);
+            this.UpdateBtn.Location = new System.Drawing.Point(512, 379);
             this.UpdateBtn.Name = "UpdateBtn";
-            this.UpdateBtn.Size = new System.Drawing.Size(151, 37);
+            this.UpdateBtn.Size = new System.Drawing.Size(109, 37);
             this.UpdateBtn.TabIndex = 48;
             this.UpdateBtn.Text = "更新";
             this.UpdateBtn.UseVisualStyleBackColor = true;
@@ -99,7 +100,7 @@
             this.Controls.Add(this.OrderInfoGritview);
             this.Controls.Add(this.SearchBtn);
             this.Controls.Add(this.KanaTextbox);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.label6);
             this.Name = "OrderMgtInfo";
             this.Size = new System.Drawing.Size(760, 430);
@@ -114,7 +115,7 @@
 
         private System.Windows.Forms.Button SearchBtn;
         private System.Windows.Forms.TextBox KanaTextbox;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button DeleteBtn;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView OrderInfoGritview;
         private System.Windows.Forms.Button UpdateBtn;
