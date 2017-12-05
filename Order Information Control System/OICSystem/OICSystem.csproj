@@ -44,10 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IM2DataSet1.Designer.cs">
+    <Compile Include="IM2Data.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IM2DataSet1.xsd</DependentUpon>
+      <DependentUpon>IM2Data.xsd</DependentUpon>
     </Compile>
     <Compile Include="panel\Emp\EmpMgt.cs">
       <SubType>UserControl</SubType>
@@ -177,16 +177,16 @@
     <EmbeddedResource Include="panel\Order\OrderMgtRegister.resx">
       <DependentUpon>OrderMgtRegister.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="IM2DataSet1.xsc">
-      <DependentUpon>IM2DataSet1.xsd</DependentUpon>
+    <None Include="IM2Data.xsc">
+      <DependentUpon>IM2Data.xsd</DependentUpon>
     </None>
-    <None Include="IM2DataSet1.xsd">
+    <None Include="IM2Data.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>IM2DataSet1.Designer.cs</LastGenOutput>
+      <LastGenOutput>IM2Data.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="IM2DataSet1.xss">
-      <DependentUpon>IM2DataSet1.xsd</DependentUpon>
+    <None Include="IM2Data.xss">
+      <DependentUpon>IM2Data.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
