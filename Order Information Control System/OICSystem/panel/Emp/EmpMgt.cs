@@ -19,14 +19,23 @@ namespace WindowsFormsApplication1
         DataTable dt = new DataTable();
         DataSet ds = new DataSet();
 
+        int id;
+        int tid;
+        string pass;
+        string tpass;
         string name;
         string tname;
-        string tel;
-        string ttel;
+        string sabname;
+        string tsabname;
         string post;
         string tpost;
         string add;
         string tadd;
+        string tel;
+        string ttel;
+        string bone;
+        string tbone;
+         
 
         private void selectfunc(string cmdstr)
         {
@@ -129,6 +138,8 @@ namespace WindowsFormsApplication1
 
         private void SearchB_Click(object sender, EventArgs e)
         {
+            dataload(0);
+            
             cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
             cn.Open();
 
@@ -144,55 +155,132 @@ namespace WindowsFormsApplication1
             //name = MemberNameTBox.Text;
             //tell = MemberTelTBox.Text;
 
+            //ID
+            if(EmpIDTextB.Text!="")
+            {
+                tid = int.Parse(EmpIDTextB.Text);
+            }
+            //PASS
+            if ( EmpPassTextB.Text != "")
+            {
+                tpass = EmpPassTextB.Text;
+            }
+            //NAME
+            if (EmpNameTextB.Text != "")
+            {
+                tname = EmpNameTextB.Text;
+            }
+            //SABNAME
+            if (HuriganaTextB.Text != "")
+            {
+                tsabname = HuriganaTextB.Text;
+            }
+            //POST
+            if (EmpPostTextB.Text != "")
+            {
+                tpost = EmpPostTextB.Text;
+            }
+            //ADD
+            if (EmpAddressTextB.Text != "")
+            {
+                tadd = EmpAddressTextB.Text;
+            }
+            //TEL
+            if (EmpTelTextB.Text != "")
+            {
+                ttel = EmpTelTextB.Text;
+            }
+            //BONE
+            if (BirthdayTextB.Text != "")
+            {
+                tbone = BirthdayTextB.Text;
+            }
+
+            
+
             while (rd.Read())
             {
 
+                id = (int)rd.GetValue(0);    //従業員ID
+                pass = (string)rd.GetValue(12);  //パスワード
                 name = (string)rd.GetValue(1);  //名前
-                tname = EmpNameTextB.Text;
-                tel = (string)rd.GetValue(3);  //電話番号
-                ttel = EmpTelTextB.Text;
+                sabname = (string)rd.GetValue(2);//ﾌﾘｶﾞﾅ
                 post = (string)rd.GetValue(4);  //郵便番号
-                tpost = EmpPostTextB.Text;
-                add = (string)rd.GetValue(5);   //住所
-                tadd = EmpAddressTextB.Text;
+                add = (string)rd.GetValue(5);   //住所1
+                tel = (string)rd.GetValue(7);  //電話番号
+                bone = (string)rd.GetValue(8).ToString();  //生年月日
+                
 
-
-                if (name == tname)
+                if (id == tid)
                 {
-                    selectfunc("SELECT * FROM 従業員マスタ WHERE 名前 LIKE '%" + EmpNameTextB.Text + "%'");
+
+                    selectfunc("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ WHERE 従業員ID LIKE '%" + EmpIDTextB.Text + "%'");
                     label1.Text = "";
                     break;
                 }
-                if (tel == ttel)
+                if (pass == tpass)
                 {
-                    selectfunc("SELECT * FROM 従業員マスタ WHERE 電話番号 LIKE '%" + EmpTelTextB.Text + "%'");
+
+                    selectfunc("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ WHERE パスワード LIKE '%" + EmpPassTextB.Text + "%'");
+                    label1.Text = "";
+                    break;
+                }
+                if (name == tname)
+                {
+                    selectfunc("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ WHERE 名前 LIKE '%" + EmpNameTextB.Text + "%'");
+                    label1.Text = "";
+                    break;
+                }
+                if (sabname == tsabname)
+                {
+
+                    selectfunc("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ WHERE ﾌﾘｶﾞﾅ LIKE '%" + HuriganaTextB.Text + "%'");
                     label1.Text = "";
                     break;
                 }
                 if (post == tpost)
                 {
-                    selectfunc("SELECT * FROM 従業員マスタ WHERE 郵便番号 LIKE '%" + EmpPostTextB.Text + "%'");
+                    selectfunc("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ WHERE 郵便番号 LIKE '%" + EmpPostTextB.Text + "%'");
                     label1.Text = "";
                     break;
                 }
                 if (add == tadd)
                 {
-                    
-                    selectfunc("SELECT * FROM 従業員マスタ WHERE 住所1 LIKE '%" + EmpAddressTextB.Text + "%'");
+
+                    selectfunc("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ WHERE 住所1 LIKE '%" + EmpAddressTextB.Text + "%'");
+                    label1.Text = "";
+                    break;
+                }
+                if (tel == ttel)
+                {
+                    selectfunc("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ WHERE 電話番号 LIKE '%" + EmpTelTextB.Text + "%'");
+                    label1.Text = "";
+                    break;
+                }
+                if (bone == tbone)
+                {
+
+                    selectfunc("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ WHERE 生年月日 LIKE '%" + BirthdayTextB.Text + "%'");
                     label1.Text = "";
                     break;
                 }
 
 
 
+
                 label1.Text = "その情報は登録されていません";     
             }
-
+            EmpIDTextB.Text = "";
+            EmpPassTextB.Text = "";
             EmpNameTextB.Text = "";
+            HuriganaTextB.Text = "";
+            EmpPostTextB.Text = "";
+            EmpAddressTextB.Text = "";
+            EmpTelTextB.Text = "";
+            BirthdayTextB.Text = "";
 
             cn.Close();
 
-            
         }
         private void clickdata()
         {
