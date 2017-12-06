@@ -34,6 +34,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.OrderInfoGritview = new System.Windows.Forms.DataGridView();
             this.UpdateBtn = new System.Windows.Forms.Button();
+            this.TotalTitleLabel = new System.Windows.Forms.Label();
+            this.TotalLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.OrderInfoGritview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,6 +83,7 @@
             this.OrderInfoGritview.RowTemplate.Height = 21;
             this.OrderInfoGritview.Size = new System.Drawing.Size(732, 334);
             this.OrderInfoGritview.TabIndex = 47;
+            this.OrderInfoGritview.SelectionChanged += new System.EventHandler(this.OrderInfoGritview_SelectionChanged);
             // 
             // UpdateBtn
             // 
@@ -92,10 +95,30 @@
             this.UpdateBtn.UseVisualStyleBackColor = true;
             this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
             // 
+            // TotalTitleLabel
+            // 
+            this.TotalTitleLabel.AutoSize = true;
+            this.TotalTitleLabel.Location = new System.Drawing.Point(221, 382);
+            this.TotalTitleLabel.Name = "TotalTitleLabel";
+            this.TotalTitleLabel.Size = new System.Drawing.Size(59, 12);
+            this.TotalTitleLabel.TabIndex = 55;
+            this.TotalTitleLabel.Text = "合計金額：";
+            // 
+            // TotalLabel
+            // 
+            this.TotalLabel.AutoSize = true;
+            this.TotalLabel.Location = new System.Drawing.Point(286, 382);
+            this.TotalLabel.Name = "TotalLabel";
+            this.TotalLabel.Size = new System.Drawing.Size(23, 12);
+            this.TotalLabel.TabIndex = 56;
+            this.TotalLabel.Text = "0円";
+            // 
             // OrderMgtInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.TotalLabel);
+            this.Controls.Add(this.TotalTitleLabel);
             this.Controls.Add(this.UpdateBtn);
             this.Controls.Add(this.OrderInfoGritview);
             this.Controls.Add(this.SearchBtn);
@@ -119,5 +142,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView OrderInfoGritview;
         private System.Windows.Forms.Button UpdateBtn;
+        private System.Windows.Forms.Label TotalTitleLabel;
+        private System.Windows.Forms.Label TotalLabel;
     }
 }
