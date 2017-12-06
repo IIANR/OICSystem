@@ -21,8 +21,8 @@ namespace WindowsFormsApplication1
             ctr1 = new OrderMgtRegister();
             ctr2 = new OrderMgtInfo();
 
-            panel1.Controls.Add(ctr1);
-            panel1.Controls.Add(ctr2);
+            Panel1.Controls.Add(ctr1);
+            Panel1.Controls.Add(ctr2);
 
             ctr1.Visible = true;
             ctr2.Visible = false;
@@ -38,6 +38,11 @@ namespace WindowsFormsApplication1
         {
             ctr1.Visible = false;
             ctr2.Visible = true;
+        }
+
+        private void OrderMgt_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

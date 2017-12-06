@@ -31,7 +31,7 @@
             this.goodsStockBtn = new System.Windows.Forms.Button();
             this.goodsListBtn = new System.Windows.Forms.Button();
             this.goodsRegiBtn = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.GoodsPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // goodsStockBtn
@@ -42,6 +42,7 @@
             this.goodsStockBtn.TabIndex = 47;
             this.goodsStockBtn.Text = "商品在庫";
             this.goodsStockBtn.UseVisualStyleBackColor = true;
+            this.goodsStockBtn.Click += new System.EventHandler(this.goodsStockBtn_Click);
             // 
             // goodsListBtn
             // 
@@ -51,6 +52,7 @@
             this.goodsListBtn.TabIndex = 46;
             this.goodsListBtn.Text = "商品情報";
             this.goodsListBtn.UseVisualStyleBackColor = true;
+            this.goodsListBtn.Click += new System.EventHandler(this.goodsListBtn_Click);
             // 
             // goodsRegiBtn
             // 
@@ -60,24 +62,26 @@
             this.goodsRegiBtn.TabIndex = 52;
             this.goodsRegiBtn.Text = "商品登録";
             this.goodsRegiBtn.UseVisualStyleBackColor = true;
+            this.goodsRegiBtn.Click += new System.EventHandler(this.goodsRegiBtn_Click);
             // 
-            // panel1
+            // GoodsPanel
             // 
-            this.panel1.Location = new System.Drawing.Point(0, 85);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(760, 430);
-            this.panel1.TabIndex = 53;
+            this.GoodsPanel.Location = new System.Drawing.Point(0, 85);
+            this.GoodsPanel.Name = "GoodsPanel";
+            this.GoodsPanel.Size = new System.Drawing.Size(760, 430);
+            this.GoodsPanel.TabIndex = 53;
             // 
             // GoodsMgt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.GoodsPanel);
             this.Controls.Add(this.goodsRegiBtn);
             this.Controls.Add(this.goodsStockBtn);
             this.Controls.Add(this.goodsListBtn);
             this.Name = "GoodsMgt";
             this.Size = new System.Drawing.Size(760, 515);
+            this.Load += new System.EventHandler(this.GoodsMgt_Load);
             this.ResumeLayout(false);
 
         }
@@ -87,6 +91,6 @@
         private System.Windows.Forms.Button goodsStockBtn;
         private System.Windows.Forms.Button goodsListBtn;
         private System.Windows.Forms.Button goodsRegiBtn;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel GoodsPanel;
     }
 }
