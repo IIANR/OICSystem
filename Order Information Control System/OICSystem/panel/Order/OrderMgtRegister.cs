@@ -18,6 +18,7 @@ namespace WindowsFormsApplication1
         OleDbCommand cmd = new OleDbCommand();
         OleDbDataAdapter da = new OleDbDataAdapter();
         DataTable dt = new DataTable();
+        DataTable dttemp = new DataTable();
 
         string InGoodsid = "";
         string db_Goodsid = "";
@@ -32,6 +33,52 @@ namespace WindowsFormsApplication1
         public OrderMgtRegister()
         {
             InitializeComponent();
+
+            this.Disposed += (sender, args) =>
+            {
+                if (dttemp.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dttemp.Rows.Count; i++)
+                    {
+                        string Goodsname = dttemp.Rows[i][0].ToString();
+
+                        //在庫数を増やす
+                        cmd.Connection = cn;
+                        cmd.CommandText = "UPDATE 在庫テーブル INNER JOIN 商品マスタ ON 在庫テーブル.商品ID = 商品マスタ.商品ID SET 在庫テーブル.在庫数 = 在庫テーブル.在庫数 + 1 WHERE 商品マスタ.商品名 = '" + Goodsname + "'";
+                        cn.Open();
+                        cmd.ExecuteNonQuery();
+                        cn.Close();
+                    }
+                }
+            };
+        }
+
+        private DataTable GetDataTable()
+        {
+            var cols = OrderRegiDataGridview.Columns;
+            foreach (DataGridViewColumn c in cols)
+            {
+                if (c.ValueType != null)
+                {
+                    dttemp.Columns.Add(c.Name, c.ValueType);
+                }
+                else
+                {
+                    dttemp.Columns.Add(c.Name);
+                }
+            }
+
+            var rows = OrderRegiDataGridview.Rows;
+            foreach (DataGridViewRow r in rows)
+            {
+                List<object> array = new List<object>();
+                foreach (DataGridViewCell cell in r.Cells)
+                {
+                    array.Add(cell.Value);
+                }
+                dttemp.Rows.Add(array.ToArray());
+            }
+            return dttemp;
         }
 
         private DataTable CreateSchemaDataTable(OleDbDataReader reader)
@@ -91,6 +138,9 @@ namespace WindowsFormsApplication1
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
+            dttemp.Clear();
+            dttemp.Columns.Clear();
+
             if (GoodsidTextBox.Text == null || GoodsidTextBox.Text == "")
             {
                 ErrMsg.Visible = true;
@@ -171,6 +221,8 @@ namespace WindowsFormsApplication1
 
                     //データーグリットビューにデータの追加を許可(空白行削除)
                     OrderRegiDataGridview.AllowUserToAddRows = false;
+
+                    GetDataTable();
                 }
                 else
                 {
@@ -183,6 +235,9 @@ namespace WindowsFormsApplication1
         {
             foreach (DataGridViewRow item in OrderRegiDataGridview.SelectedRows)
             {
+                dttemp.Clear();
+                dttemp.Columns.Clear();
+
                 //OrderRegiDataGridviewから選択している行の商品名を取得
                 string Goodsname = (string)OrderRegiDataGridview.CurrentRow.Cells[0].Value;
 
@@ -227,6 +282,8 @@ namespace WindowsFormsApplication1
                     OrderRegiDataGridview.Rows.Remove(item);
                     cnt--;
                 }
+
+                GetDataTable();
             }
 
             // 行データがなくなったら、ラベルを非表示
@@ -390,6 +447,9 @@ namespace WindowsFormsApplication1
                 //トータルラベルを非表示
                 TotalLabel.Text = "";
                 TotalLabel.Visible = false;
+
+                dttemp.Clear();
+                dttemp.Columns.Clear();
             }
         }
 
@@ -403,14 +463,7 @@ namespace WindowsFormsApplication1
             OrderRegiDataGridview.Columns.Add("GoodsPrice", "単価");
         }
 
-        private void PoscodeTextbox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((e.KeyChar < '0' || '9' < e.KeyChar) && e.KeyChar != '\b')
-            {
-                //押されたキーが 0～9でない場合は、イベントをキャンセルする
-                e.Handled = true;
-            }
-        }
+        
 
         private void PoscodeTextbox_KeyDown(object sender, KeyEventArgs e)
         {
@@ -500,6 +553,24 @@ namespace WindowsFormsApplication1
                                         MessageBoxIcon.Error);
                     }
                 
+            }
+        }
+
+        private void TelTextbox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < '0' || '9' < e.KeyChar) && e.KeyChar != '\b')
+            {
+                //押されたキーが 0～9でない場合は、イベントをキャンセルする
+                e.Handled = true;
+            }
+        }
+
+        private void PoscodeTextbox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < '0' || '9' < e.KeyChar) && e.KeyChar != '\b')
+            {
+                //押されたキーが 0～9でない場合は、イベントをキャンセルする
+                e.Handled = true;
             }
         }
     }

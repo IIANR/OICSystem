@@ -68,6 +68,7 @@
             this.TelTextbox.Name = "TelTextbox";
             this.TelTextbox.Size = new System.Drawing.Size(186, 19);
             this.TelTextbox.TabIndex = 8;
+            this.TelTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TelTextbox_KeyPress);
             // 
             // AddressTextbox1
             // 
