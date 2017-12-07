@@ -40,7 +40,7 @@ namespace WindowsFormsApplication1
                 {
                     for (int i = 0; i < dttemp.Rows.Count; i++)
                     {
-                        string Goodsname = dttemp.Rows[i][0].ToString();
+                        string Goodsname = dttemp.Rows[i][1].ToString();
 
                         //在庫数を増やす
                         cmd.Connection = cn;
@@ -201,6 +201,7 @@ namespace WindowsFormsApplication1
                             if (db_Goodsid == InGoodsid)
                             {
                                 OrderRegiDataGridview.Rows.Add();
+                                OrderRegiDataGridview["GoodsId", cnt].Value = db_Goodsid;
                                 OrderRegiDataGridview["GoodsName", cnt].Value = db_Goodsname;
                                 OrderRegiDataGridview["GoodsPrice", cnt].Value = db_GoodsPrice;
                                 cnt++;
@@ -239,7 +240,7 @@ namespace WindowsFormsApplication1
                 dttemp.Columns.Clear();
 
                 //OrderRegiDataGridviewから選択している行の商品名を取得
-                string Goodsname = (string)OrderRegiDataGridview.CurrentRow.Cells[0].Value;
+                string Goodsname = (string)OrderRegiDataGridview.CurrentRow.Cells[1].Value;
 
                 //在庫数を増やす
                 cmd.Connection = cn;
@@ -337,7 +338,7 @@ namespace WindowsFormsApplication1
                 string goodsIDlist = "";
                 for (int i = 0; i < OrderRegiDataGridview.Rows.Count; i++)
                 {
-                    string Goodsname = OrderRegiDataGridview.Rows[i].Cells[0].Value.ToString();
+                    string Goodsname = OrderRegiDataGridview.Rows[i].Cells[1].Value.ToString();
 
                     cn.Open();
 
@@ -459,6 +460,7 @@ namespace WindowsFormsApplication1
             OrderRegiDataGridview.Columns.Clear();
             OrderRegiDataGridview.DataSource = null;
 
+            OrderRegiDataGridview.Columns.Add("GoodsId","商品ID");
             OrderRegiDataGridview.Columns.Add("GoodsName", "商品名");
             OrderRegiDataGridview.Columns.Add("GoodsPrice", "単価");
         }
