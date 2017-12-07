@@ -32,11 +32,10 @@
             this.goodsRegiId = new System.Windows.Forms.Label();
             this.goodsRegiName = new System.Windows.Forms.Label();
             this.goodsRegiPrice = new System.Windows.Forms.Label();
-            this.textBID = new System.Windows.Forms.TextBox();
+            this.商品マスタBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.iM2Data = new WindowsFormsApplication1.IM2Data();
             this.textBname = new System.Windows.Forms.TextBox();
             this.textBprice = new System.Windows.Forms.TextBox();
-            this.iM2Data = new WindowsFormsApplication1.IM2Data();
-            this.商品マスタBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.商品マスタTableAdapter = new WindowsFormsApplication1.IM2DataTableAdapters.商品マスタTableAdapter();
             this.goodsRegicateID = new System.Windows.Forms.Label();
             this.goodsRegiBikou = new System.Windows.Forms.Label();
@@ -55,8 +54,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBimage = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.iM2Data)).BeginInit();
+            this.textBID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.商品マスタBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iM2Data)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.panel.SuspendLayout();
             this.SuspendLayout();
@@ -91,13 +91,16 @@
             this.goodsRegiPrice.Text = "単価:";
             this.goodsRegiPrice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBID
+            // 商品マスタBindingSource
             // 
-            this.textBID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.商品マスタBindingSource, "商品ID", true));
-            this.textBID.Location = new System.Drawing.Point(116, 38);
-            this.textBID.Name = "textBID";
-            this.textBID.Size = new System.Drawing.Size(66, 19);
-            this.textBID.TabIndex = 3;
+            this.商品マスタBindingSource.DataMember = "商品マスタ";
+            this.商品マスタBindingSource.DataSource = this.iM2Data;
+            this.商品マスタBindingSource.CurrentChanged += new System.EventHandler(this.商品マスタBindingSource_CurrentChanged);
+            // 
+            // iM2Data
+            // 
+            this.iM2Data.DataSetName = "IM2Data";
+            this.iM2Data.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // textBname
             // 
@@ -114,17 +117,6 @@
             this.textBprice.Name = "textBprice";
             this.textBprice.Size = new System.Drawing.Size(66, 19);
             this.textBprice.TabIndex = 5;
-            // 
-            // iM2Data
-            // 
-            this.iM2Data.DataSetName = "IM2Data";
-            this.iM2Data.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // 商品マスタBindingSource
-            // 
-            this.商品マスタBindingSource.DataMember = "商品マスタ";
-            this.商品マスタBindingSource.DataSource = this.iM2Data;
-            this.商品マスタBindingSource.CurrentChanged += new System.EventHandler(this.商品マスタBindingSource_CurrentChanged);
             // 
             // 商品マスタTableAdapter
             // 
@@ -211,6 +203,7 @@
             this.UpdateBtn.TabIndex = 16;
             this.UpdateBtn.Text = "更新";
             this.UpdateBtn.UseVisualStyleBackColor = true;
+            this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
             // 
             // pictureBox
             // 
@@ -290,10 +283,20 @@
             this.textBimage.Size = new System.Drawing.Size(100, 19);
             this.textBimage.TabIndex = 24;
             // 
+            // textBID
+            // 
+            this.textBID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.商品マスタBindingSource, "商品画像", true));
+            this.textBID.Location = new System.Drawing.Point(119, 38);
+            this.textBID.Name = "textBID";
+            this.textBID.ReadOnly = true;
+            this.textBID.Size = new System.Drawing.Size(100, 19);
+            this.textBID.TabIndex = 25;
+            // 
             // GoodsRegi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.textBID);
             this.Controls.Add(this.textBimage);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -312,15 +315,14 @@
             this.Controls.Add(this.goodsRegicateID);
             this.Controls.Add(this.textBprice);
             this.Controls.Add(this.textBname);
-            this.Controls.Add(this.textBID);
             this.Controls.Add(this.goodsRegiPrice);
             this.Controls.Add(this.goodsRegiName);
             this.Controls.Add(this.goodsRegiId);
             this.Name = "GoodsRegi";
             this.Size = new System.Drawing.Size(760, 430);
             this.Load += new System.EventHandler(this.GoodsRegi_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.iM2Data)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.商品マスタBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iM2Data)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.panel.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -333,7 +335,6 @@
         private System.Windows.Forms.Label goodsRegiId;
         private System.Windows.Forms.Label goodsRegiName;
         private System.Windows.Forms.Label goodsRegiPrice;
-        private System.Windows.Forms.TextBox textBID;
         private System.Windows.Forms.TextBox textBname;
         private System.Windows.Forms.TextBox textBprice;
         private System.Windows.Forms.BindingSource 商品マスタBindingSource;
@@ -356,5 +357,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBimage;
+        private System.Windows.Forms.TextBox textBID;
     }
 }
