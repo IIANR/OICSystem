@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace WindowsFormsApplication1
 {
@@ -16,112 +17,104 @@ namespace WindowsFormsApplication1
 
         OleDbConnection cn = new OleDbConnection();
         OleDbCommand cmd = new OleDbCommand();
-        DataTable order = new DataTable();
-        DataTable goods = new DataTable();
         OleDbDataAdapter da = new OleDbDataAdapter();
         DataSet sal = new DataSet();
 
-        //DateTime time;
-        //string name;
 
 		public SalMgt()
         {
             InitializeComponent();
         }
 
-
-        //注文テーブルのデータコピー  ACCESS→order(DT)
-		private DataTable CreateSchemaDataTableOrder(OleDbDataReader reader)
-        {
-            if (reader == null) { return null; }
-            if (reader.IsClosed) { return null; }
-
-            DataTable schema = reader.GetSchemaTable();
-            DataTable order = new DataTable();
-
-            foreach (DataRow row in schema.Rows)
-            {
-                // Column情報を追加してください。
-                DataColumn col = new DataColumn();
-                col.ColumnName = row["ColumnName"].ToString();
-                col.DataType = Type.GetType(row["DataType"].ToString());
-
-                if (col.DataType.Equals(typeof(string)))
-                {
-                    col.MaxLength = (int)row["ColumnSize"];
-                }
-
-                order.Columns.Add(col);
-            }
-            return order;
-        }
-        //商品マスタのデータコピー  ACCESS→goods(DT)
-        private DataTable CreateSchemaDataTableGoods(OleDbDataReader reader)
-        {
-            if (reader == null) { return null; }
-            if (reader.IsClosed) { return null; }
-
-            DataTable schema = reader.GetSchemaTable();
-            DataTable Goods = new DataTable();
-
-            foreach (DataRow row in schema.Rows)
-            {
-                // Column情報を追加してください。
-                DataColumn col = new DataColumn();
-                col.ColumnName = row["ColumnName"].ToString();
-                col.DataType = Type.GetType(row["DataType"].ToString());
-
-                if (col.DataType.Equals(typeof(string)))
-                {
-                    col.MaxLength = (int)row["ColumnSize"];
-                }
-
-                Goods.Columns.Add(col);
-            }
-            return Goods;
-        }
-
-
         public void button5_Click(object sender, EventArgs e)
         {
             //日付
             string DS1;
             string DS2;
-
-			//
-			//
 			// Valueプロパティの値をそのまま表示します
-			//
 			DS1 = DateSet1.Value.ToString("yyyy/MM/dd");
             Console.WriteLine(DS1);
             DS2 = DateSet2.Value.ToString("yyyy/MM/dd");
             Console.WriteLine(DS2);
-
-
-            cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
-            cn.Open();
-            //注文テーブルをACCESSから引用
-            cmd.CommandText = "SELECT * FROM 注文テーブル ";
-            cmd.Connection = cn;
-
-            OleDbDataReader rd = cmd.ExecuteReader();
-
-            order = CreateSchemaDataTableOrder(rd);
-            DataRow row1 = order.NewRow();
-
-            cn.Close();
-            //商品マスタをACCESSから引用
-            cn.Open();
-
-            cmd.CommandText = "SELECT * FROM 商品マスタ　";
-            cmd.Connection = cn;
-
-            goods = CreateSchemaDataTableGoods(rd);
-            DataRow row2 = goods.NewRow();
-
-            cn.Close();
-
 		}
+
+        protected DataTable GetDataOrder()
+        {
+            //注文テーブルから注文日,商品ID,入金済みを注文日順に取り出す
+            OleDbConnection cn = new OleDbConnection("Provider=microsoft.ace.oledb.12.0;" + @"Data Source=.\DB\IM2.accdb;");
+            OleDbDataAdapter da = new OleDbDataAdapter("SELECT 注文日,商品ID,入金済み FROM 注文テーブル WHERE 注文日 Between 'DS1' and 'DS2' ORDER BY 注文日", cn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            DataTable mdt = new DataTable();   //データテーブルオブジェクトを作成
+            DataRow dtRow;
+
+            mdt.Columns.Add("注文日", Type.GetType("System.DateTime"));
+            mdt.Columns.Add("商品ID", Type.GetType("System.String"));
+            mdt.Columns.Add("入金済み", Type.GetType("System.Bool"));
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                dtRow = mdt.NewRow();
+                dtRow["注文日"] = dt.Rows[i][0]; 　　　　 //DBから取得したdtの注文日を示す行の行番号と列番号
+                dtRow["商品ID"] = dt.Rows[i][1];          //DBから取得したdtの商品IDを示す行の行番号と列番号
+                dtRow["入金済み"] = dt.Rows[i][2];        //DBから取得したdtの入金済みを示す行の行番号と列番号
+                mdt.Rows.Add(dtRow);
+            }
+            return dt;    //データテーブルを返す
+        }
+
+        protected  DataTable GetDataGoods()
+        {
+            //Goodsテーブルから商品ID,商品名,単価を商品ID順に取り出す
+            OleDbConnection cn = new OleDbConnection("Provider=microsoft.ace.oledb.12.0;" + @"Data Source=.\DB\IM2.accdb;");
+            OleDbDataAdapter da = new OleDbDataAdapter("SELECT 商品ID,商品名,単価 FROM 商品マスタ ORDER BY 商品ID", cn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            DataTable mdt = new DataTable();   //データテーブルオブジェクトを作成
+            DataRow dtRow;
+
+            mdt.Columns.Add("商品ID", Type.GetType("System.String"));
+            mdt.Columns.Add("商品名", Type.GetType("System.String"));
+            mdt.Columns.Add("単価", Type.GetType("System.Double"));
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                dtRow = mdt.NewRow();
+                dtRow["商品ID"] = dt.Rows[i][0]; 　　　　 //DBから取得したdtの商品IDを示す行の行番号と列番号
+                dtRow["商品名"] = dt.Rows[i][1];  //DBから取得したdtの商品名を示す行の行番号と列番号
+                dtRow["単価"] = dt.Rows[i][2];        //DBから取得したdtの単価を示す行の行番号と列番号
+                mdt.Rows.Add(dtRow);
+            }
+            return dt;    //データテーブルを返す
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            DataTable sdt = GetDataGoods();     //DBから取り出したデータを取得して設定
+            chart1.Series.Clear();
+            chart1.Titles.Add("商品別の単価");
+            chart1.Series.Add("商品名");
+            chart1.Series.Add("単価");
+
+
+            chart1.Series["商品名"].ChartType = SeriesChartType.Column; //Column
+            chart1.Series["単価"].ChartType = SeriesChartType.Column;       //Column
+            chart1.Series["単価"].IsValueShownAsLabel = true;
+
+            chart1.DataSource = sdt;         //チャートに表示するデータテーブルを設定
+            chart1.Series["単価"].XValueMember = sdt.Columns["商品名"].ColumnName;
+            chart1.Series["単価"].YValueMembers = sdt.Columns["単価"].ColumnName;
+            chart1.Legends.Add("legend");   //凡例の設定
+            chart1.DataBind();　　　//データバインド
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            DataTable order = GetDataOrder();
+            DataTable goods = GetDataGoods(); 
+        }
 
 
 
