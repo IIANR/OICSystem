@@ -28,19 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.OutputDataGrid = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.OutputDataGrid)).BeginInit();
             this.SuspendLayout();
+            // 
+            // OutputDataGrid
+            // 
+            this.OutputDataGrid.AllowUserToAddRows = false;
+            this.OutputDataGrid.AllowUserToDeleteRows = false;
+            this.OutputDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.OutputDataGrid.Location = new System.Drawing.Point(3, 3);
+            this.OutputDataGrid.Name = "OutputDataGrid";
+            this.OutputDataGrid.ReadOnly = true;
+            this.OutputDataGrid.RowTemplate.Height = 21;
+            this.OutputDataGrid.Size = new System.Drawing.Size(754, 424);
+            this.OutputDataGrid.TabIndex = 0;
             // 
             // IOOutput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.OutputDataGrid);
             this.Name = "IOOutput";
             this.Size = new System.Drawing.Size(760, 430);
+            this.Load += new System.EventHandler(this.IOOutput_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.OutputDataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView OutputDataGrid;
     }
 }

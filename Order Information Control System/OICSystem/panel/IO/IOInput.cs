@@ -19,7 +19,6 @@ namespace WindowsFormsApplication1.panel.IO
 
         private void IOInput_Load(object sender, EventArgs e)
         {
-            this.入庫テーブルTableAdapter.FillInMgt(this.iM2DataSet.入庫テーブル);
         }
     }
 }
