@@ -35,23 +35,24 @@
             this.MemberDataGridView = new System.Windows.Forms.DataGridView();
             this.MemberDisLbl = new System.Windows.Forms.Label();
             this.MemberClearBtn = new System.Windows.Forms.Button();
+            this.MemberUpdateBtn = new System.Windows.Forms.Button();
             this.MemberEditBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MemberDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // MemberNameTBox
             // 
-            this.MemberNameTBox.Location = new System.Drawing.Point(84, 424);
+            this.MemberNameTBox.Location = new System.Drawing.Point(127, 424);
             this.MemberNameTBox.Name = "MemberNameTBox";
             this.MemberNameTBox.Size = new System.Drawing.Size(149, 19);
-            this.MemberNameTBox.TabIndex = 0;
+            this.MemberNameTBox.TabIndex = 1;
             // 
             // MemberDisBtn
             // 
-            this.MemberDisBtn.Location = new System.Drawing.Point(251, 415);
+            this.MemberDisBtn.Location = new System.Drawing.Point(436, 372);
             this.MemberDisBtn.Name = "MemberDisBtn";
             this.MemberDisBtn.Size = new System.Drawing.Size(151, 37);
-            this.MemberDisBtn.TabIndex = 5;
+            this.MemberDisBtn.TabIndex = 2;
             this.MemberDisBtn.Text = "検索";
             this.MemberDisBtn.UseVisualStyleBackColor = true;
             this.MemberDisBtn.Click += new System.EventHandler(this.MemberDisBtn_Click);
@@ -61,9 +62,9 @@
             this.MemberNameLbl.AutoSize = true;
             this.MemberNameLbl.Location = new System.Drawing.Point(43, 427);
             this.MemberNameLbl.Name = "MemberNameLbl";
-            this.MemberNameLbl.Size = new System.Drawing.Size(35, 12);
+            this.MemberNameLbl.Size = new System.Drawing.Size(78, 12);
             this.MemberNameLbl.TabIndex = 51;
-            this.MemberNameLbl.Text = "名前：";
+            this.MemberNameLbl.Text = "ﾌﾘｶﾞﾅ（半角）：";
             // 
             // MemberMgrLbl
             // 
@@ -84,34 +85,44 @@
             this.MemberDataGridView.ReadOnly = true;
             this.MemberDataGridView.RowTemplate.Height = 21;
             this.MemberDataGridView.Size = new System.Drawing.Size(723, 286);
-            this.MemberDataGridView.TabIndex = 7;
+            this.MemberDataGridView.TabIndex = 6;
             // 
             // MemberDisLbl
             // 
             this.MemberDisLbl.AutoSize = true;
-            this.MemberDisLbl.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.MemberDisLbl.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.MemberDisLbl.ForeColor = System.Drawing.Color.Red;
-            this.MemberDisLbl.Location = new System.Drawing.Point(81, 375);
+            this.MemberDisLbl.Location = new System.Drawing.Point(42, 380);
             this.MemberDisLbl.Name = "MemberDisLbl";
-            this.MemberDisLbl.Size = new System.Drawing.Size(0, 14);
+            this.MemberDisLbl.Size = new System.Drawing.Size(0, 16);
             this.MemberDisLbl.TabIndex = 63;
             // 
             // MemberClearBtn
             // 
-            this.MemberClearBtn.Location = new System.Drawing.Point(593, 415);
+            this.MemberClearBtn.Location = new System.Drawing.Point(436, 415);
             this.MemberClearBtn.Name = "MemberClearBtn";
             this.MemberClearBtn.Size = new System.Drawing.Size(151, 37);
-            this.MemberClearBtn.TabIndex = 4;
+            this.MemberClearBtn.TabIndex = 3;
             this.MemberClearBtn.Text = "クリア";
             this.MemberClearBtn.UseVisualStyleBackColor = true;
             this.MemberClearBtn.Click += new System.EventHandler(this.MemberClearBtn_Click);
             // 
+            // MemberUpdateBtn
+            // 
+            this.MemberUpdateBtn.Location = new System.Drawing.Point(593, 415);
+            this.MemberUpdateBtn.Name = "MemberUpdateBtn";
+            this.MemberUpdateBtn.Size = new System.Drawing.Size(151, 37);
+            this.MemberUpdateBtn.TabIndex = 5;
+            this.MemberUpdateBtn.Text = "更新";
+            this.MemberUpdateBtn.UseVisualStyleBackColor = true;
+            this.MemberUpdateBtn.Click += new System.EventHandler(this.MemberUpdateBtn_Click);
+            // 
             // MemberEditBtn
             // 
-            this.MemberEditBtn.Location = new System.Drawing.Point(423, 415);
+            this.MemberEditBtn.Location = new System.Drawing.Point(593, 372);
             this.MemberEditBtn.Name = "MemberEditBtn";
             this.MemberEditBtn.Size = new System.Drawing.Size(151, 37);
-            this.MemberEditBtn.TabIndex = 64;
+            this.MemberEditBtn.TabIndex = 4;
             this.MemberEditBtn.Text = "編集";
             this.MemberEditBtn.UseVisualStyleBackColor = true;
             this.MemberEditBtn.Click += new System.EventHandler(this.MemberEditBtn_Click);
@@ -121,6 +132,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.MemberEditBtn);
+            this.Controls.Add(this.MemberUpdateBtn);
             this.Controls.Add(this.MemberClearBtn);
             this.Controls.Add(this.MemberDisLbl);
             this.Controls.Add(this.MemberDataGridView);
@@ -146,6 +158,7 @@
         private System.Windows.Forms.DataGridView MemberDataGridView;
         private System.Windows.Forms.Label MemberDisLbl;
         private System.Windows.Forms.Button MemberClearBtn;
+        private System.Windows.Forms.Button MemberUpdateBtn;
         private System.Windows.Forms.Button MemberEditBtn;
     }
 }

@@ -56,6 +56,8 @@ namespace WindowsFormsApplication1
             da.Fill(dt);
             MemberDataGridView.DataSource = dt;
             MemberDataGridView.AutoResizeColumns();
+
+            MemberDataGridView.AllowUserToAddRows = false;
         }
 
         private DataTable CreateSchemaDataTable(OleDbDataReader reader)
@@ -99,13 +101,13 @@ namespace WindowsFormsApplication1
             while (rd.Read())
             {
 
-                name = (string)rd.GetValue(1);  //データベースの名前
-                tname = MemberNameTBox.Text;    //textboxの名前
+                name = (string)rd.GetValue(2);  //データベースの「ﾌﾘｶﾞﾅ」
+                tname = MemberNameTBox.Text;    //textboxの「ﾌﾘｶﾞﾅ」
                 
 
                 if (name == tname)
                 {
-                    selectfunc("SELECT * FROM 顧客テーブル WHERE 名前 LIKE '%" + MemberNameTBox.Text + "%'");
+                    selectfunc("SELECT * FROM 顧客テーブル WHERE ﾌﾘｶﾞﾅ LIKE '%" + MemberNameTBox.Text + "%'"); //LIKEで囲んでいるが意味は無し。
                     MemberDisLbl.Text = "";
                     break;
                 }
@@ -131,18 +133,41 @@ namespace WindowsFormsApplication1
             MemberDisLbl.Text = "";
         }
 
+        
+        //更新ボタン
+        private void MemberUpdateBtn_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < MemberDataGridView.Rows.Count; i++)
+            {
+                cmd.Connection = cn;
+                cmd.CommandText = "UPDATE 顧客テーブル SET 名前 ='" + 
+                    (string)MemberDataGridView.Rows[i].Cells[1].Value + "' ,ﾌﾘｶﾞﾅ ='" + 
+                    (string)MemberDataGridView.Rows[i].Cells[2].Value + "' ,電話番号 ='" + 
+                    (string)MemberDataGridView.Rows[i].Cells[3].Value + "' ,郵便番号 ='" + 
+                    (string)MemberDataGridView.Rows[i].Cells[4].Value + "' ,住所1 ='" + 
+                    (string)MemberDataGridView.Rows[i].Cells[5].Value + "' ,住所2 ='" + 
+                    (string)MemberDataGridView.Rows[i].Cells[6].Value + 
+                    "' WHERE 顧客ID=" + (int)MemberDataGridView.Rows[i].Cells[0].Value + "";
+                cn.Open();
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
+            MessageBox.Show("更新しました", "OICSystem");
+        }
+
         //編集ボタン
         private void MemberEditBtn_Click(object sender, EventArgs e)
         {
             if(MemberDataGridView.ReadOnly == true)
             {
                 MemberDataGridView.ReadOnly = false;
+                MessageBox.Show("編集可能になりました", "OICSystem");
             }
-            else if(MemberDataGridView.ReadOnly == false)
+            else if(MemberDataGridView.ReadOnly==false)
             {
                 MemberDataGridView.ReadOnly = true;
+                MessageBox.Show("編集不可になりました", "OICSystem");
             }
-            
         }
 
         
