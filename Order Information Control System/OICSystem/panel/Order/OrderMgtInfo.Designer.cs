@@ -41,7 +41,7 @@
             // 
             // SearchBtn
             // 
-            this.SearchBtn.Location = new System.Drawing.Point(392, 379);
+            this.SearchBtn.Location = new System.Drawing.Point(397, 370);
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(109, 37);
             this.SearchBtn.TabIndex = 46;
@@ -58,7 +58,7 @@
             // 
             // DeleteBtn
             // 
-            this.DeleteBtn.Location = new System.Drawing.Point(632, 379);
+            this.DeleteBtn.Location = new System.Drawing.Point(637, 370);
             this.DeleteBtn.Name = "DeleteBtn";
             this.DeleteBtn.Size = new System.Drawing.Size(109, 37);
             this.DeleteBtn.TabIndex = 40;
@@ -88,7 +88,7 @@
             // 
             // UpdateBtn
             // 
-            this.UpdateBtn.Location = new System.Drawing.Point(512, 379);
+            this.UpdateBtn.Location = new System.Drawing.Point(517, 370);
             this.UpdateBtn.Name = "UpdateBtn";
             this.UpdateBtn.Size = new System.Drawing.Size(109, 37);
             this.UpdateBtn.TabIndex = 48;
