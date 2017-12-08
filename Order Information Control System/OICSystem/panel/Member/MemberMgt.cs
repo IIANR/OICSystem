@@ -137,16 +137,17 @@ namespace WindowsFormsApplication1
         //更新ボタン
         private void MemberUpdateBtn_Click(object sender, EventArgs e)
         {
+            
             for (int i = 0; i < MemberDataGridView.Rows.Count; i++)
             {
                 cmd.Connection = cn;
                 cmd.CommandText = "UPDATE 顧客テーブル SET 名前 ='" + 
-                    (string)MemberDataGridView.Rows[i].Cells[1].Value + "' ,ﾌﾘｶﾞﾅ ='" + 
-                    (string)MemberDataGridView.Rows[i].Cells[2].Value + "' ,電話番号 ='" + 
-                    (string)MemberDataGridView.Rows[i].Cells[3].Value + "' ,郵便番号 ='" + 
-                    (string)MemberDataGridView.Rows[i].Cells[4].Value + "' ,住所1 ='" + 
-                    (string)MemberDataGridView.Rows[i].Cells[5].Value + "' ,住所2 ='" + 
-                    (string)MemberDataGridView.Rows[i].Cells[6].Value + 
+                    (string)MemberDataGridView.Rows[i].Cells[1].Value.ToString() + "' ,ﾌﾘｶﾞﾅ ='" +           //セルが空(NULL)の時エラーになるのでTostringを使用
+                    (string)MemberDataGridView.Rows[i].Cells[2].Value.ToString() + "' ,電話番号 ='" + 
+                    (string)MemberDataGridView.Rows[i].Cells[3].Value.ToString() + "' ,郵便番号 ='" + 
+                    (string)MemberDataGridView.Rows[i].Cells[4].Value.ToString() + "' ,住所1 ='" + 
+                    (string)MemberDataGridView.Rows[i].Cells[5].Value.ToString() + "' ,住所2 ='" + 
+                    (string)MemberDataGridView.Rows[i].Cells[6].Value.ToString() + 
                     "' WHERE 顧客ID=" + (int)MemberDataGridView.Rows[i].Cells[0].Value + "";
                 cn.Open();
                 cmd.ExecuteNonQuery();
