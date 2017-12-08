@@ -28,129 +28,108 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.SearchBtn = new System.Windows.Forms.Button();
+            this.KanaTextbox = new System.Windows.Forms.TextBox();
+            this.DeleteBtn = new System.Windows.Forms.Button();
+            this.KanaLabel = new System.Windows.Forms.Label();
+            this.OrderInfoGritview = new System.Windows.Forms.DataGridView();
+            this.UpdateBtn = new System.Windows.Forms.Button();
+            this.TotalTitleLabel = new System.Windows.Forms.Label();
+            this.TotalLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.OrderInfoGritview)).BeginInit();
             this.SuspendLayout();
             // 
-            // button4
+            // SearchBtn
             // 
-            this.button4.Location = new System.Drawing.Point(586, 322);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(151, 37);
-            this.button4.TabIndex = 46;
-            this.button4.Text = "表示";
-            this.button4.UseVisualStyleBackColor = true;
+            this.SearchBtn.Location = new System.Drawing.Point(392, 379);
+            this.SearchBtn.Name = "SearchBtn";
+            this.SearchBtn.Size = new System.Drawing.Size(109, 37);
+            this.SearchBtn.TabIndex = 46;
+            this.SearchBtn.Text = "検索";
+            this.SearchBtn.UseVisualStyleBackColor = true;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
-            // textBox5
+            // KanaTextbox
             // 
-            this.textBox5.Location = new System.Drawing.Point(246, 344);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(117, 19);
-            this.textBox5.TabIndex = 44;
+            this.KanaTextbox.Location = new System.Drawing.Point(74, 379);
+            this.KanaTextbox.Name = "KanaTextbox";
+            this.KanaTextbox.Size = new System.Drawing.Size(117, 19);
+            this.KanaTextbox.TabIndex = 42;
             // 
-            // textBox4
+            // DeleteBtn
             // 
-            this.textBox4.Location = new System.Drawing.Point(53, 388);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(310, 19);
-            this.textBox4.TabIndex = 43;
+            this.DeleteBtn.Location = new System.Drawing.Point(632, 379);
+            this.DeleteBtn.Name = "DeleteBtn";
+            this.DeleteBtn.Size = new System.Drawing.Size(109, 37);
+            this.DeleteBtn.TabIndex = 40;
+            this.DeleteBtn.Text = "注文取消";
+            this.DeleteBtn.UseVisualStyleBackColor = true;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
-            // textBox3
+            // KanaLabel
             // 
-            this.textBox3.Location = new System.Drawing.Point(53, 344);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(117, 19);
-            this.textBox3.TabIndex = 42;
+            this.KanaLabel.AutoSize = true;
+            this.KanaLabel.Location = new System.Drawing.Point(33, 382);
+            this.KanaLabel.Name = "KanaLabel";
+            this.KanaLabel.Size = new System.Drawing.Size(42, 12);
+            this.KanaLabel.TabIndex = 37;
+            this.KanaLabel.Text = "ﾌﾘｶﾞﾅ：";
             // 
-            // textBox1
+            // OrderInfoGritview
             // 
-            this.textBox1.Location = new System.Drawing.Point(421, 344);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(117, 19);
-            this.textBox1.TabIndex = 41;
+            this.OrderInfoGritview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.OrderInfoGritview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.OrderInfoGritview.Location = new System.Drawing.Point(14, 12);
+            this.OrderInfoGritview.Name = "OrderInfoGritview";
+            this.OrderInfoGritview.RowTemplate.Height = 21;
+            this.OrderInfoGritview.Size = new System.Drawing.Size(732, 334);
+            this.OrderInfoGritview.TabIndex = 47;
+            this.OrderInfoGritview.SelectionChanged += new System.EventHandler(this.OrderInfoGritview_SelectionChanged);
             // 
-            // button3
+            // UpdateBtn
             // 
-            this.button3.Location = new System.Drawing.Point(586, 370);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(151, 37);
-            this.button3.TabIndex = 40;
-            this.button3.Text = "注文取消";
-            this.button3.UseVisualStyleBackColor = true;
+            this.UpdateBtn.Location = new System.Drawing.Point(512, 379);
+            this.UpdateBtn.Name = "UpdateBtn";
+            this.UpdateBtn.Size = new System.Drawing.Size(109, 37);
+            this.UpdateBtn.TabIndex = 48;
+            this.UpdateBtn.Text = "更新";
+            this.UpdateBtn.UseVisualStyleBackColor = true;
+            this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
             // 
-            // label8
+            // TotalTitleLabel
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(176, 347);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(59, 12);
-            this.label8.TabIndex = 39;
-            this.label8.Text = "電話番号：";
+            this.TotalTitleLabel.AutoSize = true;
+            this.TotalTitleLabel.Location = new System.Drawing.Point(221, 382);
+            this.TotalTitleLabel.Name = "TotalTitleLabel";
+            this.TotalTitleLabel.Size = new System.Drawing.Size(59, 12);
+            this.TotalTitleLabel.TabIndex = 55;
+            this.TotalTitleLabel.Text = "合計金額：";
             // 
-            // label7
+            // TotalLabel
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 391);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 12);
-            this.label7.TabIndex = 38;
-            this.label7.Text = "住所：";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 347);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 12);
-            this.label6.TabIndex = 37;
-            this.label6.Text = "名前：";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(369, 347);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 12);
-            this.label3.TabIndex = 36;
-            this.label3.Text = "商品ID：";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 14);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 21;
-            this.dataGridView1.Size = new System.Drawing.Size(723, 302);
-            this.dataGridView1.TabIndex = 47;
+            this.TotalLabel.AutoSize = true;
+            this.TotalLabel.Location = new System.Drawing.Point(286, 382);
+            this.TotalLabel.Name = "TotalLabel";
+            this.TotalLabel.Size = new System.Drawing.Size(23, 12);
+            this.TotalLabel.TabIndex = 56;
+            this.TotalLabel.Text = "0円";
             // 
             // OrderMgtInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.TotalLabel);
+            this.Controls.Add(this.TotalTitleLabel);
+            this.Controls.Add(this.UpdateBtn);
+            this.Controls.Add(this.OrderInfoGritview);
+            this.Controls.Add(this.SearchBtn);
+            this.Controls.Add(this.KanaTextbox);
+            this.Controls.Add(this.DeleteBtn);
+            this.Controls.Add(this.KanaLabel);
             this.Name = "OrderMgtInfo";
             this.Size = new System.Drawing.Size(760, 430);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.OrderMgtInfo_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.OrderInfoGritview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,16 +137,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button SearchBtn;
+        private System.Windows.Forms.TextBox KanaTextbox;
+        private System.Windows.Forms.Button DeleteBtn;
+        private System.Windows.Forms.Label KanaLabel;
+        private System.Windows.Forms.DataGridView OrderInfoGritview;
+        private System.Windows.Forms.Button UpdateBtn;
+        private System.Windows.Forms.Label TotalTitleLabel;
+        private System.Windows.Forms.Label TotalLabel;
     }
 }

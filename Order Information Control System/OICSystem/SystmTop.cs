@@ -21,8 +21,6 @@ namespace WindowsFormsApplication1
         public static EmpMgt emp;
         public static SalMgt sal;
 
-        public int SystmTopdb_id = 0;
-
         public SystmTop()
         {
             InitializeComponent();
@@ -51,7 +49,7 @@ namespace WindowsFormsApplication1
             DateTime dtNow = DateTime.Now;
             DateTime dtToday = DateTime.Today;
 
-            dateLabel.Text = (dtToday.ToString("MM月dd日"));
+            dateLabel.Text = (dtToday.ToString());
             timeLabel.Text = (dtNow.ToLongTimeString());
 
             timer1.Interval = 1000;
@@ -133,7 +131,6 @@ namespace WindowsFormsApplication1
         private void SystmTop_Load(object sender, EventArgs e)
         {
             memberNameLabel.Text = frm1.db_name;
-            SystmTopdb_id = frm1.db_id;
 
             timer1.Interval = 1000;
             timer1.Enabled = true;
