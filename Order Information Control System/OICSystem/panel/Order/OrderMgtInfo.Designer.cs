@@ -77,6 +77,7 @@
             // 
             // OrderInfoGritview
             // 
+            this.OrderInfoGritview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.OrderInfoGritview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.OrderInfoGritview.Location = new System.Drawing.Point(14, 12);
             this.OrderInfoGritview.Name = "OrderInfoGritview";

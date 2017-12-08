@@ -61,7 +61,6 @@ namespace WindowsFormsApplication1
             da = new OleDbDataAdapter("SELECT 注文テーブル.注文ID,注文テーブル.注文日,注文テーブル.商品ID,顧客テーブル.名前 AS 顧客名,顧客テーブル.ﾌﾘｶﾞﾅ AS ﾌﾘｶﾞﾅ,従業員マスタ.名前 AS 従業員名,注文テーブル.備考,注文テーブル.入金済み FROM 注文テーブル,顧客テーブル,従業員マスタ WHERE 注文テーブル.顧客ID=顧客テーブル.顧客ID AND 注文テーブル.従業員ID=従業員マスタ.従業員ID ORDER BY 注文テーブル.入金済み=True,注文テーブル.注文ID", cn);
             da.Fill(dt);
             OrderInfoGritview.DataSource = dt;
-            OrderInfoGritview.AutoResizeColumns();
 
             OrderInfoGritview.AllowUserToAddRows = false;
         }
@@ -102,7 +101,6 @@ namespace WindowsFormsApplication1
             da = new OleDbDataAdapter("SELECT 注文テーブル.注文ID,注文テーブル.注文日,注文テーブル.商品ID,顧客テーブル.名前 AS 顧客名,顧客テーブル.ﾌﾘｶﾞﾅ AS ﾌﾘｶﾞﾅ,従業員マスタ.名前 AS 従業員名,注文テーブル.備考,注文テーブル.入金済み FROM 注文テーブル,顧客テーブル,従業員マスタ WHERE 注文テーブル.顧客ID=顧客テーブル.顧客ID AND 注文テーブル.従業員ID=従業員マスタ.従業員ID AND 顧客テーブル.ﾌﾘｶﾞﾅ LIKE '%"+ KanaTextbox.Text + "%' ORDER BY 注文テーブル.入金済み=True,注文テーブル.注文ID", cn);
             da.Fill(dt);
             OrderInfoGritview.DataSource = dt;
-            OrderInfoGritview.AutoResizeColumns();
 
             OrderInfoGritview.AllowUserToAddRows = false;
 
@@ -159,7 +157,6 @@ namespace WindowsFormsApplication1
                 da = new OleDbDataAdapter("SELECT 注文テーブル.注文ID,注文テーブル.注文日,注文テーブル.商品ID,顧客テーブル.名前 AS 顧客名,顧客テーブル.ﾌﾘｶﾞﾅ AS ﾌﾘｶﾞﾅ,従業員マスタ.名前 AS 従業員名,注文テーブル.備考,注文テーブル.入金済み FROM 注文テーブル,顧客テーブル,従業員マスタ WHERE 注文テーブル.顧客ID=顧客テーブル.顧客ID AND 注文テーブル.従業員ID=従業員マスタ.従業員ID ORDER BY 注文テーブル.入金済み=True,注文テーブル.注文ID", cn);
                 da.Fill(dt);
                 OrderInfoGritview.DataSource = dt;
-                OrderInfoGritview.AutoResizeColumns();
 
                 OrderInfoGritview.AllowUserToAddRows = false;
             }
