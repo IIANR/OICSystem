@@ -31,7 +31,7 @@
             this.SearchBtn = new System.Windows.Forms.Button();
             this.KanaTextbox = new System.Windows.Forms.TextBox();
             this.DeleteBtn = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
+            this.KanaLabel = new System.Windows.Forms.Label();
             this.OrderInfoGritview = new System.Windows.Forms.DataGridView();
             this.UpdateBtn = new System.Windows.Forms.Button();
             this.TotalTitleLabel = new System.Windows.Forms.Label();
@@ -66,14 +66,14 @@
             this.DeleteBtn.UseVisualStyleBackColor = true;
             this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
-            // label6
+            // KanaLabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(33, 382);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 12);
-            this.label6.TabIndex = 37;
-            this.label6.Text = "ﾌﾘｶﾞﾅ：";
+            this.KanaLabel.AutoSize = true;
+            this.KanaLabel.Location = new System.Drawing.Point(33, 382);
+            this.KanaLabel.Name = "KanaLabel";
+            this.KanaLabel.Size = new System.Drawing.Size(42, 12);
+            this.KanaLabel.TabIndex = 37;
+            this.KanaLabel.Text = "ﾌﾘｶﾞﾅ：";
             // 
             // OrderInfoGritview
             // 
@@ -125,7 +125,7 @@
             this.Controls.Add(this.SearchBtn);
             this.Controls.Add(this.KanaTextbox);
             this.Controls.Add(this.DeleteBtn);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.KanaLabel);
             this.Name = "OrderMgtInfo";
             this.Size = new System.Drawing.Size(760, 430);
             this.Load += new System.EventHandler(this.OrderMgtInfo_Load);
@@ -140,7 +140,7 @@
         private System.Windows.Forms.Button SearchBtn;
         private System.Windows.Forms.TextBox KanaTextbox;
         private System.Windows.Forms.Button DeleteBtn;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label KanaLabel;
         private System.Windows.Forms.DataGridView OrderInfoGritview;
         private System.Windows.Forms.Button UpdateBtn;
         private System.Windows.Forms.Label TotalTitleLabel;
