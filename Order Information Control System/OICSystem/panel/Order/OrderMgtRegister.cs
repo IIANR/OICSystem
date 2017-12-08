@@ -106,6 +106,31 @@ namespace WindowsFormsApplication1
             return dt;
         }
 
+        private DataTable CreateSchemaDataTable2(OleDbDataReader reader)
+        {
+            if (reader == null) { return null; }
+            if (reader.IsClosed) { return null; }
+
+            DataTable schema = reader.GetSchemaTable();
+            DataTable dt = new DataTable();
+
+            foreach (DataRow row in schema.Rows)
+            {
+                // Column情報を追加してください。
+                DataColumn col = new DataColumn();
+                col.ColumnName = row["ColumnName"].ToString();
+                col.DataType = Type.GetType(row["DataType"].ToString());
+
+                if (col.DataType.Equals(typeof(string)))
+                {
+                    col.MaxLength = (int)row["ColumnSize"];
+                }
+
+                dt.Columns.Add(col);
+            }
+            return dt;
+        }
+
         public void OrderMgtRegister_Load(object sender, EventArgs e)
         {
             ErrMsg.Visible = false;
@@ -156,78 +181,110 @@ namespace WindowsFormsApplication1
 
             else
             {
-                int GoodsNum = 0;
-                OleDbDataAdapter dastock = new OleDbDataAdapter("SELECT 在庫数 FROM 在庫テーブル WHERE 商品ID='" + GoodsidTextBox.Text + "'", cn);
-                DataTable dtstock = new DataTable();
-                dastock.Fill(dtstock);
-                GoodsNum=int.Parse(dtstock.Rows[0][0].ToString());
+                int flag = 0;
 
-                if (GoodsNum-int.Parse(NumCombo.Text) >= 0)
+                cn.Open();
+
+                cmd.CommandText = "SELECT * FROM 商品マスタ";
+                cmd.Connection = cn;
+
+                OleDbDataReader rd2 = cmd.ExecuteReader();
+
+                dt = CreateSchemaDataTable2(rd2);
+                DataRow row2 = dt.NewRow();
+
+                while (rd2.Read())
                 {
-                    dtstock.Clear();
-
-                    cmd.Connection = cn;
-                    cmd.CommandText = "UPDATE 在庫テーブル SET 在庫数=(在庫数-"+int.Parse(NumCombo.Text)+")WHERE 商品ID='" + GoodsidTextBox.Text + "'";
-                    cn.Open();
-                    cmd.ExecuteNonQuery();
-                    cn.Close();
-
-                    ErrMsg.Visible = false;
-                    ErrMsg2.Visible = false;
-
-                    //データーグリットビューにデータの追加を許可
-                    OrderRegiDataGridview.AllowUserToAddRows = true;
-
-                    for (int i = 0; i < int.Parse(NumCombo.Text); i++)
+                    db_Goodsid = (string)rd2.GetValue(0);
+                    if (db_Goodsid == GoodsidTextBox.Text)
                     {
-                        cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
-                        cn.Open();
+                        flag = 1;
+                    }
+                }
 
-                        cmd.CommandText = "SELECT * FROM 商品マスタ";
+                cn.Close();
+                db_Goodsid = "";
+
+                if (flag == 1)
+                {
+                    int GoodsNum = 0;
+                    OleDbDataAdapter dastock = new OleDbDataAdapter("SELECT 在庫数 FROM 在庫テーブル WHERE 商品ID='" + GoodsidTextBox.Text + "'", cn);
+                    DataTable dtstock = new DataTable();
+                    dastock.Fill(dtstock);
+                    GoodsNum = int.Parse(dtstock.Rows[0][0].ToString());
+
+                    if (GoodsNum - int.Parse(NumCombo.Text) >= 0)
+                    {
+                        dtstock.Clear();
+
                         cmd.Connection = cn;
+                        cmd.CommandText = "UPDATE 在庫テーブル SET 在庫数=(在庫数-" + int.Parse(NumCombo.Text) + ")WHERE 商品ID='" + GoodsidTextBox.Text + "'";
+                        cn.Open();
+                        cmd.ExecuteNonQuery();
+                        cn.Close();
 
-                        OleDbDataReader rd = cmd.ExecuteReader();
+                        ErrMsg.Visible = false;
+                        ErrMsg2.Visible = false;
 
-                        dt = CreateSchemaDataTable(rd);
-                        DataRow row = dt.NewRow();
+                        //データーグリットビューにデータの追加を許可
+                        OrderRegiDataGridview.AllowUserToAddRows = true;
 
-                        InGoodsid = GoodsidTextBox.Text;
-
-                        while (rd.Read())
+                        for (int i = 0; i < int.Parse(NumCombo.Text); i++)
                         {
-                            db_Goodsid = (string)rd.GetValue(0);
-                            db_Goodsname = (string)rd.GetValue(1);
-                            db_GoodsPrice = (int)rd.GetValue(2);
-                            if (db_Goodsid == InGoodsid)
+                            cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
+                            cn.Open();
+
+                            cmd.CommandText = "SELECT * FROM 商品マスタ";
+                            cmd.Connection = cn;
+
+                            OleDbDataReader rd = cmd.ExecuteReader();
+
+                            dt = CreateSchemaDataTable(rd);
+                            DataRow row = dt.NewRow();
+
+                            InGoodsid = GoodsidTextBox.Text;
+
+                            while (rd.Read())
                             {
-                                OrderRegiDataGridview.Rows.Add();
-                                OrderRegiDataGridview["GoodsId", cnt].Value = db_Goodsid;
-                                OrderRegiDataGridview["GoodsName", cnt].Value = db_Goodsname;
-                                OrderRegiDataGridview["GoodsPrice", cnt].Value = db_GoodsPrice;
-                                cnt++;
-                                sum += db_GoodsPrice;
+                                db_Goodsid = (string)rd.GetValue(0);
+                                db_Goodsname = (string)rd.GetValue(1);
+                                db_GoodsPrice = (int)rd.GetValue(2);
+                                if (db_Goodsid == InGoodsid)
+                                {
+                                    OrderRegiDataGridview.Rows.Add();
+                                    OrderRegiDataGridview["GoodsId", cnt].Value = db_Goodsid;
+                                    OrderRegiDataGridview["GoodsName", cnt].Value = db_Goodsname;
+                                    OrderRegiDataGridview["GoodsPrice", cnt].Value = db_GoodsPrice;
+                                    cnt++;
+                                    sum += db_GoodsPrice;
+                                }
+
                             }
 
+                            //合計金額を表示
+                            TotalLabel.Visible = true;
+                            TotalLabel.Text = string.Format("{0:#,###}円", sum + sum * Tax);
+
+                            cn.Close();
+                            //OrderRegiDataGridview.AutoResizeColumns();
                         }
+                        GoodsidTextBox.Text = "";
+                        NumCombo.SelectedIndex = 0;
 
-                        //合計金額を表示
-                        TotalLabel.Visible = true;
-                        TotalLabel.Text = string.Format("{0:#,###}円", sum + sum * Tax);
+                        //データーグリットビューにデータの追加を許可(空白行削除)
+                        OrderRegiDataGridview.AllowUserToAddRows = false;
 
-                        cn.Close();
-                        //OrderRegiDataGridview.AutoResizeColumns();
+                        GetDataTable();
                     }
-                    GoodsidTextBox.Text = "";
-                    NumCombo.SelectedIndex = 0;
-
-                    //データーグリットビューにデータの追加を許可(空白行削除)
-                    OrderRegiDataGridview.AllowUserToAddRows = false;
-
-                    GetDataTable();
+                    else
+                    {
+                        MessageBox.Show("在庫が不足しています", "OICSystem");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("在庫が不足しています", "OICSystem");
+                    ErrMsg.Visible = true;
+                    ErrMsg.Text = "※存在しない商品です";
                 }
             }
         }

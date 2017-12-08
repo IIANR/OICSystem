@@ -27,6 +27,7 @@ namespace WindowsFormsApplication1
 
         private void OrderMgtInfo_Load(object sender, EventArgs e)
         {
+            TotalLabel.Visible = true;
             //クリア
             dt.Clear();
             OrderInfoGritview.Columns.Clear();
@@ -63,6 +64,13 @@ namespace WindowsFormsApplication1
             OrderInfoGritview.DataSource = dt;
 
             OrderInfoGritview.AllowUserToAddRows = false;
+            OrderInfoGritview.Columns[0].ReadOnly = true;
+            OrderInfoGritview.Columns[1].ReadOnly = true;
+            OrderInfoGritview.Columns[2].ReadOnly = true;
+            OrderInfoGritview.Columns[3].ReadOnly = true;
+            OrderInfoGritview.Columns[4].ReadOnly = true;
+            OrderInfoGritview.Columns[5].ReadOnly = true;
+            OrderInfoGritview.Columns[6].ReadOnly = true;
         }
 
         private DataTable CreateSchemaDataTable(OleDbDataReader reader)
@@ -92,6 +100,8 @@ namespace WindowsFormsApplication1
 
         private void SearchBtn_Click(object sender, EventArgs e)
         {
+            TotalLabel.Visible = true;
+
             dt.Clear();
             OrderInfoGritview.Columns.Clear();
             OrderInfoGritview.DataSource = null;
@@ -106,11 +116,20 @@ namespace WindowsFormsApplication1
 
             KanaTextbox.Text = "";
 
-            OrderInfoGritview.Rows[0].Selected = true;
+            if (OrderInfoGritview.Rows.Count >= 1)
+            {
+                OrderInfoGritview.Rows[0].Selected = true;
+            }
+            else
+            {
+                TotalLabel.Visible = false;
+            }
         }
 
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
+            TotalLabel.Visible = true;
+
             for (int i = 0; i < OrderInfoGritview.Rows.Count; i++)
             {
                 cmd.Connection = cn;

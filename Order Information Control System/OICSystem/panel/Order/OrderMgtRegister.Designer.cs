@@ -249,6 +249,7 @@
             this.OrderRegiDataGridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.OrderRegiDataGridview.Location = new System.Drawing.Point(391, 46);
             this.OrderRegiDataGridview.Name = "OrderRegiDataGridview";
+            this.OrderRegiDataGridview.ReadOnly = true;
             this.OrderRegiDataGridview.RowTemplate.Height = 21;
             this.OrderRegiDataGridview.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.OrderRegiDataGridview.Size = new System.Drawing.Size(341, 229);
