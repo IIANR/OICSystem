@@ -37,7 +37,6 @@
             this.EmpNameLbl = new System.Windows.Forms.Label();
             this.EmpMgtLbl = new System.Windows.Forms.Label();
             this.EmpdataGridView = new System.Windows.Forms.DataGridView();
-            this.AuthorityCB = new System.Windows.Forms.CheckBox();
             this.EmpPassLbl = new System.Windows.Forms.Label();
             this.EmpPassTextB = new System.Windows.Forms.TextBox();
             this.BirthdayLbl = new System.Windows.Forms.Label();
@@ -56,14 +55,20 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.AddressLbl2 = new System.Windows.Forms.Label();
+            this.EmpAddress2TextB = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.NoAuthorityRB = new System.Windows.Forms.RadioButton();
+            this.YesAuthorityRB = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.EmpdataGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // AuthorityLbl
             // 
             this.AuthorityLbl.AutoSize = true;
-            this.AuthorityLbl.Location = new System.Drawing.Point(595, 495);
+            this.AuthorityLbl.Location = new System.Drawing.Point(-2, 13);
             this.AuthorityLbl.Name = "AuthorityLbl";
             this.AuthorityLbl.Size = new System.Drawing.Size(71, 12);
             this.AuthorityLbl.TabIndex = 61;
@@ -81,16 +86,16 @@
             // 
             // EmpIDTextB
             // 
-            this.EmpIDTextB.Location = new System.Drawing.Point(88, 402);
+            this.EmpIDTextB.Location = new System.Drawing.Point(89, 379);
             this.EmpIDTextB.Name = "EmpIDTextB";
             this.EmpIDTextB.Size = new System.Drawing.Size(117, 19);
             this.EmpIDTextB.TabIndex = 57;
             // 
             // EmpNameTextB
             // 
-            this.EmpNameTextB.Location = new System.Drawing.Point(448, 402);
+            this.EmpNameTextB.Location = new System.Drawing.Point(463, 379);
             this.EmpNameTextB.Name = "EmpNameTextB";
-            this.EmpNameTextB.Size = new System.Drawing.Size(120, 19);
+            this.EmpNameTextB.Size = new System.Drawing.Size(117, 19);
             this.EmpNameTextB.TabIndex = 56;
             // 
             // SearchB
@@ -106,7 +111,7 @@
             // EmpIDLbl
             // 
             this.EmpIDLbl.AutoSize = true;
-            this.EmpIDLbl.Location = new System.Drawing.Point(24, 405);
+            this.EmpIDLbl.Location = new System.Drawing.Point(25, 382);
             this.EmpIDLbl.Name = "EmpIDLbl";
             this.EmpIDLbl.Size = new System.Drawing.Size(58, 12);
             this.EmpIDLbl.TabIndex = 54;
@@ -115,7 +120,7 @@
             // EmpNameLbl
             // 
             this.EmpNameLbl.AutoSize = true;
-            this.EmpNameLbl.Location = new System.Drawing.Point(407, 405);
+            this.EmpNameLbl.Location = new System.Drawing.Point(422, 382);
             this.EmpNameLbl.Name = "EmpNameLbl";
             this.EmpNameLbl.Size = new System.Drawing.Size(35, 12);
             this.EmpNameLbl.TabIndex = 53;
@@ -140,19 +145,10 @@
             this.EmpdataGridView.Size = new System.Drawing.Size(723, 277);
             this.EmpdataGridView.TabIndex = 62;
             // 
-            // AuthorityCB
-            // 
-            this.AuthorityCB.AutoSize = true;
-            this.AuthorityCB.Location = new System.Drawing.Point(672, 495);
-            this.AuthorityCB.Name = "AuthorityCB";
-            this.AuthorityCB.Size = new System.Drawing.Size(15, 14);
-            this.AuthorityCB.TabIndex = 63;
-            this.AuthorityCB.UseVisualStyleBackColor = true;
-            // 
             // EmpPassLbl
             // 
             this.EmpPassLbl.AutoSize = true;
-            this.EmpPassLbl.Location = new System.Drawing.Point(212, 405);
+            this.EmpPassLbl.Location = new System.Drawing.Point(212, 382);
             this.EmpPassLbl.Name = "EmpPassLbl";
             this.EmpPassLbl.Size = new System.Drawing.Size(58, 12);
             this.EmpPassLbl.TabIndex = 64;
@@ -160,15 +156,15 @@
             // 
             // EmpPassTextB
             // 
-            this.EmpPassTextB.Location = new System.Drawing.Point(273, 402);
+            this.EmpPassTextB.Location = new System.Drawing.Point(276, 379);
             this.EmpPassTextB.Name = "EmpPassTextB";
-            this.EmpPassTextB.Size = new System.Drawing.Size(120, 19);
+            this.EmpPassTextB.Size = new System.Drawing.Size(117, 19);
             this.EmpPassTextB.TabIndex = 65;
             // 
             // BirthdayLbl
             // 
             this.BirthdayLbl.AutoSize = true;
-            this.BirthdayLbl.Location = new System.Drawing.Point(208, 475);
+            this.BirthdayLbl.Location = new System.Drawing.Point(398, 431);
             this.BirthdayLbl.Name = "BirthdayLbl";
             this.BirthdayLbl.Size = new System.Drawing.Size(59, 12);
             this.BirthdayLbl.TabIndex = 66;
@@ -176,9 +172,9 @@
             // 
             // BirthdayTextB
             // 
-            this.BirthdayTextB.Location = new System.Drawing.Point(273, 470);
+            this.BirthdayTextB.Location = new System.Drawing.Point(463, 428);
             this.BirthdayTextB.Name = "BirthdayTextB";
-            this.BirthdayTextB.Size = new System.Drawing.Size(120, 19);
+            this.BirthdayTextB.Size = new System.Drawing.Size(117, 19);
             this.BirthdayTextB.TabIndex = 67;
             // 
             // SexLbl
@@ -198,9 +194,9 @@
             this.ManRB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ManRB.Size = new System.Drawing.Size(35, 16);
             this.ManRB.TabIndex = 69;
-            this.ManRB.TabStop = true;
             this.ManRB.Text = "男";
             this.ManRB.UseVisualStyleBackColor = true;
+            this.ManRB.CheckedChanged += new System.EventHandler(this.ManRB_CheckedChanged);
             // 
             // WomanRB
             // 
@@ -210,14 +206,14 @@
             this.WomanRB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.WomanRB.Size = new System.Drawing.Size(35, 16);
             this.WomanRB.TabIndex = 70;
-            this.WomanRB.TabStop = true;
             this.WomanRB.Text = "女";
             this.WomanRB.UseVisualStyleBackColor = true;
+            this.WomanRB.CheckedChanged += new System.EventHandler(this.WomanRB_CheckedChanged);
             // 
             // HuriganaLbl
             // 
             this.HuriganaLbl.AutoSize = true;
-            this.HuriganaLbl.Location = new System.Drawing.Point(40, 440);
+            this.HuriganaLbl.Location = new System.Drawing.Point(41, 408);
             this.HuriganaLbl.Name = "HuriganaLbl";
             this.HuriganaLbl.Size = new System.Drawing.Size(42, 12);
             this.HuriganaLbl.TabIndex = 71;
@@ -225,7 +221,7 @@
             // 
             // HuriganaTextB
             // 
-            this.HuriganaTextB.Location = new System.Drawing.Point(88, 437);
+            this.HuriganaTextB.Location = new System.Drawing.Point(89, 405);
             this.HuriganaTextB.Name = "HuriganaTextB";
             this.HuriganaTextB.Size = new System.Drawing.Size(117, 19);
             this.HuriganaTextB.TabIndex = 72;
@@ -233,7 +229,7 @@
             // PostalNamLbl
             // 
             this.PostalNamLbl.AutoSize = true;
-            this.PostalNamLbl.Location = new System.Drawing.Point(211, 440);
+            this.PostalNamLbl.Location = new System.Drawing.Point(211, 408);
             this.PostalNamLbl.Name = "PostalNamLbl";
             this.PostalNamLbl.Size = new System.Drawing.Size(59, 12);
             this.PostalNamLbl.TabIndex = 73;
@@ -241,31 +237,31 @@
             // 
             // EmpPostTextB
             // 
-            this.EmpPostTextB.Location = new System.Drawing.Point(273, 437);
+            this.EmpPostTextB.Location = new System.Drawing.Point(276, 405);
             this.EmpPostTextB.Name = "EmpPostTextB";
-            this.EmpPostTextB.Size = new System.Drawing.Size(120, 19);
+            this.EmpPostTextB.Size = new System.Drawing.Size(117, 19);
             this.EmpPostTextB.TabIndex = 74;
             // 
             // AddressLbl
             // 
             this.AddressLbl.AutoSize = true;
-            this.AddressLbl.Location = new System.Drawing.Point(407, 440);
+            this.AddressLbl.Location = new System.Drawing.Point(422, 408);
             this.AddressLbl.Name = "AddressLbl";
-            this.AddressLbl.Size = new System.Drawing.Size(35, 12);
+            this.AddressLbl.Size = new System.Drawing.Size(41, 12);
             this.AddressLbl.TabIndex = 75;
-            this.AddressLbl.Text = "住所：";
+            this.AddressLbl.Text = "住所1：";
             // 
             // EmpAddressTextB
             // 
-            this.EmpAddressTextB.Location = new System.Drawing.Point(448, 437);
+            this.EmpAddressTextB.Location = new System.Drawing.Point(463, 405);
             this.EmpAddressTextB.Name = "EmpAddressTextB";
-            this.EmpAddressTextB.Size = new System.Drawing.Size(120, 19);
+            this.EmpAddressTextB.Size = new System.Drawing.Size(117, 19);
             this.EmpAddressTextB.TabIndex = 76;
             // 
             // EmpTelLbl
             // 
             this.EmpTelLbl.AutoSize = true;
-            this.EmpTelLbl.Location = new System.Drawing.Point(23, 475);
+            this.EmpTelLbl.Location = new System.Drawing.Point(211, 433);
             this.EmpTelLbl.Name = "EmpTelLbl";
             this.EmpTelLbl.Size = new System.Drawing.Size(59, 12);
             this.EmpTelLbl.TabIndex = 77;
@@ -273,7 +269,7 @@
             // 
             // EmpTelTextB
             // 
-            this.EmpTelTextB.Location = new System.Drawing.Point(88, 472);
+            this.EmpTelTextB.Location = new System.Drawing.Point(276, 430);
             this.EmpTelTextB.Name = "EmpTelTextB";
             this.EmpTelTextB.Size = new System.Drawing.Size(117, 19);
             this.EmpTelTextB.TabIndex = 78;
@@ -283,7 +279,7 @@
             this.groupBox1.Controls.Add(this.SexLbl);
             this.groupBox1.Controls.Add(this.ManRB);
             this.groupBox1.Controls.Add(this.WomanRB);
-            this.groupBox1.Location = new System.Drawing.Point(409, 462);
+            this.groupBox1.Location = new System.Drawing.Point(85, 459);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(121, 30);
             this.groupBox1.TabIndex = 79;
@@ -293,7 +289,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(40, 369);
+            this.label1.Location = new System.Drawing.Point(22, 357);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 12);
             this.label1.TabIndex = 80;
@@ -308,10 +304,65 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // AddressLbl2
+            // 
+            this.AddressLbl2.AutoSize = true;
+            this.AddressLbl2.Location = new System.Drawing.Point(42, 433);
+            this.AddressLbl2.Name = "AddressLbl2";
+            this.AddressLbl2.Size = new System.Drawing.Size(41, 12);
+            this.AddressLbl2.TabIndex = 82;
+            this.AddressLbl2.Text = "住所2：";
+            // 
+            // EmpAddress2TextB
+            // 
+            this.EmpAddress2TextB.Location = new System.Drawing.Point(89, 430);
+            this.EmpAddress2TextB.Name = "EmpAddress2TextB";
+            this.EmpAddress2TextB.Size = new System.Drawing.Size(117, 19);
+            this.EmpAddress2TextB.TabIndex = 83;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.NoAuthorityRB);
+            this.groupBox2.Controls.Add(this.YesAuthorityRB);
+            this.groupBox2.Controls.Add(this.AuthorityLbl);
+            this.groupBox2.Location = new System.Drawing.Point(214, 459);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(158, 30);
+            this.groupBox2.TabIndex = 84;
+            this.groupBox2.TabStop = false;
+            // 
+            // NoAuthorityRB
+            // 
+            this.NoAuthorityRB.AutoSize = true;
+            this.NoAuthorityRB.Location = new System.Drawing.Point(116, 11);
+            this.NoAuthorityRB.Name = "NoAuthorityRB";
+            this.NoAuthorityRB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.NoAuthorityRB.Size = new System.Drawing.Size(35, 16);
+            this.NoAuthorityRB.TabIndex = 63;
+            this.NoAuthorityRB.TabStop = true;
+            this.NoAuthorityRB.Text = "無";
+            this.NoAuthorityRB.UseVisualStyleBackColor = true;
+            this.NoAuthorityRB.CheckedChanged += new System.EventHandler(this.NoAuthorityRB_CheckedChanged);
+            // 
+            // YesAuthorityRB
+            // 
+            this.YesAuthorityRB.AutoSize = true;
+            this.YesAuthorityRB.Location = new System.Drawing.Point(75, 11);
+            this.YesAuthorityRB.Name = "YesAuthorityRB";
+            this.YesAuthorityRB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.YesAuthorityRB.Size = new System.Drawing.Size(35, 16);
+            this.YesAuthorityRB.TabIndex = 62;
+            this.YesAuthorityRB.Text = "有";
+            this.YesAuthorityRB.UseVisualStyleBackColor = true;
+            this.YesAuthorityRB.CheckedChanged += new System.EventHandler(this.YesAuthorityRB_CheckedChanged);
+            // 
             // EmpMgt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.EmpAddress2TextB);
+            this.Controls.Add(this.AddressLbl2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
@@ -327,9 +378,7 @@
             this.Controls.Add(this.BirthdayLbl);
             this.Controls.Add(this.EmpPassTextB);
             this.Controls.Add(this.EmpPassLbl);
-            this.Controls.Add(this.AuthorityCB);
             this.Controls.Add(this.EmpdataGridView);
-            this.Controls.Add(this.AuthorityLbl);
             this.Controls.Add(this.RegistrationB);
             this.Controls.Add(this.EmpIDTextB);
             this.Controls.Add(this.EmpNameTextB);
@@ -343,6 +392,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.EmpdataGridView)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -359,7 +410,6 @@
         private System.Windows.Forms.Label EmpNameLbl;
         private System.Windows.Forms.Label EmpMgtLbl;
         private System.Windows.Forms.DataGridView EmpdataGridView;
-        private System.Windows.Forms.CheckBox AuthorityCB;
         private System.Windows.Forms.Label EmpPassLbl;
         private System.Windows.Forms.TextBox EmpPassTextB;
         private System.Windows.Forms.Label BirthdayLbl;
@@ -378,5 +428,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label AddressLbl2;
+        private System.Windows.Forms.TextBox EmpAddress2TextB;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton NoAuthorityRB;
+        private System.Windows.Forms.RadioButton YesAuthorityRB;
     }
 }
