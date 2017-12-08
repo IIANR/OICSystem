@@ -68,6 +68,7 @@
             this.TelTextbox.Name = "TelTextbox";
             this.TelTextbox.Size = new System.Drawing.Size(186, 19);
             this.TelTextbox.TabIndex = 8;
+            this.TelTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TelTextbox_KeyPress);
             // 
             // AddressTextbox1
             // 
@@ -93,7 +94,7 @@
             // 
             // OrderCompBtn
             // 
-            this.OrderCompBtn.Location = new System.Drawing.Point(630, 341);
+            this.OrderCompBtn.Location = new System.Drawing.Point(629, 341);
             this.OrderCompBtn.Name = "OrderCompBtn";
             this.OrderCompBtn.Size = new System.Drawing.Size(102, 40);
             this.OrderCompBtn.TabIndex = 43;
@@ -158,7 +159,7 @@
             // OrderGoodsLabel
             // 
             this.OrderGoodsLabel.AutoSize = true;
-            this.OrderGoodsLabel.Location = new System.Drawing.Point(36, 53);
+            this.OrderGoodsLabel.Location = new System.Drawing.Point(36, 46);
             this.OrderGoodsLabel.Name = "OrderGoodsLabel";
             this.OrderGoodsLabel.Size = new System.Drawing.Size(53, 12);
             this.OrderGoodsLabel.TabIndex = 35;
@@ -184,7 +185,7 @@
             // 
             // AddBtn
             // 
-            this.AddBtn.Location = new System.Drawing.Point(390, 341);
+            this.AddBtn.Location = new System.Drawing.Point(391, 341);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(102, 40);
             this.AddBtn.TabIndex = 52;
@@ -245,10 +246,11 @@
             // OrderRegiDataGridview
             // 
             this.OrderRegiDataGridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.OrderRegiDataGridview.Location = new System.Drawing.Point(390, 53);
+            this.OrderRegiDataGridview.Location = new System.Drawing.Point(391, 46);
             this.OrderRegiDataGridview.Name = "OrderRegiDataGridview";
             this.OrderRegiDataGridview.RowTemplate.Height = 21;
-            this.OrderRegiDataGridview.Size = new System.Drawing.Size(342, 222);
+            this.OrderRegiDataGridview.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.OrderRegiDataGridview.Size = new System.Drawing.Size(341, 229);
             this.OrderRegiDataGridview.TabIndex = 62;
             // 
             // NumCombo
@@ -271,7 +273,7 @@
             // ErrMsg
             // 
             this.ErrMsg.ForeColor = System.Drawing.Color.Red;
-            this.ErrMsg.Location = new System.Drawing.Point(113, 53);
+            this.ErrMsg.Location = new System.Drawing.Point(113, 46);
             this.ErrMsg.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.ErrMsg.Name = "ErrMsg";
             this.ErrMsg.Size = new System.Drawing.Size(182, 18);
