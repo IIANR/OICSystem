@@ -63,30 +63,29 @@ namespace WindowsFormsApplication1
         private void EmpMgt_Load(object sender, EventArgs e)
         {
             dataload(0);
-
+            BirthdayTextB.Mask = "0000年90月90日";
         }
 
         private void RegistrationB_Click(object sender, EventArgs e)
         {
+            //現在の日付
+            DateTime dtNow = DateTime.Now;
+
             if (MessageBox.Show(EmpNameTextB.Text + "のデータを登録してもよろしいですか", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 return;
             }
             cmd.Connection = cn;
-            cmd.CommandText = "INSERT INTO 従業員マスタ (従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限)" +
-                " VALUES (@empid,@pass,@name,@assistname,@sex,@post,@addres,@address2,@tel,@birthday,@day,@authority)";
-            OleDbParameter prid = new OleDbParameter("@empid", int.Parse(EmpIDTextB.Text));
-            cmd.Parameters.Add(prid);
-            OleDbParameter prpass = new OleDbParameter("@pass", EmpPassTextB.Text);
-            cmd.Parameters.Add(prpass);
+            cmd.CommandText = "INSERT INTO 従業員マスタ (従業員ID,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限,パスワード)" +
+                " VALUES (@empid,@name,@assistname,@sex,@post,@addres,@address2,@tel,@birthday,@day,@authority,@pass)";
+            OleDbParameter prempid = new OleDbParameter("@empid", int.Parse(EmpIDTextB.Text));
+            cmd.Parameters.Add(prempid);          
             OleDbParameter prname = new OleDbParameter("@name", EmpNameTextB.Text);
             cmd.Parameters.Add(prname);
             OleDbParameter prassistname = new OleDbParameter("@assistname", HuriganaTextB.Text);
             cmd.Parameters.Add(prassistname);
-            OleDbParameter prman = new OleDbParameter("@sex", ManRB.Text);
-            cmd.Parameters.Add(prman);
-            OleDbParameter prwoman = new OleDbParameter("@sex", WomanRB.Text);
-            cmd.Parameters.Add(prwoman);
+            OleDbParameter prsex = new OleDbParameter("@sex", tsex.ToString());
+            cmd.Parameters.Add(prsex);
             OleDbParameter prpost = new OleDbParameter("@post", EmpPostTextB.Text);
             cmd.Parameters.Add(prpost);
             OleDbParameter praddres = new OleDbParameter("@addres", EmpAddressTextB.Text);
@@ -97,12 +96,12 @@ namespace WindowsFormsApplication1
             cmd.Parameters.Add(prtel);
             OleDbParameter prbirthday = new OleDbParameter("@birthday", BirthdayTextB.Text);
             cmd.Parameters.Add(prbirthday);
-            OleDbParameter prday = new OleDbParameter("@day", DateTime.Today);
+            OleDbParameter prday = new OleDbParameter("@day", dtNow.ToString("MM/dd"));
             cmd.Parameters.Add(prday);
-            OleDbParameter pryauthority = new OleDbParameter("@authority", YesAuthorityRB.Checked);
-            cmd.Parameters.Add(pryauthority);
-            OleDbParameter prnauthority = new OleDbParameter("@authority", NoAuthorityRB.Checked);
-            cmd.Parameters.Add(prnauthority);
+            OleDbParameter prauthority = new OleDbParameter("@authority", tAuthority);
+            cmd.Parameters.Add(prauthority);
+            OleDbParameter prpass = new OleDbParameter("@pass", EmpPassTextB.Text);
+            cmd.Parameters.Add(prpass);
 
             try
             {

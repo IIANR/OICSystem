@@ -40,7 +40,6 @@
             this.EmpPassLbl = new System.Windows.Forms.Label();
             this.EmpPassTextB = new System.Windows.Forms.TextBox();
             this.BirthdayLbl = new System.Windows.Forms.Label();
-            this.BirthdayTextB = new System.Windows.Forms.TextBox();
             this.SexLbl = new System.Windows.Forms.Label();
             this.ManRB = new System.Windows.Forms.RadioButton();
             this.WomanRB = new System.Windows.Forms.RadioButton();
@@ -60,6 +59,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.NoAuthorityRB = new System.Windows.Forms.RadioButton();
             this.YesAuthorityRB = new System.Windows.Forms.RadioButton();
+            this.BirthdayTextB = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.EmpdataGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -169,13 +169,6 @@
             this.BirthdayLbl.Size = new System.Drawing.Size(59, 12);
             this.BirthdayLbl.TabIndex = 66;
             this.BirthdayLbl.Text = "生年月日：";
-            // 
-            // BirthdayTextB
-            // 
-            this.BirthdayTextB.Location = new System.Drawing.Point(463, 428);
-            this.BirthdayTextB.Name = "BirthdayTextB";
-            this.BirthdayTextB.Size = new System.Drawing.Size(117, 19);
-            this.BirthdayTextB.TabIndex = 67;
             // 
             // SexLbl
             // 
@@ -356,10 +349,18 @@
             this.YesAuthorityRB.UseVisualStyleBackColor = true;
             this.YesAuthorityRB.CheckedChanged += new System.EventHandler(this.YesAuthorityRB_CheckedChanged);
             // 
+            // BirthdayTextB
+            // 
+            this.BirthdayTextB.Location = new System.Drawing.Point(463, 428);
+            this.BirthdayTextB.Name = "BirthdayTextB";
+            this.BirthdayTextB.Size = new System.Drawing.Size(117, 19);
+            this.BirthdayTextB.TabIndex = 85;
+            // 
             // EmpMgt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.BirthdayTextB);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.EmpAddress2TextB);
             this.Controls.Add(this.AddressLbl2);
@@ -374,7 +375,6 @@
             this.Controls.Add(this.PostalNamLbl);
             this.Controls.Add(this.HuriganaTextB);
             this.Controls.Add(this.HuriganaLbl);
-            this.Controls.Add(this.BirthdayTextB);
             this.Controls.Add(this.BirthdayLbl);
             this.Controls.Add(this.EmpPassTextB);
             this.Controls.Add(this.EmpPassLbl);
@@ -413,7 +413,6 @@
         private System.Windows.Forms.Label EmpPassLbl;
         private System.Windows.Forms.TextBox EmpPassTextB;
         private System.Windows.Forms.Label BirthdayLbl;
-        private System.Windows.Forms.TextBox BirthdayTextB;
         private System.Windows.Forms.Label SexLbl;
         private System.Windows.Forms.RadioButton ManRB;
         private System.Windows.Forms.RadioButton WomanRB;
@@ -433,5 +432,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton NoAuthorityRB;
         private System.Windows.Forms.RadioButton YesAuthorityRB;
+        private System.Windows.Forms.MaskedTextBox BirthdayTextB;
     }
 }
