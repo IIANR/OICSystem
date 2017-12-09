@@ -44,7 +44,7 @@
             this.SearchBtn.Location = new System.Drawing.Point(397, 370);
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(109, 37);
-            this.SearchBtn.TabIndex = 46;
+            this.SearchBtn.TabIndex = 2;
             this.SearchBtn.Text = "検索";
             this.SearchBtn.UseVisualStyleBackColor = true;
             this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
@@ -54,14 +54,14 @@
             this.KanaTextbox.Location = new System.Drawing.Point(74, 379);
             this.KanaTextbox.Name = "KanaTextbox";
             this.KanaTextbox.Size = new System.Drawing.Size(117, 19);
-            this.KanaTextbox.TabIndex = 42;
+            this.KanaTextbox.TabIndex = 1;
             // 
             // DeleteBtn
             // 
             this.DeleteBtn.Location = new System.Drawing.Point(637, 370);
             this.DeleteBtn.Name = "DeleteBtn";
             this.DeleteBtn.Size = new System.Drawing.Size(109, 37);
-            this.DeleteBtn.TabIndex = 40;
+            this.DeleteBtn.TabIndex = 4;
             this.DeleteBtn.Text = "注文取消";
             this.DeleteBtn.UseVisualStyleBackColor = true;
             this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
@@ -84,15 +84,15 @@
             this.OrderInfoGritview.RowTemplate.Height = 21;
             this.OrderInfoGritview.Size = new System.Drawing.Size(732, 334);
             this.OrderInfoGritview.TabIndex = 47;
-            this.OrderInfoGritview.SelectionChanged += new System.EventHandler(this.OrderInfoGritview_SelectionChanged);
+            this.OrderInfoGritview.Click += new System.EventHandler(this.OrderInfoGritview_Click);
             // 
             // UpdateBtn
             // 
             this.UpdateBtn.Location = new System.Drawing.Point(517, 370);
             this.UpdateBtn.Name = "UpdateBtn";
             this.UpdateBtn.Size = new System.Drawing.Size(109, 37);
-            this.UpdateBtn.TabIndex = 48;
-            this.UpdateBtn.Text = "更新";
+            this.UpdateBtn.TabIndex = 3;
+            this.UpdateBtn.Text = "入金済み列更新";
             this.UpdateBtn.UseVisualStyleBackColor = true;
             this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
             // 

@@ -119,6 +119,49 @@ namespace WindowsFormsApplication1
             if (OrderInfoGritview.Rows.Count >= 1)
             {
                 OrderInfoGritview.Rows[0].Selected = true;
+
+                int sum = 0;
+                //string db_Goodsid = "";
+                //int db_GoodsPrice = 0;
+                string GoodsId = "";
+                string[] GoodsIdArray = new string[] { };
+
+                GoodsId = (string)OrderInfoGritview.CurrentRow.Cells[2].Value;
+                GoodsIdArray = GoodsId.Split(',');
+
+                for (int i = 0; i < GoodsIdArray.Length; i++)
+                {
+                    OleDbDataAdapter daprice = new OleDbDataAdapter("SELECT 単価 FROM 商品マスタ WHERE 商品ID='" + GoodsIdArray[i] + "'", cn);
+                    DataTable dtprice = new DataTable();
+                    daprice.Fill(dtprice);
+                    sum += int.Parse(dtprice.Rows[0][0].ToString());
+                    dtprice.Clear();
+
+
+                    //cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
+                    //cn.Open();
+
+                    //cmd.CommandText = "SELECT 商品ID,商品名,単価 FROM 商品マスタ";
+                    //cmd.Connection = cn;
+
+                    //OleDbDataReader rd = cmd.ExecuteReader();
+
+                    //dt = CreateSchemaDataTable(rd);
+                    //DataRow row = dt.NewRow();
+
+                    //while (rd.Read())
+                    //{
+                    //    db_Goodsid = (string)rd.GetValue(0);
+                    //    db_GoodsPrice = (int)rd.GetValue(2);
+                    //    if (db_Goodsid == GoodsIdArray[i])
+                    //    {
+                    //        sum += db_GoodsPrice;
+                    //    }
+                    //}
+                }
+                //cn.Close();
+
+                TotalLabel.Text = string.Format("{0:#,###}円", sum + sum * Tax);
             }
             else
             {
@@ -185,43 +228,53 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void OrderInfoGritview_SelectionChanged(object sender, EventArgs e)
+       
+
+        private void OrderInfoGritview_Click(object sender, EventArgs e)
         {
             int sum = 0;
-            string db_Goodsid = "";
-            int db_GoodsPrice = 0;
+            //string db_Goodsid = "";
+            //int db_GoodsPrice = 0;
+            string GoodsId = "";
+            string[] GoodsIdArray = new string[] { };
 
-            string GoodsId = (string)OrderInfoGritview.CurrentRow.Cells[2].Value;
-            string[] GoodsIdArray = GoodsId.Split(',');
+            GoodsId = (string)OrderInfoGritview.CurrentRow.Cells[2].Value;
+            GoodsIdArray = GoodsId.Split(',');
 
             for (int i = 0; i < GoodsIdArray.Length; i++)
             {
-                cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-                cn.Open();
+                OleDbDataAdapter daprice = new OleDbDataAdapter("SELECT 単価 FROM 商品マスタ WHERE 商品ID='" + GoodsIdArray[i] + "'", cn);
+                DataTable dtprice = new DataTable();
+                daprice.Fill(dtprice);
+                sum += int.Parse(dtprice.Rows[0][0].ToString());
+                dtprice.Clear();
 
-                cmd.CommandText = "SELECT * FROM 商品マスタ";
-                cmd.Connection = cn;
 
-                OleDbDataReader rd = cmd.ExecuteReader();
+                //cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
+                //cn.Open();
 
-                dt = CreateSchemaDataTable(rd);
-                DataRow row = dt.NewRow();
+                //cmd.CommandText = "SELECT 商品ID,商品名,単価 FROM 商品マスタ";
+                //cmd.Connection = cn;
 
-                while (rd.Read())
-                {
-                    db_Goodsid = (string)rd.GetValue(0);
-                    db_GoodsPrice = (int)rd.GetValue(2);
-                    if (db_Goodsid == GoodsIdArray[i])
-                    {
-                        sum += db_GoodsPrice;
-                    }
+                //OleDbDataReader rd = cmd.ExecuteReader();
 
-                }
+                //dt = CreateSchemaDataTable(rd);
+                //DataRow row = dt.NewRow();
+
+                //while (rd.Read())
+                //{
+                //    db_Goodsid = (string)rd.GetValue(0);
+                //    db_GoodsPrice = (int)rd.GetValue(2);
+                //    if (db_Goodsid == GoodsIdArray[i])
+                //    {
+                //        sum += db_GoodsPrice;
+                //    }
+                //}
             }
-            cn.Close();
-
+            //cn.Close();
 
             TotalLabel.Text = string.Format("{0:#,###}円", sum + sum * Tax);
+
         }
     }
 }
