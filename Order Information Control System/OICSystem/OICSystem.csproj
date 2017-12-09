@@ -50,6 +50,18 @@
     <Compile Include="panel\Emp\EmpMgt.Designer.cs">
       <DependentUpon>EmpMgt.cs</DependentUpon>
     </Compile>
+    <Compile Include="panel\Emp\EmpMgtinfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="panel\Emp\EmpMgtinfo.Designer.cs">
+      <DependentUpon>EmpMgtinfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="panel\Emp\EmpMgtHome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="panel\Emp\EmpMgtHome.Designer.cs">
+      <DependentUpon>EmpMgtHome.cs</DependentUpon>
+    </Compile>
     <Compile Include="panel\Goods\GoodsList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -126,6 +138,12 @@
     </Compile>
     <EmbeddedResource Include="panel\Emp\EmpMgt.resx">
       <DependentUpon>EmpMgt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="panel\Emp\EmpMgtinfo.resx">
+      <DependentUpon>EmpMgtinfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="panel\Emp\EmpMgtHome.resx">
+      <DependentUpon>EmpMgtHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="panel\Goods\GoodsList.resx">
       <DependentUpon>GoodsList.cs</DependentUpon>

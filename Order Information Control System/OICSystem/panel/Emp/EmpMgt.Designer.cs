@@ -238,7 +238,7 @@
             // AddressLbl
             // 
             this.AddressLbl.AutoSize = true;
-            this.AddressLbl.Location = new System.Drawing.Point(422, 408);
+            this.AddressLbl.Location = new System.Drawing.Point(416, 408);
             this.AddressLbl.Name = "AddressLbl";
             this.AddressLbl.Size = new System.Drawing.Size(41, 12);
             this.AddressLbl.TabIndex = 75;
