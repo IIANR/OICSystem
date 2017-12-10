@@ -18,7 +18,7 @@ namespace WindowsFormsApplication1
         public static IOMgt io;
         public static GoodsMgt goods;
         public static MemberMgt member;
-        public static EmpMgt emp;
+        public static EmpMgtHome emp;
         public static SalMgt sal;
 
         public SystmTop()
@@ -29,7 +29,7 @@ namespace WindowsFormsApplication1
             io = new IOMgt();
             goods = new GoodsMgt();
             member = new MemberMgt();
-            emp = new EmpMgt();
+            emp = new EmpMgtHome();
             sal = new SalMgt();
 
             ctrPanel.Controls.Add(order);

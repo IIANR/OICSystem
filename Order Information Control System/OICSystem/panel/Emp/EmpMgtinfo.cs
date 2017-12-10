@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApplication1.panel.Emp
+namespace WindowsFormsApplication1
 {
-    public partial class EmpMgtinfo : UserControl
+    public partial class EmpMgtInfo : UserControl
     {
-        public EmpMgtinfo()
+        public EmpMgtInfo()
         {
             InitializeComponent();
         }
