@@ -42,7 +42,7 @@ namespace WindowsFormsApplication1
         {
             //注文テーブルから注文日,商品ID,入金済みを注文日順に取り出す
             OleDbConnection cn = new OleDbConnection("Provider=microsoft.ace.oledb.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-            OleDbDataAdapter da = new OleDbDataAdapter("SELECT 注文日,商品ID FROM 注文テーブル WHERE 注文日 Between #2017/10/24# and #2017/12/24# AND 入金済み in (true) ORDER BY 注文日", cn);
+            OleDbDataAdapter da = new OleDbDataAdapter("SELECT 注文日,商品ID FROM 注文テーブル WHERE 入金済み in (true) ORDER BY 注文日", cn);
             DataTable dt = new DataTable();
             da.Fill(dt);
 
@@ -59,10 +59,12 @@ namespace WindowsFormsApplication1
                 dtRow = order.NewRow();
                 dtRow["注文日"] = dt.Rows[i][0]; 　　　　 //DBから取得したdtの注文日を示す行の行番号と列番号
                 //dtRow["商品ID"] = dt.Rows[i][1];          //DBから取得したdtの商品IDを示す行の行番号と列番号
-				ordercode+= ","+dt.Rows[i][1];
+				ordercode+=dt.Rows[i][1];
 				order.Rows.Add(dtRow);
             }
-            return dt;    //データテーブルを返す
+			
+			Msg.Text = ordercode;
+			return dt;    //データテーブルを返す
         }
 
         protected  DataTable GetDataGoods()
@@ -193,6 +195,147 @@ namespace WindowsFormsApplication1
 			oda.Fill(ds);
 
 			dataGridView1.DataSource = ds.Tables[0];
+		}
+
+		private void Monthlybtn_Click(object sender, EventArgs e)
+		{
+			DataTable order = GetDataOrder();
+			DataTable goods = GetDataGoods();
+			DataSet sal = new DataSet();
+	
+			DataTable count = new DataTable("ordercount");
+			// 列を追加します。
+			count.Columns.Add("商品ID");
+
+			sal.Tables.Add(count);
+			sal.Tables.Add(goods);
+
+			DataRow dr = sal.Tables["ordercount"].NewRow();
+
+			for (int i = 0; i < ordercode.Length; i++)
+			{
+				if (ordercode.Substring(i, 1) != ",")
+				{
+					dr["商品ID"] =ordercode.Substring(i, 1);
+				}
+			}
+			
+			sal.Relations.Add("tamagoyaki", goods.Columns["商品ID"], count.Columns["商品ID"]);
+
+			dataGridView1.DataSource = sal;
+			dataGridView1.DataMember = "goods";
+			//sal.Relations.Add("ordergoods",
+			//sal.Tables["注文テーブル"].Columns["商品ID"],
+			//sal.Tables["商品マスタ"].Columns["商品ID"]);
+		}
+
+		private void radioButton2_Click(object sender, EventArgs e)
+		{
+			DataSet ds = new DataSet();
+			DataTable dt = ds.Tables.Add("Computer");
+			DataRow dr;
+
+			dt.Columns.Add("メーカー");
+			dt.Columns.Add("パソコン名");
+
+			dr = dt.NewRow();
+			dr["メーカー"] = "NEC";
+			dr["パソコン名"] = "ValueStar";
+			dt.Rows.Add(dr);
+
+			dr = dt.NewRow();
+			dr["メーカー"] = "SONY";
+			dr["パソコン名"] = "VAIO";
+			dt.Rows.Add(dr);
+
+			dr = dt.NewRow();
+			dr["メーカー"] = "DELL";
+			dr["パソコン名"] = "Precision";
+			dt.Rows.Add(dr);
+
+			dataGridView1.DataSource = ds;
+			dataGridView1.DataMember = "Computer";
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			DataTable order = GetDataOrder();
+			//DataTable goods = GetDataGoods();
+			DataSet sal = new DataSet();
+
+			var count = new List<int>();
+
+			//Goodsテーブルから商品ID,商品名,単価を商品ID順に取り出す
+			OleDbConnection cn = new OleDbConnection("Provider=microsoft.ace.oledb.12.0;" + @"Data Source=.\DB\IM2.accdb;");
+			OleDbDataAdapter da = new OleDbDataAdapter("SELECT 商品ID,商品名,単価 FROM 商品マスタ ORDER BY 商品ID", cn);
+			DataTable dt = new DataTable();
+			da.Fill(dt);
+
+			DataTable goods = sal.Tables.Add("goods");
+			DataRow dtRow;
+
+
+			goods.Columns.Add("商品ID", Type.GetType("System.String"));
+			goods.Columns.Add("商品名", Type.GetType("System.String"));
+			goods.Columns.Add("単価", Type.GetType("System.Double"));
+			
+			for (int i = 0; i < dt.Rows.Count; i++)
+			{
+				dtRow = goods.NewRow();
+				count.Add(i);
+				dtRow["商品ID"] = dt.Rows[i][0];      //DBから取得したdtの商品IDを示す行の行番号と列番号
+				dtRow["商品名"] = dt.Rows[i][1];  //DBから取得したdtの商品名を示す行の行番号と列番号
+				dtRow["単価"] = dt.Rows[i][2];        //DBから取得したdtの単価を示す行の行番号と列番号   
+				goods.Rows.Add(dtRow);
+			}
+			//配列countの初期化
+			for (int i = 0; i < count.Count; i++)
+			{
+				count[i] = 0;
+			}
+			//数量計算
+			for (int i = 0; i < ordercode.Length; i++)
+			{
+				if (ordercode.Substring(i, 1) != ",")
+				{
+					count[int.Parse(ordercode.Substring(i, 1))-1] += 1;
+				}
+			}
+
+			Console.WriteLine(count[0]);
+			Console.WriteLine(count[1]);
+			Console.WriteLine(count[2]);
+			Console.WriteLine(count[3]);
+			Console.WriteLine(count[4]);
+			string DS2;
+			DS2 = DateSet2.Value.ToString("yyyy/MM/dd");
+			Console.WriteLine(DS2);
+
+			
+
+			goods.Columns.Add("数量", Type.GetType("System.Double"));
+
+			for (int i = 0; i < dt.Rows.Count; i++)
+			{
+				dtRow = goods.NewRow();
+				dtRow["数量"] = count[i];
+				goods.Rows.Add(dtRow);
+			}
+
+			dataGridView1.DataSource = sal;
+			dataGridView1.DataMember = "goods";
+
+			Console.WriteLine(count[0]);
+			Console.WriteLine(count[1]);
+			Console.WriteLine(count[2]);
+			Console.WriteLine(count[3]);
+			Console.WriteLine(count[4]);
+
+		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

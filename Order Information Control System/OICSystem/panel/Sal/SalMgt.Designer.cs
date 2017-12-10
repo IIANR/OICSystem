@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-			System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-			System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+			System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+			System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
 			this.label1 = new System.Windows.Forms.Label();
 			this.listBox1 = new System.Windows.Forms.ListBox();
 			this.DateSelect = new System.Windows.Forms.Button();
@@ -51,6 +51,8 @@
 			this.label7 = new System.Windows.Forms.Label();
 			this.DateStart = new System.Windows.Forms.MaskedTextBox();
 			this.DateEnd = new System.Windows.Forms.MaskedTextBox();
+			this.button1 = new System.Windows.Forms.Button();
+			this.button2 = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.注文テーブルBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.iM2DataSet)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -93,6 +95,7 @@
 			this.Monthlybtn.TabIndex = 51;
 			this.Monthlybtn.Text = "月別";
 			this.Monthlybtn.UseVisualStyleBackColor = true;
+			this.Monthlybtn.Click += new System.EventHandler(this.Monthlybtn_Click);
 			// 
 			// button5
 			// 
@@ -166,17 +169,17 @@
 			// 
 			// chart1
 			// 
-			chartArea2.Name = "ChartArea1";
-			this.chart1.ChartAreas.Add(chartArea2);
-			legend2.Name = "Legend1";
-			this.chart1.Legends.Add(legend2);
+			chartArea7.Name = "ChartArea1";
+			this.chart1.ChartAreas.Add(chartArea7);
+			legend7.Name = "Legend1";
+			this.chart1.Legends.Add(legend7);
 			this.chart1.Location = new System.Drawing.Point(44, 203);
 			this.chart1.Name = "chart1";
-			series2.ChartArea = "ChartArea1";
-			series2.IsValueShownAsLabel = true;
-			series2.Legend = "Legend1";
-			series2.Name = "Series1";
-			this.chart1.Series.Add(series2);
+			series7.ChartArea = "ChartArea1";
+			series7.IsValueShownAsLabel = true;
+			series7.Legend = "Legend1";
+			series7.Name = "Series1";
+			this.chart1.Series.Add(series7);
 			this.chart1.Size = new System.Drawing.Size(381, 189);
 			this.chart1.TabIndex = 64;
 			this.chart1.Text = "chart1";
@@ -192,6 +195,7 @@
 			this.radioButton2.Text = "radioButton2";
 			this.radioButton2.UseVisualStyleBackColor = true;
 			this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+			this.radioButton2.Click += new System.EventHandler(this.radioButton2_Click);
 			// 
 			// dataGridView1
 			// 
@@ -229,10 +233,32 @@
 			this.DateEnd.TabIndex = 87;
 			this.DateEnd.ValidatingType = typeof(System.DateTime);
 			// 
+			// button1
+			// 
+			this.button1.Location = new System.Drawing.Point(285, 425);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(75, 23);
+			this.button1.TabIndex = 88;
+			this.button1.Text = "button1";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
+			// button2
+			// 
+			this.button2.Location = new System.Drawing.Point(134, 453);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(75, 23);
+			this.button2.TabIndex = 89;
+			this.button2.Text = "button2";
+			this.button2.UseVisualStyleBackColor = true;
+			this.button2.Click += new System.EventHandler(this.button2_Click);
+			// 
 			// SalMgt
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.button2);
+			this.Controls.Add(this.button1);
 			this.Controls.Add(this.DateEnd);
 			this.Controls.Add(this.DateStart);
 			this.Controls.Add(this.label7);
@@ -281,5 +307,7 @@
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.MaskedTextBox DateStart;
 		private System.Windows.Forms.MaskedTextBox DateEnd;
+		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button button2;
 	}
 }
