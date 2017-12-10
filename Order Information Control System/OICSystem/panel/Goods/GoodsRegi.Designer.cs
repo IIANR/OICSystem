@@ -41,6 +41,9 @@
             this.textBbikou = new System.Windows.Forms.TextBox();
             this.textBnumber = new System.Windows.Forms.TextBox();
             this.comboBcate = new System.Windows.Forms.ComboBox();
+            this.カテゴリマスタ商品マスタBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.カテゴリマスタBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.iM2DataSet = new WindowsFormsApplication1.IM2DataSet();
             this.UpdateBtn = new System.Windows.Forms.Button();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.panel = new System.Windows.Forms.Panel();
@@ -57,116 +60,127 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.VersionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.iM2DataSet = new WindowsFormsApplication1.IM2DataSet();
-            this.カテゴリマスタBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.カテゴリマスタTableAdapter = new WindowsFormsApplication1.IM2DataSetTableAdapters.カテゴリマスタTableAdapter();
-            this.カテゴリマスタ商品マスタBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.商品マスタTableAdapter = new WindowsFormsApplication1.IM2DataSetTableAdapters.商品マスタTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.カテゴリマスタ商品マスタBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.カテゴリマスタBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iM2DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iM2DataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.カテゴリマスタBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.カテゴリマスタ商品マスタBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // goodsRegiId
             // 
             this.goodsRegiId.AutoSize = true;
-            this.goodsRegiId.Location = new System.Drawing.Point(86, 45);
+            this.goodsRegiId.Location = new System.Drawing.Point(58, 45);
             this.goodsRegiId.Name = "goodsRegiId";
-            this.goodsRegiId.Size = new System.Drawing.Size(18, 12);
+            this.goodsRegiId.Size = new System.Drawing.Size(42, 12);
             this.goodsRegiId.TabIndex = 0;
-            this.goodsRegiId.Text = "ID:";
+            this.goodsRegiId.Text = "商品ID:";
             this.goodsRegiId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // goodsRegiName
             // 
             this.goodsRegiName.AutoSize = true;
-            this.goodsRegiName.Location = new System.Drawing.Point(79, 83);
+            this.goodsRegiName.Location = new System.Drawing.Point(57, 83);
             this.goodsRegiName.Name = "goodsRegiName";
-            this.goodsRegiName.Size = new System.Drawing.Size(31, 12);
-            this.goodsRegiName.TabIndex = 1;
-            this.goodsRegiName.Text = "名前:";
+            this.goodsRegiName.Size = new System.Drawing.Size(43, 12);
+            this.goodsRegiName.TabIndex = 0;
+            this.goodsRegiName.Text = "商品名:";
             this.goodsRegiName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // goodsRegiPrice
             // 
             this.goodsRegiPrice.AutoSize = true;
-            this.goodsRegiPrice.Location = new System.Drawing.Point(73, 121);
+            this.goodsRegiPrice.Location = new System.Drawing.Point(69, 121);
             this.goodsRegiPrice.Name = "goodsRegiPrice";
             this.goodsRegiPrice.Size = new System.Drawing.Size(31, 12);
-            this.goodsRegiPrice.TabIndex = 2;
+            this.goodsRegiPrice.TabIndex = 0;
             this.goodsRegiPrice.Text = "単価:";
             this.goodsRegiPrice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // textBname
             // 
-            this.textBname.Location = new System.Drawing.Point(116, 76);
+            this.textBname.Location = new System.Drawing.Point(106, 76);
             this.textBname.Name = "textBname";
             this.textBname.Size = new System.Drawing.Size(125, 19);
-            this.textBname.TabIndex = 4;
+            this.textBname.TabIndex = 1;
             // 
             // textBprice
             // 
-            this.textBprice.Location = new System.Drawing.Point(116, 114);
+            this.textBprice.Location = new System.Drawing.Point(106, 114);
             this.textBprice.Name = "textBprice";
             this.textBprice.Size = new System.Drawing.Size(66, 19);
-            this.textBprice.TabIndex = 5;
+            this.textBprice.TabIndex = 2;
             // 
             // goodsRegicateID
             // 
             this.goodsRegicateID.AutoSize = true;
             this.goodsRegicateID.Location = new System.Drawing.Point(37, 160);
             this.goodsRegicateID.Name = "goodsRegicateID";
-            this.goodsRegicateID.Size = new System.Drawing.Size(69, 12);
-            this.goodsRegicateID.TabIndex = 6;
-            this.goodsRegicateID.Text = "カテゴリーめぇ:";
+            this.goodsRegicateID.Size = new System.Drawing.Size(63, 12);
+            this.goodsRegicateID.TabIndex = 0;
+            this.goodsRegicateID.Text = "カテゴリー名:";
             // 
             // goodsRegiBikou
             // 
             this.goodsRegiBikou.AutoSize = true;
-            this.goodsRegiBikou.Location = new System.Drawing.Point(68, 198);
+            this.goodsRegiBikou.Location = new System.Drawing.Point(69, 198);
             this.goodsRegiBikou.Name = "goodsRegiBikou";
             this.goodsRegiBikou.Size = new System.Drawing.Size(31, 12);
-            this.goodsRegiBikou.TabIndex = 8;
+            this.goodsRegiBikou.TabIndex = 0;
             this.goodsRegiBikou.Text = "備考:";
             // 
             // goodsReginumber
             // 
             this.goodsReginumber.AutoSize = true;
-            this.goodsReginumber.Location = new System.Drawing.Point(37, 236);
+            this.goodsReginumber.Location = new System.Drawing.Point(33, 236);
             this.goodsReginumber.Name = "goodsReginumber";
             this.goodsReginumber.Size = new System.Drawing.Size(67, 12);
-            this.goodsReginumber.TabIndex = 9;
+            this.goodsReginumber.TabIndex = 0;
             this.goodsReginumber.Text = "定量発注数:";
             // 
             // textBbikou
             // 
-            this.textBbikou.Location = new System.Drawing.Point(116, 191);
+            this.textBbikou.Location = new System.Drawing.Point(106, 191);
             this.textBbikou.Name = "textBbikou";
             this.textBbikou.Size = new System.Drawing.Size(186, 19);
-            this.textBbikou.TabIndex = 11;
+            this.textBbikou.TabIndex = 3;
             // 
             // textBnumber
             // 
-            this.textBnumber.Location = new System.Drawing.Point(116, 229);
+            this.textBnumber.Location = new System.Drawing.Point(106, 229);
             this.textBnumber.Name = "textBnumber";
             this.textBnumber.Size = new System.Drawing.Size(86, 19);
-            this.textBnumber.TabIndex = 12;
+            this.textBnumber.TabIndex = 4;
             // 
             // comboBcate
             // 
-            this.comboBcate.DataSource = this.カテゴリマスタ商品マスタBindingSource;
-            this.comboBcate.DisplayMember = "カテゴリID";
+            this.comboBcate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBcate.FormattingEnabled = true;
-            this.comboBcate.Location = new System.Drawing.Point(116, 152);
+            this.comboBcate.Location = new System.Drawing.Point(106, 152);
             this.comboBcate.Name = "comboBcate";
             this.comboBcate.Size = new System.Drawing.Size(103, 20);
-            this.comboBcate.TabIndex = 13;
+            this.comboBcate.TabIndex = 0;
             this.comboBcate.ValueMember = "カテゴリID";
+            // 
+            // カテゴリマスタ商品マスタBindingSource
+            // 
+            this.カテゴリマスタ商品マスタBindingSource.DataMember = "カテゴリマスタ商品マスタ";
+            this.カテゴリマスタ商品マスタBindingSource.DataSource = this.カテゴリマスタBindingSource;
+            // 
+            // カテゴリマスタBindingSource
+            // 
+            this.カテゴリマスタBindingSource.DataMember = "カテゴリマスタ";
+            this.カテゴリマスタBindingSource.DataSource = this.iM2DataSet;
+            // 
+            // iM2DataSet
+            // 
+            this.iM2DataSet.DataSetName = "IM2DataSet";
+            this.iM2DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // UpdateBtn
             // 
@@ -174,7 +188,7 @@
             this.UpdateBtn.Location = new System.Drawing.Point(452, 291);
             this.UpdateBtn.Name = "UpdateBtn";
             this.UpdateBtn.Size = new System.Drawing.Size(114, 43);
-            this.UpdateBtn.TabIndex = 16;
+            this.UpdateBtn.TabIndex = 5;
             this.UpdateBtn.Text = "更新";
             this.UpdateBtn.UseVisualStyleBackColor = true;
             this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
@@ -203,20 +217,20 @@
             // 
             // textBimage
             // 
-            this.textBimage.Location = new System.Drawing.Point(533, 13);
+            this.textBimage.Location = new System.Drawing.Point(530, 13);
             this.textBimage.Name = "textBimage";
             this.textBimage.ReadOnly = true;
-            this.textBimage.Size = new System.Drawing.Size(100, 19);
-            this.textBimage.TabIndex = 24;
+            this.textBimage.Size = new System.Drawing.Size(83, 19);
+            this.textBimage.TabIndex = 0;
             this.textBimage.TextChanged += new System.EventHandler(this.textBimage_TextChanged);
             // 
             // textBID
             // 
-            this.textBID.Location = new System.Drawing.Point(119, 38);
+            this.textBID.Location = new System.Drawing.Point(109, 38);
             this.textBID.Name = "textBID";
             this.textBID.ReadOnly = true;
             this.textBID.Size = new System.Drawing.Size(100, 19);
-            this.textBID.TabIndex = 25;
+            this.textBID.TabIndex = 0;
             // 
             // bindingNavigator1
             // 
@@ -226,8 +240,8 @@
             this.bindingNavigator1.Dock = System.Windows.Forms.DockStyle.None;
             this.bindingNavigator1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMovePreviousItem,
             this.bindingNavigatorMoveFirstItem,
+            this.bindingNavigatorMovePreviousItem,
             this.bindingNavigatorSeparator,
             this.bindingNavigatorPositionItem,
             this.bindingNavigatorCountItem,
@@ -241,14 +255,14 @@
             this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(197, 25);
+            this.bindingNavigator1.Size = new System.Drawing.Size(188, 25);
             this.bindingNavigator1.TabIndex = 26;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(38, 22);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(29, 22);
             this.bindingNavigatorCountItem.Text = "/ {0}";
             this.bindingNavigatorCountItem.ToolTipText = "項目の総数";
             // 
@@ -312,33 +326,18 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.VersionToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(161, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(143, 26);
             // 
             // VersionToolStripMenuItem
             // 
             this.VersionToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("VersionToolStripMenuItem.Image")));
             this.VersionToolStripMenuItem.Name = "VersionToolStripMenuItem";
-            this.VersionToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.VersionToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.VersionToolStripMenuItem.Text = "バージョン情報";
-            // 
-            // iM2DataSet
-            // 
-            this.iM2DataSet.DataSetName = "IM2DataSet";
-            this.iM2DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // カテゴリマスタBindingSource
-            // 
-            this.カテゴリマスタBindingSource.DataMember = "カテゴリマスタ";
-            this.カテゴリマスタBindingSource.DataSource = this.iM2DataSet;
             // 
             // カテゴリマスタTableAdapter
             // 
             this.カテゴリマスタTableAdapter.ClearBeforeFill = true;
-            // 
-            // カテゴリマスタ商品マスタBindingSource
-            // 
-            this.カテゴリマスタ商品マスタBindingSource.DataMember = "カテゴリマスタ商品マスタ";
-            this.カテゴリマスタ商品マスタBindingSource.DataSource = this.カテゴリマスタBindingSource;
             // 
             // 商品マスタTableAdapter
             // 
@@ -367,15 +366,15 @@
             this.Name = "GoodsRegi";
             this.Size = new System.Drawing.Size(760, 430);
             this.Load += new System.EventHandler(this.GoodsRegi_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.カテゴリマスタ商品マスタBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.カテゴリマスタBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iM2DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.iM2DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.カテゴリマスタBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.カテゴリマスタ商品マスタBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -25,11 +25,7 @@ namespace WindowsFormsApplication1.panel
             InitializeComponent();
         }
 
-        //private void BindComboBox()
-        //{
-        //    comboBcate.DataSource = iM2DataSet.Tables["商品マスタ"];
-        //    comboBcate.DisplayMember = "カテゴリID";
-        //}
+       
 
         private void GoodsRegi_Load(object sender, EventArgs e)
         {
@@ -38,7 +34,9 @@ namespace WindowsFormsApplication1.panel
             dt = new DataTable();
             da.Fill(dt);
 
-            
+           
+   
+
             bds.DataSource = dt;
 
             bindingNavigator1.BindingSource = bds;
@@ -52,42 +50,37 @@ namespace WindowsFormsApplication1.panel
             textBnumber.DataBindings.Add("Text", bds, "定期発注数");
             pictureBox.Image = Image.FromFile(@".\IM2image\" + textBimage.Text);
             textBID.SelectionStart = 0;   //選択状態にならないようにする
-        }
 
 
 
 
-        private void panel_DragDrop(object sender, DragEventArgs e)
-        {
+            cn.Open();
+            OleDbCommand command = new OleDbCommand();
+            command.Connection = cn;
+            string query = "SELECT カテゴリ名 FROM カテゴリマスタ";
+            command.CommandText = query;
 
-        }
-
-        private void panel_DragEnter(object sender, DragEventArgs e)
-        {
-
-        }
-
-        private void 商品マスタBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
+            OleDbDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                comboBcate.Items.Add(reader["カテゴリ名"].ToString());
+            }
+            cn.Close();
 
         }
 
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
-            da = new OleDbDataAdapter("SELECT ID FROM カテゴリマスタ WHERE カテゴリ名='" + comboBcate.Text + "'", cn);
-            DataTable dt1 = new DataTable();
-            da.Fill(dt1);
-            string PosID = dt1.Rows[0][0].ToString();
-            dt1.Clear();
+            da = new OleDbDataAdapter("SELECT カテゴリID FROM カテゴリマスタ WHERE カテゴリ名='" + comboBcate.Text + "'", cn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            string cateID = dt.Rows[0][0].ToString();
+            dt.Clear();
 
 
             OleDbCommand cmd = new OleDbCommand();
             cmd.Connection = cn;
-            cmd.CommandText = "UPDATE 商品マスタ SET 商品名='" + textBname.Text + "', " +
-                "単価='" + textBprice.Text + "', " +
-                "備考='" + textBbikou.Text + "'" +
-                "定量発注数='" + textBbikou.Text + "'" +
-                "WHERE ID ='" + textBID.Text + "'";
+            cmd.CommandText = "UPDATE 商品マスタ SET 商品名='" + textBname.Text + "', 単価=" + textBprice.Text + ", カテゴリID=" + cateID + ",備考='" + textBbikou.Text + "',定期発注数=" + textBnumber.Text + " WHERE 商品ID ='" + textBID.Text + "'";
             try
             {
                 cn.Open();
@@ -106,7 +99,17 @@ namespace WindowsFormsApplication1.panel
 
         private void textBimage_TextChanged(object sender, EventArgs e)
         {
-            pictureBox.Image = Image.FromFile(@".\IM2image\" + textBimage.Text);
+          pictureBox.Image = Image.FromFile(@".\IM2image\" + textBimage.Text);
+        }
+
+        private void panel_DragDrop(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void panel_DragEnter(object sender, DragEventArgs e)
+        {
+
         }
     }
 }
