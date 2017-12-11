@@ -19,25 +19,7 @@ namespace WindowsFormsApplication1
         DataTable dt = new DataTable();
         DataSet ds = new DataSet();
 
-        int id;
-        int tid;
-        string pass;
-        string tpass;
-        string name;
-        string tname;
-        string sabname;
-        string tsabname;
-        string post;
-        string tpost;
-        string add;
-        string tadd;
-        string tel;
-        string ttel;
-        string bone;
-        string tbone;
-        string sex;
         string tsex;
-        bool Authority;
         bool tAuthority;
 
          
@@ -144,201 +126,7 @@ namespace WindowsFormsApplication1
 
 
 
-        private void SearchB_Click(object sender, EventArgs e)
-        {
-            dataload(0);
-            
-            cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
-            cn.Open();
-
-            cmd.CommandText = "SELECT * FROM 従業員マスタ";
-            cmd.Connection = cn;
-
-            
-            OleDbDataReader rd = cmd.ExecuteReader();
-
-            dt = CreateSchemaDataTable(rd);
-            DataRow row = dt.NewRow();
-
-            //name = MemberNameTBox.Text;
-            //tell = MemberTelTBox.Text;
-
-            //ID
-            if(EmpIDTextB.Text!="")
-            {
-                tid = int.Parse(EmpIDTextB.Text);
-            }
-            //PASS
-            if ( EmpPassTextB.Text != "")
-            {
-                tpass = EmpPassTextB.Text;
-            }
-            //NAME
-            if (EmpNameTextB.Text != "")
-            {
-                tname = EmpNameTextB.Text;
-            }
-            //SABNAME
-            if (HuriganaTextB.Text != "")
-            {
-                tsabname = HuriganaTextB.Text;
-            }
-            //POST
-            if (EmpPostTextB.Text != "")
-            {
-                tpost = EmpPostTextB.Text;
-            }
-            //ADD
-            if (EmpAddressTextB.Text != "")
-            {
-                tadd = EmpAddressTextB.Text;
-            }
-            //TEL
-            if (EmpTelTextB.Text != "")
-            {
-                ttel = EmpTelTextB.Text;
-            }
-            //BONE
-            if (BirthdayTextB.Text != "")
-            {
-                tbone = BirthdayTextB.Text;
-            }
-           
-            
-
-            while (rd.Read())
-            {
-
-                id = (int)rd.GetValue(0);    //従業員ID
-                pass = (string)rd.GetValue(12);  //パスワード
-                name = (string)rd.GetValue(1);  //名前
-                sabname = (string)rd.GetValue(2);//ﾌﾘｶﾞﾅ
-                post = (string)rd.GetValue(4);  //郵便番号
-                add = (string)rd.GetValue(5);   //住所1
-                tel = (string)rd.GetValue(7);  //電話番号
-                bone = (string)rd.GetValue(8).ToString();  //生年月日
-                sex = (string)rd.GetValue(3).ToString();  //性別
-                Authority = (bool)rd.GetValue(10);    //責任者権限
-
-                if (id == tid)
-                {
-
-                    selectfunc("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ WHERE 従業員ID LIKE '%" + EmpIDTextB.Text + "%'");
-                    label1.Text = "";
-                    break;
-                }
-                if (pass == tpass)
-                {
-
-                    selectfunc("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ WHERE パスワード LIKE '%" + EmpPassTextB.Text + "%'");
-                    label1.Text = "";
-                    break;
-                }
-                if (name == tname)
-                {
-                    selectfunc("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ WHERE 名前 LIKE '%" + EmpNameTextB.Text + "%'");
-                    label1.Text = "";
-                    break;
-                }
-                if (sabname == tsabname)
-                {
-
-                    selectfunc("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ WHERE ﾌﾘｶﾞﾅ LIKE '%" + HuriganaTextB.Text + "%'");
-                    label1.Text = "";
-                    break;
-                }
-                if (post == tpost)
-                {
-                    selectfunc("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ WHERE 郵便番号 LIKE '%" + EmpPostTextB.Text + "%'");
-                    label1.Text = "";
-                    break;
-                }
-                if (add == tadd)
-                {
-
-                    selectfunc("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ WHERE 住所1 LIKE '%" + EmpAddressTextB.Text + "%'");
-                    label1.Text = "";
-                    break;
-                }
-                if (tel == ttel)
-                {
-                    selectfunc("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ WHERE 電話番号 LIKE '%" + EmpTelTextB.Text + "%'");
-                    label1.Text = "";
-                    break;
-                }
-                if (bone == tbone + " 0:00:00")  
-
-                {
-
-                    selectfunc("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ WHERE 生年月日 LIKE '%" + BirthdayTextB.Text + "%'");
-                    label1.Text = "";
-                    break;
-                }
-                if (tsex != WomanRB.Text)
-                { 
-                    if (sex == tsex)
-                    {
-
-                        selectfunc("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ WHERE 性別 LIKE '%" + ManRB.Text + "%'");
-                        label1.Text = "";
-                        break;
-                    }
-                }
-                else if(tsex!=ManRB.Text)
-                {
-                    if (sex == tsex)
-                    {
-
-                        selectfunc("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ WHERE 性別 LIKE '%" + WomanRB.Text + "%'");
-                        label1.Text = "";
-                        break;
-                    }
-                }
-                if (tAuthority == false)
-                {
-                    if (Authority == tAuthority)
-                    {
-
-                        selectfunc("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ WHERE 責任者権限 = false ");
-                        label1.Text = "";
-                        break;
-                    }
-                }
-                else if (tAuthority == true)
-                {
-                    if (Authority == tAuthority)
-                    {
-
-                        selectfunc("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ WHERE 責任者権限 = true");
-                        label1.Text = "";
-                        break;
-                    }
-                }
-
-
-
-                label1.Text = "その情報は登録されていません";     
-            }
-            cn.Close();
-
-            EmpIDTextB.Text = "";
-            EmpPassTextB.Text = "";
-            EmpNameTextB.Text = "";
-            HuriganaTextB.Text = "";
-            EmpPostTextB.Text = "";
-            EmpAddressTextB.Text = "";
-            EmpTelTextB.Text = "";
-            BirthdayTextB.Text = "";
-            ManRB.Checked = false;
-            WomanRB.Checked = false;
-            tsex = "";
-            YesAuthorityRB.Checked = false;
-            NoAuthorityRB.Checked = false;
-
-            
-
-        }
-        private void clickdata()
+        private void Clickdata()
         {
             int max = int.Parse(EmpdataGridView[0, EmpdataGridView.Rows.Count - 2].Value.ToString());
             EmpIDTextB.Text = EmpdataGridView[1, EmpdataGridView.CurrentCell.RowIndex].Value.ToString();
@@ -375,7 +163,6 @@ namespace WindowsFormsApplication1
         private void button1_Click(object sender, EventArgs e)
         {
             dataload(0);
-            label1.Text = "";
         }
 
         private void WomanRB_CheckedChanged(object sender, EventArgs e)
@@ -397,6 +184,11 @@ namespace WindowsFormsApplication1
         {
             tAuthority = false;
 
+        }
+
+        private void DeleteB_Click(object sender, EventArgs e)
+        {
+            EmpdataGridView
         }
     }
 }

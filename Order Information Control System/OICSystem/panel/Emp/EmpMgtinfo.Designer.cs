@@ -37,6 +37,7 @@
             this.SearchB = new System.Windows.Forms.Button();
             this.EmpIDLbl = new System.Windows.Forms.Label();
             this.EmpNameLbl = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.EmpdataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             // EmpdataGridView
             // 
             this.EmpdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.EmpdataGridView.Location = new System.Drawing.Point(3, 43);
+            this.EmpdataGridView.Location = new System.Drawing.Point(3, 57);
             this.EmpdataGridView.Name = "EmpdataGridView";
             this.EmpdataGridView.ReadOnly = true;
             this.EmpdataGridView.RowTemplate.Height = 21;
@@ -67,6 +68,7 @@
             this.UpdateB.TabIndex = 114;
             this.UpdateB.Text = "更新";
             this.UpdateB.UseVisualStyleBackColor = true;
+            this.UpdateB.Click += new System.EventHandler(this.UpdateB_Click);
             // 
             // EditB
             // 
@@ -76,6 +78,7 @@
             this.EditB.TabIndex = 113;
             this.EditB.Text = "編集";
             this.EditB.UseVisualStyleBackColor = true;
+            this.EditB.Click += new System.EventHandler(this.EditB_Click);
             // 
             // EmpIDTextB
             // 
@@ -99,6 +102,7 @@
             this.SearchB.TabIndex = 110;
             this.SearchB.Text = "検索";
             this.SearchB.UseVisualStyleBackColor = true;
+            this.SearchB.Click += new System.EventHandler(this.SearchB_Click);
             // 
             // EmpIDLbl
             // 
@@ -118,10 +122,20 @@
             this.EmpNameLbl.TabIndex = 108;
             this.EmpNameLbl.Text = "名前：";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(276, 344);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 12);
+            this.label1.TabIndex = 115;
+            // 
             // EmpMgtInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.UpdateB);
             this.Controls.Add(this.EditB);
             this.Controls.Add(this.EmpIDTextB);
@@ -150,5 +164,6 @@
         private System.Windows.Forms.Button SearchB;
         private System.Windows.Forms.Label EmpIDLbl;
         private System.Windows.Forms.Label EmpNameLbl;
+        private System.Windows.Forms.Label label1;
     }
 }
