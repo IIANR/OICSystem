@@ -81,16 +81,19 @@ namespace WindowsFormsApplication1.panel.Goods
             dt = CreateSchemaDataTable(rd);
             DataRow row = dt.NewRow();
 
+
+            
+
             while (rd.Read())
             {
-
+                
                 GSname = (string)rd.GetValue(1);  //データベースの「商品名」
                 GStname = GoodsStockTBox.Text;    //textboxの「商品名」
+                
 
-
-                if (GSname == GStname)
+                if (GSname.Contains(GStname))     //Containsは部分検索
                 {
-                    selectfunc("SELECT * FROM 商品マスタ WHERE 商品名 LIKE '%" + GoodsStockTBox.Text + "%'"); //LIKEで囲んでいるが意味は無し。
+                    selectfunc("SELECT Z.商品ID,S.商品名,Z.在庫数,S.定期発注数 FROM 在庫テーブル Z,商品マスタ S WHERE Z.商品ID=S.商品ID AND 商品名 LIKE '%" + GoodsStockTBox.Text + "%' "); 
                     GoodsStockDisLbl.Text = "";
                     break;
                 }
@@ -117,7 +120,7 @@ namespace WindowsFormsApplication1.panel.Goods
             GoodsStockDataGridView.Columns.Clear();
             GoodsStockDataGridView.DataSource = null;
             cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
-            da = new OleDbDataAdapter("SELECT Z.商品ID,S.商品名,Z.在庫数 FROM 在庫テーブル Z,商品マスタ S WHERE Z.商品ID=S.商品ID ORDER BY Z.商品ID ASC", cn);
+            da = new OleDbDataAdapter("SELECT Z.商品ID,S.商品名,Z.在庫数,S.定期発注数 FROM 在庫テーブル Z,商品マスタ S WHERE Z.商品ID=S.商品ID ORDER BY Z.商品ID ASC", cn);
             dt.Clear();
             dt = new DataTable();
             da.Fill(dt);

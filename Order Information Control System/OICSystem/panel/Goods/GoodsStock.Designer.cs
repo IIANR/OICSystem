@@ -61,6 +61,7 @@
             // 
             // GoodsStockTBox
             // 
+            this.GoodsStockTBox.ImeMode = System.Windows.Forms.ImeMode.On;
             this.GoodsStockTBox.Location = new System.Drawing.Point(149, 473);
             this.GoodsStockTBox.Name = "GoodsStockTBox";
             this.GoodsStockTBox.Size = new System.Drawing.Size(278, 22);
