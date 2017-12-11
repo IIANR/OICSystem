@@ -105,9 +105,9 @@ namespace WindowsFormsApplication1
                 tname = MemberNameTBox.Text;    //textboxの「ﾌﾘｶﾞﾅ」
                 
 
-                if (name == tname)
+                if (name.Contains(tname))
                 {
-                    selectfunc("SELECT * FROM 顧客テーブル WHERE ﾌﾘｶﾞﾅ LIKE '%" + MemberNameTBox.Text + "%'"); //LIKEで囲んでいるが意味は無し。
+                    selectfunc("SELECT * FROM 顧客テーブル WHERE ﾌﾘｶﾞﾅ LIKE '%" + MemberNameTBox.Text + "%' ORDER BY 顧客ID ASC");
                     MemberDisLbl.Text = "";
                     break;
                 }
