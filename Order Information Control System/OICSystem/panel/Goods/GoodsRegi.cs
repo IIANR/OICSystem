@@ -17,8 +17,14 @@ namespace WindowsFormsApplication1.panel
         OleDbConnection cn = new OleDbConnection();
         OleDbDataAdapter da = new OleDbDataAdapter();
         DataTable dt = new DataTable();
-
+        OleDbCommand cmd = new OleDbCommand();
         BindingSource bds = new BindingSource();
+
+
+        int flag;
+        string CateName;
+        string db_cate;
+        string cateID;
 
         public GoodsRegi()
         {
@@ -34,8 +40,8 @@ namespace WindowsFormsApplication1.panel
             dt = new DataTable();
             da.Fill(dt);
 
-           
-   
+
+
 
             bds.DataSource = dt;
 
@@ -69,18 +75,90 @@ namespace WindowsFormsApplication1.panel
 
         }
 
+        private DataTable CreateSchemaDataTable(OleDbDataReader reader)
+        {
+            if (reader == null) { return null; }
+            if (reader.IsClosed) { return null; }
+
+            DataTable schema = reader.GetSchemaTable();
+            DataTable dt = new DataTable();
+
+            foreach (DataRow row in schema.Rows)
+            {
+                // Column情報を追加してください。
+                DataColumn col = new DataColumn();
+                col.ColumnName = row["ColumnName"].ToString();
+                col.DataType = Type.GetType(row["DataType"].ToString());
+
+                if (col.DataType.Equals(typeof(string)))
+                {
+                    col.MaxLength = (int)row["ColumnSize"];
+                }
+
+                dt.Columns.Add(col);
+            }
+            return dt;
+        }
+
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
+            //ここから変更場所
+
+            
+            cn.Open();
+            DataTable dt3 = new DataTable();
+
+            cmd.CommandText = "SELECT カテゴリ名 FROM カテゴリマスタ";
+            cmd.Connection = cn;
+
+            OleDbDataReader rd = cmd.ExecuteReader();
+
+            dt3 = CreateSchemaDataTable(rd);
+            DataRow row = dt3.NewRow();
+
+            CateName = comboBcate.Text;
+
+            while (rd.Read())
+            {
+                db_cate = (string)rd.GetValue(0);
+
+                if (db_cate != CateName)
+                {
+                    flag = 1;
+                }
+                else
+                {
+                    flag = 0;
+                    break;
+                }
+            }
+            if (flag == 1)
+            {
+                cmd.Connection = cn;
+                cmd.CommandText = "INSERT INTO カテゴリマスタ (カテゴリ名) VALUES (@catename)";
+  
+                OleDbParameter prcatename = new OleDbParameter("@catename", comboBcate.Text);
+                cmd.Parameters.Add(prcatename);
+                cn.Close();
+            }
+         
             da = new OleDbDataAdapter("SELECT カテゴリID FROM カテゴリマスタ WHERE カテゴリ名='" + comboBcate.Text + "'", cn);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            string cateID = dt.Rows[0][0].ToString();
+            cateID = dt.Rows[0][0].ToString();
             dt.Clear();
 
 
-            OleDbCommand cmd = new OleDbCommand();
+
+            //ここまで
+
+
+
+
+
+
             cmd.Connection = cn;
-            cmd.CommandText = "UPDATE 商品マスタ SET 商品名='" + textBname.Text + "', 単価=" + textBprice.Text + ", カテゴリID=" + cateID + ",備考='" + textBbikou.Text + "',定期発注数=" + textBnumber.Text + " WHERE 商品ID ='" + textBID.Text + "'";
+            cmd.CommandText = "UPDATE 商品マスタ SET 商品名='" + textBname.Text + "', 単価=" + int.Parse(textBprice.Text) + ", カテゴリID=" + cateID + ",備考='" + textBbikou.Text + "',定期発注数=" + int.Parse(textBnumber.Text) + ",画像ファイル='" + textBimage.Text + "' WHERE 商品ID ='" + textBID.Text + "'";
             try
             {
                 cn.Open();
@@ -104,12 +182,33 @@ namespace WindowsFormsApplication1.panel
 
         private void panel_DragDrop(object sender, DragEventArgs e)
         {
+            string dropfile = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+            string imagefile = Path.GetFileName(dropfile);
+            string path = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @".\IM2image\" + imagefile;
 
+            pictureBox.Image = Image.FromFile(dropfile);
+            try
+            {
+                System.IO.File.Copy(dropfile, path, true);
+            }
+
+            catch
+            {
+                MessageBox.Show("更新できませんでした。", "IM2");
+            }
+            textBimage.Text = imagefile;
         }
 
         private void panel_DragEnter(object sender, DragEventArgs e)
         {
-
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
         }
     }
 }
