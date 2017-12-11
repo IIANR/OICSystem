@@ -139,9 +139,10 @@ namespace WindowsFormsApplication1.panel
   
                 OleDbParameter prcatename = new OleDbParameter("@catename", comboBcate.Text);
                 cmd.Parameters.Add(prcatename);
-                cn.Close();
+                
             }
-         
+            cn.Close();
+
             da = new OleDbDataAdapter("SELECT カテゴリID FROM カテゴリマスタ WHERE カテゴリ名='" + comboBcate.Text + "'", cn);
             DataTable dt = new DataTable();
             da.Fill(dt);
