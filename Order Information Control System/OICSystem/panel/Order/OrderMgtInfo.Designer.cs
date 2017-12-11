@@ -36,14 +36,15 @@
             this.UpdateBtn = new System.Windows.Forms.Button();
             this.TotalTitleLabel = new System.Windows.Forms.Label();
             this.TotalLabel = new System.Windows.Forms.Label();
+            this.List = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.OrderInfoGritview)).BeginInit();
             this.SuspendLayout();
             // 
             // SearchBtn
             // 
-            this.SearchBtn.Location = new System.Drawing.Point(397, 370);
+            this.SearchBtn.Location = new System.Drawing.Point(340, 370);
             this.SearchBtn.Name = "SearchBtn";
-            this.SearchBtn.Size = new System.Drawing.Size(109, 37);
+            this.SearchBtn.Size = new System.Drawing.Size(97, 37);
             this.SearchBtn.TabIndex = 2;
             this.SearchBtn.Text = "検索";
             this.SearchBtn.UseVisualStyleBackColor = true;
@@ -58,9 +59,9 @@
             // 
             // DeleteBtn
             // 
-            this.DeleteBtn.Location = new System.Drawing.Point(637, 370);
+            this.DeleteBtn.Location = new System.Drawing.Point(546, 370);
             this.DeleteBtn.Name = "DeleteBtn";
-            this.DeleteBtn.Size = new System.Drawing.Size(109, 37);
+            this.DeleteBtn.Size = new System.Drawing.Size(97, 37);
             this.DeleteBtn.TabIndex = 4;
             this.DeleteBtn.Text = "注文取消";
             this.DeleteBtn.UseVisualStyleBackColor = true;
@@ -88,9 +89,9 @@
             // 
             // UpdateBtn
             // 
-            this.UpdateBtn.Location = new System.Drawing.Point(517, 370);
+            this.UpdateBtn.Location = new System.Drawing.Point(443, 370);
             this.UpdateBtn.Name = "UpdateBtn";
-            this.UpdateBtn.Size = new System.Drawing.Size(109, 37);
+            this.UpdateBtn.Size = new System.Drawing.Size(97, 37);
             this.UpdateBtn.TabIndex = 3;
             this.UpdateBtn.Text = "入金済み列更新";
             this.UpdateBtn.UseVisualStyleBackColor = true;
@@ -114,10 +115,21 @@
             this.TotalLabel.TabIndex = 56;
             this.TotalLabel.Text = "0円";
             // 
+            // List
+            // 
+            this.List.Location = new System.Drawing.Point(649, 370);
+            this.List.Name = "List";
+            this.List.Size = new System.Drawing.Size(97, 37);
+            this.List.TabIndex = 57;
+            this.List.Text = "入金済み一覧";
+            this.List.UseVisualStyleBackColor = true;
+            this.List.Click += new System.EventHandler(this.OrderList_Click);
+            // 
             // OrderMgtInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.List);
             this.Controls.Add(this.TotalLabel);
             this.Controls.Add(this.TotalTitleLabel);
             this.Controls.Add(this.UpdateBtn);
@@ -145,5 +157,6 @@
         private System.Windows.Forms.Button UpdateBtn;
         private System.Windows.Forms.Label TotalTitleLabel;
         private System.Windows.Forms.Label TotalLabel;
+        private System.Windows.Forms.Button List;
     }
 }

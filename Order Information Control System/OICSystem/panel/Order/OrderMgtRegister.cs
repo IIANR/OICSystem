@@ -285,6 +285,7 @@ namespace WindowsFormsApplication1
                 {
                     ErrMsg.Visible = true;
                     ErrMsg.Text = "※存在しない商品です";
+                    GoodsidTextBox.Text = "";
                 }
             }
         }

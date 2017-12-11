@@ -59,7 +59,7 @@ namespace WindowsFormsApplication1
             cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
 
             //データグリッドビューに注文状況を表示
-            da = new OleDbDataAdapter("SELECT 注文テーブル.注文ID,注文テーブル.注文日,注文テーブル.商品ID,顧客テーブル.名前 AS 顧客名,顧客テーブル.ﾌﾘｶﾞﾅ AS ﾌﾘｶﾞﾅ,従業員マスタ.名前 AS 従業員名,注文テーブル.備考,注文テーブル.入金済み FROM 注文テーブル,顧客テーブル,従業員マスタ WHERE 注文テーブル.顧客ID=顧客テーブル.顧客ID AND 注文テーブル.従業員ID=従業員マスタ.従業員ID ORDER BY 注文テーブル.入金済み=True,注文テーブル.注文ID", cn);
+            da = new OleDbDataAdapter("SELECT 注文テーブル.注文ID,注文テーブル.注文日,注文テーブル.商品ID,顧客テーブル.名前 AS 顧客名,顧客テーブル.ﾌﾘｶﾞﾅ AS ﾌﾘｶﾞﾅ,従業員マスタ.名前 AS 従業員名,注文テーブル.フラグ,注文テーブル.入金済み FROM 注文テーブル,顧客テーブル,従業員マスタ WHERE 注文テーブル.顧客ID=顧客テーブル.顧客ID AND 注文テーブル.従業員ID=従業員マスタ.従業員ID ORDER BY 注文テーブル.入金済み=True,注文テーブル.注文ID", cn);
             da.Fill(dt);
             OrderInfoGritview.DataSource = dt;
 
@@ -70,7 +70,6 @@ namespace WindowsFormsApplication1
             OrderInfoGritview.Columns[3].ReadOnly = true;
             OrderInfoGritview.Columns[4].ReadOnly = true;
             OrderInfoGritview.Columns[5].ReadOnly = true;
-            OrderInfoGritview.Columns[6].ReadOnly = true;
         }
 
         private DataTable CreateSchemaDataTable(OleDbDataReader reader)
@@ -108,7 +107,7 @@ namespace WindowsFormsApplication1
 
             dt = new DataTable();
             cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-            da = new OleDbDataAdapter("SELECT 注文テーブル.注文ID,注文テーブル.注文日,注文テーブル.商品ID,顧客テーブル.名前 AS 顧客名,顧客テーブル.ﾌﾘｶﾞﾅ AS ﾌﾘｶﾞﾅ,従業員マスタ.名前 AS 従業員名,注文テーブル.備考,注文テーブル.入金済み FROM 注文テーブル,顧客テーブル,従業員マスタ WHERE 注文テーブル.顧客ID=顧客テーブル.顧客ID AND 注文テーブル.従業員ID=従業員マスタ.従業員ID AND 顧客テーブル.ﾌﾘｶﾞﾅ LIKE '%"+ KanaTextbox.Text + "%' ORDER BY 注文テーブル.入金済み=True,注文テーブル.注文ID", cn);
+            da = new OleDbDataAdapter("SELECT 注文テーブル.注文ID,注文テーブル.注文日,注文テーブル.商品ID,顧客テーブル.名前 AS 顧客名,顧客テーブル.ﾌﾘｶﾞﾅ AS ﾌﾘｶﾞﾅ,従業員マスタ.名前 AS 従業員名,注文テーブル.フラグ,注文テーブル.入金済み FROM 注文テーブル,顧客テーブル,従業員マスタ WHERE 注文テーブル.顧客ID=顧客テーブル.顧客ID AND 注文テーブル.従業員ID=従業員マスタ.従業員ID AND 顧客テーブル.ﾌﾘｶﾞﾅ LIKE '%"+ KanaTextbox.Text + "%' ORDER BY 注文テーブル.入金済み=True,注文テーブル.注文ID", cn);
             da.Fill(dt);
             OrderInfoGritview.DataSource = dt;
 
@@ -136,30 +135,7 @@ namespace WindowsFormsApplication1
                     daprice.Fill(dtprice);
                     sum += int.Parse(dtprice.Rows[0][0].ToString());
                     dtprice.Clear();
-
-
-                    //cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-                    //cn.Open();
-
-                    //cmd.CommandText = "SELECT 商品ID,商品名,単価 FROM 商品マスタ";
-                    //cmd.Connection = cn;
-
-                    //OleDbDataReader rd = cmd.ExecuteReader();
-
-                    //dt = CreateSchemaDataTable(rd);
-                    //DataRow row = dt.NewRow();
-
-                    //while (rd.Read())
-                    //{
-                    //    db_Goodsid = (string)rd.GetValue(0);
-                    //    db_GoodsPrice = (int)rd.GetValue(2);
-                    //    if (db_Goodsid == GoodsIdArray[i])
-                    //    {
-                    //        sum += db_GoodsPrice;
-                    //    }
-                    //}
                 }
-                //cn.Close();
 
                 TotalLabel.Text = string.Format("{0:#,###}円", sum + sum * Tax);
             }
@@ -216,7 +192,7 @@ namespace WindowsFormsApplication1
                 //再表示
                 dt = new DataTable();
                 cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-                da = new OleDbDataAdapter("SELECT 注文テーブル.注文ID,注文テーブル.注文日,注文テーブル.商品ID,顧客テーブル.名前 AS 顧客名,顧客テーブル.ﾌﾘｶﾞﾅ AS ﾌﾘｶﾞﾅ,従業員マスタ.名前 AS 従業員名,注文テーブル.備考,注文テーブル.入金済み FROM 注文テーブル,顧客テーブル,従業員マスタ WHERE 注文テーブル.顧客ID=顧客テーブル.顧客ID AND 注文テーブル.従業員ID=従業員マスタ.従業員ID ORDER BY 注文テーブル.入金済み=True,注文テーブル.注文ID", cn);
+                da = new OleDbDataAdapter("SELECT 注文テーブル.注文ID,注文テーブル.注文日,注文テーブル.商品ID,顧客テーブル.名前 AS 顧客名,顧客テーブル.ﾌﾘｶﾞﾅ AS ﾌﾘｶﾞﾅ,従業員マスタ.名前 AS 従業員名,注文テーブル.フラグ,注文テーブル.入金済み FROM 注文テーブル,顧客テーブル,従業員マスタ WHERE 注文テーブル.顧客ID=顧客テーブル.顧客ID AND 注文テーブル.従業員ID=従業員マスタ.従業員ID ORDER BY 注文テーブル.入金済み=True,注文テーブル.注文ID", cn);
                 da.Fill(dt);
                 OrderInfoGritview.DataSource = dt;
 
@@ -248,33 +224,16 @@ namespace WindowsFormsApplication1
                 daprice.Fill(dtprice);
                 sum += int.Parse(dtprice.Rows[0][0].ToString());
                 dtprice.Clear();
-
-
-                //cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-                //cn.Open();
-
-                //cmd.CommandText = "SELECT 商品ID,商品名,単価 FROM 商品マスタ";
-                //cmd.Connection = cn;
-
-                //OleDbDataReader rd = cmd.ExecuteReader();
-
-                //dt = CreateSchemaDataTable(rd);
-                //DataRow row = dt.NewRow();
-
-                //while (rd.Read())
-                //{
-                //    db_Goodsid = (string)rd.GetValue(0);
-                //    db_GoodsPrice = (int)rd.GetValue(2);
-                //    if (db_Goodsid == GoodsIdArray[i])
-                //    {
-                //        sum += db_GoodsPrice;
-                //    }
-                //}
             }
-            //cn.Close();
-
             TotalLabel.Text = string.Format("{0:#,###}円", sum + sum * Tax);
 
+        }
+
+        private void OrderList_Click(object sender, EventArgs e)
+        {
+            OrderList f = new OrderList();
+            f.ShowDialog(this);
+            f.Dispose();
         }
     }
 }
