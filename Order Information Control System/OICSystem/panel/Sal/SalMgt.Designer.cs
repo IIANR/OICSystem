@@ -29,28 +29,24 @@
         private void InitializeComponent()
         {
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-			System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-			System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+			System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
 			this.label1 = new System.Windows.Forms.Label();
 			this.listBox1 = new System.Windows.Forms.ListBox();
-			this.DateSelect = new System.Windows.Forms.Button();
+			this.DateSelectCount = new System.Windows.Forms.Button();
 			this.注文テーブルBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.iM2DataSet = new WindowsFormsApplication1.IM2DataSet();
 			this.注文テーブルTableAdapter = new WindowsFormsApplication1.IM2DataSetTableAdapters.注文テーブルTableAdapter();
-			this.Msg = new System.Windows.Forms.Label();
-			this.radioButton1 = new System.Windows.Forms.RadioButton();
 			this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-			this.radioButton2 = new System.Windows.Forms.RadioButton();
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
 			this.label7 = new System.Windows.Forms.Label();
 			this.DateStart = new System.Windows.Forms.MaskedTextBox();
 			this.DateEnd = new System.Windows.Forms.MaskedTextBox();
-			this.button1 = new System.Windows.Forms.Button();
+			this.Msg = new System.Windows.Forms.Label();
+			this.DateSelectMoney = new System.Windows.Forms.Button();
+			this.totalMsg = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.注文テーブルBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.iM2DataSet)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -71,15 +67,15 @@
 			this.listBox1.Size = new System.Drawing.Size(723, 328);
 			this.listBox1.TabIndex = 49;
 			// 
-			// DateSelect
+			// DateSelectCount
 			// 
-			this.DateSelect.Location = new System.Drawing.Point(509, 425);
-			this.DateSelect.Name = "DateSelect";
-			this.DateSelect.Size = new System.Drawing.Size(75, 37);
-			this.DateSelect.TabIndex = 50;
-			this.DateSelect.Text = "期間指定";
-			this.DateSelect.UseVisualStyleBackColor = true;
-			this.DateSelect.Click += new System.EventHandler(this.DateSelect_Click);
+			this.DateSelectCount.Location = new System.Drawing.Point(581, 460);
+			this.DateSelectCount.Name = "DateSelectCount";
+			this.DateSelectCount.Size = new System.Drawing.Size(130, 37);
+			this.DateSelectCount.TabIndex = 50;
+			this.DateSelectCount.Text = "期間指定(販売数表示)";
+			this.DateSelectCount.UseVisualStyleBackColor = true;
+			this.DateSelectCount.Click += new System.EventHandler(this.DateSelectCount_Click);
 			// 
 			// 注文テーブルBindingSource
 			// 
@@ -95,70 +91,26 @@
 			// 
 			this.注文テーブルTableAdapter.ClearBeforeFill = true;
 			// 
-			// Msg
-			// 
-			this.Msg.AutoSize = true;
-			this.Msg.Font = new System.Drawing.Font("ＭＳ ゴシック", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.Msg.Location = new System.Drawing.Point(188, 122);
-			this.Msg.Name = "Msg";
-			this.Msg.Size = new System.Drawing.Size(0, 24);
-			this.Msg.TabIndex = 59;
-			// 
-			// radioButton1
-			// 
-			this.radioButton1.AutoSize = true;
-			this.radioButton1.Location = new System.Drawing.Point(121, 161);
-			this.radioButton1.Name = "radioButton1";
-			this.radioButton1.Size = new System.Drawing.Size(88, 16);
-			this.radioButton1.TabIndex = 63;
-			this.radioButton1.TabStop = true;
-			this.radioButton1.Text = "radioButton1";
-			this.radioButton1.UseVisualStyleBackColor = true;
-			this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-			// 
 			// chart1
 			// 
-			chartArea2.Name = "ChartArea1";
-			this.chart1.ChartAreas.Add(chartArea2);
-			legend2.Name = "Legend1";
-			this.chart1.Legends.Add(legend2);
-			this.chart1.Location = new System.Drawing.Point(44, 203);
+			chartArea1.AxisX.Interval = 1D;
+			chartArea1.AxisX.MajorGrid.Enabled = false;
+			chartArea1.AxisX.MajorGrid.Interval = 1D;
+			chartArea1.AxisY.MajorGrid.Enabled = false;
+			chartArea1.Name = "ChartArea1";
+			this.chart1.ChartAreas.Add(chartArea1);
+			legend1.Name = "Legend1";
+			this.chart1.Legends.Add(legend1);
+			this.chart1.Location = new System.Drawing.Point(44, 183);
 			this.chart1.Name = "chart1";
-			series2.ChartArea = "ChartArea1";
-			series2.IsValueShownAsLabel = true;
-			series2.Legend = "Legend1";
-			series2.Name = "Series1";
-			this.chart1.Series.Add(series2);
-			this.chart1.Size = new System.Drawing.Size(381, 189);
+			this.chart1.Size = new System.Drawing.Size(692, 209);
 			this.chart1.TabIndex = 64;
 			this.chart1.Text = "chart1";
-			// 
-			// radioButton2
-			// 
-			this.radioButton2.AutoSize = true;
-			this.radioButton2.Location = new System.Drawing.Point(467, 171);
-			this.radioButton2.Name = "radioButton2";
-			this.radioButton2.Size = new System.Drawing.Size(88, 16);
-			this.radioButton2.TabIndex = 65;
-			this.radioButton2.TabStop = true;
-			this.radioButton2.Text = "radioButton2";
-			this.radioButton2.UseVisualStyleBackColor = true;
-			this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-			this.radioButton2.Click += new System.EventHandler(this.radioButton2_Click);
-			// 
-			// dataGridView1
-			// 
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Location = new System.Drawing.Point(438, 226);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.RowTemplate.Height = 21;
-			this.dataGridView1.Size = new System.Drawing.Size(240, 150);
-			this.dataGridView1.TabIndex = 66;
 			// 
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(648, 37);
+			this.label7.Location = new System.Drawing.Point(558, 428);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(17, 12);
 			this.label7.TabIndex = 69;
@@ -166,7 +118,7 @@
 			// 
 			// DateStart
 			// 
-			this.DateStart.Location = new System.Drawing.Point(568, 34);
+			this.DateStart.Location = new System.Drawing.Point(478, 425);
 			this.DateStart.Mask = "0000/00/00";
 			this.DateStart.Name = "DateStart";
 			this.DateStart.Size = new System.Drawing.Size(74, 19);
@@ -175,37 +127,54 @@
 			// 
 			// DateEnd
 			// 
-			this.DateEnd.Location = new System.Drawing.Point(671, 34);
+			this.DateEnd.Location = new System.Drawing.Point(581, 425);
 			this.DateEnd.Mask = "0000/00/00";
 			this.DateEnd.Name = "DateEnd";
-			this.DateEnd.Size = new System.Drawing.Size(65, 19);
+			this.DateEnd.Size = new System.Drawing.Size(69, 19);
 			this.DateEnd.TabIndex = 87;
 			this.DateEnd.ValidatingType = typeof(System.DateTime);
 			// 
-			// button1
+			// Msg
 			// 
-			this.button1.Location = new System.Drawing.Point(285, 425);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 88;
-			this.button1.Text = "button1";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.Msg.AutoSize = true;
+			this.Msg.Font = new System.Drawing.Font("ＭＳ ゴシック", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.Msg.Location = new System.Drawing.Point(83, 108);
+			this.Msg.Name = "Msg";
+			this.Msg.Size = new System.Drawing.Size(0, 24);
+			this.Msg.TabIndex = 95;
+			// 
+			// DateSelectMoney
+			// 
+			this.DateSelectMoney.Location = new System.Drawing.Point(406, 460);
+			this.DateSelectMoney.Name = "DateSelectMoney";
+			this.DateSelectMoney.Size = new System.Drawing.Size(142, 37);
+			this.DateSelectMoney.TabIndex = 97;
+			this.DateSelectMoney.Text = "期間指定(販売金額表示)";
+			this.DateSelectMoney.UseVisualStyleBackColor = true;
+			this.DateSelectMoney.Click += new System.EventHandler(this.DateSelectMoney_Click);
+			// 
+			// totalMsg
+			// 
+			this.totalMsg.Anchor = System.Windows.Forms.AnchorStyles.Right;
+			this.totalMsg.AutoSize = true;
+			this.totalMsg.Font = new System.Drawing.Font("ＭＳ ゴシック", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.totalMsg.Location = new System.Drawing.Point(135, 146);
+			this.totalMsg.Name = "totalMsg";
+			this.totalMsg.Size = new System.Drawing.Size(0, 24);
+			this.totalMsg.TabIndex = 94;
 			// 
 			// SalMgt
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Controls.Add(this.button1);
+			this.Controls.Add(this.DateSelectMoney);
+			this.Controls.Add(this.Msg);
+			this.Controls.Add(this.totalMsg);
 			this.Controls.Add(this.DateEnd);
 			this.Controls.Add(this.DateStart);
 			this.Controls.Add(this.label7);
-			this.Controls.Add(this.dataGridView1);
-			this.Controls.Add(this.radioButton2);
 			this.Controls.Add(this.chart1);
-			this.Controls.Add(this.radioButton1);
-			this.Controls.Add(this.Msg);
-			this.Controls.Add(this.DateSelect);
+			this.Controls.Add(this.DateSelectCount);
 			this.Controls.Add(this.listBox1);
 			this.Controls.Add(this.label1);
 			this.Name = "SalMgt";
@@ -213,7 +182,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.注文テーブルBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.iM2DataSet)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -223,18 +191,16 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button DateSelect;
+        private System.Windows.Forms.Button DateSelectCount;
         private System.Windows.Forms.BindingSource 注文テーブルBindingSource;
         private IM2DataSet iM2DataSet;
         private IM2DataSetTableAdapters.注文テーブルTableAdapter 注文テーブルTableAdapter;
-        private System.Windows.Forms.Label Msg;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.RadioButton radioButton2;
-		private System.Windows.Forms.DataGridView dataGridView1;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.MaskedTextBox DateStart;
 		private System.Windows.Forms.MaskedTextBox DateEnd;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Label Msg;
+		private System.Windows.Forms.Button DateSelectMoney;
+		private System.Windows.Forms.Label totalMsg;
 	}
 }
