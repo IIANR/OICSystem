@@ -20,10 +20,6 @@ namespace WindowsFormsApplication1.panel
         OleDbCommand cmd = new OleDbCommand();
         BindingSource bds = new BindingSource();
 
-
-        int flag;
-        string CateName;
-        string db_cate;
         string cateID;
 
         public GoodsRegi()
@@ -35,31 +31,15 @@ namespace WindowsFormsApplication1.panel
 
         private void GoodsRegi_Load(object sender, EventArgs e)
         {
-            cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-            da = new OleDbDataAdapter("SELECT m.商品ID,m.商品名,m.単価,k.カテゴリ名,m.画像ファイル,m.備考,m.定期発注数 FROM 商品マスタ m,カテゴリマスタ k WHERE m.カテゴリID=k.カテゴリID ", cn);
-            dt = new DataTable();
-            da.Fill(dt);
+            BindData();
+
+          
+        }
 
 
-
-
-            bds.DataSource = dt;
-
-            bindingNavigator1.BindingSource = bds;
-
-            textBID.DataBindings.Add("Text", bds, "商品ID");
-            textBname.DataBindings.Add("Text", bds, "商品名");
-            textBprice.DataBindings.Add("Text", bds, "単価");
-            comboBcate.DataBindings.Add("Text", bds, "カテゴリ名");
-            textBimage.DataBindings.Add("Text", bds, "画像ファイル");
-            textBbikou.DataBindings.Add("Text", bds, "備考");
-            textBnumber.DataBindings.Add("Text", bds, "定期発注数");
-            pictureBox.Image = Image.FromFile(@".\IM2image\" + textBimage.Text);
-            textBID.SelectionStart = 0;   //選択状態にならないようにする
-
-
-
-
+        private void CategoryLoad()
+        {
+            comboBcate.Items.Clear();
             cn.Open();
             OleDbCommand command = new OleDbCommand();
             command.Connection = cn;
@@ -71,8 +51,26 @@ namespace WindowsFormsApplication1.panel
             {
                 comboBcate.Items.Add(reader["カテゴリ名"].ToString());
             }
-            cn.Close();
 
+            cn.Close();
+        }
+
+        private void GoodsLoad()
+        {
+            comboBcate.Items.Clear();
+            cn.Open();
+            OleDbCommand command = new OleDbCommand();
+            command.Connection = cn;
+            string query = "SELECT * FROM 商品マスタ";
+            command.CommandText = query;
+
+            OleDbDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                comboBcate.Items.Add(reader["カテゴリ名"].ToString());
+            }
+
+            cn.Close();
         }
 
         private DataTable CreateSchemaDataTable(OleDbDataReader reader)
@@ -100,60 +98,57 @@ namespace WindowsFormsApplication1.panel
             return dt;
         }
 
+
+        private Boolean SerchCategory(string category)
+        {
+            Boolean flag = false;
+            da = new OleDbDataAdapter("SELECT * FROM カテゴリマスタ WHERE カテゴリ名='"+category+"'", cn);
+            dt = new DataTable();
+            da.Fill(dt);
+            if(dt.Rows.Count==0)
+            {
+                flag = true;
+            }
+            return flag;
+        }
+
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
             //ここから変更場所
 
-            
-            cn.Open();
-            DataTable dt3 = new DataTable();
 
-            cmd.CommandText = "SELECT カテゴリ名 FROM カテゴリマスタ";
+
+
+            cn.Open();
+            OleDbCommand cmd = new OleDbCommand();
             cmd.Connection = cn;
 
-            OleDbDataReader rd = cmd.ExecuteReader();
-
-            dt3 = CreateSchemaDataTable(rd);
-            DataRow row = dt3.NewRow();
-
-            CateName = comboBcate.Text;
-
-            while (rd.Read())
+            if (SerchCategory(comboBcate.Text) == true)
             {
-                db_cate = (string)rd.GetValue(0);
-
-                if (db_cate != CateName)
-                {
-                    flag = 1;
-                }
-                else
-                {
-                    flag = 0;
-                    break;
-                }
-            }
-            if (flag == 1)
-            {
-                cmd.Connection = cn;
-                cmd.CommandText = "INSERT INTO カテゴリマスタ (カテゴリ名) VALUES (@catename)";
-  
+                cmd.CommandText = "INSERT INTO カテゴリマスタ (カテゴリ名)" + " VALUES (@catename)";
                 OleDbParameter prcatename = new OleDbParameter("@catename", comboBcate.Text);
                 cmd.Parameters.Add(prcatename);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("新規のカテゴリ名を追加");
+            }
+            else
+            {
                 
             }
+
+
             cn.Close();
 
+
+
+            //ここまで
             da = new OleDbDataAdapter("SELECT カテゴリID FROM カテゴリマスタ WHERE カテゴリ名='" + comboBcate.Text + "'", cn);
             DataTable dt = new DataTable();
             da.Fill(dt);
             cateID = dt.Rows[0][0].ToString();
             dt.Clear();
 
-
-
-            //ここまで
-
-
+            cn.Close();
 
 
 
@@ -174,11 +169,22 @@ namespace WindowsFormsApplication1.panel
             {
                 cn.Close();
             }
+
+            CategoryLoad();
         }
 
         private void textBimage_TextChanged(object sender, EventArgs e)
         {
-          pictureBox.Image = Image.FromFile(@".\IM2image\" + textBimage.Text);
+            imageChange();
+        }
+
+
+        private void imageChange()
+        {
+            if (textBimage.Text.Length > 1)
+            {
+                pictureBox.Image = Image.FromFile(@".\IM2image\" + textBimage.Text);
+            }
         }
 
         private void panel_DragDrop(object sender, DragEventArgs e)
@@ -211,5 +217,89 @@ namespace WindowsFormsApplication1.panel
                 e.Effect = DragDropEffects.None;
             }
         }
+
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            cn.Open();
+            cmd.Connection = cn;
+            cmd.CommandText = "DELETE FROM 商品マスタ WHERE 商品ID='"+textBID.Text+"'";
+            cmd.ExecuteNonQuery();
+            try
+            {
+                
+                MessageBox.Show("削除しました", "IM2");
+
+                BindData();
+               
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message, "IM2");
+            }
+            cn.Close();
+            
+        }
+        private void BindData()
+        {
+            cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
+            da = new OleDbDataAdapter("SELECT m.商品ID,m.商品名,m.単価,k.カテゴリ名,m.画像ファイル,m.備考,m.定期発注数 FROM 商品マスタ m,カテゴリマスタ k WHERE m.カテゴリID=k.カテゴリID ", cn);
+            dt = new DataTable();
+            da.Fill(dt);
+
+
+
+
+            bds.DataSource = dt;
+
+            bindingNavigator1.BindingSource = bds;
+
+            textBID.DataBindings.Add("Text", bds, "商品ID");
+            textBname.DataBindings.Add("Text", bds, "商品名");
+            textBprice.DataBindings.Add("Text", bds, "単価");
+            comboBcate.DataBindings.Add("Text", bds, "カテゴリ名");
+            textBimage.DataBindings.Add("Text", bds, "画像ファイル");
+            textBbikou.DataBindings.Add("Text", bds, "備考");
+            textBnumber.DataBindings.Add("Text", bds, "定期発注数");
+            imageChange();
+            textBID.SelectionStart = 0;   //選択状態にならないようにする
+
+
+
+            cn.Open();
+            OleDbCommand command = new OleDbCommand();
+            command.Connection = cn;
+            string query = "SELECT カテゴリ名 FROM カテゴリマスタ";
+            command.CommandText = query;
+
+            OleDbDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                comboBcate.Items.Add(reader["カテゴリ名"].ToString());
+            }
+            cn.Close();
+        }
+        private void Delete()
+        {
+
+            cn.Open();
+            
+            cmd.Connection = cn;
+            cmd.CommandText = "DELETE FROM 在庫テーブル WHERE 商品ID='" + textBID.Text + "'";
+            cmd.ExecuteNonQuery();
+            try
+            {
+
+                MessageBox.Show("削除しました", "IM2");
+
+                BindData();
+
+            }
+            catch (Exception ex)
+            {
+                
+            }
+        }
     }
+
+   
 }

@@ -62,6 +62,7 @@
             this.VersionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.カテゴリマスタTableAdapter = new WindowsFormsApplication1.IM2DataSetTableAdapters.カテゴリマスタTableAdapter();
             this.商品マスタTableAdapter = new WindowsFormsApplication1.IM2DataSetTableAdapters.商品マスタTableAdapter();
+            this.DeleteBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.カテゴリマスタ商品マスタBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.カテゴリマスタBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iM2DataSet)).BeginInit();
@@ -185,7 +186,7 @@
             // UpdateBtn
             // 
             this.UpdateBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UpdateBtn.Location = new System.Drawing.Point(452, 291);
+            this.UpdateBtn.Location = new System.Drawing.Point(600, 291);
             this.UpdateBtn.Name = "UpdateBtn";
             this.UpdateBtn.Size = new System.Drawing.Size(114, 43);
             this.UpdateBtn.TabIndex = 5;
@@ -255,14 +256,14 @@
             this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(188, 25);
+            this.bindingNavigator1.Size = new System.Drawing.Size(197, 25);
             this.bindingNavigator1.TabIndex = 26;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(29, 22);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(38, 22);
             this.bindingNavigatorCountItem.Text = "/ {0}";
             this.bindingNavigatorCountItem.ToolTipText = "項目の総数";
             // 
@@ -326,13 +327,13 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.VersionToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(143, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(161, 26);
             // 
             // VersionToolStripMenuItem
             // 
             this.VersionToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("VersionToolStripMenuItem.Image")));
             this.VersionToolStripMenuItem.Name = "VersionToolStripMenuItem";
-            this.VersionToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.VersionToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.VersionToolStripMenuItem.Text = "バージョン情報";
             // 
             // カテゴリマスタTableAdapter
@@ -343,10 +344,22 @@
             // 
             this.商品マスタTableAdapter.ClearBeforeFill = true;
             // 
+            // DeleteBtn
+            // 
+            this.DeleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteBtn.Location = new System.Drawing.Point(600, 340);
+            this.DeleteBtn.Name = "DeleteBtn";
+            this.DeleteBtn.Size = new System.Drawing.Size(114, 43);
+            this.DeleteBtn.TabIndex = 27;
+            this.DeleteBtn.Text = "削除";
+            this.DeleteBtn.UseVisualStyleBackColor = true;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
+            // 
             // GoodsRegi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.bindingNavigator1);
             this.Controls.Add(this.textBID);
             this.Controls.Add(this.textBimage);
@@ -414,5 +427,6 @@
         private IM2DataSetTableAdapters.カテゴリマスタTableAdapter カテゴリマスタTableAdapter;
         private System.Windows.Forms.BindingSource カテゴリマスタ商品マスタBindingSource;
         private IM2DataSetTableAdapters.商品マスタTableAdapter 商品マスタTableAdapter;
+        private System.Windows.Forms.Button DeleteBtn;
     }
 }
