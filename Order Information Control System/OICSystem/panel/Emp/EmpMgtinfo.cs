@@ -166,14 +166,14 @@ namespace WindowsFormsApplication1
             {
                 cmd.Connection = cn;
                 cmd.CommandText = 
-                    "UPDATE 従業員マスタ SET 名前 ='" + EmpdataGridView.Rows[i].Cells[2].Value.ToString() +
-                    "' ,ﾌﾘｶﾞﾅ ='" + EmpdataGridView.Rows[i].Cells[3].Value.ToString() +
-                    "' ,性別 ='" + EmpdataGridView.Rows[i].Cells[4].Value.ToString() +
-                    "' ,郵便番号 ='" + EmpdataGridView.Rows[i].Cells[5].Value.ToString() +
-                    "' ,住所1 ='" + EmpdataGridView.Rows[i].Cells[6].Value.ToString() +
-                    "' ,住所2 ='" + EmpdataGridView.Rows[i].Cells[7].Value.ToString() +
-                    "' ,電話番号 ='" + EmpdataGridView.Rows[i].Cells[8].Value.ToString() +
-                    "' ,備考 ='" + EmpdataGridView.Rows[i].Cells[12].Value.ToString() +
+                    "UPDATE 従業員マスタ SET 名前 ='" + EmpdataGridView.Rows[i].Cells[2].ToString() +
+                    "' ,ﾌﾘｶﾞﾅ ='" + EmpdataGridView.Rows[i].Cells[3].ToString() +
+                    "' ,性別 ='" + EmpdataGridView.Rows[i].Cells[4].ToString() +
+                    "' ,郵便番号 ='" + EmpdataGridView.Rows[i].Cells[5].ToString() +
+                    "' ,住所1 ='" + EmpdataGridView.Rows[i].Cells[6].ToString() +
+                    "' ,住所2 ='" + EmpdataGridView.Rows[i].Cells[7].ToString() +
+                    "' ,電話番号 ='" + EmpdataGridView.Rows[i].Cells[8].ToString() +
+                    "' ,備考 ='" + EmpdataGridView.Rows[i].Cells[12].ToString() +
                     "' WHERE 従業員ID=" + (int)EmpdataGridView.Rows[i].Cells[0].Value + "";
                 cn.Open();
                 cmd.ExecuteNonQuery();
