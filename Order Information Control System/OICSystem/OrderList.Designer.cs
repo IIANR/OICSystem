@@ -33,17 +33,29 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.OrderTitleLabel = new System.Windows.Forms.Label();
+            this.OrderListDataGridView2 = new System.Windows.Forms.DataGridView();
+            this.OrderListDataGridView3 = new System.Windows.Forms.DataGridView();
+            this.OrderListDataGridView4 = new System.Windows.Forms.DataGridView();
+            this.NextBtn = new System.Windows.Forms.Button();
+            this.BackBtn = new System.Windows.Forms.Button();
+            this.lblid1 = new System.Windows.Forms.Label();
+            this.lblid2 = new System.Windows.Forms.Label();
+            this.lblid3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.OrderListDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OrderListDataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OrderListDataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OrderListDataGridView4)).BeginInit();
             this.SuspendLayout();
             // 
             // OrderListDataGridView
             // 
             this.OrderListDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.OrderListDataGridView.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.OrderListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.OrderListDataGridView.Location = new System.Drawing.Point(12, 65);
             this.OrderListDataGridView.Name = "OrderListDataGridView";
             this.OrderListDataGridView.RowTemplate.Height = 21;
-            this.OrderListDataGridView.Size = new System.Drawing.Size(856, 480);
+            this.OrderListDataGridView.Size = new System.Drawing.Size(856, 245);
             this.OrderListDataGridView.TabIndex = 0;
             // 
             // PrintBtn
@@ -60,11 +72,6 @@
             // 
             this.printDialog1.UseEXDialog = true;
             // 
-            // printDocument1
-            // 
-            this.printDocument1.EndPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocument1_EndPrint);
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
-            // 
             // OrderTitleLabel
             // 
             this.OrderTitleLabel.AutoSize = true;
@@ -75,18 +82,107 @@
             this.OrderTitleLabel.TabIndex = 2;
             this.OrderTitleLabel.Text = "注文一覧";
             // 
+            // OrderListDataGridView2
+            // 
+            this.OrderListDataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.OrderListDataGridView2.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.OrderListDataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.OrderListDataGridView2.Location = new System.Drawing.Point(12, 316);
+            this.OrderListDataGridView2.Name = "OrderListDataGridView2";
+            this.OrderListDataGridView2.RowTemplate.Height = 21;
+            this.OrderListDataGridView2.Size = new System.Drawing.Size(282, 200);
+            this.OrderListDataGridView2.TabIndex = 4;
+            // 
+            // OrderListDataGridView3
+            // 
+            this.OrderListDataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.OrderListDataGridView3.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.OrderListDataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.OrderListDataGridView3.Location = new System.Drawing.Point(300, 316);
+            this.OrderListDataGridView3.Name = "OrderListDataGridView3";
+            this.OrderListDataGridView3.RowTemplate.Height = 21;
+            this.OrderListDataGridView3.Size = new System.Drawing.Size(282, 200);
+            this.OrderListDataGridView3.TabIndex = 8;
+            // 
+            // OrderListDataGridView4
+            // 
+            this.OrderListDataGridView4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.OrderListDataGridView4.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.OrderListDataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.OrderListDataGridView4.Location = new System.Drawing.Point(588, 316);
+            this.OrderListDataGridView4.Name = "OrderListDataGridView4";
+            this.OrderListDataGridView4.RowTemplate.Height = 21;
+            this.OrderListDataGridView4.Size = new System.Drawing.Size(282, 200);
+            this.OrderListDataGridView4.TabIndex = 9;
+            // 
+            // NextBtn
+            // 
+            this.NextBtn.Location = new System.Drawing.Point(544, 522);
+            this.NextBtn.Name = "NextBtn";
+            this.NextBtn.Size = new System.Drawing.Size(75, 23);
+            this.NextBtn.TabIndex = 10;
+            this.NextBtn.Text = "次へ";
+            this.NextBtn.UseVisualStyleBackColor = true;
+            this.NextBtn.Click += new System.EventHandler(this.NextBtn_Click);
+            // 
+            // BackBtn
+            // 
+            this.BackBtn.Location = new System.Drawing.Point(259, 522);
+            this.BackBtn.Name = "BackBtn";
+            this.BackBtn.Size = new System.Drawing.Size(75, 23);
+            this.BackBtn.TabIndex = 11;
+            this.BackBtn.Text = "前へ";
+            this.BackBtn.UseVisualStyleBackColor = true;
+            this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
+            // 
+            // lblid1
+            // 
+            this.lblid1.AutoSize = true;
+            this.lblid1.Location = new System.Drawing.Point(119, 533);
+            this.lblid1.Name = "lblid1";
+            this.lblid1.Size = new System.Drawing.Size(0, 12);
+            this.lblid1.TabIndex = 12;
+            // 
+            // lblid2
+            // 
+            this.lblid2.AutoSize = true;
+            this.lblid2.Location = new System.Drawing.Point(423, 533);
+            this.lblid2.Name = "lblid2";
+            this.lblid2.Size = new System.Drawing.Size(0, 12);
+            this.lblid2.TabIndex = 13;
+            // 
+            // lblid3
+            // 
+            this.lblid3.AutoSize = true;
+            this.lblid3.Location = new System.Drawing.Point(713, 533);
+            this.lblid3.Name = "lblid3";
+            this.lblid3.Size = new System.Drawing.Size(0, 12);
+            this.lblid3.TabIndex = 14;
+            // 
             // OrderList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 557);
+            this.Controls.Add(this.lblid3);
+            this.Controls.Add(this.lblid2);
+            this.Controls.Add(this.lblid1);
+            this.Controls.Add(this.BackBtn);
+            this.Controls.Add(this.NextBtn);
+            this.Controls.Add(this.OrderListDataGridView4);
+            this.Controls.Add(this.OrderListDataGridView3);
+            this.Controls.Add(this.OrderListDataGridView2);
             this.Controls.Add(this.OrderTitleLabel);
             this.Controls.Add(this.PrintBtn);
             this.Controls.Add(this.OrderListDataGridView);
             this.Name = "OrderList";
             this.Text = "OrderList";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OrderList_FormClosing);
             this.Load += new System.EventHandler(this.OrderList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.OrderListDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OrderListDataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OrderListDataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OrderListDataGridView4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -99,5 +195,13 @@
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.Label OrderTitleLabel;
+        private System.Windows.Forms.DataGridView OrderListDataGridView2;
+        private System.Windows.Forms.DataGridView OrderListDataGridView3;
+        private System.Windows.Forms.DataGridView OrderListDataGridView4;
+        private System.Windows.Forms.Button NextBtn;
+        private System.Windows.Forms.Button BackBtn;
+        private System.Windows.Forms.Label lblid1;
+        private System.Windows.Forms.Label lblid2;
+        private System.Windows.Forms.Label lblid3;
     }
 }
