@@ -188,7 +188,24 @@ namespace WindowsFormsApplication1
 
         private void DeleteB_Click(object sender, EventArgs e)
         {
-            EmpdataGridView
+                        if (MessageBox.Show(EmpNameTextB.Text + "のデータを削除してもよろしいですか", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                return;
+            }
+            cmd.Connection = cn;
+            cmd.CommandText = "DELETE FROM 従業員マスタ WHERE 名前 ='" + EmpNameTextB.Text + "'";
+            try
+            {
+                cn.Open();
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("削除しました", "成功");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "おｋ");
+            }
+            cn.Close();
+            dataload(0);
         }
     }
 }

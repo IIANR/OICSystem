@@ -147,6 +147,7 @@
             this.Controls.Add(this.EmpMgtLbl);
             this.Name = "EmpMgtInfo";
             this.Size = new System.Drawing.Size(760, 430);
+            this.Load += new System.EventHandler(this.EmpMgtInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.EmpdataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
