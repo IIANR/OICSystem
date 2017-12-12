@@ -70,6 +70,7 @@ namespace WindowsFormsApplication1
             OrderInfoGritview.Columns[3].ReadOnly = true;
             OrderInfoGritview.Columns[4].ReadOnly = true;
             OrderInfoGritview.Columns[5].ReadOnly = true;
+            OrderInfoGritview.Columns[6].ReadOnly = true;
         }
 
         private DataTable CreateSchemaDataTable(OleDbDataReader reader)

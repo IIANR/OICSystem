@@ -13,6 +13,9 @@ namespace WindowsFormsApplication1
 {
     public partial class OrderList : Form
     {
+        TextBox aa = new TextBox();
+
+
         private int curPageNumber;
 
         OleDbConnection cn = new OleDbConnection();
@@ -28,7 +31,7 @@ namespace WindowsFormsApplication1
         {
             if (OrderListDataGridView.RowCount < 1)
             {
-                MessageBox.Show("データがありません", "CS-29");
+                MessageBox.Show("データがありません", "OICSystem");
                 return;
             }
             printDialog1.Document = printDocument1;
@@ -44,19 +47,19 @@ namespace WindowsFormsApplication1
         {
             if (curPageNumber == 1)
             {
-                PrintGdata(e, 0, 10);
+                PrintGdata(e, 0, 50);
                 e.HasMorePages = true;
             }
             else if (curPageNumber == 2)
             {
-                PrintGdata(e, 10, 20);
-                e.HasMorePages = true;
-            }
-            else
-            {
-                PrintGdata(e, 20, OrderListDataGridView.RowCount - 1);
+                PrintGdata(e, 50, OrderListDataGridView.RowCount);
                 e.HasMorePages = false;
             }
+            //else
+            //{
+            //    PrintGdata(e, 20, OrderListDataGridView.RowCount - 1);
+            //    e.HasMorePages = false;
+            //}
             curPageNumber++;
         }
 
@@ -67,7 +70,7 @@ namespace WindowsFormsApplication1
 
         private void PrintGdata(System.Drawing.Printing.PrintPageEventArgs e, int ds, int df)
         {
-            int[] xp = { 50, 100, 200, 300, 400, 500, 550, 600 };
+            int[] xp = { 30, 90, 190, 360, 460, 560, 780, 980 };
             for (int j = 0; j < OrderListDataGridView.ColumnCount; j++)
             {
                 e.Graphics.DrawString(OrderListDataGridView.Columns[j].HeaderCell.Value.ToString(), new Font("MS ゴシック", 12), Brushes.Black, xp[j], 50);
@@ -79,7 +82,7 @@ namespace WindowsFormsApplication1
                 {
                     if (OrderListDataGridView[j, i].Value.ToString() != "")
                     {
-                        if (j == 4)
+                        if (j == 1)
                         {
                             string s0 = OrderListDataGridView[j, i].Value.ToString();
                             string[] s1 = s0.Split(' ');
