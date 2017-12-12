@@ -121,8 +121,6 @@ namespace WindowsFormsApplication1
                 OrderInfoGritview.Rows[0].Selected = true;
 
                 int sum = 0;
-                //string db_Goodsid = "";
-                //int db_GoodsPrice = 0;
                 string GoodsId = "";
                 string[] GoodsIdArray = new string[] { };
 
@@ -156,6 +154,11 @@ namespace WindowsFormsApplication1
                 cmd.CommandText = "UPDATE 注文テーブル SET 入金済み=" + (bool)OrderInfoGritview.Rows[i].Cells[7].Value + " WHERE 注文ID=" + (int)OrderInfoGritview.Rows[i].Cells[0].Value + "";   
                 cn.Open();
                 cmd.ExecuteNonQuery();               
+                cn.Close();
+                cmd.Connection = cn;
+                cmd.CommandText = "UPDATE 注文テーブル SET フラグ='入金済み' WHERE 注文ID=" + (int)OrderInfoGritview.Rows[i].Cells[0].Value + " AND 入金済み=True";
+                cn.Open();
+                cmd.ExecuteNonQuery();
                 cn.Close();
             }
             MessageBox.Show("更新しました", "OICSystem");
@@ -210,8 +213,6 @@ namespace WindowsFormsApplication1
         private void OrderInfoGritview_Click(object sender, EventArgs e)
         {
             int sum = 0;
-            //string db_Goodsid = "";
-            //int db_GoodsPrice = 0;
             string GoodsId = "";
             string[] GoodsIdArray = new string[] { };
 

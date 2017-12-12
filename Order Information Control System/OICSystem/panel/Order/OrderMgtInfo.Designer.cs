@@ -93,7 +93,7 @@
             this.UpdateBtn.Name = "UpdateBtn";
             this.UpdateBtn.Size = new System.Drawing.Size(97, 37);
             this.UpdateBtn.TabIndex = 3;
-            this.UpdateBtn.Text = "入金済み列更新";
+            this.UpdateBtn.Text = "入金確認";
             this.UpdateBtn.UseVisualStyleBackColor = true;
             this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
             // 

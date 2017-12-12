@@ -464,7 +464,7 @@ namespace WindowsFormsApplication1
 
                     OleDbCommand cmd2 = new OleDbCommand();
                     cmd2.Connection = cn;
-                    cmd2.CommandText = "INSERT INTO 注文テーブル (注文日,商品ID,顧客ID,従業員ID)" + "VALUES (@orderdate,@goodsid,@memberid,@empid)";
+                    cmd2.CommandText = "INSERT INTO 注文テーブル (注文日,商品ID,顧客ID,従業員ID,フラグ)" + "VALUES (@orderdate,@goodsid,@memberid,@empid,@flag)";
                     OleDbParameter prorderdate = new OleDbParameter("@orderdate", dtNow.ToString("MM/dd"));
                     cmd2.Parameters.Add(prorderdate);
                     OleDbParameter prgoodsid = new OleDbParameter("@goodsid", goodsIDlist.ToString());
@@ -473,6 +473,8 @@ namespace WindowsFormsApplication1
                     cmd2.Parameters.Add(prmemberid);
                     OleDbParameter prempid = new OleDbParameter("@empid", Empid);
                     cmd2.Parameters.Add(prempid);
+                    OleDbParameter prflag = new OleDbParameter("@flag", "入金待ち");
+                    cmd2.Parameters.Add(prflag);
 
 
                     cmd2.ExecuteNonQuery();
