@@ -49,28 +49,28 @@
             this.panel = new System.Windows.Forms.Panel();
             this.textBimage = new System.Windows.Forms.TextBox();
             this.textBID = new System.Windows.Forms.TextBox();
-            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.カテゴリマスタTableAdapter = new WindowsFormsApplication1.IM2DataSetTableAdapters.カテゴリマスタTableAdapter();
+            this.商品マスタTableAdapter = new WindowsFormsApplication1.IM2DataSetTableAdapters.商品マスタTableAdapter();
+            this.DeleteBtn = new System.Windows.Forms.Button();
+            this.VersionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.VersionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.カテゴリマスタTableAdapter = new WindowsFormsApplication1.IM2DataSetTableAdapters.カテゴリマスタTableAdapter();
-            this.商品マスタTableAdapter = new WindowsFormsApplication1.IM2DataSetTableAdapters.商品マスタTableAdapter();
-            this.DeleteBtn = new System.Windows.Forms.Button();
+            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.カテゴリマスタ商品マスタBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.カテゴリマスタBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iM2DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.panel.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // goodsRegiId
@@ -233,39 +233,38 @@
             this.textBID.Size = new System.Drawing.Size(100, 19);
             this.textBID.TabIndex = 0;
             // 
-            // bindingNavigator1
+            // カテゴリマスタTableAdapter
             // 
-            this.bindingNavigator1.AddNewItem = null;
-            this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
-            this.bindingNavigator1.DeleteItem = null;
-            this.bindingNavigator1.Dock = System.Windows.Forms.DockStyle.None;
-            this.bindingNavigator1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem});
-            this.bindingNavigator1.Location = new System.Drawing.Point(261, 381);
-            this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.bindingNavigator1.Name = "bindingNavigator1";
-            this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(197, 25);
-            this.bindingNavigator1.TabIndex = 26;
-            this.bindingNavigator1.Text = "bindingNavigator1";
+            this.カテゴリマスタTableAdapter.ClearBeforeFill = true;
             // 
-            // bindingNavigatorCountItem
+            // 商品マスタTableAdapter
             // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(38, 22);
-            this.bindingNavigatorCountItem.Text = "/ {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "項目の総数";
+            this.商品マスタTableAdapter.ClearBeforeFill = true;
+            // 
+            // DeleteBtn
+            // 
+            this.DeleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteBtn.Location = new System.Drawing.Point(600, 340);
+            this.DeleteBtn.Name = "DeleteBtn";
+            this.DeleteBtn.Size = new System.Drawing.Size(114, 43);
+            this.DeleteBtn.TabIndex = 27;
+            this.DeleteBtn.Text = "削除";
+            this.DeleteBtn.UseVisualStyleBackColor = true;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
+            // 
+            // VersionToolStripMenuItem
+            // 
+            this.VersionToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("VersionToolStripMenuItem.Image")));
+            this.VersionToolStripMenuItem.Name = "VersionToolStripMenuItem";
+            this.VersionToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.VersionToolStripMenuItem.Text = "バージョン情報";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.VersionToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(161, 26);
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -299,6 +298,13 @@
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "現在の場所";
             // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(38, 22);
+            this.bindingNavigatorCountItem.Text = "/ {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "項目の総数";
+            // 
             // bindingNavigatorSeparator1
             // 
             this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
@@ -322,38 +328,32 @@
             this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorMoveLastItem.Text = "最後に移動";
             // 
-            // contextMenuStrip1
+            // bindingNavigator1
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.VersionToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(161, 26);
-            // 
-            // VersionToolStripMenuItem
-            // 
-            this.VersionToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("VersionToolStripMenuItem.Image")));
-            this.VersionToolStripMenuItem.Name = "VersionToolStripMenuItem";
-            this.VersionToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.VersionToolStripMenuItem.Text = "バージョン情報";
-            // 
-            // カテゴリマスタTableAdapter
-            // 
-            this.カテゴリマスタTableAdapter.ClearBeforeFill = true;
-            // 
-            // 商品マスタTableAdapter
-            // 
-            this.商品マスタTableAdapter.ClearBeforeFill = true;
-            // 
-            // DeleteBtn
-            // 
-            this.DeleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeleteBtn.Location = new System.Drawing.Point(600, 340);
-            this.DeleteBtn.Name = "DeleteBtn";
-            this.DeleteBtn.Size = new System.Drawing.Size(114, 43);
-            this.DeleteBtn.TabIndex = 27;
-            this.DeleteBtn.Text = "削除";
-            this.DeleteBtn.UseVisualStyleBackColor = true;
-            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
+            this.bindingNavigator1.AddNewItem = null;
+            this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
+            this.bindingNavigator1.DeleteItem = null;
+            this.bindingNavigator1.Dock = System.Windows.Forms.DockStyle.None;
+            this.bindingNavigator1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorMoveFirstItem,
+            this.bindingNavigatorMovePreviousItem,
+            this.bindingNavigatorSeparator,
+            this.bindingNavigatorPositionItem,
+            this.bindingNavigatorCountItem,
+            this.bindingNavigatorSeparator1,
+            this.bindingNavigatorMoveNextItem,
+            this.bindingNavigatorMoveLastItem});
+            this.bindingNavigator1.Location = new System.Drawing.Point(261, 381);
+            this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.bindingNavigator1.Name = "bindingNavigator1";
+            this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
+            this.bindingNavigator1.Size = new System.Drawing.Size(197, 25);
+            this.bindingNavigator1.TabIndex = 26;
+            this.bindingNavigator1.Text = "bindingNavigator1";
             // 
             // GoodsRegi
             // 
@@ -384,10 +384,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.iM2DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.panel.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -411,22 +411,22 @@
         private System.Windows.Forms.Panel panel;
         private System.Windows.Forms.TextBox textBimage;
         private System.Windows.Forms.TextBox textBID;
-        private System.Windows.Forms.BindingNavigator bindingNavigator1;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem VersionToolStripMenuItem;
         private System.Windows.Forms.BindingSource カテゴリマスタBindingSource;
         private IM2DataSet iM2DataSet;
         private IM2DataSetTableAdapters.カテゴリマスタTableAdapter カテゴリマスタTableAdapter;
         private System.Windows.Forms.BindingSource カテゴリマスタ商品マスタBindingSource;
         private IM2DataSetTableAdapters.商品マスタTableAdapter 商品マスタTableAdapter;
         private System.Windows.Forms.Button DeleteBtn;
+        private System.Windows.Forms.ToolStripMenuItem VersionToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
+        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
+        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
+        private System.Windows.Forms.BindingNavigator bindingNavigator1;
     }
 }
