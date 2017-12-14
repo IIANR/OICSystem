@@ -35,19 +35,21 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(596, 23);
+            this.button2.Location = new System.Drawing.Point(1291, 46);
+            this.button2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(151, 40);
+            this.button2.Size = new System.Drawing.Size(327, 80);
             this.button2.TabIndex = 27;
-            this.button2.Text = "注文状況";
+            this.button2.Text = "入金状況";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(426, 23);
+            this.button1.Location = new System.Drawing.Point(923, 46);
+            this.button1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(151, 40);
+            this.button1.Size = new System.Drawing.Size(327, 80);
             this.button1.TabIndex = 26;
             this.button1.Text = "注文登録";
             this.button1.UseVisualStyleBackColor = true;
@@ -55,20 +57,22 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(0, 84);
+            this.panel1.Location = new System.Drawing.Point(0, 168);
+            this.panel1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(760, 430);
+            this.panel1.Size = new System.Drawing.Size(1647, 860);
             this.panel1.TabIndex = 28;
             // 
             // OrderMgt
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Name = "OrderMgt";
-            this.Size = new System.Drawing.Size(760, 515);
+            this.Size = new System.Drawing.Size(1647, 1030);
             this.ResumeLayout(false);
 
         }
