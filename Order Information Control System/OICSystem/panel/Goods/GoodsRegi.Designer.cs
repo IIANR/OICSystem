@@ -32,7 +32,6 @@
             this.goodsRegiName = new System.Windows.Forms.Label();
             this.goodsRegiPrice = new System.Windows.Forms.Label();
             this.textBname = new System.Windows.Forms.TextBox();
-            this.textBprice = new System.Windows.Forms.TextBox();
             this.goodsRegicateID = new System.Windows.Forms.Label();
             this.goodsRegiBikou = new System.Windows.Forms.Label();
             this.goodsReginumber = new System.Windows.Forms.Label();
@@ -44,6 +43,9 @@
             this.panel = new System.Windows.Forms.Panel();
             this.textBimage = new System.Windows.Forms.TextBox();
             this.textBID = new System.Windows.Forms.TextBox();
+            this.Lblsupp = new System.Windows.Forms.Label();
+            this.textBsupp = new System.Windows.Forms.TextBox();
+            this.textBprice = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.panel.SuspendLayout();
             this.SuspendLayout();
@@ -61,7 +63,7 @@
             // goodsRegiName
             // 
             this.goodsRegiName.AutoSize = true;
-            this.goodsRegiName.Location = new System.Drawing.Point(116, 108);
+            this.goodsRegiName.Location = new System.Drawing.Point(116, 102);
             this.goodsRegiName.Name = "goodsRegiName";
             this.goodsRegiName.Size = new System.Drawing.Size(43, 12);
             this.goodsRegiName.TabIndex = 0;
@@ -71,7 +73,7 @@
             // goodsRegiPrice
             // 
             this.goodsRegiPrice.AutoSize = true;
-            this.goodsRegiPrice.Location = new System.Drawing.Point(128, 149);
+            this.goodsRegiPrice.Location = new System.Drawing.Point(128, 172);
             this.goodsRegiPrice.Name = "goodsRegiPrice";
             this.goodsRegiPrice.Size = new System.Drawing.Size(31, 12);
             this.goodsRegiPrice.TabIndex = 0;
@@ -80,22 +82,15 @@
             // 
             // textBname
             // 
-            this.textBname.Location = new System.Drawing.Point(165, 101);
+            this.textBname.Location = new System.Drawing.Point(165, 95);
             this.textBname.Name = "textBname";
             this.textBname.Size = new System.Drawing.Size(125, 19);
             this.textBname.TabIndex = 1;
             // 
-            // textBprice
-            // 
-            this.textBprice.Location = new System.Drawing.Point(165, 142);
-            this.textBprice.Name = "textBprice";
-            this.textBprice.Size = new System.Drawing.Size(66, 19);
-            this.textBprice.TabIndex = 2;
-            // 
             // goodsRegicateID
             // 
             this.goodsRegicateID.AutoSize = true;
-            this.goodsRegicateID.Location = new System.Drawing.Point(96, 191);
+            this.goodsRegicateID.Location = new System.Drawing.Point(96, 208);
             this.goodsRegicateID.Name = "goodsRegicateID";
             this.goodsRegicateID.Size = new System.Drawing.Size(63, 12);
             this.goodsRegicateID.TabIndex = 0;
@@ -104,7 +99,7 @@
             // goodsRegiBikou
             // 
             this.goodsRegiBikou.AutoSize = true;
-            this.goodsRegiBikou.Location = new System.Drawing.Point(128, 232);
+            this.goodsRegiBikou.Location = new System.Drawing.Point(128, 243);
             this.goodsRegiBikou.Name = "goodsRegiBikou";
             this.goodsRegiBikou.Size = new System.Drawing.Size(31, 12);
             this.goodsRegiBikou.TabIndex = 0;
@@ -113,7 +108,7 @@
             // goodsReginumber
             // 
             this.goodsReginumber.AutoSize = true;
-            this.goodsReginumber.Location = new System.Drawing.Point(92, 273);
+            this.goodsReginumber.Location = new System.Drawing.Point(92, 278);
             this.goodsReginumber.Name = "goodsReginumber";
             this.goodsReginumber.Size = new System.Drawing.Size(67, 12);
             this.goodsReginumber.TabIndex = 0;
@@ -121,14 +116,14 @@
             // 
             // textBbikou
             // 
-            this.textBbikou.Location = new System.Drawing.Point(165, 225);
+            this.textBbikou.Location = new System.Drawing.Point(165, 236);
             this.textBbikou.Name = "textBbikou";
             this.textBbikou.Size = new System.Drawing.Size(186, 19);
             this.textBbikou.TabIndex = 3;
             // 
             // textBnumber
             // 
-            this.textBnumber.Location = new System.Drawing.Point(165, 266);
+            this.textBnumber.Location = new System.Drawing.Point(165, 271);
             this.textBnumber.Name = "textBnumber";
             this.textBnumber.Size = new System.Drawing.Size(86, 19);
             this.textBnumber.TabIndex = 4;
@@ -137,7 +132,7 @@
             // 
             this.comboBcate.DisplayMember = "カテゴリID";
             this.comboBcate.FormattingEnabled = true;
-            this.comboBcate.Location = new System.Drawing.Point(165, 183);
+            this.comboBcate.Location = new System.Drawing.Point(165, 200);
             this.comboBcate.Name = "comboBcate";
             this.comboBcate.Size = new System.Drawing.Size(103, 20);
             this.comboBcate.TabIndex = 0;
@@ -175,7 +170,7 @@
             this.panel.TabIndex = 18;
             this.panel.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel_DragDrop);
             this.panel.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel_DragEnter);
-            //// 
+            // 
             // textBimage
             // 
             this.textBimage.Location = new System.Drawing.Point(530, 13);
@@ -189,13 +184,40 @@
             // 
             this.textBID.Location = new System.Drawing.Point(165, 60);
             this.textBID.Name = "textBID";
-            this.textBID.Size = new System.Drawing.Size(103, 19);
+            this.textBID.Size = new System.Drawing.Size(86, 19);
             this.textBID.TabIndex = 19;
+            // 
+            // Lblsupp
+            // 
+            this.Lblsupp.AutoSize = true;
+            this.Lblsupp.Location = new System.Drawing.Point(116, 137);
+            this.Lblsupp.Name = "Lblsupp";
+            this.Lblsupp.Size = new System.Drawing.Size(43, 12);
+            this.Lblsupp.TabIndex = 20;
+            this.Lblsupp.Text = "仕入値:";
+            // 
+            // textBsupp
+            // 
+            this.textBsupp.Location = new System.Drawing.Point(165, 130);
+            this.textBsupp.Name = "textBsupp";
+            this.textBsupp.Size = new System.Drawing.Size(100, 19);
+            this.textBsupp.TabIndex = 21;
+            // 
+            // textBprice
+            // 
+            this.textBprice.Location = new System.Drawing.Point(168, 165);
+            this.textBprice.Name = "textBprice";
+            this.textBprice.ReadOnly = true;
+            this.textBprice.Size = new System.Drawing.Size(83, 19);
+            this.textBprice.TabIndex = 22;
             // 
             // GoodsRegi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.textBprice);
+            this.Controls.Add(this.textBsupp);
+            this.Controls.Add(this.Lblsupp);
             this.Controls.Add(this.textBID);
             this.Controls.Add(this.textBimage);
             this.Controls.Add(this.panel);
@@ -206,7 +228,6 @@
             this.Controls.Add(this.goodsReginumber);
             this.Controls.Add(this.goodsRegiBikou);
             this.Controls.Add(this.goodsRegicateID);
-            this.Controls.Add(this.textBprice);
             this.Controls.Add(this.textBname);
             this.Controls.Add(this.goodsRegiPrice);
             this.Controls.Add(this.goodsRegiName);
@@ -227,7 +248,6 @@
         private System.Windows.Forms.Label goodsRegiName;
         private System.Windows.Forms.Label goodsRegiPrice;
         private System.Windows.Forms.TextBox textBname;
-        private System.Windows.Forms.TextBox textBprice;
         private System.Windows.Forms.Label goodsRegicateID;
         private System.Windows.Forms.Label goodsRegiBikou;
         private System.Windows.Forms.Label goodsReginumber;
@@ -239,5 +259,8 @@
         private System.Windows.Forms.Panel panel;
         private System.Windows.Forms.TextBox textBimage;
         private System.Windows.Forms.TextBox textBID;
+        private System.Windows.Forms.Label Lblsupp;
+        private System.Windows.Forms.TextBox textBsupp;
+        private System.Windows.Forms.TextBox textBprice;
     }
 }

@@ -95,19 +95,21 @@ namespace WindowsFormsApplication1.panel
                 return;
             }
 
-            if (textBimage.Text == "")
+            if (textBimage.Text == "")//無かった場合image
             {
-                
+                textBimage.Text = textBimage.Text;
             }
 
+
+
             cmd.Connection = cn;
-            cmd.CommandText = "INSERT INTO 商品マスタ (商品ID,商品名,単価,カテゴリID,備考,定期発注数,画像ファイル)" +
-                " VALUES (@id,@name,@price,@cateID,@bikou,@number,@imagefile)";
+            cmd.CommandText = "INSERT INTO 商品マスタ (商品ID,商品名,単価,カテゴリID,備考,定期発注数,画像ファイル,仕入れ値)" +
+                " VALUES (@id,@name,@price,@cateID,@bikou,@number,@imagefile,@supp)";
             OleDbParameter gdID = new OleDbParameter("@id", textBID.Text);
             cmd.Parameters.Add(gdID);
             OleDbParameter gdname = new OleDbParameter("@name", textBname.Text);
             cmd.Parameters.Add(gdname);
-            OleDbParameter gdprice = new OleDbParameter("@price", int.Parse(textBprice.Text));
+            OleDbParameter gdprice = new OleDbParameter("@price",);
             cmd.Parameters.Add(gdprice);
             OleDbParameter gdcateid = new OleDbParameter("@cateID", comboBcate.Text);
             cmd.Parameters.Add(gdcateid);
@@ -117,7 +119,8 @@ namespace WindowsFormsApplication1.panel
             cmd.Parameters.Add(gdnumber);
             OleDbParameter primagefile = new OleDbParameter("@imagefile", textBimage.Text);
             cmd.Parameters.Add(primagefile);
-           
+            OleDbParameter gdsupp = new OleDbParameter("@supp", int.Parse(textBsupp.Text));
+            cmd.Parameters.Add(gdsupp);
 
             
             try
@@ -166,8 +169,10 @@ namespace WindowsFormsApplication1.panel
             comboBcate.Text = "";
             textBbikou.Text = "";
             textBnumber.Text = "";
-            textBimage.Text = "";
-           
+            textBimage.Text = "Noimage.png";
+            pictureBox.Image = Image.FromFile(@".\IM2image\" + textBimage.Text);
+            textBsupp.Text = "";
+
         }
 
 
