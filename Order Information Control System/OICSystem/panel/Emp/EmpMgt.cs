@@ -188,7 +188,7 @@ namespace WindowsFormsApplication1
 
         private void DeleteB_Click(object sender, EventArgs e)
         {
-                        if (MessageBox.Show(EmpNameTextB.Text + "のデータを削除してもよろしいですか", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            if (MessageBox.Show(EmpNameTextB.Text + "のデータを削除してもよろしいですか", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 return;
             }

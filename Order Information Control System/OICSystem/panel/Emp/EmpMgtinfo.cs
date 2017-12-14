@@ -19,10 +19,6 @@ namespace WindowsFormsApplication1
         DataTable dt = new DataTable();
         DataSet ds = new DataSet();
 
-        int id;
-        int tid;
-        string name;
-        string tname;
 
         private void selectfunc(string cmdstr)
         {
@@ -71,73 +67,16 @@ namespace WindowsFormsApplication1
 
         private void SearchB_Click(object sender, EventArgs e)
         {
-            dataload(0);
+            da = new OleDbDataAdapter("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限,備考 FROM 従業員マスタ" +
+            " WHERE 従業員ID LIKE '%" + EmpIDTextB.Text + "%'" +
+            " AND 名前 LIKE '%" + EmpNameTextB.Text + "%'", cn);
+            dt = new DataTable();
+            da.Fill(dt);
 
-            cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
-            cn.Open();
-
-            cmd.CommandText = "SELECT * FROM 従業員マスタ";
-            cmd.Connection = cn;
-
-
-            OleDbDataReader rd = cmd.ExecuteReader();
-
-            dt = CreateSchemaDataTable(rd);
-            DataRow row = dt.NewRow();
-
-            //name = MemberNameTBox.Text;
-            //tell = MemberTelTBox.Text;
-
-            //ID
-            if (EmpIDTextB.Text != "")
-            {
-                tid = int.Parse(EmpIDTextB.Text);
-            }
-            //NAME
-            if (EmpNameTextB.Text != "")
-            {
-                tname = EmpNameTextB.Text;
-            }
-
-
-
-            while (rd.Read())
-            {
-
-                id = (int)rd.GetValue(0);    //従業員ID
-                name = (string)rd.GetValue(1);  //名前
-
-                if (id == tid)
-                {
-
-                    selectfunc("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ WHERE 従業員ID LIKE '%" + EmpIDTextB.Text + "%'");
-                    label1.Text = "";
-                    break;
-                }
-                if (name == tname)
-                {
-                    selectfunc("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ WHERE 名前 LIKE '%" + EmpNameTextB.Text + "%'");
-                    label1.Text = "";
-                    break;
-                }
-
-
-
-                label1.Text = "その情報は登録されていません";
-            }
-            cn.Close();
+            EmpdataGridView.DataSource = dt;
 
             EmpIDTextB.Text = "";
             EmpNameTextB.Text = "";
-
-
-        }
-        private void Clickdata()
-        {
-            int max = int.Parse(EmpdataGridView[0, EmpdataGridView.Rows.Count - 2].Value.ToString());
-            EmpIDTextB.Text = EmpdataGridView[1, EmpdataGridView.CurrentCell.RowIndex].Value.ToString();
-            EmpNameTextB.Text = EmpdataGridView[2, EmpdataGridView.CurrentCell.RowIndex].Value.ToString();
-
 
         }
         private void dataload(int n)
@@ -162,22 +101,33 @@ namespace WindowsFormsApplication1
 
         private void UpdateB_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < EmpdataGridView.Rows.Count; i++)
+            for (int i = 0; i < EmpdataGridView.Rows.Count-1; i++)
             {
                 cmd.Connection = cn;
                 cmd.CommandText = 
-                    "UPDATE 従業員マスタ SET 名前 ='" + EmpdataGridView.Rows[i].Cells[2].ToString() +
-                    "' ,ﾌﾘｶﾞﾅ ='" + EmpdataGridView.Rows[i].Cells[3].ToString() +
-                    "' ,性別 ='" + EmpdataGridView.Rows[i].Cells[4].ToString() +
-                    "' ,郵便番号 ='" + EmpdataGridView.Rows[i].Cells[5].ToString() +
-                    "' ,住所1 ='" + EmpdataGridView.Rows[i].Cells[6].ToString() +
-                    "' ,住所2 ='" + EmpdataGridView.Rows[i].Cells[7].ToString() +
-                    "' ,電話番号 ='" + EmpdataGridView.Rows[i].Cells[8].ToString() +
-                    "' ,備考 ='" + EmpdataGridView.Rows[i].Cells[12].ToString() +
-                    "' WHERE 従業員ID=" + (int)EmpdataGridView.Rows[i].Cells[0].Value + "";
-                cn.Open();
-                cmd.ExecuteNonQuery();
-                cn.Close();
+                    "UPDATE 従業員マスタ SET 名前 ='" + EmpdataGridView[2, i].Value.ToString() +
+                    "' ,ﾌﾘｶﾞﾅ ='" + EmpdataGridView[3, i].Value.ToString() +
+                    "' ,性別 ='" + EmpdataGridView[4, i].Value.ToString() +
+                    "' ,郵便番号 ='" + EmpdataGridView[5, i].Value.ToString() +
+                    "' ,住所1 ='" + EmpdataGridView[6, i].Value.ToString() +
+                    "' ,住所2 ='" + EmpdataGridView[7, i].Value.ToString() +
+                    "' ,電話番号 ='" + EmpdataGridView[8, i].Value.ToString() +
+                    "' ,備考 ='" + EmpdataGridView[12, i].Value.ToString() +
+                    "' WHERE 従業員ID=" + (int)EmpdataGridView[0, i].Value + "";
+                try
+                {
+                    cn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "ok");
+                }
+            finally   //●
+                {
+                    cn.Close();
+                }
+
             }
             MessageBox.Show("更新しました", "OICSystem");
             
