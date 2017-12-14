@@ -44,6 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="panel\IO\IOOrdering.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="panel\IO\IOOrdering.Designer.cs">
+      <DependentUpon>IOOrdering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="panel\IO\OrderingRegi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="panel\IO\OrderingRegi.Designer.cs">
+      <DependentUpon>OrderingRegi.cs</DependentUpon>
+    </Compile>
     <Compile Include="panel\Emp\EmpMgt.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -136,6 +148,12 @@
     <Compile Include="panel\Order\OrderMgtRegister.Designer.cs">
       <DependentUpon>OrderMgtRegister.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="panel\IO\IOOrdering.resx">
+      <DependentUpon>IOOrdering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="panel\IO\OrderingRegi.resx">
+      <DependentUpon>OrderingRegi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="panel\Emp\EmpMgt.resx">
       <DependentUpon>EmpMgt.cs</DependentUpon>
     </EmbeddedResource>
