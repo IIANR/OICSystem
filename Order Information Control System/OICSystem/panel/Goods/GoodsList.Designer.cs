@@ -51,13 +51,15 @@
             this.goodsReginumber = new System.Windows.Forms.Label();
             this.goodsRegiBikou = new System.Windows.Forms.Label();
             this.goodsRegicateID = new System.Windows.Forms.Label();
-            this.textBprice = new System.Windows.Forms.TextBox();
+            this.textBsupp = new System.Windows.Forms.TextBox();
             this.textBname = new System.Windows.Forms.TextBox();
             this.goodsRegiPrice = new System.Windows.Forms.Label();
             this.goodsRegiName = new System.Windows.Forms.Label();
             this.goodsRegiId = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.VersionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBprice = new System.Windows.Forms.TextBox();
+            this.Lblsupp = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             this.panel.SuspendLayout();
@@ -99,14 +101,14 @@
             this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(197, 25);
+            this.bindingNavigator1.Size = new System.Drawing.Size(188, 25);
             this.bindingNavigator1.TabIndex = 43;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(38, 22);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(29, 22);
             this.bindingNavigatorCountItem.Text = "/ {0}";
             this.bindingNavigatorCountItem.ToolTipText = "項目の総数";
             // 
@@ -170,7 +172,7 @@
             this.textBID.Location = new System.Drawing.Point(116, 44);
             this.textBID.Name = "textBID";
             this.textBID.ReadOnly = true;
-            this.textBID.Size = new System.Drawing.Size(100, 19);
+            this.textBID.Size = new System.Drawing.Size(83, 19);
             this.textBID.TabIndex = 30;
             // 
             // textBimage
@@ -219,7 +221,7 @@
             // 
             this.comboBcate.DisplayMember = "カテゴリID";
             this.comboBcate.FormattingEnabled = true;
-            this.comboBcate.Location = new System.Drawing.Point(113, 158);
+            this.comboBcate.Location = new System.Drawing.Point(113, 195);
             this.comboBcate.Name = "comboBcate";
             this.comboBcate.Size = new System.Drawing.Size(103, 20);
             this.comboBcate.TabIndex = 32;
@@ -227,14 +229,14 @@
             // 
             // textBnumber
             // 
-            this.textBnumber.Location = new System.Drawing.Point(113, 235);
+            this.textBnumber.Location = new System.Drawing.Point(113, 272);
             this.textBnumber.Name = "textBnumber";
             this.textBnumber.Size = new System.Drawing.Size(86, 19);
             this.textBnumber.TabIndex = 40;
             // 
             // textBbikou
             // 
-            this.textBbikou.Location = new System.Drawing.Point(113, 197);
+            this.textBbikou.Location = new System.Drawing.Point(113, 234);
             this.textBbikou.Name = "textBbikou";
             this.textBbikou.Size = new System.Drawing.Size(186, 19);
             this.textBbikou.TabIndex = 39;
@@ -242,7 +244,7 @@
             // goodsReginumber
             // 
             this.goodsReginumber.AutoSize = true;
-            this.goodsReginumber.Location = new System.Drawing.Point(40, 242);
+            this.goodsReginumber.Location = new System.Drawing.Point(40, 279);
             this.goodsReginumber.Name = "goodsReginumber";
             this.goodsReginumber.Size = new System.Drawing.Size(67, 12);
             this.goodsReginumber.TabIndex = 35;
@@ -251,7 +253,7 @@
             // goodsRegiBikou
             // 
             this.goodsRegiBikou.AutoSize = true;
-            this.goodsRegiBikou.Location = new System.Drawing.Point(76, 204);
+            this.goodsRegiBikou.Location = new System.Drawing.Point(76, 241);
             this.goodsRegiBikou.Name = "goodsRegiBikou";
             this.goodsRegiBikou.Size = new System.Drawing.Size(31, 12);
             this.goodsRegiBikou.TabIndex = 36;
@@ -260,18 +262,18 @@
             // goodsRegicateID
             // 
             this.goodsRegicateID.AutoSize = true;
-            this.goodsRegicateID.Location = new System.Drawing.Point(44, 166);
+            this.goodsRegicateID.Location = new System.Drawing.Point(44, 203);
             this.goodsRegicateID.Name = "goodsRegicateID";
             this.goodsRegicateID.Size = new System.Drawing.Size(63, 12);
             this.goodsRegicateID.TabIndex = 33;
             this.goodsRegicateID.Text = "カテゴリー名:";
             // 
-            // textBprice
+            // textBsupp
             // 
-            this.textBprice.Location = new System.Drawing.Point(113, 120);
-            this.textBprice.Name = "textBprice";
-            this.textBprice.Size = new System.Drawing.Size(66, 19);
-            this.textBprice.TabIndex = 38;
+            this.textBsupp.Location = new System.Drawing.Point(113, 120);
+            this.textBsupp.Name = "textBsupp";
+            this.textBsupp.Size = new System.Drawing.Size(66, 19);
+            this.textBsupp.TabIndex = 38;
             // 
             // textBname
             // 
@@ -283,7 +285,7 @@
             // goodsRegiPrice
             // 
             this.goodsRegiPrice.AutoSize = true;
-            this.goodsRegiPrice.Location = new System.Drawing.Point(76, 127);
+            this.goodsRegiPrice.Location = new System.Drawing.Point(76, 163);
             this.goodsRegiPrice.Name = "goodsRegiPrice";
             this.goodsRegiPrice.Size = new System.Drawing.Size(31, 12);
             this.goodsRegiPrice.TabIndex = 29;
@@ -315,19 +317,38 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.VersionToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(161, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(143, 26);
             // 
             // VersionToolStripMenuItem
             // 
             this.VersionToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("VersionToolStripMenuItem.Image")));
             this.VersionToolStripMenuItem.Name = "VersionToolStripMenuItem";
-            this.VersionToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.VersionToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.VersionToolStripMenuItem.Text = "バージョン情報";
+            // 
+            // textBprice
+            // 
+            this.textBprice.Location = new System.Drawing.Point(113, 156);
+            this.textBprice.Name = "textBprice";
+            this.textBprice.ReadOnly = true;
+            this.textBprice.Size = new System.Drawing.Size(83, 19);
+            this.textBprice.TabIndex = 45;
+            // 
+            // Lblsupp
+            // 
+            this.Lblsupp.AutoSize = true;
+            this.Lblsupp.Location = new System.Drawing.Point(55, 127);
+            this.Lblsupp.Name = "Lblsupp";
+            this.Lblsupp.Size = new System.Drawing.Size(54, 12);
+            this.Lblsupp.TabIndex = 46;
+            this.Lblsupp.Text = "仕入れ値:";
             // 
             // GoodsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Lblsupp);
+            this.Controls.Add(this.textBprice);
             this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.bindingNavigator1);
             this.Controls.Add(this.textBID);
@@ -340,7 +361,7 @@
             this.Controls.Add(this.goodsReginumber);
             this.Controls.Add(this.goodsRegiBikou);
             this.Controls.Add(this.goodsRegicateID);
-            this.Controls.Add(this.textBprice);
+            this.Controls.Add(this.textBsupp);
             this.Controls.Add(this.textBname);
             this.Controls.Add(this.goodsRegiPrice);
             this.Controls.Add(this.goodsRegiName);
@@ -382,13 +403,14 @@
         private System.Windows.Forms.Label goodsReginumber;
         private System.Windows.Forms.Label goodsRegiBikou;
         private System.Windows.Forms.Label goodsRegicateID;
-        private System.Windows.Forms.TextBox textBprice;
+        private System.Windows.Forms.TextBox textBsupp;
         private System.Windows.Forms.TextBox textBname;
         private System.Windows.Forms.Label goodsRegiPrice;
         private System.Windows.Forms.Label goodsRegiName;
         private System.Windows.Forms.Label goodsRegiId;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem VersionToolStripMenuItem;
-
+        private System.Windows.Forms.TextBox textBprice;
+        private System.Windows.Forms.Label Lblsupp;
     }
 }

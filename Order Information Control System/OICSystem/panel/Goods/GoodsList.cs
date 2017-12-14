@@ -151,7 +151,7 @@ namespace WindowsFormsApplication1.panel.Goods
 
 
             cmd.Connection = cn;
-            cmd.CommandText = "UPDATE 商品マスタ SET 商品名='" + textBname.Text + "', 単価=" + int.Parse(textBprice.Text) + ", カテゴリID=" + cateID + ",備考='" + textBbikou.Text + "',定期発注数=" + int.Parse(textBnumber.Text) + ",画像ファイル='" + textBimage.Text + "' WHERE 商品ID ='" + textBID.Text + "'";
+            cmd.CommandText = "UPDATE 商品マスタ SET 商品名='" + textBname.Text + "', 単価=" + int.Parse(textBsupp.Text) + ", カテゴリID=" + cateID + ",備考='" + textBbikou.Text + "',定期発注数=" + int.Parse(textBnumber.Text) + ",画像ファイル='" + textBimage.Text + "' WHERE 商品ID ='" + textBID.Text + "'";
             try
             {
                 cn.Open();
@@ -217,7 +217,7 @@ namespace WindowsFormsApplication1.panel.Goods
 
             textBID.DataBindings.Add("Text", bds, "商品ID");
             textBname.DataBindings.Add("Text", bds, "商品名");
-            textBprice.DataBindings.Add("Text", bds, "単価");
+            textBsupp.DataBindings.Add("Text", bds, "単価");
             comboBcate.DataBindings.Add("Text", bds, "カテゴリ名");
             textBimage.DataBindings.Add("Text", bds, "画像ファイル");
             textBbikou.DataBindings.Add("Text", bds, "備考");
