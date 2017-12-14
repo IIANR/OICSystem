@@ -159,7 +159,10 @@ namespace WindowsFormsApplication1
             cn.Close();
 
             OrderRegiDataGridview.AllowUserToAddRows = false;
+            OrderRegiDataGridview.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
+
+
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
@@ -292,64 +295,70 @@ namespace WindowsFormsApplication1
 
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow item in OrderRegiDataGridview.SelectedRows)
+            DialogResult result = MessageBox.Show("選択した行の商品を削除しますか？", "OICSystem", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+            if (result == DialogResult.Yes)
             {
-                dttemp.Clear();
-                dttemp.Columns.Clear();
-
-                //OrderRegiDataGridviewから選択している行の商品名を取得
-                string Goodsname = (string)OrderRegiDataGridview.CurrentRow.Cells[1].Value;
-
-                //在庫数を増やす
-                cmd.Connection = cn;
-                cmd.CommandText = "UPDATE 在庫テーブル INNER JOIN 商品マスタ ON 在庫テーブル.商品ID = 商品マスタ.商品ID SET 在庫テーブル.在庫数 = 在庫テーブル.在庫数 + 1 WHERE 商品マスタ.商品名 = '" + Goodsname + "'";
-                cn.Open();
-                cmd.ExecuteNonQuery();
-                cn.Close();
-
-                cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
-                cn.Open();
-
-                cmd.CommandText = "SELECT * FROM 商品マスタ";
-                cmd.Connection = cn;
-
-                OleDbDataReader rd = cmd.ExecuteReader();
-
-
-                dt = CreateSchemaDataTable(rd);
-                DataRow row = dt.NewRow();
-
-                while (rd.Read())
+                foreach (DataGridViewRow item in OrderRegiDataGridview.SelectedRows)
                 {
-                    db_Goodsname = (string)rd.GetValue(1);
-                    db_GoodsPrice = (int)rd.GetValue(2);
-                    if (db_Goodsname == Goodsname)
+                    dttemp.Clear();
+                    dttemp.Columns.Clear();
+
+                    //OrderRegiDataGridviewから選択している行の商品名を取得
+                    string Goodsname = (string)OrderRegiDataGridview.CurrentRow.Cells[1].Value;
+
+                    //在庫数を増やす
+                    cmd.Connection = cn;
+                    cmd.CommandText = "UPDATE 在庫テーブル INNER JOIN 商品マスタ ON 在庫テーブル.商品ID = 商品マスタ.商品ID SET 在庫テーブル.在庫数 = 在庫テーブル.在庫数 + 1 WHERE 商品マスタ.商品名 = '" + Goodsname + "'";
+                    cn.Open();
+                    cmd.ExecuteNonQuery();
+                    cn.Close();
+
+                    cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
+                    cn.Open();
+
+                    cmd.CommandText = "SELECT * FROM 商品マスタ";
+                    cmd.Connection = cn;
+
+                    OleDbDataReader rd = cmd.ExecuteReader();
+
+
+                    dt = CreateSchemaDataTable(rd);
+                    DataRow row = dt.NewRow();
+
+                    while (rd.Read())
                     {
-                        sum -= db_GoodsPrice;
-                    }               
+                        db_Goodsname = (string)rd.GetValue(1);
+                        db_GoodsPrice = (int)rd.GetValue(2);
+                        if (db_Goodsname == Goodsname)
+                        {
+                            sum -= db_GoodsPrice;
+                        }
+                    }
+                    //合計金額再表示
+                    TotalLabel.Text = string.Format("{0:#,###}円", sum + sum * Tax);
+
+
+
+                    cn.Close();
+
+
+                    if (!item.IsNewRow)
+                    {
+                        OrderRegiDataGridview.Rows.Remove(item);
+                        cnt--;
+                    }
+
+
+                    GetDataTable();
                 }
-                //合計金額再表示
-                TotalLabel.Text = string.Format("{0:#,###}円", sum + sum * Tax);
 
-
-
-                cn.Close();
-
-
-                if (!item.IsNewRow)
+                // 行データがなくなったら、ラベルを非表示
+                if (OrderRegiDataGridview.Rows.Count == 0)
                 {
-                    OrderRegiDataGridview.Rows.Remove(item);
-                    cnt--;
+                    TotalLabel.Text = "";
+                    TotalLabel.Visible = false;
                 }
-
-                GetDataTable();
-            }
-
-            // 行データがなくなったら、ラベルを非表示
-            if (OrderRegiDataGridview.Rows.Count == 0)
-            {
-                TotalLabel.Text = "";
-                TotalLabel.Visible = false;
             }
         }
 
@@ -637,6 +646,11 @@ namespace WindowsFormsApplication1
                 //押されたキーが 0～9でない場合は、イベントをキャンセルする
                 e.Handled = true;
             }
+        }
+
+        private void NumCombo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

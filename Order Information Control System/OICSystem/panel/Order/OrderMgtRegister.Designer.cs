@@ -262,15 +262,14 @@
             "1",
             "2",
             "3",
-            "4",
-            "5",
-            "6"});
+            "4"});
             this.NumCombo.Location = new System.Drawing.Point(116, 110);
             this.NumCombo.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.NumCombo.Name = "NumCombo";
             this.NumCombo.Size = new System.Drawing.Size(42, 20);
             this.NumCombo.TabIndex = 2;
             this.NumCombo.Text = "1";
+            this.NumCombo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumCombo_KeyPress);
             // 
             // ErrMsg
             // 
