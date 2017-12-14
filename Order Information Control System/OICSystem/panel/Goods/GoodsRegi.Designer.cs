@@ -175,7 +175,7 @@
             this.panel.TabIndex = 18;
             this.panel.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel_DragDrop);
             this.panel.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel_DragEnter);
-            // 
+            //// 
             // textBimage
             // 
             this.textBimage.Location = new System.Drawing.Point(530, 13);

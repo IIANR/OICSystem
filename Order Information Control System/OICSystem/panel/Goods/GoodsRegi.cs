@@ -20,7 +20,7 @@ namespace WindowsFormsApplication1.panel
         OleDbCommand cmd = new OleDbCommand();
         BindingSource bds = new BindingSource();
 
-        string cateID;
+        //string cateID;
 
         public GoodsRegi()
         {
@@ -34,36 +34,36 @@ namespace WindowsFormsApplication1.panel
             dataLoad();
         }
 
-        private void GoodsLoad()
-        {
-            comboBcate.Items.Clear();
-            cn.Open();
-            OleDbCommand command = new OleDbCommand();
-            command.Connection = cn;
-            string query = "SELECT * FROM 商品マスタ";
-            command.CommandText = query;
+        //private void GoodsLoad()
+        //{
+        //    comboBcate.Items.Clear();
+        //    cn.Open();
+        //    OleDbCommand command = new OleDbCommand();
+        //    command.Connection = cn;
+        //    string query = "SELECT * FROM 商品マスタ";
+        //    command.CommandText = query;
 
-            OleDbDataReader reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                comboBcate.Items.Add(reader["カテゴリ名"].ToString());
-            }
+        //    OleDbDataReader reader = command.ExecuteReader();
+        //    while (reader.Read())
+        //    {
+        //        comboBcate.Items.Add(reader["カテゴリ名"].ToString());
+        //    }
 
-            cn.Close();
-        }
+        //    cn.Close();
+        //}
 
-        private Boolean SerchCategory(string category)//フラグ処理
-        {
-            Boolean flag = false;
-            da = new OleDbDataAdapter("SELECT * FROM カテゴリマスタ WHERE カテゴリ名='" + category + "'", cn);
-            dt = new DataTable();
-            da.Fill(dt);
-            if (dt.Rows.Count == 0)
-            {
-                flag = true;
-            }
-            return flag;
-        }
+        //private Boolean SerchCategory(string category)//フラグ処理
+        //{
+        //    Boolean flag = false;
+        //    da = new OleDbDataAdapter("SELECT * FROM カテゴリマスタ WHERE カテゴリ名='" + category + "'", cn);
+        //    dt = new DataTable();
+        //    da.Fill(dt);
+        //    if (dt.Rows.Count == 0)
+        //    {
+        //        flag = true;
+        //    }
+        //    return flag;
+        //}
 
         private void InsertBtn_Click(object sender, EventArgs e)
         {
@@ -71,18 +71,18 @@ namespace WindowsFormsApplication1.panel
             OleDbCommand cmd = new OleDbCommand();
             cmd.Connection = cn;
 
-            if (SerchCategory(comboBcate.Text) == true) // カテゴリ名追加
-            {
-                cmd.CommandText = "INSERT INTO カテゴリマスタ (カテゴリ名)" + " VALUES (@catename)";
-                OleDbParameter prcatename = new OleDbParameter("@catename", comboBcate.Text);
-                cmd.Parameters.Add(prcatename);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("新規のカテゴリ名を追加");
-            }
-            else
-            {
+            //if (SerchCategory(comboBcate.Text) == true) // カテゴリ名追加
+            //{
+            //    cmd.CommandText = "INSERT INTO カテゴリマスタ (カテゴリ名)" + " VALUES (@catename)";
+            //    OleDbParameter prcatename = new OleDbParameter("@catename", comboBcate.Text);
+            //    cmd.Parameters.Add(prcatename);
+            //    cmd.ExecuteNonQuery();
+            //    MessageBox.Show("新規のカテゴリ名を追加");
+            //}
+            //else
+            //{
 
-            }
+            //}
 
             //da = new OleDbDataAdapter("SELECT カテゴリID FROM カテゴリマスタ WHERE カテゴリ名='" + comboBcate.Text + "'", cn);
             //DataTable dt = new DataTable();
@@ -101,22 +101,23 @@ namespace WindowsFormsApplication1.panel
             }
 
             cmd.Connection = cn;
-            cmd.CommandText = "INSERT INTO 商品マスタ (商品ID,商品名,単価,備考,定量発注数)" +
-                " VALUES (@id,@name,@price,@bikou,@number)";
-            OleDbParameter gdID = new OleDbParameter("@id", int.Parse(textBID.Text));
+            cmd.CommandText = "INSERT INTO 商品マスタ (商品ID,商品名,単価,カテゴリID,備考,定期発注数,画像ファイル)" +
+                " VALUES (@id,@name,@price,@cateID,@bikou,@number,@imagefile)";
+            OleDbParameter gdID = new OleDbParameter("@id", textBID.Text);
             cmd.Parameters.Add(gdID);
             OleDbParameter gdname = new OleDbParameter("@name", textBname.Text);
             cmd.Parameters.Add(gdname);
             OleDbParameter gdprice = new OleDbParameter("@price", int.Parse(textBprice.Text));
             cmd.Parameters.Add(gdprice);
-            //OleDbParameter gdcateid = new OleDbParameter("@cateID", cateID);
-            //cmd.Parameters.Add(gdcateid);
+            OleDbParameter gdcateid = new OleDbParameter("@cateID", comboBcate.Text);
+            cmd.Parameters.Add(gdcateid);
             OleDbParameter gdbikou = new OleDbParameter("@bikou", textBbikou.Text);
             cmd.Parameters.Add(gdbikou);
             OleDbParameter gdnumber = new OleDbParameter("@number", int.Parse(textBnumber.Text));
             cmd.Parameters.Add(gdnumber);
-            //OleDbParameter primagefile = new OleDbParameter("@imagefile ", textBimage.Text);
-            //cmd.Parameters.Add(primagefile);
+            OleDbParameter primagefile = new OleDbParameter("@imagefile", textBimage.Text);
+            cmd.Parameters.Add(primagefile);
+           
 
             
             try
@@ -162,10 +163,10 @@ namespace WindowsFormsApplication1.panel
             textBID.Text = "";
             textBname.Text = "";
             textBprice.Text = "";
-            //comboBcate.Text = "";
+            comboBcate.Text = "";
             textBbikou.Text = "";
             textBnumber.Text = "";
-            //textBimage.Text = "";
+            textBimage.Text = "";
            
         }
 
@@ -178,50 +179,50 @@ namespace WindowsFormsApplication1.panel
 
             //下変更なし
 
-        //    private void textBimage_TextChanged(object sender, EventArgs e)
-        //{
-        //    imageChange();
-        //}
+        private void textBimage_TextChanged(object sender, EventArgs e)
+        {
+            imageChange();
+        }
 
 
-        //private void imageChange()
-        //{
-        //    if (textBimage.Text.Length > 1)
-        //    {
-        //        pictureBox.Image = Image.FromFile(@".\IM2image\" + textBimage.Text);
-        //    }
-        //}
+        private void imageChange()
+        {
+            if (textBimage.Text.Length > 1)
+            {
+                pictureBox.Image = Image.FromFile(@".\IM2image\" + textBimage.Text);
+            }
+        }
 
-        //private void panel_DragDrop(object sender, DragEventArgs e)
-        //{
-        //    string dropfile = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
-        //    string imagefile = Path.GetFileName(dropfile);
-        //    string path = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @".\IM2image\" + imagefile;
+        private void panel_DragDrop(object sender, DragEventArgs e)
+        {
+            string dropfile = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+            string imagefile = Path.GetFileName(dropfile);
+            string path = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @".\IM2image\" + imagefile;
 
-        //    pictureBox.Image = Image.FromFile(dropfile);
-        //    try
-        //    {
-        //        System.IO.File.Copy(dropfile, path, true);
-        //    }
+            pictureBox.Image = Image.FromFile(dropfile);
+            try
+            {
+                System.IO.File.Copy(dropfile, path, true);
+            }
 
-        //    catch
-        //    {
-        //        MessageBox.Show("更新できませんでした。", "IM2");
-        //    }
-        //    textBimage.Text = imagefile;
-        //}
+            catch
+            {
+                MessageBox.Show("更新できませんでした。", "IM2");
+            }
+            textBimage.Text = imagefile;
+        }
 
-        //private void panel_DragEnter(object sender, DragEventArgs e)
-        //{
-        //    if (e.Data.GetDataPresent(DataFormats.FileDrop))
-        //    {
-        //        e.Effect = DragDropEffects.Copy;
-        //    }
-        //    else
-        //    {
-        //        e.Effect = DragDropEffects.None;
-        //    }
-        //}
+        private void panel_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
       
     }
 
