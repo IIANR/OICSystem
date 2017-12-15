@@ -54,139 +54,255 @@ namespace WindowsFormsApplication1.panel.IO
 
             //クリア
             dt.Clear();
-            OutputDataGrid.Columns.Clear();
-            OutputDataGrid.DataSource = null;
+            DataGrid.Columns.Clear();
+            DataGrid.DataSource = null;
+
+            dt = new DataTable();
+            cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
+            da = new OleDbDataAdapter("SELECT 発注テーブル.発注ID, 発注テーブル.発注日, 発注テーブル.商品ID, 商品マスタ.商品名, 発注テーブル.発注数量 FROM 商品マスタ INNER JOIN 発注テーブル ON 商品マスタ.商品ID = 発注テーブル.商品ID", cn);
+            da.Fill(dt);
+            DataGrid.DataSource = dt;
+
+            //dt = new DataTable();
+            //cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
+            //da = new OleDbDataAdapter("SELECT 出庫テーブル.出庫ID, 出庫テーブル.注文ID, 出庫テーブル.出庫日, 顧客テーブル.名前 AS 顧客名, 注文テーブル.[フラグ] FROM 顧客テーブル INNER JOIN(注文テーブル INNER JOIN 出庫テーブル ON 注文テーブル.注文ID = 出庫テーブル.注文ID) ON 顧客テーブル.顧客ID = 注文テーブル.顧客ID ORDER BY 出庫テーブル.出庫ID", cn);
+            //da.Fill(dt);
+            //OutputDataGrid.DataSource = dt;
+            DataGrid.AllowUserToAddRows = false;
+        }
+
+        private void CompBtn_Click(object sender, EventArgs e)
+        {
+            DateTime dtNow = DateTime.Now;
+            int flag = 0;
+            if (OutputRadioBtn.Checked == true)
+            {
+                ErrMsg.Visible = false;
+                if (IdTextbox.Text == null || IdTextbox.Text == "")
+                {
+                    ErrMsg.Text = "※注文IDを入力してください";
+                    ErrMsg.Visible = true;
+                }
+                else
+                {
+
+                    dt = new DataTable();
+                    cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
+
+                    cn.Open();
+                    cmd.CommandText = "SELECT 注文ID,入金済み FROM 注文テーブル";
+                    cmd.Connection = cn;
+                    OleDbDataReader rd = cmd.ExecuteReader();
+
+                    dt = CreateSchemaDataTable(rd);
+                    DataRow row = dt.NewRow();
+
+                    int db_Orderid = 0;
+                    bool db_Pay;
+
+                    while (rd.Read())
+                    {
+                        db_Orderid = (int)rd.GetValue(0);
+                        db_Pay = (bool)rd.GetValue(1);
+                        if (db_Orderid == int.Parse(IdTextbox.Text))
+                        {
+                            flag = 1;
+                            if (db_Pay != true)
+                            {
+                                flag = 3;
+                            }
+                        }
+                    }
+                    cn.Close();
+
+                    cn.Open();
+                    cmd.CommandText = "SELECT 注文ID FROM 出庫テーブル";
+                    cmd.Connection = cn;
+                    OleDbDataReader rd2 = cmd.ExecuteReader();
+
+                    dt = CreateSchemaDataTable(rd2);
+                    DataRow row2 = dt.NewRow();
+
+                    while (rd2.Read())
+                    {
+                        db_Orderid = (int)rd2.GetValue(0);
+                        if (db_Orderid == int.Parse(IdTextbox.Text))
+                        {
+                            flag = 2;
+                        }
+                    }
+                    cn.Close();
+
+                    if (flag == 1)
+                    {
+                        OleDbCommand cmd2 = new OleDbCommand();
+                        cmd2.Connection = cn;
+                        cmd2.CommandText = "INSERT INTO 出庫テーブル (注文ID,出庫日)" + "VALUES (@orderid,@outputdate) ";
+                        OleDbParameter prorderid = new OleDbParameter("@orderid", IdTextbox.Text);
+                        cmd2.Parameters.Add(prorderid);
+                        OleDbParameter proutputdate = new OleDbParameter("@outputdate", dtNow.ToString("MM/dd"));
+                        cmd2.Parameters.Add(proutputdate);
+
+
+                        OleDbCommand cmd3 = new OleDbCommand();
+                        cmd3.Connection = cn;
+                        cmd3.CommandText = "UPDATE 注文テーブル SET フラグ='出庫済み' WHERE 注文ID=" + IdTextbox.Text + " AND 入金済み=True";
+                        try
+                        {
+                            cn.Open();
+                            cmd2.ExecuteNonQuery();
+                            cmd3.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "OICSystem");
+                        }
+                        cn.Close();
+
+                        //クリア
+                        dt.Clear();
+                        DataGrid.Columns.Clear();
+                        DataGrid.DataSource = null;
+
+                        dt = new DataTable();
+                        cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
+                        da = new OleDbDataAdapter("SELECT 出庫テーブル.出庫ID, 出庫テーブル.注文ID, 出庫テーブル.出庫日, 顧客テーブル.名前 AS 顧客名, 注文テーブル.[フラグ] FROM 顧客テーブル INNER JOIN(注文テーブル INNER JOIN 出庫テーブル ON 注文テーブル.注文ID = 出庫テーブル.注文ID) ON 顧客テーブル.顧客ID = 注文テーブル.顧客ID ORDER BY 出庫テーブル.出庫ID", cn);
+                        da.Fill(dt);
+                        DataGrid.DataSource = dt;
+                        DataGrid.AllowUserToAddRows = false;
+
+                        cmd.Parameters.Clear();
+                        cmd2.Parameters.Clear();
+                        cmd3.Parameters.Clear();
+                        IdTextbox.Text = "";
+                    }
+                    else if (flag == 0)
+                    {
+                        ErrMsg.Text = "※存在しない注文IDです";
+                        ErrMsg.Visible = true;
+                        IdTextbox.Text = "";
+                    }
+                    else if (flag == 2)
+                    {
+                        ErrMsg.Text = "※すでに登録されています";
+                        ErrMsg.Visible = true;
+                        IdTextbox.Text = "";
+                    }
+                    else if (flag == 3)
+                    {
+                        ErrMsg.Text = "※まだ入金が完了していません";
+                        ErrMsg.Visible = true;
+                        IdTextbox.Text = "";
+                    }
+
+                }
+            }
+            if (InputRadioBtn.Checked == true)
+            {
+                ErrMsg.Visible = false;
+                if (IdTextbox.Text == null || IdTextbox.Text == "")
+                {
+                    ErrMsg.Text = "※行を選択してください";
+                    ErrMsg.Visible = true;
+                }
+                else
+                {
+                    dt = new DataTable();
+                    cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
+
+                    OleDbCommand cmd = new OleDbCommand();
+                    cn.Open();
+                    cmd.CommandText = "SELECT 発注ID FROM 入庫テーブル";
+                    cmd.Connection = cn;
+                    OleDbDataReader rd = cmd.ExecuteReader();
+
+                    dt = CreateSchemaDataTable(rd);
+                    DataRow row = dt.NewRow();
+
+                    int db_Orderingid = 0;
+
+                    while (rd.Read())
+                    {
+                        db_Orderingid = (int)rd.GetValue(0);
+                        if (db_Orderingid == int.Parse(IdTextbox.Text))
+                        {
+                            flag = 1;
+                        }
+                    }
+                    cn.Close();
+
+                    if (flag == 0)
+                    {
+                        OleDbCommand cmd2 = new OleDbCommand();
+                        cmd2.Connection = cn;
+                        cmd2.CommandText = "INSERT INTO 入庫テーブル (発注ID,入庫日)" + "VALUES (@inputid,@inputdate) ";
+                        OleDbParameter prinputid = new OleDbParameter("@inputid", int.Parse((string)DataGrid.CurrentRow.Cells[0].Value.ToString()));
+                        cmd2.Parameters.Add(prinputid);
+                        OleDbParameter prinputdate = new OleDbParameter("@inputdate", dtNow.ToString("MM/dd"));
+                        cmd2.Parameters.Add(prinputdate);
+
+                        OleDbCommand cmd3 = new OleDbCommand();
+                        cmd3.Connection = cn;
+                        cmd3.CommandText = "UPDATE 在庫テーブル INNER JOIN 商品マスタ ON 在庫テーブル.商品ID = 商品マスタ.商品ID SET 在庫テーブル.在庫数 = 在庫テーブル.在庫数 + "+int.Parse(InputNumTextbox.Text)+" WHERE 商品マスタ.商品名 = '" + (string)DataGrid.CurrentRow.Cells[3].Value.ToString() + "'";
+
+                        cn.Open();
+                        cmd2.ExecuteNonQuery();
+                        cmd3.ExecuteNonQuery();
+                        cn.Close();
+
+                        
+                    }
+
+                    else if (flag == 1)
+                    {
+                        ErrMsg.Text = "※すでに登録されています";
+                        ErrMsg.Visible = true;
+                        IdTextbox.Text = "";
+                        InputNumTextbox.Text = "";
+                    }
+
+                }
+            }
+        }
+
+        private void InputRadioBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            idLabel.Text = "発注ID：";
+            CompBtn.Text = "入庫完了";
+            InputNumLabel.Visible = true;
+            InputNumTextbox.Visible = true;
+
+            dt = new DataTable();
+            cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
+            da = new OleDbDataAdapter("SELECT 発注テーブル.発注ID, 発注テーブル.発注日, 発注テーブル.商品ID, 商品マスタ.商品名, 発注テーブル.発注数量 FROM 商品マスタ INNER JOIN 発注テーブル ON 商品マスタ.商品ID = 発注テーブル.商品ID", cn);
+            da.Fill(dt);
+            DataGrid.DataSource = dt;
+        }
+
+        private void OutputRadioBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            idLabel.Text = "注文ID：";
+            CompBtn.Text = "出庫完了";
+            InputNumLabel.Visible = false;
+            InputNumTextbox.Visible = false;
+
+            dt.Clear();
+            DataGrid.Columns.Clear();
+            DataGrid.DataSource = null;
 
             dt = new DataTable();
             cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
             da = new OleDbDataAdapter("SELECT 出庫テーブル.出庫ID, 出庫テーブル.注文ID, 出庫テーブル.出庫日, 顧客テーブル.名前 AS 顧客名, 注文テーブル.[フラグ] FROM 顧客テーブル INNER JOIN(注文テーブル INNER JOIN 出庫テーブル ON 注文テーブル.注文ID = 出庫テーブル.注文ID) ON 顧客テーブル.顧客ID = 注文テーブル.顧客ID ORDER BY 出庫テーブル.出庫ID", cn);
             da.Fill(dt);
-            OutputDataGrid.DataSource = dt;
-            OutputDataGrid.AllowUserToAddRows = false;
+            DataGrid.DataSource = dt;
         }
 
-        private void OutputBtn_Click_1(object sender, EventArgs e)
+        private void DataGrid_Click(object sender, EventArgs e)
         {
-            ErrMsg.Visible = false;
-            if (OrderidTextbox.Text == null || OrderidTextbox.Text == "")
+            if (InputRadioBtn.Checked == true)
             {
-                ErrMsg.Text = "※注文IDを入力してください";
-                ErrMsg.Visible = true;
-            }
-            else
-            {
-                DateTime dtNow = DateTime.Now;
-                int flag = 0;
-
-                dt = new DataTable();
-                cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-
-                cn.Open();
-                cmd.CommandText = "SELECT 注文ID,入金済み FROM 注文テーブル";
-                cmd.Connection = cn;
-                OleDbDataReader rd = cmd.ExecuteReader();
-
-                dt = CreateSchemaDataTable(rd);
-                DataRow row = dt.NewRow();
-
-                int db_Orderid = 0;
-                bool db_Pay;
-
-                while (rd.Read())
-                {
-                    db_Orderid = (int)rd.GetValue(0);
-                    db_Pay = (bool)rd.GetValue(1);
-                    if (db_Orderid == int.Parse(OrderidTextbox.Text))
-                    {
-                        flag = 1;
-                        if (db_Pay != true)
-                        {
-                            flag = 3;
-                        }
-                    }
-                }
-                cn.Close();
-
-                cn.Open();
-                cmd.CommandText = "SELECT 注文ID FROM 出庫テーブル";
-                cmd.Connection = cn;
-                OleDbDataReader rd2 = cmd.ExecuteReader();
-
-                dt = CreateSchemaDataTable(rd2);
-                DataRow row2 = dt.NewRow();
-
-                while (rd2.Read())
-                {
-                    db_Orderid = (int)rd2.GetValue(0);
-                    if (db_Orderid == int.Parse(OrderidTextbox.Text))
-                    {
-                        flag = 2;
-                    }
-                }
-                cn.Close();
-
-                if (flag == 1)
-                {
-                    OleDbCommand cmd2 = new OleDbCommand();
-                    cmd2.Connection = cn;
-                    cmd2.CommandText = "INSERT INTO 出庫テーブル (注文ID,出庫日)" + "VALUES (@orderid,@outputdate) ";
-                    OleDbParameter prorderid = new OleDbParameter("@orderid", OrderidTextbox.Text);
-                    cmd2.Parameters.Add(prorderid);
-                    OleDbParameter proutputdate = new OleDbParameter("@outputdate", dtNow.ToString("MM/dd"));
-                    cmd2.Parameters.Add(proutputdate);
-
-
-                    OleDbCommand cmd3 = new OleDbCommand();
-                    cmd3.Connection = cn;
-                    cmd3.CommandText = "UPDATE 注文テーブル SET フラグ='出庫済み' WHERE 注文ID=" + OrderidTextbox.Text + " AND 入金済み=True";
-                    try
-                    {
-                        cn.Open();
-                        cmd2.ExecuteNonQuery();
-                        cmd3.ExecuteNonQuery();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "OICSystem");
-                    }
-                    cn.Close();
-
-                    //クリア
-                    dt.Clear();
-                    OutputDataGrid.Columns.Clear();
-                    OutputDataGrid.DataSource = null;
-
-                    dt = new DataTable();
-                    cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-                    da = new OleDbDataAdapter("SELECT 出庫テーブル.出庫ID, 出庫テーブル.注文ID, 出庫テーブル.出庫日, 顧客テーブル.名前 AS 顧客名, 注文テーブル.[フラグ] FROM 顧客テーブル INNER JOIN(注文テーブル INNER JOIN 出庫テーブル ON 注文テーブル.注文ID = 出庫テーブル.注文ID) ON 顧客テーブル.顧客ID = 注文テーブル.顧客ID ORDER BY 出庫テーブル.出庫ID", cn);
-                    da.Fill(dt);
-                    OutputDataGrid.DataSource = dt;
-                    OutputDataGrid.AllowUserToAddRows = false;
-
-                    cmd.Parameters.Clear();
-                    cmd2.Parameters.Clear();
-                    cmd3.Parameters.Clear();
-                    OrderidTextbox.Text = "";
-                }
-                else if (flag == 0)
-                {
-                    ErrMsg.Text = "※存在しない注文IDです";
-                    ErrMsg.Visible = true;
-                    OrderidTextbox.Text = "";
-                }
-                else if (flag == 2)
-                {
-                    ErrMsg.Text = "※すでに登録されています";
-                    ErrMsg.Visible = true;
-                    OrderidTextbox.Text = "";
-                }
-                else if (flag == 3)
-                {
-                    ErrMsg.Text = "※まだ入金が完了していません";
-                    ErrMsg.Visible = true;
-                    OrderidTextbox.Text = "";
-                }
-
+                InputNumTextbox.Text = (string)DataGrid.CurrentRow.Cells[4].Value.ToString();
+                IdTextbox.Text = (string)DataGrid.CurrentRow.Cells[0].Value.ToString();
             }
         }
     }

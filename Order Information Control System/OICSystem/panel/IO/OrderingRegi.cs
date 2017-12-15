@@ -142,6 +142,7 @@ namespace WindowsFormsApplication1
         private void OrderingRegi_Load(object sender, EventArgs e)
         {
             cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
+            ErrMsg2.Visible = false;
         }
 
         private void PoscodeTextbox_KeyPress(object sender, KeyPressEventArgs e)

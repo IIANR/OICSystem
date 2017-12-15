@@ -31,7 +31,7 @@ namespace WindowsFormsApplication1
             cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
 
             //データグリッドビューに表示
-            da = new OleDbDataAdapter("SELECT 商品マスタ.商品ID, 商品マスタ.商品名,商品マスタ.発注数 FROM 在庫テーブル INNER JOIN 商品マスタ ON 在庫テーブル.商品ID = 商品マスタ.商品ID WHERE 在庫テーブル.在庫数 < 商品マスタ.安全在庫数; ", cn);
+            da = new OleDbDataAdapter("SELECT 商品マスタ.商品ID, 商品マスタ.商品名,商品マスタ.仕入れ値,商品マスタ.発注数 FROM 在庫テーブル INNER JOIN 商品マスタ ON 在庫テーブル.商品ID = 商品マスタ.商品ID WHERE 在庫テーブル.在庫数 < 商品マスタ.安全在庫数; ", cn);
             da.Fill(dt);
             OrderingGoodsDataGrid.DataSource = dt;
 
@@ -98,7 +98,8 @@ namespace WindowsFormsApplication1
         private void OrderingGoodsDataGrid_Click(object sender, EventArgs e)
         {
             GoodsidTextBox.Text = (string)OrderingGoodsDataGrid.CurrentRow.Cells[0].Value;
-            OrderingNumTextbox.Text = (string)OrderingGoodsDataGrid.CurrentRow.Cells[2].Value.ToString();
+            OrderingPayTextbox.Text = (string)OrderingGoodsDataGrid.CurrentRow.Cells[2].Value.ToString();
+            InputNumTextbox.Text = (string)OrderingGoodsDataGrid.CurrentRow.Cells[3].Value.ToString();
         }
 
         private void OrderingCompBtn_Click(object sender, EventArgs e)
@@ -106,6 +107,12 @@ namespace WindowsFormsApplication1
             DateTime dtNow = DateTime.Now;
 
             int total = 0;
+            int Pay=0;
+            int num=0;
+
+            Pay=int.Parse(InputNumTextbox.Text);
+            num=int.Parse(OrderingPayTextbox.Text);
+            total = Pay * num;
 
             cmd.Connection = cn;
             cmd.CommandText = "INSERT INTO 発注テーブル (発注日,商品ID,発注数量,入庫先ID,合計金額)" + "VALUES (@date,@goodsid,@num,@inputid,@total)";
@@ -113,16 +120,12 @@ namespace WindowsFormsApplication1
             cmd.Parameters.Add(prdate);
             OleDbParameter prgoodsid = new OleDbParameter("goodsid", GoodsidTextBox.Text);
             cmd.Parameters.Add(prgoodsid);
-            OleDbParameter prnum = new OleDbParameter("@num", OrderingNumTextbox.Text);
+            OleDbParameter prnum = new OleDbParameter("@num", InputNumTextbox.Text);
             cmd.Parameters.Add(prnum);
             OleDbParameter prinputid = new OleDbParameter("@inputid", db_Inputid);
             cmd.Parameters.Add(prinputid);
-            OleDbParameter prtotal = new OleDbParameter("@total",);
+            OleDbParameter prtotal = new OleDbParameter("@total",total);
             cmd.Parameters.Add(prtotal);
-
-
-            //OleDbParameter prname = new OleDbParameter("@name", NameTextbox.Text);
-            //cmd.Parameters.Add(prname);
             
 
             cn.Open();

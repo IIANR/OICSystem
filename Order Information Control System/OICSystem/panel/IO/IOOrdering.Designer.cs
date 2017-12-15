@@ -38,8 +38,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.GoodsidTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.OrderingNumTextbox = new System.Windows.Forms.TextBox();
+            this.OrderingPayTextbox = new System.Windows.Forms.TextBox();
             this.OrderingCompBtn = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.InputNumTextbox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.OrderingGoodsDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,7 +81,7 @@
             this.OrderingGoodsDataGrid.Name = "OrderingGoodsDataGrid";
             this.OrderingGoodsDataGrid.ReadOnly = true;
             this.OrderingGoodsDataGrid.RowTemplate.Height = 21;
-            this.OrderingGoodsDataGrid.Size = new System.Drawing.Size(334, 361);
+            this.OrderingGoodsDataGrid.Size = new System.Drawing.Size(363, 361);
             this.OrderingGoodsDataGrid.TabIndex = 6;
             this.OrderingGoodsDataGrid.Click += new System.EventHandler(this.OrderingGoodsDataGrid_Click);
             // 
@@ -87,7 +89,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.label1.Location = new System.Drawing.Point(109, 13);
+            this.label1.Location = new System.Drawing.Point(119, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(147, 27);
             this.label1.TabIndex = 5;
@@ -128,18 +130,18 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(433, 284);
+            this.label5.Location = new System.Drawing.Point(432, 312);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 12);
             this.label5.TabIndex = 14;
             this.label5.Text = "発注数：";
             // 
-            // OrderingNumTextbox
+            // OrderingPayTextbox
             // 
-            this.OrderingNumTextbox.Location = new System.Drawing.Point(497, 281);
-            this.OrderingNumTextbox.Name = "OrderingNumTextbox";
-            this.OrderingNumTextbox.Size = new System.Drawing.Size(100, 19);
-            this.OrderingNumTextbox.TabIndex = 15;
+            this.OrderingPayTextbox.Location = new System.Drawing.Point(497, 281);
+            this.OrderingPayTextbox.Name = "OrderingPayTextbox";
+            this.OrderingPayTextbox.Size = new System.Drawing.Size(100, 19);
+            this.OrderingPayTextbox.TabIndex = 15;
             // 
             // OrderingCompBtn
             // 
@@ -151,12 +153,30 @@
             this.OrderingCompBtn.UseVisualStyleBackColor = true;
             this.OrderingCompBtn.Click += new System.EventHandler(this.OrderingCompBtn_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(421, 284);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(58, 12);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "仕入れ値：";
+            // 
+            // InputNumTextbox
+            // 
+            this.InputNumTextbox.Location = new System.Drawing.Point(497, 309);
+            this.InputNumTextbox.Name = "InputNumTextbox";
+            this.InputNumTextbox.Size = new System.Drawing.Size(100, 19);
+            this.InputNumTextbox.TabIndex = 18;
+            // 
             // IOOrdering
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.InputNumTextbox);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.OrderingCompBtn);
-            this.Controls.Add(this.OrderingNumTextbox);
+            this.Controls.Add(this.OrderingPayTextbox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.GoodsidTextBox);
             this.Controls.Add(this.label4);
@@ -188,7 +208,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox GoodsidTextBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox OrderingNumTextbox;
+        private System.Windows.Forms.TextBox OrderingPayTextbox;
         private System.Windows.Forms.Button OrderingCompBtn;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox InputNumTextbox;
     }
 }

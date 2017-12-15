@@ -86,7 +86,6 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridViewTextBoxColumn 入庫先IDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridView InputDataGrid1;
         private System.Windows.Forms.RadioButton InputRBtn;
         private System.Windows.Forms.RadioButton OrderingRBtn;

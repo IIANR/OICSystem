@@ -28,26 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.OutputDataGrid = new System.Windows.Forms.DataGridView();
+            this.DataGrid = new System.Windows.Forms.DataGridView();
             this.ErrMsg = new System.Windows.Forms.Label();
-            this.OutputBtn = new System.Windows.Forms.Button();
-            this.OrderidLabel = new System.Windows.Forms.Label();
-            this.OrderidTextbox = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.OutputDataGrid)).BeginInit();
+            this.CompBtn = new System.Windows.Forms.Button();
+            this.idLabel = new System.Windows.Forms.Label();
+            this.IdTextbox = new System.Windows.Forms.TextBox();
+            this.InputRadioBtn = new System.Windows.Forms.RadioButton();
+            this.OutputRadioBtn = new System.Windows.Forms.RadioButton();
+            this.InputNumLabel = new System.Windows.Forms.Label();
+            this.InputNumTextbox = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // OutputDataGrid
+            // DataGrid
             // 
-            this.OutputDataGrid.AllowUserToAddRows = false;
-            this.OutputDataGrid.AllowUserToDeleteRows = false;
-            this.OutputDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.OutputDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.OutputDataGrid.Location = new System.Drawing.Point(3, 3);
-            this.OutputDataGrid.Name = "OutputDataGrid";
-            this.OutputDataGrid.ReadOnly = true;
-            this.OutputDataGrid.RowTemplate.Height = 21;
-            this.OutputDataGrid.Size = new System.Drawing.Size(754, 308);
-            this.OutputDataGrid.TabIndex = 0;
+            this.DataGrid.AllowUserToAddRows = false;
+            this.DataGrid.AllowUserToDeleteRows = false;
+            this.DataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGrid.Location = new System.Drawing.Point(3, 3);
+            this.DataGrid.Name = "DataGrid";
+            this.DataGrid.ReadOnly = true;
+            this.DataGrid.RowTemplate.Height = 21;
+            this.DataGrid.Size = new System.Drawing.Size(754, 308);
+            this.DataGrid.TabIndex = 0;
+            this.DataGrid.Click += new System.EventHandler(this.DataGrid_Click);
             // 
             // ErrMsg
             // 
@@ -59,46 +64,90 @@
             this.ErrMsg.TabIndex = 8;
             this.ErrMsg.Text = "label2";
             // 
-            // OutputBtn
+            // CompBtn
             // 
-            this.OutputBtn.Location = new System.Drawing.Point(594, 341);
-            this.OutputBtn.Name = "OutputBtn";
-            this.OutputBtn.Size = new System.Drawing.Size(119, 40);
-            this.OutputBtn.TabIndex = 7;
-            this.OutputBtn.Text = "出庫完了";
-            this.OutputBtn.UseVisualStyleBackColor = true;
-            this.OutputBtn.Click += new System.EventHandler(this.OutputBtn_Click_1);
+            this.CompBtn.Location = new System.Drawing.Point(594, 341);
+            this.CompBtn.Name = "CompBtn";
+            this.CompBtn.Size = new System.Drawing.Size(119, 40);
+            this.CompBtn.TabIndex = 7;
+            this.CompBtn.Text = "入庫完了";
+            this.CompBtn.UseVisualStyleBackColor = true;
+            this.CompBtn.Click += new System.EventHandler(this.CompBtn_Click);
             // 
-            // OrderidLabel
+            // idLabel
             // 
-            this.OrderidLabel.AutoSize = true;
-            this.OrderidLabel.Location = new System.Drawing.Point(41, 341);
-            this.OrderidLabel.Name = "OrderidLabel";
-            this.OrderidLabel.Size = new System.Drawing.Size(46, 12);
-            this.OrderidLabel.TabIndex = 6;
-            this.OrderidLabel.Text = "注文ID：";
+            this.idLabel.AutoSize = true;
+            this.idLabel.Location = new System.Drawing.Point(41, 355);
+            this.idLabel.Name = "idLabel";
+            this.idLabel.Size = new System.Drawing.Size(46, 12);
+            this.idLabel.TabIndex = 6;
+            this.idLabel.Text = "発注ID：";
             // 
-            // OrderidTextbox
+            // IdTextbox
             // 
-            this.OrderidTextbox.Location = new System.Drawing.Point(93, 338);
-            this.OrderidTextbox.Name = "OrderidTextbox";
-            this.OrderidTextbox.Size = new System.Drawing.Size(100, 19);
-            this.OrderidTextbox.TabIndex = 5;
+            this.IdTextbox.Location = new System.Drawing.Point(93, 352);
+            this.IdTextbox.Name = "IdTextbox";
+            this.IdTextbox.Size = new System.Drawing.Size(100, 19);
+            this.IdTextbox.TabIndex = 5;
+            // 
+            // InputRadioBtn
+            // 
+            this.InputRadioBtn.AutoSize = true;
+            this.InputRadioBtn.Checked = true;
+            this.InputRadioBtn.Location = new System.Drawing.Point(43, 318);
+            this.InputRadioBtn.Name = "InputRadioBtn";
+            this.InputRadioBtn.Size = new System.Drawing.Size(47, 16);
+            this.InputRadioBtn.TabIndex = 9;
+            this.InputRadioBtn.TabStop = true;
+            this.InputRadioBtn.Text = "入庫";
+            this.InputRadioBtn.UseVisualStyleBackColor = true;
+            this.InputRadioBtn.CheckedChanged += new System.EventHandler(this.InputRadioBtn_CheckedChanged);
+            // 
+            // OutputRadioBtn
+            // 
+            this.OutputRadioBtn.AutoSize = true;
+            this.OutputRadioBtn.Location = new System.Drawing.Point(114, 318);
+            this.OutputRadioBtn.Name = "OutputRadioBtn";
+            this.OutputRadioBtn.Size = new System.Drawing.Size(47, 16);
+            this.OutputRadioBtn.TabIndex = 10;
+            this.OutputRadioBtn.Text = "出庫";
+            this.OutputRadioBtn.UseVisualStyleBackColor = true;
+            this.OutputRadioBtn.CheckedChanged += new System.EventHandler(this.OutputRadioBtn_CheckedChanged);
+            // 
+            // InputNumLabel
+            // 
+            this.InputNumLabel.AutoSize = true;
+            this.InputNumLabel.Location = new System.Drawing.Point(230, 356);
+            this.InputNumLabel.Name = "InputNumLabel";
+            this.InputNumLabel.Size = new System.Drawing.Size(59, 12);
+            this.InputNumLabel.TabIndex = 11;
+            this.InputNumLabel.Text = "入庫数量：";
+            // 
+            // InputNumTextbox
+            // 
+            this.InputNumTextbox.Location = new System.Drawing.Point(295, 352);
+            this.InputNumTextbox.Name = "InputNumTextbox";
+            this.InputNumTextbox.Size = new System.Drawing.Size(100, 19);
+            this.InputNumTextbox.TabIndex = 12;
             // 
             // IOOutput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.InputNumTextbox);
+            this.Controls.Add(this.InputNumLabel);
+            this.Controls.Add(this.OutputRadioBtn);
+            this.Controls.Add(this.InputRadioBtn);
             this.Controls.Add(this.ErrMsg);
-            this.Controls.Add(this.OutputBtn);
-            this.Controls.Add(this.OrderidLabel);
-            this.Controls.Add(this.OrderidTextbox);
-            this.Controls.Add(this.OutputDataGrid);
+            this.Controls.Add(this.CompBtn);
+            this.Controls.Add(this.idLabel);
+            this.Controls.Add(this.IdTextbox);
+            this.Controls.Add(this.DataGrid);
             this.Name = "IOOutput";
             this.Size = new System.Drawing.Size(760, 430);
             this.Load += new System.EventHandler(this.IOOutput_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.OutputDataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -106,10 +155,14 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView OutputDataGrid;
+        private System.Windows.Forms.DataGridView DataGrid;
         private System.Windows.Forms.Label ErrMsg;
-        private System.Windows.Forms.Button OutputBtn;
-        private System.Windows.Forms.Label OrderidLabel;
-        private System.Windows.Forms.TextBox OrderidTextbox;
+        private System.Windows.Forms.Button CompBtn;
+        private System.Windows.Forms.Label idLabel;
+        private System.Windows.Forms.TextBox IdTextbox;
+        private System.Windows.Forms.RadioButton InputRadioBtn;
+        private System.Windows.Forms.RadioButton OutputRadioBtn;
+        private System.Windows.Forms.Label InputNumLabel;
+        private System.Windows.Forms.TextBox InputNumTextbox;
     }
 }
