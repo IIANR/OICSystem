@@ -33,9 +33,7 @@
             this.goodsRegiPrice = new System.Windows.Forms.Label();
             this.textBname = new System.Windows.Forms.TextBox();
             this.goodsRegicateID = new System.Windows.Forms.Label();
-            this.goodsRegiBikou = new System.Windows.Forms.Label();
             this.goodsReginumber = new System.Windows.Forms.Label();
-            this.textBbikou = new System.Windows.Forms.TextBox();
             this.textBnumber = new System.Windows.Forms.TextBox();
             this.comboBcate = new System.Windows.Forms.ComboBox();
             this.InsertBtn = new System.Windows.Forms.Button();
@@ -96,34 +94,18 @@
             this.goodsRegicateID.TabIndex = 0;
             this.goodsRegicateID.Text = "カテゴリー名:";
             // 
-            // goodsRegiBikou
-            // 
-            this.goodsRegiBikou.AutoSize = true;
-            this.goodsRegiBikou.Location = new System.Drawing.Point(128, 243);
-            this.goodsRegiBikou.Name = "goodsRegiBikou";
-            this.goodsRegiBikou.Size = new System.Drawing.Size(31, 12);
-            this.goodsRegiBikou.TabIndex = 0;
-            this.goodsRegiBikou.Text = "備考:";
-            // 
             // goodsReginumber
             // 
             this.goodsReginumber.AutoSize = true;
-            this.goodsReginumber.Location = new System.Drawing.Point(92, 278);
+            this.goodsReginumber.Location = new System.Drawing.Point(92, 251);
             this.goodsReginumber.Name = "goodsReginumber";
             this.goodsReginumber.Size = new System.Drawing.Size(67, 12);
             this.goodsReginumber.TabIndex = 0;
             this.goodsReginumber.Text = "定量発注数:";
             // 
-            // textBbikou
-            // 
-            this.textBbikou.Location = new System.Drawing.Point(165, 236);
-            this.textBbikou.Name = "textBbikou";
-            this.textBbikou.Size = new System.Drawing.Size(186, 19);
-            this.textBbikou.TabIndex = 3;
-            // 
             // textBnumber
             // 
-            this.textBnumber.Location = new System.Drawing.Point(165, 271);
+            this.textBnumber.Location = new System.Drawing.Point(165, 244);
             this.textBnumber.Name = "textBnumber";
             this.textBnumber.Size = new System.Drawing.Size(86, 19);
             this.textBnumber.TabIndex = 4;
@@ -205,6 +187,7 @@
             // 
             // textBprice
             // 
+            this.textBprice.Enabled = false;
             this.textBprice.Location = new System.Drawing.Point(168, 165);
             this.textBprice.Name = "textBprice";
             this.textBprice.ReadOnly = true;
@@ -224,9 +207,7 @@
             this.Controls.Add(this.InsertBtn);
             this.Controls.Add(this.comboBcate);
             this.Controls.Add(this.textBnumber);
-            this.Controls.Add(this.textBbikou);
             this.Controls.Add(this.goodsReginumber);
-            this.Controls.Add(this.goodsRegiBikou);
             this.Controls.Add(this.goodsRegicateID);
             this.Controls.Add(this.textBname);
             this.Controls.Add(this.goodsRegiPrice);
@@ -249,9 +230,7 @@
         private System.Windows.Forms.Label goodsRegiPrice;
         private System.Windows.Forms.TextBox textBname;
         private System.Windows.Forms.Label goodsRegicateID;
-        private System.Windows.Forms.Label goodsRegiBikou;
         private System.Windows.Forms.Label goodsReginumber;
-        private System.Windows.Forms.TextBox textBbikou;
         private System.Windows.Forms.TextBox textBnumber;
         private System.Windows.Forms.ComboBox comboBcate;
         private System.Windows.Forms.Button InsertBtn;

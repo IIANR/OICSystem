@@ -20,6 +20,11 @@ namespace WindowsFormsApplication1.panel
         OleDbCommand cmd = new OleDbCommand();
         BindingSource bds = new BindingSource();
 
+        string priceBtext;
+        int price;
+        double priceText;
+
+
         //string cateID;
 
         public GoodsRegi()
@@ -65,6 +70,27 @@ namespace WindowsFormsApplication1.panel
         //    return flag;
         //}
 
+        private void GDLoad()
+        {
+            textBprice.Clear();
+
+            cn.Open();
+            OleDbCommand command = new OleDbCommand();
+            command.Connection = cn;
+            string goodque = "SELECT 単価 FROM 商品マスタ";
+            command.CommandText = goodque;
+            OleDbDataReader reader = command.ExecuteReader();
+
+            da = new OleDbDataAdapter("SELECT 単価 FROM 商品マスタ ", cn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            priceBtext = dt.Rows[0][0].ToString();
+
+            textBprice.Text = priceBtext;
+
+            cn.Close();
+        }
+
         private void InsertBtn_Click(object sender, EventArgs e)
         {
             cn.Open();
@@ -89,6 +115,8 @@ namespace WindowsFormsApplication1.panel
             //da.Fill(dt);
             //cateID = dt.Rows[0][0].ToString();
             //dt.Clear();
+             priceText = double.Parse(textBsupp.Text) * 1.6;
+            price = (int)priceText;
 
             if (MessageBox.Show("ID=" + textBID.Text + "のデータを追加してもよろしいですか", "IM2", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
@@ -103,18 +131,17 @@ namespace WindowsFormsApplication1.panel
 
 
             cmd.Connection = cn;
-            cmd.CommandText = "INSERT INTO 商品マスタ (商品ID,商品名,単価,カテゴリID,備考,定期発注数,画像ファイル,仕入れ値)" +
-                " VALUES (@id,@name,@price,@cateID,@bikou,@number,@imagefile,@supp)";
+            cmd.CommandText = "INSERT INTO 商品マスタ (商品ID,商品名,単価,カテゴリID,定期発注数,画像ファイル,仕入れ値)" +
+                " VALUES (@id,@name,@price,@cateID,@number,@imagefile,@supp)";
+
             OleDbParameter gdID = new OleDbParameter("@id", textBID.Text);
             cmd.Parameters.Add(gdID);
-            OleDbParameter gdname = new OleDbParameter("@name", textBname.Text);
+            OleDbParameter gdname = new OleDbParameter("@name", textBname.ToString());
             cmd.Parameters.Add(gdname);
-            OleDbParameter gdprice = new OleDbParameter("@price",);
+            OleDbParameter gdprice = new OleDbParameter("@price", price);
             cmd.Parameters.Add(gdprice);
-            OleDbParameter gdcateid = new OleDbParameter("@cateID", comboBcate.Text);
+            OleDbParameter gdcateid = new OleDbParameter("@cateID", int.Parse(comboBcate.Text));
             cmd.Parameters.Add(gdcateid);
-            OleDbParameter gdbikou = new OleDbParameter("@bikou", textBbikou.Text);
-            cmd.Parameters.Add(gdbikou);
             OleDbParameter gdnumber = new OleDbParameter("@number", int.Parse(textBnumber.Text));
             cmd.Parameters.Add(gdnumber);
             OleDbParameter primagefile = new OleDbParameter("@imagefile", textBimage.Text);
@@ -123,16 +150,16 @@ namespace WindowsFormsApplication1.panel
             cmd.Parameters.Add(gdsupp);
 
             
-            try
-            {
+           // try
+           // {
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("追加しました", "IM2");
                 cmd.Parameters.Clear();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "IM2");
-            }
+          //  }
+            //catch (Exception ex)
+            //{
+              //  MessageBox.Show(ex.Message, "IM2");
+            //}
             cn.Close();
             CategoryLoad();
         }
@@ -167,7 +194,6 @@ namespace WindowsFormsApplication1.panel
             textBname.Text = "";
             textBprice.Text = "";
             comboBcate.Text = "";
-            textBbikou.Text = "";
             textBnumber.Text = "";
             textBimage.Text = "Noimage.png";
             pictureBox.Image = Image.FromFile(@".\IM2image\" + textBimage.Text);
