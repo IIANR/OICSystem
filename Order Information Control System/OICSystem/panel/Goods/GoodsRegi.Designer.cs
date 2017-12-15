@@ -107,7 +107,7 @@
             // 
             this.textBnumber.Location = new System.Drawing.Point(165, 244);
             this.textBnumber.Name = "textBnumber";
-            this.textBnumber.Size = new System.Drawing.Size(86, 19);
+            this.textBnumber.Size = new System.Drawing.Size(57, 19);
             this.textBnumber.TabIndex = 4;
             // 
             // comboBcate
@@ -182,7 +182,7 @@
             // 
             this.textBsupp.Location = new System.Drawing.Point(165, 130);
             this.textBsupp.Name = "textBsupp";
-            this.textBsupp.Size = new System.Drawing.Size(100, 19);
+            this.textBsupp.Size = new System.Drawing.Size(86, 19);
             this.textBsupp.TabIndex = 21;
             // 
             // textBprice

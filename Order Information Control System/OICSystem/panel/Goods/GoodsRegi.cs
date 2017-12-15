@@ -21,11 +21,15 @@ namespace WindowsFormsApplication1.panel
         BindingSource bds = new BindingSource();
 
         string priceBtext;
+        string cateID;
+        string GoodsID;
+        string Goodsnumber;
         int price;
+        int count;
         double priceText;
+        
 
-
-        //string cateID;
+       
 
         public GoodsRegi()
         {
@@ -37,38 +41,66 @@ namespace WindowsFormsApplication1.panel
         private void GoodsRegi_Load(object sender, EventArgs e)
         {
             dataLoad();
+            GoodsLoad();
         }
 
-        //private void GoodsLoad()
-        //{
-        //    comboBcate.Items.Clear();
-        //    cn.Open();
-        //    OleDbCommand command = new OleDbCommand();
-        //    command.Connection = cn;
-        //    string query = "SELECT * FROM 商品マスタ";
-        //    command.CommandText = query;
+        private void GoodsLoad()//カテゴリの中身
+        {
+            comboBcate.Items.Clear();
+            cn.Open();
+            OleDbCommand command = new OleDbCommand();
+            command.Connection = cn;
+            string query = "SELECT カテゴリ名 FROM カテゴリマスタ";
+            command.CommandText = query;
 
-        //    OleDbDataReader reader = command.ExecuteReader();
-        //    while (reader.Read())
-        //    {
-        //        comboBcate.Items.Add(reader["カテゴリ名"].ToString());
-        //    }
+            OleDbDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                comboBcate.Items.Add(reader["カテゴリ名"].ToString());
+            }
 
-        //    cn.Close();
-        //}
+            cn.Close();
+        }
 
-        //private Boolean SerchCategory(string category)//フラグ処理
-        //{
-        //    Boolean flag = false;
-        //    da = new OleDbDataAdapter("SELECT * FROM カテゴリマスタ WHERE カテゴリ名='" + category + "'", cn);
-        //    dt = new DataTable();
-        //    da.Fill(dt);
-        //    if (dt.Rows.Count == 0)
-        //    {
-        //        flag = true;
-        //    }
-        //    return flag;
-        //}
+        private Boolean SerchCategory(string category)//カテゴリDBの繰り返しフラグ処理
+        {
+            Boolean flag = false;
+            da = new OleDbDataAdapter("SELECT * FROM カテゴリマスタ WHERE カテゴリ名='" + category + "'", cn);
+            dt = new DataTable();
+            da.Fill(dt);
+            if (dt.Rows.Count == 0)
+            {
+                flag = true;
+            }
+            return flag;
+        }
+        // ↓　ここから再開
+        private Boolean SerchGoodsID(string goodsID　)//商品マスタの繰り返しフラグ処理
+        {
+            Boolean flag = false;
+            da = new OleDbDataAdapter("SELECT * FROM 商品マスタ WHERE 商品ID='" + goodsID + "'", cn);
+            dt = new DataTable();
+            da.Fill(dt);
+
+            if (dt.Rows.Count == 0)//商品IDがないとき
+            {
+
+                da = new OleDbDataAdapter("SELECT 商品ID FROM 商品マスタ WHERE 商品ID='" + comboBcate.Text + "'", cn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                Goodsnumber = dt.Rows[0][0].ToString();
+                dt.Clear();
+                flag = true;
+
+            }
+            else //商品IDが割り当てられているとき
+            {
+                count = count + 1;//商品マスタの数を数える
+
+                flag = false;
+            }
+            return flag;
+        }
 
         private void GDLoad()
         {
@@ -97,25 +129,43 @@ namespace WindowsFormsApplication1.panel
             OleDbCommand cmd = new OleDbCommand();
             cmd.Connection = cn;
 
-            //if (SerchCategory(comboBcate.Text) == true) // カテゴリ名追加
-            //{
-            //    cmd.CommandText = "INSERT INTO カテゴリマスタ (カテゴリ名)" + " VALUES (@catename)";
-            //    OleDbParameter prcatename = new OleDbParameter("@catename", comboBcate.Text);
-            //    cmd.Parameters.Add(prcatename);
-            //    cmd.ExecuteNonQuery();
-            //    MessageBox.Show("新規のカテゴリ名を追加");
-            //}
-            //else
-            //{
 
-            //}
+            if (SerchCategory(comboBcate.Text) == true) // カテゴリ名追加
+            {
+                cmd.CommandText = "INSERT INTO カテゴリマスタ (カテゴリ名)" + " VALUES (@catename)";
+                OleDbParameter prcatename = new OleDbParameter("@catename", comboBcate.Text);
+                cmd.Parameters.Add(prcatename);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("新規のカテゴリ名を追加");
+            }
+            else
+            {
+            }
 
-            //da = new OleDbDataAdapter("SELECT カテゴリID FROM カテゴリマスタ WHERE カテゴリ名='" + comboBcate.Text + "'", cn);
-            //DataTable dt = new DataTable();
-            //da.Fill(dt);
-            //cateID = dt.Rows[0][0].ToString();
-            //dt.Clear();
-             priceText = double.Parse(textBsupp.Text) * 1.6;
+            if (SerchGoodsID(textBID.Text) == true) // 商品IDの位置を指定
+            {
+                
+
+
+                //cmd.CommandText = "INSERT INTO カテゴリマスタ (カテゴリ名)" + " VALUES (@catename)";
+                //OleDbParameter prcatename = new OleDbParameter("@catename", comboBcate.Text);
+                //cmd.Parameters.Add(prcatename);
+                //cmd.ExecuteNonQuery();
+                //MessageBox.Show("新規のカテゴリ名を追加");
+            }
+            else
+            {
+            }
+            //カテゴリIDを入れる↓
+            da = new OleDbDataAdapter("SELECT カテゴリID FROM カテゴリマスタ WHERE カテゴリ名='" + comboBcate.Text + "'", cn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            cateID = dt.Rows[0][0].ToString();
+            dt.Clear();
+
+
+            //仕入れ値の１.6倍の単価を計算↓
+            priceText = double.Parse(textBsupp.Text) * 1.6;
             price = (int)priceText;
 
             if (MessageBox.Show("ID=" + textBID.Text + "のデータを追加してもよろしいですか", "IM2", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
@@ -136,11 +186,11 @@ namespace WindowsFormsApplication1.panel
 
             OleDbParameter gdID = new OleDbParameter("@id", textBID.Text);
             cmd.Parameters.Add(gdID);
-            OleDbParameter gdname = new OleDbParameter("@name", textBname.ToString());
+            OleDbParameter gdname = new OleDbParameter("@name", textBname.Text);
             cmd.Parameters.Add(gdname);
             OleDbParameter gdprice = new OleDbParameter("@price", price);
             cmd.Parameters.Add(gdprice);
-            OleDbParameter gdcateid = new OleDbParameter("@cateID", int.Parse(comboBcate.Text));
+            OleDbParameter gdcateid = new OleDbParameter("@cateID", cateID);
             cmd.Parameters.Add(gdcateid);
             OleDbParameter gdnumber = new OleDbParameter("@number", int.Parse(textBnumber.Text));
             cmd.Parameters.Add(gdnumber);
@@ -149,17 +199,17 @@ namespace WindowsFormsApplication1.panel
             OleDbParameter gdsupp = new OleDbParameter("@supp", int.Parse(textBsupp.Text));
             cmd.Parameters.Add(gdsupp);
 
-            
-           // try
-           // {
+
+            try
+            {
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("追加しました", "IM2");
                 cmd.Parameters.Clear();
-          //  }
-            //catch (Exception ex)
-            //{
-              //  MessageBox.Show(ex.Message, "IM2");
-            //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "IM2");
+            }
             cn.Close();
             CategoryLoad();
         }
@@ -200,13 +250,6 @@ namespace WindowsFormsApplication1.panel
             textBsupp.Text = "";
 
         }
-
-
-
-
-
-
-
 
             //下変更なし
 
