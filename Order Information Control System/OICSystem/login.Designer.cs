@@ -58,6 +58,7 @@
             this.PassTextbox.PasswordChar = '*';
             this.PassTextbox.Size = new System.Drawing.Size(373, 20);
             this.PassTextbox.TabIndex = 1;
+            this.PassTextbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PassTextbox_KeyDown);
             // 
             // EmpLabel
             // 

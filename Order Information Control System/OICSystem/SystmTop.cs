@@ -18,7 +18,7 @@ namespace WindowsFormsApplication1
         public static IOMgt io;
         public static GoodsMgt goods;
         public static MemberMgt member;
-        public static EmpMgt emp;
+        public static EmpMgtHome emp;
         public static SalMgt sal;
 
         public SystmTop()
@@ -29,7 +29,7 @@ namespace WindowsFormsApplication1
             io = new IOMgt();
             goods = new GoodsMgt();
             member = new MemberMgt();
-            emp = new EmpMgt();
+            emp = new EmpMgtHome();
             sal = new SalMgt();
 
             ctrPanel.Controls.Add(order);
@@ -86,18 +86,6 @@ namespace WindowsFormsApplication1
             sal.Visible = false;
         }
 
-        
-
-        private void salMgtBtn_Click(object sender, EventArgs e)
-        {
-            order.Visible = false;
-            io.Visible = false;
-            goods.Visible = false;
-            member.Visible = false;
-            emp.Visible = false;
-            sal.Visible = true;
-        }
-
         private void MemberBtn_Click(object sender, EventArgs e)
         {
             order.Visible = false;
@@ -110,12 +98,36 @@ namespace WindowsFormsApplication1
 
         private void EmpBtn_Click(object sender, EventArgs e)
         {
-            order.Visible = false;
-            io.Visible = false;
-            goods.Visible = false;
-            member.Visible = false;
-            emp.Visible = true;
-            sal.Visible = false;
+            if (frm1.db_admin == true)
+            {
+                order.Visible = false;
+                io.Visible = false;
+                goods.Visible = false;
+                member.Visible = false;
+                emp.Visible = true;
+                sal.Visible = false;
+            }
+            else
+            {
+                MessageBox.Show("権限がありません", "OICSystem", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void salMgtBtn_Click(object sender, EventArgs e)
+        {
+            if (frm1.db_admin == true)
+            {
+                order.Visible = false;
+                io.Visible = false;
+                goods.Visible = false;
+                member.Visible = false;
+                emp.Visible = false;
+                sal.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("権限がありません", "OICSystem", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -138,9 +150,13 @@ namespace WindowsFormsApplication1
 
         private void LogoutBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
-            Login frm1 = new Login();
-            frm1.Show();     
+            DialogResult result = MessageBox.Show("ログアウトしますか？", "OICSystem", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+                Login frm1 = new Login();
+                frm1.Show();
+            }
         }
     }
 }
