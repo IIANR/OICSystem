@@ -20,8 +20,10 @@ namespace WindowsFormsApplication1.panel.Goods
         OleDbCommand cmd = new OleDbCommand();
         BindingSource bds = new BindingSource();
 
+        string priceBtext;
         string cateID;
-
+        int price;
+        double priceText;
         public GoodsList()
         {
             InitializeComponent();
@@ -34,40 +36,53 @@ namespace WindowsFormsApplication1.panel.Goods
              BindData();
 
         }
- private void CategoryLoad()
+        private void CategoryLoad()// comboBtextの中身を更新する
         {
+            
             comboBcate.Items.Clear();
+            
             cn.Open();
             OleDbCommand command = new OleDbCommand();
             command.Connection = cn;
+            
             string query = "SELECT カテゴリ名 FROM カテゴリマスタ";
             command.CommandText = query;
-
             OleDbDataReader reader = command.ExecuteReader();
+           
             while (reader.Read())
             {
                 comboBcate.Items.Add(reader["カテゴリ名"].ToString());
             }
+
+            cn.Close();
+            
+
+        }
+        private void GDLoad()
+        {
+            textBprice.Clear();
+
+            cn.Open();
+            OleDbCommand command = new OleDbCommand();
+            command.Connection = cn;
+            string goodque = "SELECT 単価 FROM 商品マスタ";
+            command.CommandText = goodque;
+            OleDbDataReader reader = command.ExecuteReader();
+
+              da = new OleDbDataAdapter("SELECT 単価 FROM 商品マスタ ", cn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            priceBtext = dt.Rows[0][0].ToString();
+
+            textBprice.Text = priceBtext;
 
             cn.Close();
         }
 
+
         private void GoodsLoad()
         {
-            comboBcate.Items.Clear();
-            cn.Open();
-            OleDbCommand command = new OleDbCommand();
-            command.Connection = cn;
-            string query = "SELECT * FROM 商品マスタ";
-            command.CommandText = query;
-
-            OleDbDataReader reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                comboBcate.Items.Add(reader["カテゴリ名"].ToString());
-            }
-
-            cn.Close();
+            CategoryLoad();
         }
 
         private DataTable CreateSchemaDataTable(OleDbDataReader reader)
@@ -111,10 +126,6 @@ namespace WindowsFormsApplication1.panel.Goods
 
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
-            //ここから変更場所
-
-
-
 
             cn.Open();
             OleDbCommand cmd = new OleDbCommand();
@@ -133,25 +144,20 @@ namespace WindowsFormsApplication1.panel.Goods
                 
             }
 
-
             cn.Close();
 
 
+            priceText = double.Parse(textBsupp.Text) * 1.6;
+            price = (int)priceText;
 
-            //ここまで
             da = new OleDbDataAdapter("SELECT カテゴリID FROM カテゴリマスタ WHERE カテゴリ名='" + comboBcate.Text + "'", cn);
             DataTable dt = new DataTable();
             da.Fill(dt);
             cateID = dt.Rows[0][0].ToString();
             dt.Clear();
-
             cn.Close();
-
-
-
-
             cmd.Connection = cn;
-            cmd.CommandText = "UPDATE 商品マスタ SET 商品名='" + textBname.Text + "', 単価=" + int.Parse(textBsupp.Text) + ", カテゴリID=" + cateID + ",備考='" + textBbikou.Text + "',定期発注数=" + int.Parse(textBnumber.Text) + ",画像ファイル='" + textBimage.Text + "' WHERE 商品ID ='" + textBID.Text + "'";
+            cmd.CommandText = "UPDATE 商品マスタ SET 商品名='" + textBname.Text + "', 単価=" +price + ", カテゴリID=" + cateID + ",定期発注数=" + int.Parse(textBnumber.Text) + ",画像ファイル='" + textBimage.Text + "',仕入れ値=" + int.Parse(textBsupp.Text) + " WHERE 商品ID ='" + textBID.Text + "'";
             try
             {
                 cn.Open();
@@ -168,6 +174,7 @@ namespace WindowsFormsApplication1.panel.Goods
             }
 
             CategoryLoad();
+            GDLoad();
         }
 
 
@@ -201,10 +208,10 @@ namespace WindowsFormsApplication1.panel.Goods
             cn.Close();
             
         }
-        private void BindData()
+        private void BindData()  //テキストボックスをバインド
         {
             cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-            da = new OleDbDataAdapter("SELECT m.商品ID,m.商品名,m.単価,k.カテゴリ名,m.画像ファイル,m.備考,m.定期発注数 FROM 商品マスタ m,カテゴリマスタ k WHERE m.カテゴリID=k.カテゴリID ", cn);
+            da = new OleDbDataAdapter("SELECT m.商品ID,m.商品名,m.仕入れ値,m.単価,k.カテゴリ名,m.画像ファイル,m.定期発注数 FROM 商品マスタ m,カテゴリマスタ k WHERE m.カテゴリID=k.カテゴリID ", cn);
             dt = new DataTable();
             da.Fill(dt);
 
@@ -217,29 +224,19 @@ namespace WindowsFormsApplication1.panel.Goods
 
             textBID.DataBindings.Add("Text", bds, "商品ID");
             textBname.DataBindings.Add("Text", bds, "商品名");
-            textBsupp.DataBindings.Add("Text", bds, "単価");
+            textBsupp.DataBindings.Add("Text", bds, "仕入れ値");
+            textBprice.DataBindings.Add("Text", bds, "単価");
             comboBcate.DataBindings.Add("Text", bds, "カテゴリ名");
             textBimage.DataBindings.Add("Text", bds, "画像ファイル");
-            textBbikou.DataBindings.Add("Text", bds, "備考");
             textBnumber.DataBindings.Add("Text", bds, "定期発注数");
             imageChange();
             textBID.SelectionStart = 0;   //選択状態にならないようにする
 
 
-
-            cn.Open();
-            OleDbCommand command = new OleDbCommand();
-            command.Connection = cn;
-            string query = "SELECT カテゴリ名 FROM カテゴリマスタ";
-            command.CommandText = query;
-
-            OleDbDataReader reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                comboBcate.Items.Add(reader["カテゴリ名"].ToString());
-            }
-            cn.Close();
+            GoodsLoad();
+            
         }
+
         private void Delete()
         {
 
