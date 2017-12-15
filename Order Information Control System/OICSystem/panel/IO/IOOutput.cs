@@ -271,6 +271,7 @@ namespace WindowsFormsApplication1.panel.IO
             CompBtn.Text = "入庫完了";
             InputNumLabel.Visible = true;
             InputNumTextbox.Visible = true;
+            ErrMsg.Visible = false;
 
             dt = new DataTable();
             cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
@@ -285,6 +286,7 @@ namespace WindowsFormsApplication1.panel.IO
             CompBtn.Text = "出庫完了";
             InputNumLabel.Visible = false;
             InputNumTextbox.Visible = false;
+            ErrMsg.Visible = false;
 
             dt.Clear();
             DataGrid.Columns.Clear();

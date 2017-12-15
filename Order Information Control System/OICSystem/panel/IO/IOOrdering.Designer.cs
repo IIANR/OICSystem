@@ -56,6 +56,7 @@
             // 
             // InputNameCombo
             // 
+            this.InputNameCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.InputNameCombo.FormattingEnabled = true;
             this.InputNameCombo.Location = new System.Drawing.Point(547, 68);
             this.InputNameCombo.Name = "InputNameCombo";
@@ -81,7 +82,7 @@
             this.OrderingGoodsDataGrid.Name = "OrderingGoodsDataGrid";
             this.OrderingGoodsDataGrid.ReadOnly = true;
             this.OrderingGoodsDataGrid.RowTemplate.Height = 21;
-            this.OrderingGoodsDataGrid.Size = new System.Drawing.Size(363, 361);
+            this.OrderingGoodsDataGrid.Size = new System.Drawing.Size(385, 361);
             this.OrderingGoodsDataGrid.TabIndex = 6;
             this.OrderingGoodsDataGrid.Click += new System.EventHandler(this.OrderingGoodsDataGrid_Click);
             // 
@@ -89,7 +90,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.label1.Location = new System.Drawing.Point(119, 13);
+            this.label1.Location = new System.Drawing.Point(129, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(147, 27);
             this.label1.TabIndex = 5;
@@ -99,6 +100,7 @@
             // 
             this.TelTextBox.Location = new System.Drawing.Point(547, 103);
             this.TelTextBox.Name = "TelTextBox";
+            this.TelTextBox.ReadOnly = true;
             this.TelTextBox.Size = new System.Drawing.Size(100, 19);
             this.TelTextBox.TabIndex = 10;
             // 
@@ -124,6 +126,7 @@
             // 
             this.GoodsidTextBox.Location = new System.Drawing.Point(497, 256);
             this.GoodsidTextBox.Name = "GoodsidTextBox";
+            this.GoodsidTextBox.ReadOnly = true;
             this.GoodsidTextBox.Size = new System.Drawing.Size(100, 19);
             this.GoodsidTextBox.TabIndex = 13;
             // 
@@ -140,6 +143,7 @@
             // 
             this.OrderingPayTextbox.Location = new System.Drawing.Point(497, 281);
             this.OrderingPayTextbox.Name = "OrderingPayTextbox";
+            this.OrderingPayTextbox.ReadOnly = true;
             this.OrderingPayTextbox.Size = new System.Drawing.Size(100, 19);
             this.OrderingPayTextbox.TabIndex = 15;
             // 
