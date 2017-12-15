@@ -90,13 +90,33 @@ namespace WindowsFormsApplication1
                 cn.Open();
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("追加しました", "成功");
-                cmd.Parameters.Clear();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "ok");
             }
-            cn.Close();
+            finally   //●
+            {
+                cmd.Parameters.Clear();   //●
+                cn.Close();
+            }
+            dataload(dcnt);   // ●データを再ロード
+            dt.Clear();
+            EmpdataGridView.DataSource = null;
+
+            EmpIDTextB.Text = "";
+            EmpPassTextB.Text = "";
+            EmpNameTextB.Text = "";
+            HuriganaTextB.Text = "";
+            EmpPostTextB.Text = "";
+            EmpAddressTextB.Text = "";
+            EmpTelTextB.Text = "";
+            BirthdayTextB.Text = "";
+
+            ManRB.Checked = false;
+            WomanRB.Checked = false;
+            YesAuthorityRB.Checked = false;
+            NoAuthorityRB.Checked = false;
 
         }
         private DataTable CreateSchemaDataTable(OleDbDataReader reader)
@@ -140,6 +160,8 @@ namespace WindowsFormsApplication1
 
 
         }
+        static int dcnt = 0;   //●　データの行数を入れる変数
+
         private void dataload(int n)
         {
             EmpdataGridView.Columns.Clear();
@@ -149,6 +171,8 @@ namespace WindowsFormsApplication1
             dt.Clear();
             dt = new DataTable();
             da.Fill(dt);
+            dcnt = dt.Rows.Count;      //データの行数
+
             EmpdataGridView.DataSource = dt;
             EmpdataGridView.AutoResizeColumns();
             EmpdataGridView.ClearSelection();
@@ -184,28 +208,6 @@ namespace WindowsFormsApplication1
         {
             tAuthority = false;
 
-        }
-
-        private void DeleteB_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show(EmpNameTextB.Text + "のデータを削除してもよろしいですか", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-            {
-                return;
-            }
-            cmd.Connection = cn;
-            cmd.CommandText = "DELETE FROM 従業員マスタ WHERE 名前 ='" + EmpNameTextB.Text + "'";
-            try
-            {
-                cn.Open();
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("削除しました", "成功");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "おｋ");
-            }
-            cn.Close();
-            dataload(0);
         }
     }
 }

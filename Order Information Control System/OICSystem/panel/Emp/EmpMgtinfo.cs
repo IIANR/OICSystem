@@ -146,6 +146,43 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("編集不可になりました。", "編集不可");
             }
         }
+        //●  dataGridViewのセルをクリック
+        private void EmpdataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            switch (EmpdataGridView.CurrentCell.ColumnIndex)
+            {
+                case 0:
+                    EmpIDTextB.Text = EmpdataGridView[0, EmpdataGridView.CurrentCell.RowIndex].Value.ToString();
+                    break;
+                case 2:
+                    EmpNameTextB.Text = EmpdataGridView[2, EmpdataGridView.CurrentCell.RowIndex].Value.ToString();
+                    break;
+            }
+        }
+
+        private void DeleteB_Click_1(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(EmpNameTextB.Text + "のデータを削除してもよろしいですか", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                return;
+            }
+            cmd.Connection = cn;
+            cmd.CommandText = "DELETE FROM 従業員マスタ WHERE 名前 ='" + EmpNameTextB.Text + "'";
+            try
+            {
+                cn.Open();
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("削除しました", "成功");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "おｋ");
+            }
+            cn.Close();
+            dataload(0);
+
+        }
+
 
     }
 }
