@@ -30,6 +30,8 @@ namespace WindowsFormsApplication1
         static int sum = 0;
         double Tax = 0;
 
+        int flag = 0;
+
         public OrderMgtRegister()
         {
             InitializeComponent();
@@ -455,20 +457,27 @@ namespace WindowsFormsApplication1
                 try
                 {
                     cn.Open();
-                    cmd.ExecuteNonQuery();
 
+                    //新規顧客の場合実行
+                    if (flag == 0)
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
                     OleDbCommand cmd3 = new OleDbCommand();
                     cmd3.Connection = cn;
                     cmd3.CommandText = "SELECT * FROM 顧客テーブル";
                     OleDbDataReader rd = cmd3.ExecuteReader();
 
-
-                    dt = CreateSchemaDataTable(rd);
-                    DataRow row = dt.NewRow();
-
-                    while (rd.Read())
+                    //新規顧客の場合実行
+                    if (flag == 0)
                     {
-                        db_memberid = (int)rd.GetValue(0);
+                        dt = CreateSchemaDataTable(rd);
+                        DataRow row = dt.NewRow();
+
+                        while (rd.Read())
+                        {
+                            db_memberid = (int)rd.GetValue(0);
+                        }
                     }
 
                     OleDbCommand cmd2 = new OleDbCommand();
@@ -651,6 +660,33 @@ namespace WindowsFormsApplication1
         private void NumCombo_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void NameTextbox_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                //クリア
+                dt.Clear();
+
+                //すでに顧客情報が登録されている場合
+                dt = new DataTable();
+                cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
+                da = new OleDbDataAdapter("SELECT 顧客テーブル.[ﾌﾘｶﾞﾅ],顧客テーブル.郵便番号, 顧客テーブル.住所1, 顧客テーブル.住所2, 顧客テーブル.電話番号,顧客テーブル.顧客ID FROM 顧客テーブル WHERE 名前='" + NameTextbox.Text + "'", cn);
+                da.Fill(dt);
+                KanaTextbox.Text = dt.Rows[0][0].ToString();
+                PoscodeTextbox.Text = dt.Rows[0][1].ToString();
+                AddressTextbox1.Text = dt.Rows[0][2].ToString();
+                AddressTextbox2.Text = dt.Rows[0][3].ToString();
+                TelTextbox.Text = dt.Rows[0][4].ToString();
+                db_memberid = int.Parse(dt.Rows[0][5].ToString());
+
+                flag = 1;
+           }
+            catch
+            {
+                flag = 0;
+            }
         }
     }
 }
