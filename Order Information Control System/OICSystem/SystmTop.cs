@@ -130,7 +130,7 @@ namespace WindowsFormsApplication1
 
         private void SystmTop_Load(object sender, EventArgs e)
         {
-            memberNameLabel.Text = frm1.db_name;
+          //  memberNameLabel.Text = frm1.db_name;
 
             timer1.Interval = 1000;
             timer1.Enabled = true;
