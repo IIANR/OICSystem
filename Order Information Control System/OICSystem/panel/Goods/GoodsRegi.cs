@@ -22,7 +22,7 @@ namespace WindowsFormsApplication1.panel
 
         string priceBtext;
         string cateID;
-        string goodsID;
+        //string goodsID;
         int price;
         int goodsid;
         double priceText;
@@ -33,7 +33,7 @@ namespace WindowsFormsApplication1.panel
             InitializeComponent();
         }
 
- 
+
 
         private void GoodsRegi_Load(object sender, EventArgs e)
         {
@@ -61,6 +61,31 @@ namespace WindowsFormsApplication1.panel
             cn.Close();
         }
 
+        private DataTable CreateSchemaDataTable(OleDbDataReader reader)
+        {
+            if (reader == null) { return null; }
+            if (reader.IsClosed) { return null; }
+
+            DataTable schema = reader.GetSchemaTable();
+            DataTable dt = new DataTable();
+
+            foreach (DataRow row in schema.Rows)
+            {
+                // Column情報を追加してください。
+                DataColumn col = new DataColumn();
+                col.ColumnName = row["ColumnName"].ToString();
+                col.DataType = Type.GetType(row["DataType"].ToString());
+
+                if (col.DataType.Equals(typeof(string)))
+                {
+                    col.MaxLength = (int)row["ColumnSize"];
+                }
+
+                dt.Columns.Add(col);
+            }
+            return dt;
+        }
+
         private Boolean SerchCategory(string category)//カテゴリDBの繰り返しフラグ処理
         {
             Boolean flag = false;
@@ -75,25 +100,37 @@ namespace WindowsFormsApplication1.panel
         }
         private void Goodsid()//商品IDをすべてカウントして、1足す
         {
-            int i;
-            da = new OleDbDataAdapter("SELECT 商品ID FROM 商品マスタ ", cn);
-            dt = new DataTable();
-          
-            da.Fill(dt);
-            i = dt.Rows.Count;
+            dt.Clear();
 
-            i = i + 1;
+            goodsid = 0;
+            cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
+            cn.Open();
 
-            goodsid = i ;
-            goodsID = goodsid.ToString();
+            cmd.CommandText = "SELECT 商品ID FROM 商品マスタ";
+            cmd.Connection = cn;
+
+            OleDbDataReader rd = cmd.ExecuteReader();
+
+            dt = CreateSchemaDataTable(rd);
+            DataRow row = dt.NewRow();
+
+            while (rd.Read())
+            {
+                if (goodsid < int.Parse((string)rd.GetValue(0)))
+                {
+                    goodsid = int.Parse((string)rd.GetValue(0));
+                }
+            }
+
+            goodsid = goodsid + 1;
+
+            cn.Close();
         }
 
 
 
         private void GDLoad()
         {
-           
-
             textBprice.Clear();
             cn.Open();
             OleDbCommand command = new OleDbCommand();
@@ -131,7 +168,7 @@ namespace WindowsFormsApplication1.panel
             {
             }
 
-           
+
 
             //カテゴリIDを入れる↓
             da = new OleDbDataAdapter("SELECT カテゴリID FROM カテゴリマスタ WHERE カテゴリ名='" + comboBcate.Text + "'", cn);
@@ -141,7 +178,7 @@ namespace WindowsFormsApplication1.panel
             dt.Clear();
 
 
-           
+
 
             if (MessageBox.Show("ID=" + textBID.Text + "のデータを追加してもよろしいですか", "IM2", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
@@ -174,19 +211,21 @@ namespace WindowsFormsApplication1.panel
             OleDbParameter gdsupp = new OleDbParameter("@supp", int.Parse(textBsupp.Text));
             cmd.Parameters.Add(gdsupp);
 
-            // ↓在庫がINSERTできない;;
-            //cmd.Connection = cn;
-            //cmd.CommandText = "INSERT INTO 在庫テーブル (商品ID,在庫数)" +
-            //              " VALUES (@Id,@stock)";
-            //OleDbParameter stID = new OleDbParameter("@Id", textBID.Text);
-            //cmd.Parameters.Add(stID);
-            //OleDbParameter stock = new OleDbParameter("@stock","0");
-            //cmd.Parameters.Add(stock);
+            OleDbCommand cmd2 = new OleDbCommand();
+            cmd2.Connection = cn;
+            cmd2.CommandText = "INSERT INTO 在庫テーブル (商品ID,在庫数)" +
+                          " VALUES (@Id,@stock)";
+            OleDbParameter stID = new OleDbParameter("@Id", textBID.Text);
+            cmd2.Parameters.Add(stID);
+            OleDbParameter stock = new OleDbParameter("@stock", "0");
+            cmd2.Parameters.Add(stock);
             try
             {
                 cmd.ExecuteNonQuery();
+                cmd2.ExecuteNonQuery();
                 MessageBox.Show("追加しました", "IM2");
                 cmd.Parameters.Clear();
+                cmd2.Parameters.Clear();
             }
             catch (Exception ex)
             {
@@ -198,6 +237,7 @@ namespace WindowsFormsApplication1.panel
             CategoryLoad();
 
             dataLoad();
+            Goodsid();
 
         }
 
@@ -228,7 +268,7 @@ namespace WindowsFormsApplication1.panel
             da.Fill(dt);
 
             Goodsid();
-            textBID.Text = goodsID;
+            textBID.Text = goodsid.ToString();
             textBname.Text = "";
             textBprice.Text = "";
             comboBcate.Text = "";
@@ -239,7 +279,7 @@ namespace WindowsFormsApplication1.panel
 
         }
 
-            //下変更なし
+        //下変更なし
 
         private void textBimage_TextChanged(object sender, EventArgs e)
         {
@@ -293,7 +333,8 @@ namespace WindowsFormsApplication1.panel
             if (textBsupp.Text == "0")
             {
                 textBprice.Text = "0";
-            }else if(textBsupp.Text == "")
+            }
+            else if (textBsupp.Text == "")
             {
                 textBprice.Text = "";
             }
@@ -309,9 +350,9 @@ namespace WindowsFormsApplication1.panel
 
         private void textBsupp_KeyPress(object sender, KeyPressEventArgs e)//数値以外キャンセル　仕入れ値
         {
-            if (e.KeyChar < '0' || '9' < e.KeyChar)
+            //0～9と、バックスペース以外の時は、イベントをキャンセルする
+            if ((e.KeyChar < '0' || '9' < e.KeyChar) && e.KeyChar != '\b')
             {
-                //押されたキーが 0～9でない場合は、イベントをキャンセルする
                 e.Handled = true;
             }
         }
@@ -326,5 +367,5 @@ namespace WindowsFormsApplication1.panel
         }
     }
 
-   
+
 }
