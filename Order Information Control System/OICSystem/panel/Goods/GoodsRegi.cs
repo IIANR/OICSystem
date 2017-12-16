@@ -22,31 +22,30 @@ namespace WindowsFormsApplication1.panel
 
         string priceBtext;
         string cateID;
-        string GoodsID;
-        string Goodsnumber;
+        string goodsID;
         int price;
-        int count;
+        int goodsid;
         double priceText;
-        
 
-       
 
         public GoodsRegi()
         {
             InitializeComponent();
         }
 
-       
+ 
 
         private void GoodsRegi_Load(object sender, EventArgs e)
         {
             dataLoad();
             GoodsLoad();
+
         }
 
         private void GoodsLoad()//カテゴリの中身
         {
             comboBcate.Items.Clear();
+
             cn.Open();
             OleDbCommand command = new OleDbCommand();
             command.Connection = cn;
@@ -74,38 +73,28 @@ namespace WindowsFormsApplication1.panel
             }
             return flag;
         }
-        // ↓　ここから再開
-        private Boolean SerchGoodsID(string goodsID　)//商品マスタの繰り返しフラグ処理
+        private void Goodsid()//商品IDをすべてカウントして、1足す
         {
-            Boolean flag = false;
-            da = new OleDbDataAdapter("SELECT * FROM 商品マスタ WHERE 商品ID='" + goodsID + "'", cn);
+            int i;
+            da = new OleDbDataAdapter("SELECT 商品ID FROM 商品マスタ ", cn);
             dt = new DataTable();
+          
             da.Fill(dt);
+            i = dt.Rows.Count;
 
-            if (dt.Rows.Count == 0)//商品IDがないとき
-            {
+            i = i + 1;
 
-                da = new OleDbDataAdapter("SELECT 商品ID FROM 商品マスタ WHERE 商品ID='" + comboBcate.Text + "'", cn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                Goodsnumber = dt.Rows[0][0].ToString();
-                dt.Clear();
-                flag = true;
-
-            }
-            else //商品IDが割り当てられているとき
-            {
-                count = count + 1;//商品マスタの数を数える
-
-                flag = false;
-            }
-            return flag;
+            goodsid = i ;
+            goodsID = goodsid.ToString();
         }
+
+
 
         private void GDLoad()
         {
-            textBprice.Clear();
+           
 
+            textBprice.Clear();
             cn.Open();
             OleDbCommand command = new OleDbCommand();
             command.Connection = cn;
@@ -142,20 +131,8 @@ namespace WindowsFormsApplication1.panel
             {
             }
 
-            if (SerchGoodsID(textBID.Text) == true) // 商品IDの位置を指定
-            {
-                
+           
 
-
-                //cmd.CommandText = "INSERT INTO カテゴリマスタ (カテゴリ名)" + " VALUES (@catename)";
-                //OleDbParameter prcatename = new OleDbParameter("@catename", comboBcate.Text);
-                //cmd.Parameters.Add(prcatename);
-                //cmd.ExecuteNonQuery();
-                //MessageBox.Show("新規のカテゴリ名を追加");
-            }
-            else
-            {
-            }
             //カテゴリIDを入れる↓
             da = new OleDbDataAdapter("SELECT カテゴリID FROM カテゴリマスタ WHERE カテゴリ名='" + comboBcate.Text + "'", cn);
             DataTable dt = new DataTable();
@@ -164,9 +141,7 @@ namespace WindowsFormsApplication1.panel
             dt.Clear();
 
 
-            //仕入れ値の１.6倍の単価を計算↓
-            priceText = double.Parse(textBsupp.Text) * 1.6;
-            price = (int)priceText;
+           
 
             if (MessageBox.Show("ID=" + textBID.Text + "のデータを追加してもよろしいですか", "IM2", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
@@ -184,11 +159,11 @@ namespace WindowsFormsApplication1.panel
             cmd.CommandText = "INSERT INTO 商品マスタ (商品ID,商品名,単価,カテゴリID,定期発注数,画像ファイル,仕入れ値)" +
                 " VALUES (@id,@name,@price,@cateID,@number,@imagefile,@supp)";
 
-            OleDbParameter gdID = new OleDbParameter("@id", textBID.Text);
+            OleDbParameter gdID = new OleDbParameter("@id", int.Parse(textBID.Text));
             cmd.Parameters.Add(gdID);
             OleDbParameter gdname = new OleDbParameter("@name", textBname.Text);
             cmd.Parameters.Add(gdname);
-            OleDbParameter gdprice = new OleDbParameter("@price", price);
+            OleDbParameter gdprice = new OleDbParameter("@price", textBprice.Text);
             cmd.Parameters.Add(gdprice);
             OleDbParameter gdcateid = new OleDbParameter("@cateID", cateID);
             cmd.Parameters.Add(gdcateid);
@@ -199,7 +174,14 @@ namespace WindowsFormsApplication1.panel
             OleDbParameter gdsupp = new OleDbParameter("@supp", int.Parse(textBsupp.Text));
             cmd.Parameters.Add(gdsupp);
 
-
+            // ↓在庫がINSERTできない;;
+            //cmd.Connection = cn;
+            //cmd.CommandText = "INSERT INTO 在庫テーブル (商品ID,在庫数)" +
+            //              " VALUES (@Id,@stock)";
+            //OleDbParameter stID = new OleDbParameter("@Id", textBID.Text);
+            //cmd.Parameters.Add(stID);
+            //OleDbParameter stock = new OleDbParameter("@stock","0");
+            //cmd.Parameters.Add(stock);
             try
             {
                 cmd.ExecuteNonQuery();
@@ -210,8 +192,13 @@ namespace WindowsFormsApplication1.panel
             {
                 MessageBox.Show(ex.Message, "IM2");
             }
+
+
             cn.Close();
             CategoryLoad();
+
+            dataLoad();
+
         }
 
         private void CategoryLoad()
@@ -240,7 +227,8 @@ namespace WindowsFormsApplication1.panel
             dt = new DataTable();
             da.Fill(dt);
 
-            textBID.Text = "";
+            Goodsid();
+            textBID.Text = goodsID;
             textBname.Text = "";
             textBprice.Text = "";
             comboBcate.Text = "";
@@ -297,7 +285,45 @@ namespace WindowsFormsApplication1.panel
                 e.Effect = DragDropEffects.None;
             }
         }
-      
+
+        private void textBsupp_TextChanged(object sender, EventArgs e)
+        {
+            textBprice.Clear();
+
+            if (textBsupp.Text == "0")
+            {
+                textBprice.Text = "0";
+            }else if(textBsupp.Text == "")
+            {
+                textBprice.Text = "";
+            }
+            else
+            {
+                //仕入れ値の１.6倍の単価を計算↓
+                priceText = double.Parse(textBsupp.Text) * 1.6;
+                price = (int)priceText;
+            }
+
+            textBprice.Text = price.ToString();
+        }
+
+        private void textBsupp_KeyPress(object sender, KeyPressEventArgs e)//数値以外キャンセル　仕入れ値
+        {
+            if (e.KeyChar < '0' || '9' < e.KeyChar)
+            {
+                //押されたキーが 0～9でない場合は、イベントをキャンセルする
+                e.Handled = true;
+            }
+        }
+
+        private void textBnumber_KeyPress(object sender, KeyPressEventArgs e)//数値以外キャンセル　定期発注数
+        {
+            if (e.KeyChar < '0' || '9' < e.KeyChar)
+            {
+                //押されたキーが 0～9でない場合は、イベントをキャンセルする
+                e.Handled = true;
+            }
+        }
     }
 
    

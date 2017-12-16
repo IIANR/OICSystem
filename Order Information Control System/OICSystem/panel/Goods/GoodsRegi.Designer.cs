@@ -109,6 +109,7 @@
             this.textBnumber.Name = "textBnumber";
             this.textBnumber.Size = new System.Drawing.Size(57, 19);
             this.textBnumber.TabIndex = 4;
+            this.textBnumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBnumber_KeyPress);
             // 
             // comboBcate
             // 
@@ -166,6 +167,7 @@
             // 
             this.textBID.Location = new System.Drawing.Point(165, 60);
             this.textBID.Name = "textBID";
+            this.textBID.ReadOnly = true;
             this.textBID.Size = new System.Drawing.Size(86, 19);
             this.textBID.TabIndex = 19;
             // 
@@ -184,6 +186,8 @@
             this.textBsupp.Name = "textBsupp";
             this.textBsupp.Size = new System.Drawing.Size(86, 19);
             this.textBsupp.TabIndex = 21;
+            this.textBsupp.TextChanged += new System.EventHandler(this.textBsupp_TextChanged);
+            this.textBsupp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBsupp_KeyPress);
             // 
             // textBprice
             // 
