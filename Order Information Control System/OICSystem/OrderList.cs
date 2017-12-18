@@ -82,7 +82,8 @@ namespace WindowsFormsApplication1
             memg.ReleaseHdc(dc2);
             memg.Dispose();
             g.Dispose();
-            return img;
+			img.RotateFlip(RotateFlipType.Rotate270FlipNone);//数字変えれば回転する
+			return img;
         }
 
         //PrintDocument1のPrintPageイベントハンドラ
@@ -105,7 +106,7 @@ namespace WindowsFormsApplication1
             if (printDialog1.ShowDialog() == DialogResult.OK)
             {
                 PrintDocument pd = new PrintDocument();
-                pd.DefaultPageSettings.Landscape = false; // これでヨコ
+                //pd.DefaultPageSettings.Landscape = false; // これでヨコ
 
                 PrintForm(this);
 
