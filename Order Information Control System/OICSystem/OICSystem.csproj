@@ -32,8 +32,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,6 +47,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DsOrderingList.cs">
+      <DependentUpon>DsOrderingList.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DsOrderingList.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsOrderingList.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="OrderingList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderingList.Designer.cs">
+      <DependentUpon>OrderingList.cs</DependentUpon>
+    </Compile>
     <Compile Include="panel\IO\IOOrdering.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -148,6 +165,10 @@
     <Compile Include="panel\Order\OrderMgtRegister.Designer.cs">
       <DependentUpon>OrderMgtRegister.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="OrderingList.resx">
+      <DependentUpon>OrderingList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderingReport.rdlc" />
     <EmbeddedResource Include="panel\IO\IOOrdering.resx">
       <DependentUpon>IOOrdering.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,6 +229,17 @@
     <EmbeddedResource Include="panel\Order\OrderMgtRegister.resx">
       <DependentUpon>OrderMgtRegister.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DsOrderingList.xsc">
+      <DependentUpon>DsOrderingList.xsd</DependentUpon>
+    </None>
+    <None Include="DsOrderingList.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsOrderingList.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DsOrderingList.xss">
+      <DependentUpon>DsOrderingList.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -78,7 +78,7 @@ namespace WindowsFormsApplication1
         private void InputNameCombo_TextChanged(object sender, EventArgs e)
         {
             cn.Open();
-            cmd.CommandText = "SELECT 入庫先ID,入庫先名,電話番号 FROM 入庫先マスタ";
+            cmd.CommandText = "SELECT * FROM 入庫先マスタ";
             cmd.Connection = cn;
             OleDbDataReader rd = cmd.ExecuteReader();
             dt = CreateSchemaDataTable(rd);
@@ -89,7 +89,10 @@ namespace WindowsFormsApplication1
                 if (InputNameCombo.Text == (string)rd.GetValue(1))
                 {
                     db_Inputid = int.Parse((string)rd.GetValue(0).ToString());
-                    TelTextBox.Text = (string)rd.GetValue(2).ToString();
+                    PosTextbox.Text = (string)rd.GetValue(2).ToString();
+                    Addres1Textbox.Text = (string)rd.GetValue(3).ToString();
+                    Addres2Textbox.Text = (string)rd.GetValue(4).ToString();
+                    TelTextBox.Text = (string)rd.GetValue(5).ToString();
                 }
             }
             cn.Close();
@@ -169,6 +172,13 @@ namespace WindowsFormsApplication1
                 OrderingPayTextbox.Text = "";
                 InputNumTextbox.Text = "";
             }
+        }
+
+        private void OrderingPrintBtn_Click(object sender, EventArgs e)
+        {
+            OrderingList f = new OrderingList();
+            f.ShowDialog(this);
+            f.Dispose();
         }
     }
 }

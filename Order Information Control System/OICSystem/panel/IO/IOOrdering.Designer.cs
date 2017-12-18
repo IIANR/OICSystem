@@ -42,13 +42,20 @@
             this.OrderingCompBtn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.InputNumTextbox = new System.Windows.Forms.TextBox();
+            this.OrderingPrintBtn = new System.Windows.Forms.Button();
+            this.PosTextbox = new System.Windows.Forms.TextBox();
+            this.Addres1Textbox = new System.Windows.Forms.TextBox();
+            this.Addres2Textbox = new System.Windows.Forms.TextBox();
+            this.PosLabel = new System.Windows.Forms.Label();
+            this.Addres1Label = new System.Windows.Forms.Label();
+            this.Addres2Label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.OrderingGoodsDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(478, 106);
+            this.label3.Location = new System.Drawing.Point(478, 100);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 12);
             this.label3.TabIndex = 9;
@@ -60,7 +67,7 @@
             this.InputNameCombo.FormattingEnabled = true;
             this.InputNameCombo.Location = new System.Drawing.Point(547, 68);
             this.InputNameCombo.Name = "InputNameCombo";
-            this.InputNameCombo.Size = new System.Drawing.Size(121, 20);
+            this.InputNameCombo.Size = new System.Drawing.Size(175, 20);
             this.InputNameCombo.TabIndex = 8;
             this.InputNameCombo.TextChanged += new System.EventHandler(this.InputNameCombo_TextChanged);
             // 
@@ -82,7 +89,7 @@
             this.OrderingGoodsDataGrid.Name = "OrderingGoodsDataGrid";
             this.OrderingGoodsDataGrid.ReadOnly = true;
             this.OrderingGoodsDataGrid.RowTemplate.Height = 21;
-            this.OrderingGoodsDataGrid.Size = new System.Drawing.Size(385, 361);
+            this.OrderingGoodsDataGrid.Size = new System.Drawing.Size(403, 361);
             this.OrderingGoodsDataGrid.TabIndex = 6;
             this.OrderingGoodsDataGrid.Click += new System.EventHandler(this.OrderingGoodsDataGrid_Click);
             // 
@@ -98,10 +105,10 @@
             // 
             // TelTextBox
             // 
-            this.TelTextBox.Location = new System.Drawing.Point(547, 103);
+            this.TelTextBox.Location = new System.Drawing.Point(547, 97);
             this.TelTextBox.Name = "TelTextBox";
             this.TelTextBox.ReadOnly = true;
-            this.TelTextBox.Size = new System.Drawing.Size(100, 19);
+            this.TelTextBox.Size = new System.Drawing.Size(175, 19);
             this.TelTextBox.TabIndex = 10;
             // 
             // NameTextBox
@@ -116,7 +123,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(433, 259);
+            this.label4.Location = new System.Drawing.Point(483, 268);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 12);
             this.label4.TabIndex = 12;
@@ -124,7 +131,7 @@
             // 
             // GoodsidTextBox
             // 
-            this.GoodsidTextBox.Location = new System.Drawing.Point(497, 256);
+            this.GoodsidTextBox.Location = new System.Drawing.Point(547, 265);
             this.GoodsidTextBox.Name = "GoodsidTextBox";
             this.GoodsidTextBox.ReadOnly = true;
             this.GoodsidTextBox.Size = new System.Drawing.Size(100, 19);
@@ -133,7 +140,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(432, 312);
+            this.label5.Location = new System.Drawing.Point(482, 321);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 12);
             this.label5.TabIndex = 14;
@@ -141,7 +148,7 @@
             // 
             // OrderingPayTextbox
             // 
-            this.OrderingPayTextbox.Location = new System.Drawing.Point(497, 281);
+            this.OrderingPayTextbox.Location = new System.Drawing.Point(547, 290);
             this.OrderingPayTextbox.Name = "OrderingPayTextbox";
             this.OrderingPayTextbox.ReadOnly = true;
             this.OrderingPayTextbox.Size = new System.Drawing.Size(100, 19);
@@ -149,18 +156,18 @@
             // 
             // OrderingCompBtn
             // 
-            this.OrderingCompBtn.Location = new System.Drawing.Point(614, 372);
+            this.OrderingCompBtn.Location = new System.Drawing.Point(547, 366);
             this.OrderingCompBtn.Name = "OrderingCompBtn";
-            this.OrderingCompBtn.Size = new System.Drawing.Size(75, 23);
+            this.OrderingCompBtn.Size = new System.Drawing.Size(89, 33);
             this.OrderingCompBtn.TabIndex = 16;
-            this.OrderingCompBtn.Text = "発注完了";
+            this.OrderingCompBtn.Text = "発注";
             this.OrderingCompBtn.UseVisualStyleBackColor = true;
             this.OrderingCompBtn.Click += new System.EventHandler(this.OrderingCompBtn_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(421, 284);
+            this.label6.Location = new System.Drawing.Point(471, 293);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(58, 12);
             this.label6.TabIndex = 17;
@@ -168,15 +175,83 @@
             // 
             // InputNumTextbox
             // 
-            this.InputNumTextbox.Location = new System.Drawing.Point(497, 309);
+            this.InputNumTextbox.Location = new System.Drawing.Point(547, 318);
             this.InputNumTextbox.Name = "InputNumTextbox";
             this.InputNumTextbox.Size = new System.Drawing.Size(100, 19);
             this.InputNumTextbox.TabIndex = 18;
+            // 
+            // OrderingPrintBtn
+            // 
+            this.OrderingPrintBtn.Location = new System.Drawing.Point(644, 366);
+            this.OrderingPrintBtn.Name = "OrderingPrintBtn";
+            this.OrderingPrintBtn.Size = new System.Drawing.Size(89, 33);
+            this.OrderingPrintBtn.TabIndex = 19;
+            this.OrderingPrintBtn.Text = "発注書印刷";
+            this.OrderingPrintBtn.UseVisualStyleBackColor = true;
+            this.OrderingPrintBtn.Click += new System.EventHandler(this.OrderingPrintBtn_Click);
+            // 
+            // PosTextbox
+            // 
+            this.PosTextbox.Location = new System.Drawing.Point(547, 126);
+            this.PosTextbox.Name = "PosTextbox";
+            this.PosTextbox.ReadOnly = true;
+            this.PosTextbox.Size = new System.Drawing.Size(175, 19);
+            this.PosTextbox.TabIndex = 20;
+            // 
+            // Addres1Textbox
+            // 
+            this.Addres1Textbox.Location = new System.Drawing.Point(547, 155);
+            this.Addres1Textbox.Name = "Addres1Textbox";
+            this.Addres1Textbox.ReadOnly = true;
+            this.Addres1Textbox.Size = new System.Drawing.Size(175, 19);
+            this.Addres1Textbox.TabIndex = 21;
+            // 
+            // Addres2Textbox
+            // 
+            this.Addres2Textbox.Location = new System.Drawing.Point(547, 184);
+            this.Addres2Textbox.Name = "Addres2Textbox";
+            this.Addres2Textbox.ReadOnly = true;
+            this.Addres2Textbox.Size = new System.Drawing.Size(175, 19);
+            this.Addres2Textbox.TabIndex = 22;
+            // 
+            // PosLabel
+            // 
+            this.PosLabel.AutoSize = true;
+            this.PosLabel.Location = new System.Drawing.Point(478, 129);
+            this.PosLabel.Name = "PosLabel";
+            this.PosLabel.Size = new System.Drawing.Size(59, 12);
+            this.PosLabel.TabIndex = 23;
+            this.PosLabel.Text = "郵便番号：";
+            // 
+            // Addres1Label
+            // 
+            this.Addres1Label.AutoSize = true;
+            this.Addres1Label.Location = new System.Drawing.Point(496, 158);
+            this.Addres1Label.Name = "Addres1Label";
+            this.Addres1Label.Size = new System.Drawing.Size(41, 12);
+            this.Addres1Label.TabIndex = 24;
+            this.Addres1Label.Text = "住所1：";
+            // 
+            // Addres2Label
+            // 
+            this.Addres2Label.AutoSize = true;
+            this.Addres2Label.Location = new System.Drawing.Point(496, 187);
+            this.Addres2Label.Name = "Addres2Label";
+            this.Addres2Label.Size = new System.Drawing.Size(41, 12);
+            this.Addres2Label.TabIndex = 25;
+            this.Addres2Label.Text = "住所2：";
             // 
             // IOOrdering
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Addres2Label);
+            this.Controls.Add(this.Addres1Label);
+            this.Controls.Add(this.PosLabel);
+            this.Controls.Add(this.Addres2Textbox);
+            this.Controls.Add(this.Addres1Textbox);
+            this.Controls.Add(this.PosTextbox);
+            this.Controls.Add(this.OrderingPrintBtn);
             this.Controls.Add(this.InputNumTextbox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.OrderingCompBtn);
@@ -216,5 +291,12 @@
         private System.Windows.Forms.Button OrderingCompBtn;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox InputNumTextbox;
+        private System.Windows.Forms.Button OrderingPrintBtn;
+        private System.Windows.Forms.TextBox PosTextbox;
+        private System.Windows.Forms.TextBox Addres1Textbox;
+        private System.Windows.Forms.TextBox Addres2Textbox;
+        private System.Windows.Forms.Label PosLabel;
+        private System.Windows.Forms.Label Addres1Label;
+        private System.Windows.Forms.Label Addres2Label;
     }
 }
