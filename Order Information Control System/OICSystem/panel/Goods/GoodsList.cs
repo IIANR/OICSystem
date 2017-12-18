@@ -33,7 +33,8 @@ namespace WindowsFormsApplication1.panel.Goods
 
         private void GoodsList_Load(object sender, EventArgs e)
         {
-            BindData();
+        
+                BindData();
 
         }
         private void CategoryLoad()// comboBtextの中身を更新する
@@ -191,7 +192,7 @@ namespace WindowsFormsApplication1.panel.Goods
         {
             cn.Open();
             cmd.Connection = cn;
-            cmd.CommandText = "DELETE FROM 商品マスタ WHERE 商品ID='" + textBID.Text + "'";
+            cmd.CommandText = "UPDATE 商品マスタ SET フラグ = '販売中止' WHERE 商品ID='" + textBID.Text + "'";
             cmd.ExecuteNonQuery();
             try
             {
@@ -211,7 +212,7 @@ namespace WindowsFormsApplication1.panel.Goods
         private void BindData()  //テキストボックスをバインド
         {
             cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-            da = new OleDbDataAdapter("SELECT m.商品ID,m.商品名,m.仕入れ値,m.単価,k.カテゴリ名,m.画像ファイル,m.安全在庫数,m.発注数 FROM 商品マスタ m,カテゴリマスタ k WHERE m.カテゴリID=k.カテゴリID ", cn);
+            da = new OleDbDataAdapter("SELECT m.商品ID,m.商品名,m.仕入れ値,m.単価,k.カテゴリ名,m.画像ファイル,m.安全在庫数,m.発注数,m.フラグ FROM 商品マスタ m,カテゴリマスタ k WHERE m.カテゴリID=k.カテゴリID  AND m.フラグ <> '販売中止'", cn);
             dt = new DataTable();
             da.Fill(dt);
 

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.textBprice = new System.Windows.Forms.TextBox();
             this.textBsupp = new System.Windows.Forms.TextBox();
             this.Lblsupp = new System.Windows.Forms.Label();
@@ -47,7 +46,6 @@
             this.goodsRegiId = new System.Windows.Forms.Label();
             this.Lblodr = new System.Windows.Forms.Label();
             this.textBodr = new System.Windows.Forms.TextBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
@@ -218,11 +216,6 @@
             this.textBodr.TabIndex = 39;
             this.textBodr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBodr_KeyPress);
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
             // GoodsRegi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -274,6 +267,5 @@
         private System.Windows.Forms.Label goodsRegiId;
         private System.Windows.Forms.Label Lblodr;
         private System.Windows.Forms.TextBox textBodr;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

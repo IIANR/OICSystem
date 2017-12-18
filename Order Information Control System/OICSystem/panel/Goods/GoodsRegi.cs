@@ -193,8 +193,8 @@ namespace WindowsFormsApplication1.panel
 
 
             cmd.Connection = cn;
-            cmd.CommandText = "INSERT INTO 商品マスタ (商品ID,商品名,単価,カテゴリID,安全在庫数,画像ファイル,仕入れ値,発注数)" +
-                " VALUES (@id,@name,@price,@cateID,@number,@imagefile,@supp,@odr)";
+            cmd.CommandText = "INSERT INTO 商品マスタ (商品ID,商品名,単価,カテゴリID,安全在庫数,画像ファイル,仕入れ値,発注数,フラグ)" +
+                " VALUES (@id,@name,@price,@cateID,@number,@imagefile,@supp,@odr,@flag)";
 
             OleDbParameter gdID = new OleDbParameter("@id", int.Parse(textBID.Text));
             cmd.Parameters.Add(gdID);
@@ -212,6 +212,8 @@ namespace WindowsFormsApplication1.panel
             cmd.Parameters.Add(gdsupp);
             OleDbParameter gdodr = new OleDbParameter("@odr", int.Parse(textBodr.Text));
             cmd.Parameters.Add(gdodr);
+            OleDbParameter gdflag = new OleDbParameter("@flag","販売中");
+            cmd.Parameters.Add(gdflag);
 
             OleDbCommand cmd2 = new OleDbCommand();
             cmd2.Connection = cn;
