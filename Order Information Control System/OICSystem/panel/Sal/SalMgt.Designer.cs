@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-			System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+			System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
 			this.label1 = new System.Windows.Forms.Label();
 			this.listBox1 = new System.Windows.Forms.ListBox();
 			this.DateSelectCount = new System.Windows.Forms.Button();
@@ -44,8 +44,9 @@
 			this.Msg = new System.Windows.Forms.Label();
 			this.DateSelectMoney = new System.Windows.Forms.Button();
 			this.totalMsg = new System.Windows.Forms.Label();
-			this.DateSelectCount2 = new System.Windows.Forms.Button();
+			this.analysis = new System.Windows.Forms.Button();
 			this.printing = new System.Windows.Forms.Button();
+			this.AddMsg = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.注文テーブルBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.iM2DataSet)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -95,14 +96,14 @@
 			// 
 			// chart1
 			// 
-			chartArea6.AxisX.Interval = 1D;
-			chartArea6.AxisX.MajorGrid.Enabled = false;
-			chartArea6.AxisX.MajorGrid.Interval = 1D;
-			chartArea6.AxisY.MajorGrid.Enabled = false;
-			chartArea6.Name = "ChartArea1";
-			this.chart1.ChartAreas.Add(chartArea6);
-			legend6.Name = "Legend1";
-			this.chart1.Legends.Add(legend6);
+			chartArea7.AxisX.Interval = 1D;
+			chartArea7.AxisX.MajorGrid.Enabled = false;
+			chartArea7.AxisX.MajorGrid.Interval = 1D;
+			chartArea7.AxisY.MajorGrid.Enabled = false;
+			chartArea7.Name = "ChartArea1";
+			this.chart1.ChartAreas.Add(chartArea7);
+			legend7.Name = "Legend1";
+			this.chart1.Legends.Add(legend7);
 			this.chart1.Location = new System.Drawing.Point(44, 183);
 			this.chart1.Name = "chart1";
 			this.chart1.Size = new System.Drawing.Size(692, 209);
@@ -165,15 +166,15 @@
 			this.totalMsg.Size = new System.Drawing.Size(0, 24);
 			this.totalMsg.TabIndex = 94;
 			// 
-			// DateSelectCount2
+			// analysis
 			// 
-			this.DateSelectCount2.Location = new System.Drawing.Point(229, 460);
-			this.DateSelectCount2.Name = "DateSelectCount2";
-			this.DateSelectCount2.Size = new System.Drawing.Size(130, 37);
-			this.DateSelectCount2.TabIndex = 98;
-			this.DateSelectCount2.Text = "期間指定(販売数表示)";
-			this.DateSelectCount2.UseVisualStyleBackColor = true;
-			this.DateSelectCount2.Click += new System.EventHandler(this.DateSelectCount2_Click_1);
+			this.analysis.Location = new System.Drawing.Point(229, 442);
+			this.analysis.Name = "analysis";
+			this.analysis.Size = new System.Drawing.Size(130, 66);
+			this.analysis.TabIndex = 98;
+			this.analysis.Text = "分析";
+			this.analysis.UseVisualStyleBackColor = true;
+			this.analysis.Click += new System.EventHandler(this.analysis_Click);
 			// 
 			// printing
 			// 
@@ -185,12 +186,23 @@
 			this.printing.UseVisualStyleBackColor = true;
 			this.printing.Click += new System.EventHandler(this.printing_Click);
 			// 
+			// AddMsg
+			// 
+			this.AddMsg.Anchor = System.Windows.Forms.AnchorStyles.Right;
+			this.AddMsg.AutoSize = true;
+			this.AddMsg.Font = new System.Drawing.Font("ＭＳ ゴシック", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.AddMsg.Location = new System.Drawing.Point(136, 183);
+			this.AddMsg.Name = "AddMsg";
+			this.AddMsg.Size = new System.Drawing.Size(0, 24);
+			this.AddMsg.TabIndex = 102;
+			// 
 			// SalMgt
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.AddMsg);
 			this.Controls.Add(this.printing);
-			this.Controls.Add(this.DateSelectCount2);
+			this.Controls.Add(this.analysis);
 			this.Controls.Add(this.DateSelectMoney);
 			this.Controls.Add(this.Msg);
 			this.Controls.Add(this.totalMsg);
@@ -203,6 +215,7 @@
 			this.Controls.Add(this.label1);
 			this.Name = "SalMgt";
 			this.Size = new System.Drawing.Size(760, 515);
+			this.Load += new System.EventHandler(this.SalMgt_Load);
 			((System.ComponentModel.ISupportInitialize)(this.注文テーブルBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.iM2DataSet)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
@@ -226,7 +239,8 @@
 		private System.Windows.Forms.Label Msg;
 		private System.Windows.Forms.Button DateSelectMoney;
         private System.Windows.Forms.Label totalMsg;
-		private System.Windows.Forms.Button DateSelectCount2;
+		private System.Windows.Forms.Button analysis;
 		private System.Windows.Forms.Button printing;
+		private System.Windows.Forms.Label AddMsg;
 	}
 }
