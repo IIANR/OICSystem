@@ -39,6 +39,7 @@ namespace WindowsFormsApplication1.panel
         {
             dataLoad();
             GoodsLoad();
+            
 
         }
 
@@ -280,6 +281,7 @@ namespace WindowsFormsApplication1.panel
             textBimage.Text = "Noimage.png";
             pictureBox.Image = Image.FromFile(@".\IM2image\" + textBimage.Text);
             textBsupp.Text = "";
+            textBodr.Text = "";
 
         }
 

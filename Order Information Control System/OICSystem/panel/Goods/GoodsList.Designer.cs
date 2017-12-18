@@ -58,6 +58,7 @@
             this.goodsRegiId = new System.Windows.Forms.Label();
             this.textBodr = new System.Windows.Forms.TextBox();
             this.Lblodr = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             this.panel.SuspendLayout();
@@ -326,10 +327,21 @@
             this.Lblodr.TabIndex = 64;
             this.Lblodr.Text = "発注数:";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(112, 345);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 66;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // GoodsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.textBodr);
             this.Controls.Add(this.Lblodr);
             this.Controls.Add(this.Lblsupp);
@@ -392,5 +404,6 @@
         private System.Windows.Forms.Label goodsRegiId;
         private System.Windows.Forms.TextBox textBodr;
         private System.Windows.Forms.Label Lblodr;
+        private System.Windows.Forms.Button button1;
     }
 }

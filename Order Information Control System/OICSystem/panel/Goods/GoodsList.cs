@@ -202,7 +202,7 @@ namespace WindowsFormsApplication1.panel.Goods
                 BindData();
 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 //MessageBox.Show(ex.Message, "IM2");
             }
@@ -211,13 +211,12 @@ namespace WindowsFormsApplication1.panel.Goods
         }
         private void BindData()  //テキストボックスをバインド
         {
+          
+
             cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
             da = new OleDbDataAdapter("SELECT m.商品ID,m.商品名,m.仕入れ値,m.単価,k.カテゴリ名,m.画像ファイル,m.安全在庫数,m.発注数,m.フラグ FROM 商品マスタ m,カテゴリマスタ k WHERE m.カテゴリID=k.カテゴリID  AND m.フラグ <> '販売中止'", cn);
             dt = new DataTable();
             da.Fill(dt);
-
-
-
 
             bds.DataSource = dt;
 
@@ -255,7 +254,7 @@ namespace WindowsFormsApplication1.panel.Goods
                 BindData();
 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }
@@ -295,6 +294,11 @@ namespace WindowsFormsApplication1.panel.Goods
         private void textBimage_TextChanged(object sender, EventArgs e)
         {
             imageChange();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            BindData();
         }
     }
 

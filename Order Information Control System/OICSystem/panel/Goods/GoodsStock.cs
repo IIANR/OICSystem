@@ -93,7 +93,7 @@ namespace WindowsFormsApplication1.panel.Goods
 
                 if (GSname.Contains(GStname))     //Containsは部分検索
                 {
-                    selectfunc("SELECT Z.商品ID,S.商品名,Z.在庫数,S.安全在庫数 FROM 在庫テーブル Z,商品マスタ S WHERE Z.商品ID=S.商品ID AND 商品名 LIKE '%" + GoodsStockTBox.Text + "%' ");
+                    selectfunc("SELECT Z.商品ID,S.商品名,Z.在庫数,S.安全在庫数 FROM 在庫テーブル Z,商品マスタ S WHERE Z.商品ID=S.商品ID AND 商品名 LIKE '%" + GoodsStockTBox.Text + "%' AND S.フラグ <> '販売中止'");
                     GoodsStockDisLbl.Text = "";
                     break;
                 }
@@ -120,7 +120,7 @@ namespace WindowsFormsApplication1.panel.Goods
             GoodsStockDataGridView.Columns.Clear();
             GoodsStockDataGridView.DataSource = null;
             cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
-            da = new OleDbDataAdapter("SELECT Z.商品ID,S.商品名,Z.在庫数,S.安全在庫数 FROM 在庫テーブル Z,商品マスタ S WHERE Z.商品ID=S.商品ID ORDER BY Z.商品ID ASC", cn);
+            da = new OleDbDataAdapter("SELECT Z.商品ID,S.商品名,Z.在庫数,S.安全在庫数 FROM 在庫テーブル Z,商品マスタ S WHERE Z.商品ID=S.商品ID AND S.フラグ <> '販売中止' ORDER BY Z.商品ID ASC", cn);
             dt.Clear();
             dt = new DataTable();
             da.Fill(dt);
