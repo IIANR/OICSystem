@@ -59,15 +59,10 @@ namespace WindowsFormsApplication1.panel.IO
 
             dt = new DataTable();
             cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-            da = new OleDbDataAdapter("SELECT 発注テーブル.発注ID, 発注テーブル.発注日, 発注テーブル.商品ID, 商品マスタ.商品名, 発注テーブル.発注数量 FROM 商品マスタ INNER JOIN 発注テーブル ON 商品マスタ.商品ID = 発注テーブル.商品ID", cn);
+            da = new OleDbDataAdapter("SELECT 入庫テーブル.入庫ID, 入庫テーブル.入庫日, 発注テーブル.発注ID, 発注テーブル.発注日, 発注テーブル.商品ID, 発注テーブル.発注数量 FROM 発注テーブル INNER JOIN 入庫テーブル ON 発注テーブル.発注ID = 入庫テーブル.発注ID;", cn);
             da.Fill(dt);
             DataGrid.DataSource = dt;
 
-            //dt = new DataTable();
-            //cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-            //da = new OleDbDataAdapter("SELECT 出庫テーブル.出庫ID, 出庫テーブル.注文ID, 出庫テーブル.出庫日, 顧客テーブル.名前 AS 顧客名, 注文テーブル.[フラグ] FROM 顧客テーブル INNER JOIN(注文テーブル INNER JOIN 出庫テーブル ON 注文テーブル.注文ID = 出庫テーブル.注文ID) ON 顧客テーブル.顧客ID = 注文テーブル.顧客ID ORDER BY 出庫テーブル.出庫ID", cn);
-            //da.Fill(dt);
-            //OutputDataGrid.DataSource = dt;
             DataGrid.AllowUserToAddRows = false;
         }
 
@@ -166,7 +161,7 @@ namespace WindowsFormsApplication1.panel.IO
 
                         dt = new DataTable();
                         cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-                        da = new OleDbDataAdapter("SELECT 出庫テーブル.出庫ID, 出庫テーブル.注文ID, 出庫テーブル.出庫日, 顧客テーブル.名前 AS 顧客名, 注文テーブル.[フラグ] FROM 顧客テーブル INNER JOIN(注文テーブル INNER JOIN 出庫テーブル ON 注文テーブル.注文ID = 出庫テーブル.注文ID) ON 顧客テーブル.顧客ID = 注文テーブル.顧客ID ORDER BY 出庫テーブル.出庫ID", cn);
+                        da = new OleDbDataAdapter("SELECT 出庫テーブル.出庫ID, 出庫テーブル.出庫日, 出庫テーブル.注文ID, 顧客テーブル.名前 AS 顧客名, 注文テーブル.[フラグ] FROM 顧客テーブル INNER JOIN(注文テーブル INNER JOIN 出庫テーブル ON 注文テーブル.注文ID = 出庫テーブル.注文ID) ON 顧客テーブル.顧客ID = 注文テーブル.顧客ID ORDER BY 出庫テーブル.出庫ID", cn);
                         da.Fill(dt);
                         DataGrid.DataSource = dt;
                         DataGrid.AllowUserToAddRows = false;
@@ -202,7 +197,7 @@ namespace WindowsFormsApplication1.panel.IO
                 ErrMsg.Visible = false;
                 if (IdTextbox.Text == null || IdTextbox.Text == "")
                 {
-                    ErrMsg.Text = "※行を選択してください";
+                    ErrMsg.Text = "※発注IDを入力してください";
                     ErrMsg.Visible = true;
                 }
                 else
@@ -236,21 +231,38 @@ namespace WindowsFormsApplication1.panel.IO
                         OleDbCommand cmd2 = new OleDbCommand();
                         cmd2.Connection = cn;
                         cmd2.CommandText = "INSERT INTO 入庫テーブル (発注ID,入庫日)" + "VALUES (@inputid,@inputdate) ";
-                        OleDbParameter prinputid = new OleDbParameter("@inputid", int.Parse((string)DataGrid.CurrentRow.Cells[0].Value.ToString()));
+                        OleDbParameter prinputid = new OleDbParameter("@inputid", int.Parse(IdTextbox.Text));
                         cmd2.Parameters.Add(prinputid);
                         OleDbParameter prinputdate = new OleDbParameter("@inputdate", dtNow.ToString("MM/dd"));
                         cmd2.Parameters.Add(prinputdate);
 
                         OleDbCommand cmd3 = new OleDbCommand();
                         cmd3.Connection = cn;
-                        cmd3.CommandText = "UPDATE 在庫テーブル INNER JOIN 商品マスタ ON 在庫テーブル.商品ID = 商品マスタ.商品ID SET 在庫テーブル.在庫数 = 在庫テーブル.在庫数 + "+int.Parse(InputNumTextbox.Text)+" WHERE 商品マスタ.商品名 = '" + (string)DataGrid.CurrentRow.Cells[3].Value.ToString() + "'";
+                        cmd3.CommandText = "UPDATE 在庫テーブル INNER JOIN (商品マスタ INNER JOIN 発注テーブル ON 商品マスタ.商品ID = 発注テーブル.商品ID) ON 在庫テーブル.商品ID = 商品マスタ.商品ID SET 在庫テーブル.在庫数 = 在庫テーブル.在庫数 + " + int.Parse(InputNumTextbox.Text)+" WHERE 発注テーブル.発注ID = " + int.Parse(IdTextbox.Text) + "";
+
+                        OleDbCommand cmd4 = new OleDbCommand();
+                        cmd4.Connection = cn;
+                        cmd4.CommandText = "UPDATE 商品マスタ INNER JOIN 発注テーブル ON 商品マスタ.商品ID = 発注テーブル.商品ID SET 商品マスタ.フラグ='販売中' WHERE 発注テーブル.発注ID = " + int.Parse(IdTextbox.Text) + "";
 
                         cn.Open();
                         cmd2.ExecuteNonQuery();
                         cmd3.ExecuteNonQuery();
+                        cmd4.ExecuteNonQuery();
                         cn.Close();
 
-                        
+                        //クリア
+                        dt.Clear();
+                        DataGrid.Columns.Clear();
+                        DataGrid.DataSource = null;
+
+                        dt = new DataTable();
+                        cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
+                        da = new OleDbDataAdapter("SELECT 入庫テーブル.入庫ID, 入庫テーブル.入庫日, 発注テーブル.発注ID, 発注テーブル.発注日, 発注テーブル.商品ID, 発注テーブル.発注数量 FROM 発注テーブル INNER JOIN 入庫テーブル ON 発注テーブル.発注ID = 入庫テーブル.発注ID;", cn);
+                        da.Fill(dt);
+                        DataGrid.DataSource = dt;
+
+                        IdTextbox.Text = "";
+                        InputNumTextbox.Text = "";
                     }
 
                     else if (flag == 1)
@@ -267,6 +279,8 @@ namespace WindowsFormsApplication1.panel.IO
 
         private void InputRadioBtn_CheckedChanged(object sender, EventArgs e)
         {
+            InputNumTextbox.Text = "";
+            IdTextbox.Text = "";
             idLabel.Text = "発注ID：";
             CompBtn.Text = "入庫完了";
             InputNumLabel.Visible = true;
@@ -275,13 +289,14 @@ namespace WindowsFormsApplication1.panel.IO
 
             dt = new DataTable();
             cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-            da = new OleDbDataAdapter("SELECT 発注テーブル.発注ID, 発注テーブル.発注日, 発注テーブル.商品ID, 商品マスタ.商品名, 発注テーブル.発注数量 FROM 商品マスタ INNER JOIN 発注テーブル ON 商品マスタ.商品ID = 発注テーブル.商品ID", cn);
+            da = new OleDbDataAdapter("SELECT 入庫テーブル.入庫ID, 入庫テーブル.入庫日, 発注テーブル.発注ID, 発注テーブル.発注日, 発注テーブル.商品ID, 発注テーブル.発注数量 FROM 発注テーブル INNER JOIN 入庫テーブル ON 発注テーブル.発注ID = 入庫テーブル.発注ID;", cn);
             da.Fill(dt);
             DataGrid.DataSource = dt;
         }
 
         private void OutputRadioBtn_CheckedChanged(object sender, EventArgs e)
         {
+            IdTextbox.Text = "";
             idLabel.Text = "注文ID：";
             CompBtn.Text = "出庫完了";
             InputNumLabel.Visible = false;
@@ -294,7 +309,7 @@ namespace WindowsFormsApplication1.panel.IO
 
             dt = new DataTable();
             cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-            da = new OleDbDataAdapter("SELECT 出庫テーブル.出庫ID, 出庫テーブル.注文ID, 出庫テーブル.出庫日, 顧客テーブル.名前 AS 顧客名, 注文テーブル.[フラグ] FROM 顧客テーブル INNER JOIN(注文テーブル INNER JOIN 出庫テーブル ON 注文テーブル.注文ID = 出庫テーブル.注文ID) ON 顧客テーブル.顧客ID = 注文テーブル.顧客ID ORDER BY 出庫テーブル.出庫ID", cn);
+            da = new OleDbDataAdapter("SELECT 出庫テーブル.出庫ID, 出庫テーブル.出庫日,出庫テーブル.注文ID, 顧客テーブル.名前 AS 顧客名, 注文テーブル.[フラグ] FROM 顧客テーブル INNER JOIN(注文テーブル INNER JOIN 出庫テーブル ON 注文テーブル.注文ID = 出庫テーブル.注文ID) ON 顧客テーブル.顧客ID = 注文テーブル.顧客ID ORDER BY 出庫テーブル.出庫ID", cn);
             da.Fill(dt);
             DataGrid.DataSource = dt;
         }

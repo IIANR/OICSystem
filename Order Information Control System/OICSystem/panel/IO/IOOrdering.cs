@@ -100,9 +100,12 @@ namespace WindowsFormsApplication1
 
         private void OrderingGoodsDataGrid_Click(object sender, EventArgs e)
         {
-            GoodsidTextBox.Text = (string)OrderingGoodsDataGrid.CurrentRow.Cells[0].Value;
-            OrderingPayTextbox.Text = (string)OrderingGoodsDataGrid.CurrentRow.Cells[2].Value.ToString();
-            InputNumTextbox.Text = (string)OrderingGoodsDataGrid.CurrentRow.Cells[3].Value.ToString();
+            if (OrderingGoodsDataGrid.Rows.Count > 0)
+            {
+                GoodsidTextBox.Text = (string)OrderingGoodsDataGrid.CurrentRow.Cells[0].Value;
+                OrderingPayTextbox.Text = (string)OrderingGoodsDataGrid.CurrentRow.Cells[2].Value.ToString();
+                InputNumTextbox.Text = (string)OrderingGoodsDataGrid.CurrentRow.Cells[3].Value.ToString();
+            }
         }
 
         private void OrderingCompBtn_Click(object sender, EventArgs e)
