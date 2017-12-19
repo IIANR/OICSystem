@@ -104,29 +104,34 @@ namespace WindowsFormsApplication1
             for (int i = 0; i < EmpdataGridView.Rows.Count-1; i++)
             {
                 cmd.Connection = cn;
-                cmd.CommandText = 
-                    "UPDATE 従業員マスタ SET 名前 ='" + EmpdataGridView[2, i].Value.ToString() +
+
+                cmd.CommandText =
+                    "UPDATE 従業員マスタ SET パスワード ='" + EmpdataGridView[1, i].Value.ToString() +
+                    "' ,名前 ='" + EmpdataGridView[2, i].Value.ToString() +
                     "' ,ﾌﾘｶﾞﾅ ='" + EmpdataGridView[3, i].Value.ToString() +
                     "' ,性別 ='" + EmpdataGridView[4, i].Value.ToString() +
                     "' ,郵便番号 ='" + EmpdataGridView[5, i].Value.ToString() +
                     "' ,住所1 ='" + EmpdataGridView[6, i].Value.ToString() +
                     "' ,住所2 ='" + EmpdataGridView[7, i].Value.ToString() +
                     "' ,電話番号 ='" + EmpdataGridView[8, i].Value.ToString() +
-                    "' ,備考 ='" + EmpdataGridView[12, i].Value.ToString() +
-                    "' WHERE 従業員ID=" + (int)EmpdataGridView[0, i].Value + "";
-                try
-                {
-                    cn.Open();
-                    cmd.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "ok");
-                }
-            finally   //●
-                {
-                    cn.Close();
-                }
+                    "' ,責任者権限 =" + EmpdataGridView[11, i].Value +
+                    " ,備考 ='" + EmpdataGridView[12, i].Value.ToString() +
+                    "' WHERE 従業員ID=" + (int)EmpdataGridView[0, i].Value ;
+                //try
+                //{
+                cn.Open();
+                //cmd.CommandText = "UPDATE 従業員マスタ SET 責任者権限 =" + EmpdataGridView[11, i].Value +
+                //    " WHERE 従業員ID=" + (int)EmpdataGridView[0, i].Value;
+                cmd.ExecuteNonQuery();
+                //}
+                //catch (Exception ex)
+                //{
+                //    MessageBox.Show(ex.Message, "ok");
+                //}
+            //finally   //●
+            //    {
+                cn.Close();
+            //    }
 
             }
             MessageBox.Show("更新しました", "OICSystem");

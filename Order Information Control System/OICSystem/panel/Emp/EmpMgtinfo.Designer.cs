@@ -47,7 +47,7 @@
             this.EmpMgtLbl.Location = new System.Drawing.Point(3, 0);
             this.EmpMgtLbl.Name = "EmpMgtLbl";
             this.EmpMgtLbl.Size = new System.Drawing.Size(151, 40);
-            this.EmpMgtLbl.TabIndex = 87;
+            this.EmpMgtLbl.TabIndex = 6;
             this.EmpMgtLbl.Text = "従業員管理";
             this.EmpMgtLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -59,14 +59,14 @@
             this.EmpdataGridView.ReadOnly = true;
             this.EmpdataGridView.RowTemplate.Height = 21;
             this.EmpdataGridView.Size = new System.Drawing.Size(754, 298);
-            this.EmpdataGridView.TabIndex = 94;
+            this.EmpdataGridView.TabIndex = 7;
             // 
             // EditB
             // 
             this.EditB.Location = new System.Drawing.Point(607, 347);
             this.EditB.Name = "EditB";
             this.EditB.Size = new System.Drawing.Size(150, 37);
-            this.EditB.TabIndex = 113;
+            this.EditB.TabIndex = 3;
             this.EditB.Text = "編集";
             this.EditB.UseVisualStyleBackColor = true;
             this.EditB.Click += new System.EventHandler(this.EditB_Click);
@@ -76,21 +76,21 @@
             this.EmpIDTextB.Location = new System.Drawing.Point(86, 357);
             this.EmpIDTextB.Name = "EmpIDTextB";
             this.EmpIDTextB.Size = new System.Drawing.Size(117, 19);
-            this.EmpIDTextB.TabIndex = 112;
+            this.EmpIDTextB.TabIndex = 0;
             // 
             // EmpNameTextB
             // 
             this.EmpNameTextB.Location = new System.Drawing.Point(86, 392);
             this.EmpNameTextB.Name = "EmpNameTextB";
             this.EmpNameTextB.Size = new System.Drawing.Size(117, 19);
-            this.EmpNameTextB.TabIndex = 111;
+            this.EmpNameTextB.TabIndex = 1;
             // 
             // SearchB
             // 
             this.SearchB.Location = new System.Drawing.Point(450, 347);
             this.SearchB.Name = "SearchB";
             this.SearchB.Size = new System.Drawing.Size(151, 37);
-            this.SearchB.TabIndex = 110;
+            this.SearchB.TabIndex = 2;
             this.SearchB.Text = "検索";
             this.SearchB.UseVisualStyleBackColor = true;
             this.SearchB.Click += new System.EventHandler(this.SearchB_Click);
@@ -101,7 +101,7 @@
             this.EmpIDLbl.Location = new System.Drawing.Point(22, 360);
             this.EmpIDLbl.Name = "EmpIDLbl";
             this.EmpIDLbl.Size = new System.Drawing.Size(58, 12);
-            this.EmpIDLbl.TabIndex = 109;
+            this.EmpIDLbl.TabIndex = 8;
             this.EmpIDLbl.Text = "従業員ID：";
             // 
             // EmpNameLbl
@@ -110,7 +110,7 @@
             this.EmpNameLbl.Location = new System.Drawing.Point(45, 395);
             this.EmpNameLbl.Name = "EmpNameLbl";
             this.EmpNameLbl.Size = new System.Drawing.Size(35, 12);
-            this.EmpNameLbl.TabIndex = 108;
+            this.EmpNameLbl.TabIndex = 9;
             this.EmpNameLbl.Text = "名前：";
             // 
             // label1
@@ -120,14 +120,14 @@
             this.label1.Location = new System.Drawing.Point(276, 344);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 12);
-            this.label1.TabIndex = 115;
+            this.label1.TabIndex = 10;
             // 
             // UpdateB
             // 
             this.UpdateB.Location = new System.Drawing.Point(607, 390);
             this.UpdateB.Name = "UpdateB";
             this.UpdateB.Size = new System.Drawing.Size(150, 37);
-            this.UpdateB.TabIndex = 114;
+            this.UpdateB.TabIndex = 5;
             this.UpdateB.Text = "更新";
             this.UpdateB.UseVisualStyleBackColor = true;
             this.UpdateB.Click += new System.EventHandler(this.UpdateB_Click);
@@ -138,7 +138,7 @@
             this.DeleteB.Location = new System.Drawing.Point(450, 390);
             this.DeleteB.Name = "DeleteB";
             this.DeleteB.Size = new System.Drawing.Size(150, 37);
-            this.DeleteB.TabIndex = 116;
+            this.DeleteB.TabIndex = 4;
             this.DeleteB.Text = "削除";
             this.DeleteB.UseVisualStyleBackColor = true;
             this.DeleteB.Click += new System.EventHandler(this.DeleteB_Click_1);
