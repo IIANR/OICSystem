@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.textBprice = new System.Windows.Forms.TextBox();
-            this.textBsupp = new System.Windows.Forms.TextBox();
             this.Lblsupp = new System.Windows.Forms.Label();
             this.textBID = new System.Windows.Forms.TextBox();
             this.textBimage = new System.Windows.Forms.TextBox();
@@ -46,6 +45,7 @@
             this.goodsRegiId = new System.Windows.Forms.Label();
             this.Lblodr = new System.Windows.Forms.Label();
             this.textBodr = new System.Windows.Forms.TextBox();
+            this.textBsupp = new System.Windows.Forms.TextBox();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
@@ -57,15 +57,8 @@
             this.textBprice.Name = "textBprice";
             this.textBprice.ReadOnly = true;
             this.textBprice.Size = new System.Drawing.Size(83, 19);
-            this.textBprice.TabIndex = 37;
-            // 
-            // textBsupp
-            // 
-            this.textBsupp.Location = new System.Drawing.Point(142, 118);
-            this.textBsupp.Name = "textBsupp";
-            this.textBsupp.Size = new System.Drawing.Size(86, 19);
-            this.textBsupp.TabIndex = 36;
-            this.textBsupp.TextChanged += new System.EventHandler(this.textBsupp_TextChanged);
+            this.textBprice.TabIndex = 1;
+            this.textBprice.TabStop = false;
             // 
             // Lblsupp
             // 
@@ -73,7 +66,7 @@
             this.Lblsupp.Location = new System.Drawing.Point(82, 125);
             this.Lblsupp.Name = "Lblsupp";
             this.Lblsupp.Size = new System.Drawing.Size(54, 12);
-            this.Lblsupp.TabIndex = 35;
+            this.Lblsupp.TabIndex = 0;
             this.Lblsupp.Text = "仕入れ値:";
             // 
             // textBID
@@ -82,7 +75,8 @@
             this.textBID.Name = "textBID";
             this.textBID.ReadOnly = true;
             this.textBID.Size = new System.Drawing.Size(86, 19);
-            this.textBID.TabIndex = 34;
+            this.textBID.TabIndex = 0;
+            this.textBID.TabStop = false;
             // 
             // textBimage
             // 
@@ -90,7 +84,7 @@
             this.textBimage.Name = "textBimage";
             this.textBimage.ReadOnly = true;
             this.textBimage.Size = new System.Drawing.Size(83, 19);
-            this.textBimage.TabIndex = 23;
+            this.textBimage.TabIndex = 0;
             this.textBimage.TextChanged += new System.EventHandler(this.textBimage_TextChanged);
             // 
             // panel
@@ -101,7 +95,7 @@
             this.panel.Location = new System.Drawing.Point(429, 48);
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(262, 247);
-            this.panel.TabIndex = 33;
+            this.panel.TabIndex = 0;
             this.panel.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel_DragDrop);
             this.panel.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel_DragEnter);
             // 
@@ -121,7 +115,7 @@
             this.InsertBtn.Location = new System.Drawing.Point(577, 301);
             this.InsertBtn.Name = "InsertBtn";
             this.InsertBtn.Size = new System.Drawing.Size(114, 43);
-            this.InsertBtn.TabIndex = 32;
+            this.InsertBtn.TabIndex = 6;
             this.InsertBtn.Text = "追加";
             this.InsertBtn.UseVisualStyleBackColor = true;
             this.InsertBtn.Click += new System.EventHandler(this.InsertBtn_Click);
@@ -133,7 +127,7 @@
             this.comboBcate.Location = new System.Drawing.Point(142, 188);
             this.comboBcate.Name = "comboBcate";
             this.comboBcate.Size = new System.Drawing.Size(103, 20);
-            this.comboBcate.TabIndex = 24;
+            this.comboBcate.TabIndex = 100;
             this.comboBcate.ValueMember = "カテゴリID";
             // 
             // textBnumber
@@ -141,7 +135,7 @@
             this.textBnumber.Location = new System.Drawing.Point(142, 224);
             this.textBnumber.Name = "textBnumber";
             this.textBnumber.Size = new System.Drawing.Size(86, 19);
-            this.textBnumber.TabIndex = 31;
+            this.textBnumber.TabIndex = 3;
             this.textBnumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBnumber_KeyPress);
             // 
             // goodsReginumber
@@ -150,7 +144,7 @@
             this.goodsReginumber.Location = new System.Drawing.Point(70, 231);
             this.goodsReginumber.Name = "goodsReginumber";
             this.goodsReginumber.Size = new System.Drawing.Size(67, 12);
-            this.goodsReginumber.TabIndex = 25;
+            this.goodsReginumber.TabIndex = 0;
             this.goodsReginumber.Text = "安全在庫数:";
             // 
             // goodsRegicateID
@@ -159,7 +153,7 @@
             this.goodsRegicateID.Location = new System.Drawing.Point(74, 196);
             this.goodsRegicateID.Name = "goodsRegicateID";
             this.goodsRegicateID.Size = new System.Drawing.Size(63, 12);
-            this.goodsRegicateID.TabIndex = 26;
+            this.goodsRegicateID.TabIndex = 0;
             this.goodsRegicateID.Text = "カテゴリー名:";
             // 
             // textBname
@@ -167,7 +161,7 @@
             this.textBname.Location = new System.Drawing.Point(142, 83);
             this.textBname.Name = "textBname";
             this.textBname.Size = new System.Drawing.Size(125, 19);
-            this.textBname.TabIndex = 30;
+            this.textBname.TabIndex = 0;
             // 
             // goodsRegiPrice
             // 
@@ -175,7 +169,7 @@
             this.goodsRegiPrice.Location = new System.Drawing.Point(105, 160);
             this.goodsRegiPrice.Name = "goodsRegiPrice";
             this.goodsRegiPrice.Size = new System.Drawing.Size(31, 12);
-            this.goodsRegiPrice.TabIndex = 27;
+            this.goodsRegiPrice.TabIndex = 0;
             this.goodsRegiPrice.Text = "単価:";
             this.goodsRegiPrice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -185,7 +179,7 @@
             this.goodsRegiName.Location = new System.Drawing.Point(94, 90);
             this.goodsRegiName.Name = "goodsRegiName";
             this.goodsRegiName.Size = new System.Drawing.Size(43, 12);
-            this.goodsRegiName.TabIndex = 28;
+            this.goodsRegiName.TabIndex = 0;
             this.goodsRegiName.Text = "商品名:";
             this.goodsRegiName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -195,7 +189,7 @@
             this.goodsRegiId.Location = new System.Drawing.Point(94, 55);
             this.goodsRegiId.Name = "goodsRegiId";
             this.goodsRegiId.Size = new System.Drawing.Size(42, 12);
-            this.goodsRegiId.TabIndex = 29;
+            this.goodsRegiId.TabIndex = 0;
             this.goodsRegiId.Text = "商品ID:";
             this.goodsRegiId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -205,7 +199,7 @@
             this.Lblodr.Location = new System.Drawing.Point(93, 266);
             this.Lblodr.Name = "Lblodr";
             this.Lblodr.Size = new System.Drawing.Size(43, 12);
-            this.Lblodr.TabIndex = 38;
+            this.Lblodr.TabIndex = 0;
             this.Lblodr.Text = "発注数:";
             // 
             // textBodr
@@ -213,17 +207,26 @@
             this.textBodr.Location = new System.Drawing.Point(142, 259);
             this.textBodr.Name = "textBodr";
             this.textBodr.Size = new System.Drawing.Size(50, 19);
-            this.textBodr.TabIndex = 39;
+            this.textBodr.TabIndex = 4;
             this.textBodr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBodr_KeyPress);
+            // 
+            // textBsupp
+            // 
+            this.textBsupp.Location = new System.Drawing.Point(145, 122);
+            this.textBsupp.Name = "textBsupp";
+            this.textBsupp.Size = new System.Drawing.Size(86, 19);
+            this.textBsupp.TabIndex = 1;
+            this.textBsupp.TextChanged += new System.EventHandler(this.textBsupp_TextChanged);
+            this.textBsupp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBsupp_KeyPress_1);
             // 
             // GoodsRegi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.textBsupp);
             this.Controls.Add(this.textBodr);
             this.Controls.Add(this.Lblodr);
             this.Controls.Add(this.textBprice);
-            this.Controls.Add(this.textBsupp);
             this.Controls.Add(this.Lblsupp);
             this.Controls.Add(this.textBID);
             this.Controls.Add(this.textBimage);
@@ -239,7 +242,7 @@
             this.Controls.Add(this.goodsRegiId);
             this.Name = "GoodsRegi";
             this.Size = new System.Drawing.Size(760, 430);
-            this.Load += new System.EventHandler(this.GoodsRegi_Load);
+            this.Load += new System.EventHandler(this.a);
             this.panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
@@ -250,7 +253,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox textBprice;
-        private System.Windows.Forms.TextBox textBsupp;
         private System.Windows.Forms.Label Lblsupp;
         private System.Windows.Forms.TextBox textBID;
         private System.Windows.Forms.TextBox textBimage;
@@ -267,5 +269,6 @@
         private System.Windows.Forms.Label goodsRegiId;
         private System.Windows.Forms.Label Lblodr;
         private System.Windows.Forms.TextBox textBodr;
+        private System.Windows.Forms.TextBox textBsupp;
     }
 }

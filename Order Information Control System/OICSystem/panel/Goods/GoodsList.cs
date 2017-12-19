@@ -18,7 +18,6 @@ namespace WindowsFormsApplication1.panel.Goods
         OleDbDataAdapter da = new OleDbDataAdapter();
         DataTable dt = new DataTable();
         OleDbCommand cmd = new OleDbCommand();
-        BindingSource bds = new BindingSource();
 
         string priceBtext;
         string cateID;
@@ -30,11 +29,10 @@ namespace WindowsFormsApplication1.panel.Goods
         }
 
 
-
         private void GoodsList_Load(object sender, EventArgs e)
         {
         
-                BindData();
+                BindData(0);
 
         }
         private void CategoryLoad()// comboBtextの中身を更新する
@@ -199,7 +197,7 @@ namespace WindowsFormsApplication1.panel.Goods
 
                 MessageBox.Show("削除しました", "IM2");
 
-                BindData();
+                BindData(1);
 
             }
             catch (Exception )
@@ -209,18 +207,23 @@ namespace WindowsFormsApplication1.panel.Goods
             cn.Close();
 
         }
-        private void BindData()  //テキストボックスをバインド
+        private void BindData(int cnt)  //テキストボックスをバインド
         {
           
 
             cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
             da = new OleDbDataAdapter("SELECT m.商品ID,m.商品名,m.仕入れ値,m.単価,k.カテゴリ名,m.画像ファイル,m.安全在庫数,m.発注数,m.フラグ FROM 商品マスタ m,カテゴリマスタ k WHERE m.カテゴリID=k.カテゴリID  AND m.フラグ <> '販売中止'", cn);
             dt = new DataTable();
+            dt.Clear();
             da.Fill(dt);
-
+            if (cnt == 1)
+            {
+                
+            }
+            BindingSource bds = new BindingSource();
             bds.DataSource = dt;
 
-            bindingNavigator1.BindingSource = bds;
+            bindingNavigator1.BindingSource = bds;  
 
             textBID.DataBindings.Add("Text", bds, "商品ID");
             textBname.DataBindings.Add("Text", bds, "商品名");
@@ -233,32 +236,31 @@ namespace WindowsFormsApplication1.panel.Goods
             imageChange();
             textBID.SelectionStart = 0;   //選択状態にならないようにする
 
-
             GoodsLoad();
-
+            
         }
 
-        private void Delete()
-        {
+        //private void Delete()
+        //{
 
-            cn.Open();
+        //    cn.Open();
 
-            cmd.Connection = cn;
-            cmd.CommandText = "DELETE FROM 在庫テーブル WHERE 商品ID='" + textBID.Text + "'";
-            cmd.ExecuteNonQuery();
-            try
-            {
+        //    cmd.Connection = cn;
+        //    cmd.CommandText = "DELETE FROM 在庫テーブル WHERE 商品ID='" + textBID.Text + "'";
+        //    cmd.ExecuteNonQuery();
+        //    try
+        //    {
 
-                MessageBox.Show("削除しました", "IM2");
+        //        MessageBox.Show("削除しました", "IM2");
 
-                BindData();
+        //        BindData(1);
 
-            }
-            catch (Exception )
-            {
+        //    }
+        //    catch (Exception )
+        //    {
 
-            }
-        }
+        //    }
+        //}
 
         private void panel_DragEnter(object sender, DragEventArgs e)
         {
@@ -298,8 +300,20 @@ namespace WindowsFormsApplication1.panel.Goods
 
         private void button1_Click(object sender, EventArgs e)
         {
-            BindData();
+            
+
+            textBID.DataBindings.Clear();
+            textBname.DataBindings.Clear();
+            textBsupp.DataBindings.Clear();
+            textBprice.DataBindings.Clear();
+            comboBcate.DataBindings.Clear();
+            textBimage.DataBindings.Clear();
+            textBnumber.DataBindings.Clear();
+            textBodr.DataBindings.Clear();
+
+            BindData(0);
         }
+
     }
 
 

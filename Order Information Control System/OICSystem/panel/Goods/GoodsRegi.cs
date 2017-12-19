@@ -27,7 +27,6 @@ namespace WindowsFormsApplication1.panel
         int goodsid;
         double priceText;
 
-
         public GoodsRegi()
         {
             InitializeComponent();
@@ -332,40 +331,33 @@ namespace WindowsFormsApplication1.panel
             }
         }
 
-        private void textBsupp_TextChanged(object sender, EventArgs e)
-        {
-            textBprice.Clear();
+        //private void textBsupp_TextChanged(object sender, EventArgs e)
+        //{
+        //    textBprice.Clear();
 
-            if (textBsupp.Text == "0")
-            {
-                textBprice.Text = "0";
-            }
-            else if (textBsupp.Text == "")
-            {
-                textBprice.Text = "";
-            }
-            else
-            {
-                //仕入れ値の１.6倍の単価を計算↓
-                priceText = double.Parse(textBsupp.Text) * 1.6;
-                price = (int)priceText;
-            }
+        //    if (textBsupp.Text == "0")
+        //    {
+        //        textBprice.Text = "0";
+        //    }
+        //    else if (textBsupp.Text == "")
+        //    {
+        //        textBprice.Text = "";
+        //    }
+        //    else
+        //    {
+        //        //仕入れ値の１.6倍の単価を計算↓
+        //        priceText = double.Parse(textBsupp.Text) * 1.6;
+        //        price = (int)priceText;
+        //    }
 
-            textBprice.Text = price.ToString();
-        }
+        //    textBprice.Text = price.ToString();
+        //}
 
-        private void textBsupp_KeyPress(object sender, KeyPressEventArgs e)//数値以外キャンセル　仕入れ値
-        {
-            //0～9と、バックスペース以外の時は、イベントをキャンセルする
-            if ((e.KeyChar < '0' || '9' < e.KeyChar) && e.KeyChar != '\b')
-            {
-                e.Handled = true;
-            }
-        }
+        
 
         private void textBnumber_KeyPress(object sender, KeyPressEventArgs e)//数値以外キャンセル　安全在庫数
         {
-            if (e.KeyChar < '0' || '9' < e.KeyChar)
+            if (e.KeyChar < '0' || '9' < e.KeyChar && e.KeyChar != '\b')
             {
                 //押されたキーが 0～9でない場合は、イベントをキャンセルする
                 e.Handled = true;
@@ -374,11 +366,40 @@ namespace WindowsFormsApplication1.panel
 
         private void textBodr_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar < '0' || '9' < e.KeyChar)
+            if (e.KeyChar < '0' || '9' < e.KeyChar && e.KeyChar != '\b')
             {
                 //押されたキーが 0～9でない場合は、イベントをキャンセルする
                 e.Handled = true;
             }
+        }
+
+        private void textBsupp_TextChanged(object sender, EventArgs e)
+        {
+            textBprice.Clear();
+            if (double.TryParse(textBsupp.Text, out priceText))
+            {
+                priceText = priceText * 1.6;
+                price = (int)priceText;
+                textBprice.Text = price.ToString();
+            }
+
+            
+        }
+
+
+        private void textBsupp_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar < '0' || '9' < e.KeyChar && e.KeyChar != '\b')
+
+            {
+                //押されたキーが 0～9でない場合は、イベントをキャンセルする
+                e.Handled = true;
+            }
+        }
+
+        private void a(object sender, EventArgs e)
+        {
+
         }
     }
 
