@@ -22,9 +22,6 @@ namespace WindowsFormsApplication1
         string[,] count2 = new string[10, 12] { { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" } };
         string[] count3 = new string[10] { "", "", "", "", "", "", "", "", "", "" };
 
-
-        private int curPageNumber;
-
         OleDbConnection cn = new OleDbConnection();
         DataTable dt = new DataTable();
         OleDbDataAdapter da = new OleDbDataAdapter();
@@ -386,7 +383,7 @@ namespace WindowsFormsApplication1
 
         private void OrderList_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Close();
+            
         }
 
         private void NextBtn_Click(object sender, EventArgs e)
