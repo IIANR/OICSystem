@@ -89,40 +89,74 @@ namespace WindowsFormsApplication1
             string DECheck = DateEnd.Text;
             int check;
             check = 0;
+            DateTime cc;
             //日付の精査
             if (DateStart.Text == "    /  /" && DateEnd.Text == "    /  /")     //日付指定　＃-'
             {
 
             }
-            else if (DateEnd.Text == "    /  /")
-            {
-                for (int i = 0; i < DSCheck.Length; i++)
-                {
-                    if (DSCheck.Substring(i, 1) == " ")
-                    {
-                        check = 1;
-                    }
-                }
-            }
-            else if (DateStart.Text == "    /  /")
-            {
-                for (int i = 0; i < DSCheck.Length; i++)
-                {
-                    if (DECheck.Substring(i, 1) == " ")
-                    {
-                        check = 1;
-                    }
-                }
-            }
             else
             {
-                for (int i = 0; i < DSCheck.Length; i++)
+                if (DateEnd.Text == "    /  /")
                 {
-                    if (DSCheck.Substring(i, 1) == " ")
+                    for (int i = 0; i < DSCheck.Length; i++)
+                    {
+                        if (DSCheck.Substring(i, 1) == " ")
+                        {
+                            check = 1;
+                        }
+                    }
+                    if (DateTime.TryParse(DSCheck, out cc))
+                    {
+
+                    }
+                    else
                     {
                         check = 1;
+
                     }
                 }
+                else if (DateStart.Text == "    /  /")
+                {
+                    for (int i = 0; i < DSCheck.Length; i++)
+                    {
+                        if (DECheck.Substring(i, 1) == " ")
+                        {
+                            check = 1;
+                        }
+                    }
+                    if (DateTime.TryParse(DECheck, out cc))
+                    {
+
+                    }
+                    else
+                    {
+                        check = 1;
+
+                    }
+                }
+                else
+                {
+                    if (DateTime.TryParse(DSCheck, out cc))
+                    {
+
+                    }
+                    else
+                    {
+                        check = 1;
+
+                    }
+                    if (DateTime.TryParse(DECheck, out cc))
+                    {
+
+                    }
+                    else
+                    {
+                        check = 1;
+
+                    }
+                }
+                
             }
 
             if (check == 0)
@@ -217,40 +251,74 @@ namespace WindowsFormsApplication1
             string DECheck = DateEnd.Text;
             int check;
             check = 0;
+            DateTime cc;
             //日付の精査
             if (DateStart.Text == "    /  /" && DateEnd.Text == "    /  /")     //日付指定　＃-'
             {
 
             }
-            else if (DateEnd.Text == "    /  /")
-            {
-                for (int i = 0; i < DSCheck.Length; i++)
-                {
-                    if (DSCheck.Substring(i, 1) == " ")
-                    {
-                        check = 1;
-                    }
-                }
-            }
-            else if (DateStart.Text == "    /  /")
-            {
-                for (int i = 0; i < DSCheck.Length; i++)
-                {
-                    if (DECheck.Substring(i, 1) == " ")
-                    {
-                        check = 1;
-                    }
-                }
-            }
             else
             {
-                for (int i = 0; i < DSCheck.Length; i++)
+                if (DateEnd.Text == "    /  /")
                 {
-                    if (DSCheck.Substring(i, 1) == " ")
+                    for (int i = 0; i < DSCheck.Length; i++)
+                    {
+                        if (DSCheck.Substring(i, 1) == " ")
+                        {
+                            check = 1;
+                        }
+                    }
+                    if (DateTime.TryParse(DSCheck, out cc))
+                    {
+
+                    }
+                    else
                     {
                         check = 1;
+
                     }
                 }
+                else if (DateStart.Text == "    /  /")
+                {
+                    for (int i = 0; i < DSCheck.Length; i++)
+                    {
+                        if (DECheck.Substring(i, 1) == " ")
+                        {
+                            check = 1;
+                        }
+                    }
+                    if (DateTime.TryParse(DECheck, out cc))
+                    {
+
+                    }
+                    else
+                    {
+                        check = 1;
+
+                    }
+                }
+                else
+                {
+                    if (DateTime.TryParse(DSCheck, out cc))
+                    {
+
+                    }
+                    else
+                    {
+                        check = 1;
+
+                    }
+                    if (DateTime.TryParse(DECheck, out cc))
+                    {
+
+                    }
+                    else
+                    {
+                        check = 1;
+
+                    }
+                }
+
             }
 
             if (check == 0)
@@ -431,40 +499,74 @@ namespace WindowsFormsApplication1
             string DECheck = DateEnd.Text;
             int check;
             check = 0;
+            DateTime cc;
             //日付の精査
             if (DateStart.Text == "    /  /" && DateEnd.Text == "    /  /")     //日付指定　＃-'
             {
 
             }
-            else if (DateEnd.Text == "    /  /")
-            {
-                for (int i = 0; i < DSCheck.Length; i++)
-                {
-                    if (DSCheck.Substring(i, 1) == " ")
-                    {
-                        check = 1;
-                    }
-                }
-            }
-            else if (DateStart.Text == "    /  /")
-            {
-                for (int i = 0; i < DSCheck.Length; i++)
-                {
-                    if (DECheck.Substring(i, 1) == " ")
-                    {
-                        check = 1;
-                    }
-                }
-            }
             else
             {
-                for (int i = 0; i < DSCheck.Length; i++)
+                if (DateEnd.Text == "    /  /")
                 {
-                    if (DSCheck.Substring(i, 1) == " ")
+                    for (int i = 0; i < DSCheck.Length; i++)
+                    {
+                        if (DSCheck.Substring(i, 1) == " ")
+                        {
+                            check = 1;
+                        }
+                    }
+                    if (DateTime.TryParse(DSCheck, out cc))
+                    {
+
+                    }
+                    else
                     {
                         check = 1;
+
                     }
                 }
+                else if (DateStart.Text == "    /  /")
+                {
+                    for (int i = 0; i < DSCheck.Length; i++)
+                    {
+                        if (DECheck.Substring(i, 1) == " ")
+                        {
+                            check = 1;
+                        }
+                    }
+                    if (DateTime.TryParse(DECheck, out cc))
+                    {
+
+                    }
+                    else
+                    {
+                        check = 1;
+
+                    }
+                }
+                else
+                {
+                    if (DateTime.TryParse(DSCheck, out cc))
+                    {
+
+                    }
+                    else
+                    {
+                        check = 1;
+
+                    }
+                    if (DateTime.TryParse(DECheck, out cc))
+                    {
+
+                    }
+                    else
+                    {
+                        check = 1;
+
+                    }
+                }
+
             }
 
             if (check == 0)
