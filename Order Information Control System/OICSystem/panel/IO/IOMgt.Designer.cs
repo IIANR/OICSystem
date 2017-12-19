@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.InOutPanelBtn = new System.Windows.Forms.Button();
-            this.inPanelBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.ctrPanel = new System.Windows.Forms.Panel();
             this.RegiBtn = new System.Windows.Forms.Button();
@@ -45,17 +44,6 @@
             this.InOutPanelBtn.Text = "入出庫処理";
             this.InOutPanelBtn.UseVisualStyleBackColor = true;
             this.InOutPanelBtn.Click += new System.EventHandler(this.outPanelBtn_Click);
-            // 
-            // inPanelBtn
-            // 
-            this.inPanelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.inPanelBtn.Location = new System.Drawing.Point(281, 18);
-            this.inPanelBtn.Name = "inPanelBtn";
-            this.inPanelBtn.Size = new System.Drawing.Size(117, 40);
-            this.inPanelBtn.TabIndex = 40;
-            this.inPanelBtn.Text = "入庫情報";
-            this.inPanelBtn.UseVisualStyleBackColor = true;
-            this.inPanelBtn.Click += new System.EventHandler(this.inPanelBtn_Click);
             // 
             // label1
             // 
@@ -104,7 +92,6 @@
             this.Controls.Add(this.RegiBtn);
             this.Controls.Add(this.ctrPanel);
             this.Controls.Add(this.InOutPanelBtn);
-            this.Controls.Add(this.inPanelBtn);
             this.Controls.Add(this.label1);
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.Name = "IOMgt";
@@ -116,7 +103,6 @@
         #endregion
 
         private System.Windows.Forms.Button InOutPanelBtn;
-        private System.Windows.Forms.Button inPanelBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel ctrPanel;
         private System.Windows.Forms.Button RegiBtn;

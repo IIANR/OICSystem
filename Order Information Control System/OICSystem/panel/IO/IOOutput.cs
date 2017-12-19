@@ -59,7 +59,7 @@ namespace WindowsFormsApplication1.panel.IO
 
             dt = new DataTable();
             cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-            da = new OleDbDataAdapter("SELECT 入庫テーブル.入庫ID, 入庫テーブル.入庫日, 発注テーブル.発注ID, 発注テーブル.発注日, 発注テーブル.商品ID, 発注テーブル.発注数量 FROM 発注テーブル INNER JOIN 入庫テーブル ON 発注テーブル.発注ID = 入庫テーブル.発注ID;", cn);
+            da = new OleDbDataAdapter("SELECT 入庫テーブル.入庫ID, 入庫テーブル.入庫日, 入庫テーブル.発注ID, 発注テーブル.発注日, 発注テーブル.商品ID, 商品マスタ.商品名, 発注テーブル.発注数量 FROM 商品マスタ INNER JOIN (発注テーブル INNER JOIN 入庫テーブル ON 発注テーブル.発注ID = 入庫テーブル.発注ID) ON 商品マスタ.商品ID = 発注テーブル.商品ID;", cn);
             da.Fill(dt);
             DataGrid.DataSource = dt;
 
@@ -200,12 +200,39 @@ namespace WindowsFormsApplication1.panel.IO
                     ErrMsg.Text = "※発注IDを入力してください";
                     ErrMsg.Visible = true;
                 }
+                else if (InputNumTextbox.Text == null || InputNumTextbox.Text == "")
+                {
+                    ErrMsg.Text = "※入庫数量を入力してください";
+                    ErrMsg.Visible = true;
+                }
+
+
                 else
                 {
                     dt = new DataTable();
                     cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
 
                     OleDbCommand cmd = new OleDbCommand();
+                    int db_Orderingid = 0;
+
+                    cn.Open();
+                    cmd.CommandText = "SELECT 発注ID FROM 発注テーブル";
+                    cmd.Connection = cn;
+                    OleDbDataReader rd2 = cmd.ExecuteReader();
+
+                    dt = CreateSchemaDataTable(rd2);
+                    DataRow row2 = dt.NewRow();
+
+                    while (rd2.Read())
+                    {
+                        if (db_Orderingid == (int)rd2.GetValue(0))
+                        {
+                            flag = 1;
+                        }
+
+                    }
+                    cn.Close();
+
                     cn.Open();
                     cmd.CommandText = "SELECT 発注ID FROM 入庫テーブル";
                     cmd.Connection = cn;
@@ -214,19 +241,17 @@ namespace WindowsFormsApplication1.panel.IO
                     dt = CreateSchemaDataTable(rd);
                     DataRow row = dt.NewRow();
 
-                    int db_Orderingid = 0;
-
                     while (rd.Read())
                     {
                         db_Orderingid = (int)rd.GetValue(0);
                         if (db_Orderingid == int.Parse(IdTextbox.Text))
                         {
-                            flag = 1;
+                            flag = 2;
                         }
                     }
                     cn.Close();
 
-                    if (flag == 0)
+                    if (flag == 1)
                     {
                         OleDbCommand cmd2 = new OleDbCommand();
                         cmd2.Connection = cn;
@@ -257,7 +282,7 @@ namespace WindowsFormsApplication1.panel.IO
 
                         dt = new DataTable();
                         cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-                        da = new OleDbDataAdapter("SELECT 入庫テーブル.入庫ID, 入庫テーブル.入庫日, 発注テーブル.発注ID, 発注テーブル.発注日, 発注テーブル.商品ID, 発注テーブル.発注数量 FROM 発注テーブル INNER JOIN 入庫テーブル ON 発注テーブル.発注ID = 入庫テーブル.発注ID;", cn);
+                        da = new OleDbDataAdapter("SELECT 入庫テーブル.入庫ID, 入庫テーブル.入庫日, 入庫テーブル.発注ID, 発注テーブル.発注日, 発注テーブル.商品ID, 商品マスタ.商品名, 発注テーブル.発注数量 FROM 商品マスタ INNER JOIN (発注テーブル INNER JOIN 入庫テーブル ON 発注テーブル.発注ID = 入庫テーブル.発注ID) ON 商品マスタ.商品ID = 発注テーブル.商品ID;", cn);
                         da.Fill(dt);
                         DataGrid.DataSource = dt;
 
@@ -265,7 +290,15 @@ namespace WindowsFormsApplication1.panel.IO
                         InputNumTextbox.Text = "";
                     }
 
-                    else if (flag == 1)
+                    else if (flag == 0)
+                    {
+                        ErrMsg.Text = "※存在しない注文IDです";
+                        ErrMsg.Visible = true;
+                        IdTextbox.Text = "";
+                        InputNumTextbox.Text = "";
+                    }
+
+                    else if (flag == 2)
                     {
                         ErrMsg.Text = "※すでに登録されています";
                         ErrMsg.Visible = true;
@@ -289,7 +322,7 @@ namespace WindowsFormsApplication1.panel.IO
 
             dt = new DataTable();
             cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-            da = new OleDbDataAdapter("SELECT 入庫テーブル.入庫ID, 入庫テーブル.入庫日, 発注テーブル.発注ID, 発注テーブル.発注日, 発注テーブル.商品ID, 発注テーブル.発注数量 FROM 発注テーブル INNER JOIN 入庫テーブル ON 発注テーブル.発注ID = 入庫テーブル.発注ID;", cn);
+            da = new OleDbDataAdapter("SELECT 入庫テーブル.入庫ID, 入庫テーブル.入庫日, 入庫テーブル.発注ID, 発注テーブル.発注日, 発注テーブル.商品ID, 商品マスタ.商品名, 発注テーブル.発注数量 FROM 商品マスタ INNER JOIN (発注テーブル INNER JOIN 入庫テーブル ON 発注テーブル.発注ID = 入庫テーブル.発注ID) ON 商品マスタ.商品ID = 発注テーブル.商品ID;", cn);
             da.Fill(dt);
             DataGrid.DataSource = dt;
         }
@@ -314,13 +347,5 @@ namespace WindowsFormsApplication1.panel.IO
             DataGrid.DataSource = dt;
         }
 
-        private void DataGrid_Click(object sender, EventArgs e)
-        {
-            if (InputRadioBtn.Checked == true)
-            {
-                InputNumTextbox.Text = (string)DataGrid.CurrentRow.Cells[4].Value.ToString();
-                IdTextbox.Text = (string)DataGrid.CurrentRow.Cells[0].Value.ToString();
-            }
-        }
     }
 }

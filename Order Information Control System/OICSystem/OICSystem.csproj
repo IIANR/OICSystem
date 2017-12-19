@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="DsOrderingList.cs">
       <DependentUpon>DsOrderingList.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DsOrderingList.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -102,12 +103,6 @@
     </Compile>
     <Compile Include="panel\Goods\GoodsStock.Designer.cs">
       <DependentUpon>GoodsStock.cs</DependentUpon>
-    </Compile>
-    <Compile Include="panel\IO\IOInput.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="panel\IO\IOInput.Designer.cs">
-      <DependentUpon>IOInput.cs</DependentUpon>
     </Compile>
     <Compile Include="panel\IO\IOOutput.cs">
       <SubType>UserControl</SubType>
@@ -189,9 +184,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="panel\Goods\GoodsStock.resx">
       <DependentUpon>GoodsStock.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="panel\IO\IOInput.resx">
-      <DependentUpon>IOInput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="panel\IO\IOOutput.resx">
       <DependentUpon>IOOutput.cs</DependentUpon>

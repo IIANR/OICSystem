@@ -52,7 +52,6 @@
             this.DataGrid.RowTemplate.Height = 21;
             this.DataGrid.Size = new System.Drawing.Size(754, 308);
             this.DataGrid.TabIndex = 0;
-            this.DataGrid.Click += new System.EventHandler(this.DataGrid_Click);
             // 
             // ErrMsg
             // 

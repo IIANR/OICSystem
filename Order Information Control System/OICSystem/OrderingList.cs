@@ -31,7 +31,7 @@ namespace WindowsFormsApplication1
 
             cn.Open();
             OleDbCommand cmd = new OleDbCommand();
-            string sql = "SELECT 発注テーブル.発注ID, 発注テーブル.商品ID, 商品マスタ.商品名, 発注テーブル.発注数量 FROM 商品マスタ INNER JOIN 発注テーブル ON 商品マスタ.商品ID = 発注テーブル.商品ID;";
+            string sql = "SELECT 発注テーブル.発注ID, 発注テーブル.商品ID, 商品マスタ.商品名, 発注テーブル.発注数量 FROM 商品マスタ INNER JOIN 発注テーブル ON 商品マスタ.商品ID = 発注テーブル.商品ID ORDER BY 発注テーブル.発注ID;";
 
             OleDbDataAdapter da = new OleDbDataAdapter(sql, cn);
             da.Fill(ds1.Dt1);
