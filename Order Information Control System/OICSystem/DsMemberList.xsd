@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DsMemberList" targetNamespace="http://tempuri.org/DsMemberList.xsd" xmlns:mstns="http://tempuri.org/DsMemberList.xsd" xmlns="http://tempuri.org/DsMemberList.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DsMemberList" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DsMemberList" msprop:Generator_UserDSName="DsMemberList">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Dt3" msprop:Generator_TableClassName="Dt3DataTable" msprop:Generator_TableVarName="tableDt3" msprop:Generator_RowChangedName="Dt3RowChanged" msprop:Generator_TablePropName="Dt3" msprop:Generator_RowDeletingName="Dt3RowDeleting" msprop:Generator_RowChangingName="Dt3RowChanging" msprop:Generator_RowEvHandlerName="Dt3RowChangeEventHandler" msprop:Generator_RowDeletedName="Dt3RowDeleted" msprop:Generator_RowClassName="Dt3Row" msprop:Generator_UserTableName="Dt3" msprop:Generator_RowEvArgName="Dt3RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="顧客ID" msprop:Generator_ColumnVarNameInTable="column顧客ID" msprop:Generator_ColumnPropNameInRow="顧客ID" msprop:Generator_ColumnPropNameInTable="顧客IDColumn" msprop:Generator_UserColumnName="顧客ID" type="xs:string" minOccurs="0" />
+              <xs:element name="名前" msprop:Generator_ColumnVarNameInTable="column名前" msprop:Generator_ColumnPropNameInRow="名前" msprop:Generator_ColumnPropNameInTable="名前Column" msprop:Generator_UserColumnName="名前" type="xs:string" minOccurs="0" />
+              <xs:element name="電話番号" msprop:Generator_ColumnVarNameInTable="column電話番号" msprop:Generator_ColumnPropNameInRow="電話番号" msprop:Generator_ColumnPropNameInTable="電話番号Column" msprop:Generator_UserColumnName="電話番号" type="xs:string" minOccurs="0" />
+              <xs:element name="郵便番号" msprop:Generator_ColumnVarNameInTable="column郵便番号" msprop:Generator_ColumnPropNameInRow="郵便番号" msprop:Generator_ColumnPropNameInTable="郵便番号Column" msprop:Generator_UserColumnName="郵便番号" type="xs:string" minOccurs="0" />
+              <xs:element name="住所1" msprop:Generator_ColumnVarNameInTable="column住所1" msprop:Generator_ColumnPropNameInRow="住所1" msprop:Generator_ColumnPropNameInTable="住所1Column" msprop:Generator_UserColumnName="住所1" type="xs:string" minOccurs="0" />
+              <xs:element name="住所2" msprop:Generator_ColumnVarNameInTable="column住所2" msprop:Generator_ColumnPropNameInRow="住所2" msprop:Generator_ColumnPropNameInTable="住所2Column" msprop:Generator_UserColumnName="住所2" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -21,8 +21,6 @@ namespace WindowsFormsApplication1
         string name;
         string tname;
 
-        private int curPageNumber;
-
         private void selectfunc(string cmdstr)
         {
             dt.Clear();
@@ -189,81 +187,9 @@ namespace WindowsFormsApplication1
 
         private void PrintBtn_Click(object sender, EventArgs e)
         {
-            if (MemberDataGridView.RowCount < 1)
-            {
-                MessageBox.Show("データがありません", "OICSystem");
-                return;
-            }
-            printDialog1.Document = printDocument1;
-            printDialog1.AllowSomePages = true;
-            if (printDialog1.ShowDialog() == DialogResult.OK)
-            {
-                curPageNumber = 1;
-                printDocument1.Print();
-            }
-        }
-
-        private void printDocument1_EndPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
-        {
-            MessageBox.Show("印刷が終わりました。", "OICSystem");
-        }
-
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            if (curPageNumber == 1)
-            {
-                PrintGdata(e, 0, MemberDataGridView.RowCount - 1);
-                e.HasMorePages = false;
-            }
-            //else if (curPageNumber == 2)
-            //{
-            //    PrintGdata(e, 10, 20);
-            //    e.HasMorePages = true;
-            //}
-            //else
-            //{
-            //    PrintGdata(e, 20, MemberDataGridView.RowCount - 1);
-            //    e.HasMorePages = false;
-            //}
-            //curPageNumber++;
-        }
-
-        private void PrintGdata(System.Drawing.Printing.PrintPageEventArgs e, int ds, int df)
-        {
-            int[] xp = { 50, 60, 70, 160, 280, 380, 580, 590};
-            for (int j = 0; j < MemberDataGridView.ColumnCount; j++)
-            {
-                if (j == 0 || j == 2 || j == 7)
-                {
-
-                }
-                else
-                {
-                    e.Graphics.DrawString(MemberDataGridView.Columns[j].HeaderCell.Value.ToString(), new Font("MS ゴシック", 12), Brushes.Black, xp[j], 50);
-                }
-            }
-
-            for (int i = ds; i < df; i++)
-            {
-                for (int j = 0; j < MemberDataGridView.ColumnCount; j++)
-                {
-                    if (MemberDataGridView[j, i].Value.ToString() != "")
-                    {
-                        if (j == 0 || j==2 || j==7)
-                        {
-                            //string s0 = MemberDataGridView[j, i].Value.ToString();
-                            //string[] s1 = s0.Split(' ');
-                            //e.Graphics.DrawString(s1[0], new Font("MS ゴシック", 12), Brushes.Black, xp[j], 50 + 20 * (i + 1 - ds));
-                        }
-                        else
-                        {
-                            e.Graphics.DrawString(MemberDataGridView[j, i].Value.ToString(), new Font("MS ゴシック", 12), Brushes.Black, xp[j], 50 + 20 * (i + 1 - ds));
-                        }
-                    }
-                }
-            }
-
-
-        }
+            MemberList f = new MemberList();
+            f.ShowDialog(this);
+            f.Dispose();
+        }        
     }
 }

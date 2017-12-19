@@ -32,8 +32,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,6 +47,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DsMemberList.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsMemberList.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="MemberList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemberList.Designer.cs">
+      <DependentUpon>MemberList.cs</DependentUpon>
+    </Compile>
     <Compile Include="panel\Emp\EmpMgt.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -124,6 +138,10 @@
     <Compile Include="panel\Order\OrderMgtRegister.Designer.cs">
       <DependentUpon>OrderMgtRegister.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="MemberList.resx">
+      <DependentUpon>MemberList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemberListReport.rdlc" />
     <EmbeddedResource Include="panel\Emp\EmpMgt.resx">
       <DependentUpon>EmpMgt.cs</DependentUpon>
     </EmbeddedResource>
@@ -173,6 +191,17 @@
       <DependentUpon>OrderMgtRegister.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
+    <None Include="DsMemberList.xsc">
+      <DependentUpon>DsMemberList.xsd</DependentUpon>
+    </None>
+    <None Include="DsMemberList.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsMemberList.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DsMemberList.xss">
+      <DependentUpon>DsMemberList.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

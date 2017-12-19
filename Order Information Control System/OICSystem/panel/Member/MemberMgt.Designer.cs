@@ -38,8 +38,6 @@
             this.MemberUpdateBtn = new System.Windows.Forms.Button();
             this.MemberEditBtn = new System.Windows.Forms.Button();
             this.PrintBtn = new System.Windows.Forms.Button();
-            this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             ((System.ComponentModel.ISupportInitialize)(this.MemberDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,20 +133,11 @@
             // 
             this.PrintBtn.Location = new System.Drawing.Point(622, 17);
             this.PrintBtn.Name = "PrintBtn";
-            this.PrintBtn.Size = new System.Drawing.Size(75, 23);
+            this.PrintBtn.Size = new System.Drawing.Size(122, 36);
             this.PrintBtn.TabIndex = 64;
             this.PrintBtn.Text = "印刷";
             this.PrintBtn.UseVisualStyleBackColor = true;
             this.PrintBtn.Click += new System.EventHandler(this.PrintBtn_Click);
-            // 
-            // printDialog1
-            // 
-            this.printDialog1.UseEXDialog = true;
-            // 
-            // printDocument1
-            // 
-            this.printDocument1.EndPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocument1_EndPrint);
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // MemberMgt
             // 
@@ -185,7 +174,5 @@
         private System.Windows.Forms.Button MemberUpdateBtn;
         private System.Windows.Forms.Button MemberEditBtn;
         private System.Windows.Forms.Button PrintBtn;
-        private System.Windows.Forms.PrintDialog printDialog1;
-        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }
