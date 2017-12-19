@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DsOrderingList" targetNamespace="http://tempuri.org/DsOrderingList.xsd" xmlns:mstns="http://tempuri.org/DsOrderingList.xsd" xmlns="http://tempuri.org/DsOrderingList.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DsOrderingList" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DsOrderingList" msprop:Generator_UserDSName="DsOrderingList">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Dt2" msprop:Generator_TableClassName="Dt2DataTable" msprop:Generator_TableVarName="tableDt2" msprop:Generator_TablePropName="Dt2" msprop:Generator_RowDeletingName="Dt2RowDeleting" msprop:Generator_RowChangingName="Dt2RowChanging" msprop:Generator_RowEvHandlerName="Dt2RowChangeEventHandler" msprop:Generator_RowDeletedName="Dt2RowDeleted" msprop:Generator_UserTableName="Dt2" msprop:Generator_RowChangedName="Dt2RowChanged" msprop:Generator_RowEvArgName="Dt2RowChangeEvent" msprop:Generator_RowClassName="Dt2Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="商品ID" msprop:Generator_ColumnVarNameInTable="column商品ID" msprop:Generator_ColumnPropNameInRow="商品ID" msprop:Generator_ColumnPropNameInTable="商品IDColumn" msprop:Generator_UserColumnName="商品ID" type="xs:string" />
+              <xs:element name="商品名" msprop:Generator_ColumnVarNameInTable="column商品名" msprop:Generator_ColumnPropNameInRow="商品名" msprop:Generator_ColumnPropNameInTable="商品名Column" msprop:Generator_UserColumnName="商品名" type="xs:string" minOccurs="0" />
+              <xs:element name="単価" msprop:Generator_ColumnVarNameInTable="column単価" msprop:Generator_ColumnPropNameInRow="単価" msprop:Generator_ColumnPropNameInTable="単価Column" msprop:Generator_UserColumnName="単価" type="xs:string" minOccurs="0" />
+              <xs:element name="カテゴリID" msprop:Generator_ColumnVarNameInTable="columnカテゴリID" msprop:Generator_ColumnPropNameInRow="カテゴリID" msprop:Generator_ColumnPropNameInTable="カテゴリIDColumn" msprop:Generator_UserColumnName="カテゴリID" type="xs:string" minOccurs="0" />
+              <xs:element name="安全在庫数" msprop:Generator_ColumnVarNameInTable="column安全在庫数" msprop:Generator_ColumnPropNameInRow="安全在庫数" msprop:Generator_ColumnPropNameInTable="安全在庫数Column" msprop:Generator_UserColumnName="安全在庫数" type="xs:string" minOccurs="0" />
+              <xs:element name="発注数" msprop:Generator_ColumnVarNameInTable="column発注数" msprop:Generator_ColumnPropNameInRow="発注数" msprop:Generator_ColumnPropNameInTable="発注数Column" msprop:Generator_UserColumnName="発注数" type="xs:string" minOccurs="0" />
+              <xs:element name="画像ファイル" msprop:Generator_ColumnVarNameInTable="column画像ファイル" msprop:Generator_ColumnPropNameInRow="画像ファイル" msprop:Generator_ColumnPropNameInTable="画像ファイルColumn" msprop:Generator_UserColumnName="画像ファイル" type="xs:string" minOccurs="0" />
+              <xs:element name="仕入れ値" msprop:Generator_ColumnVarNameInTable="column仕入れ値" msprop:Generator_ColumnPropNameInRow="仕入れ値" msprop:Generator_ColumnPropNameInTable="仕入れ値Column" msprop:Generator_UserColumnName="仕入れ値" type="xs:string" minOccurs="0" />
+              <xs:element name="フラグ" msprop:Generator_ColumnVarNameInTable="columnフラグ" msprop:Generator_ColumnPropNameInRow="フラグ" msprop:Generator_ColumnPropNameInTable="フラグColumn" msprop:Generator_UserColumnName="フラグ" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Dt1" msprop:Generator_TableClassName="Dt1DataTable" msprop:Generator_TableVarName="tableDt1" msprop:Generator_TablePropName="Dt1" msprop:Generator_RowDeletingName="Dt1RowDeleting" msprop:Generator_RowChangingName="Dt1RowChanging" msprop:Generator_RowEvHandlerName="Dt1RowChangeEventHandler" msprop:Generator_RowDeletedName="Dt1RowDeleted" msprop:Generator_UserTableName="Dt1" msprop:Generator_RowChangedName="Dt1RowChanged" msprop:Generator_RowEvArgName="Dt1RowChangeEvent" msprop:Generator_RowClassName="Dt1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="発注ID" msprop:Generator_ColumnVarNameInTable="column発注ID" msprop:Generator_ColumnPropNameInRow="発注ID" msprop:Generator_ColumnPropNameInTable="発注IDColumn" msprop:Generator_UserColumnName="発注ID" type="xs:string" />
+              <xs:element name="発注日" msprop:Generator_ColumnVarNameInTable="column発注日" msprop:Generator_ColumnPropNameInRow="発注日" msprop:Generator_ColumnPropNameInTable="発注日Column" msprop:Generator_UserColumnName="発注日" type="xs:string" minOccurs="0" />
+              <xs:element name="商品ID" msprop:Generator_ColumnVarNameInTable="column商品ID" msprop:Generator_ColumnPropNameInRow="商品ID" msprop:Generator_ColumnPropNameInTable="商品IDColumn" msprop:Generator_UserColumnName="商品ID" type="xs:string" minOccurs="0" />
+              <xs:element name="発注数量" msprop:Generator_ColumnVarNameInTable="column発注数量" msprop:Generator_ColumnPropNameInRow="発注数量" msprop:Generator_ColumnPropNameInTable="発注数量Column" msprop:Generator_UserColumnName="発注数量" type="xs:string" minOccurs="0" />
+              <xs:element name="入庫先ID" msprop:Generator_ColumnVarNameInTable="column入庫先ID" msprop:Generator_ColumnPropNameInRow="入庫先ID" msprop:Generator_ColumnPropNameInTable="入庫先IDColumn" msprop:Generator_UserColumnName="入庫先ID" type="xs:string" minOccurs="0" />
+              <xs:element name="合計金額" msprop:Generator_ColumnVarNameInTable="column合計金額" msprop:Generator_ColumnPropNameInRow="合計金額" msprop:Generator_ColumnPropNameInTable="合計金額Column" msprop:Generator_UserColumnName="合計金額" type="xs:string" minOccurs="0" />
+              <xs:element name="フラグ" msprop:Generator_ColumnVarNameInTable="columnフラグ" msprop:Generator_ColumnPropNameInRow="フラグ" msprop:Generator_ColumnPropNameInTable="フラグColumn" msprop:Generator_UserColumnName="フラグ" type="xs:string" minOccurs="0" />
+              <xs:element name="商品名" msprop:Generator_ColumnVarNameInTable="column商品名" msprop:Generator_ColumnPropNameInRow="商品名" msprop:Generator_ColumnPropNameInTable="商品名Column" msprop:Generator_UserColumnName="商品名" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Dt2" />
+      <xs:field xpath="mstns:商品ID" />
+    </xs:unique>
+    <xs:unique name="Dt1_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Dt1" />
+      <xs:field xpath="mstns:発注ID" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="Dt1_Dt2" msdata:parent="Dt1" msdata:child="Dt2" msdata:parentkey="商品ID" msdata:childkey="商品ID" msprop:Generator_UserChildTable="Dt2" msprop:Generator_ChildPropName="GetDt2Rows" msprop:Generator_UserRelationName="Dt1_Dt2" msprop:Generator_RelationVarName="relationDt1_Dt2" msprop:Generator_UserParentTable="Dt1" msprop:Generator_ParentPropName="Dt1Row" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>
