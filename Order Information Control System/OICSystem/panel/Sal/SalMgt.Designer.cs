@@ -32,7 +32,7 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.DateSelectMoney = new System.Windows.Forms.Button();
             this.Msg = new System.Windows.Forms.Label();
-            this.totalMsg = new System.Windows.Forms.Label();
+            this.TotalMsg = new System.Windows.Forms.Label();
             this.DateEnd = new System.Windows.Forms.MaskedTextBox();
             this.DateStart = new System.Windows.Forms.MaskedTextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -40,12 +40,15 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.analysis = new System.Windows.Forms.Button();
+            this.printing = new System.Windows.Forms.Button();
+            this.AddMsg = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // DateSelectMoney
             // 
-            this.DateSelectMoney.Location = new System.Drawing.Point(416, 457);
+            this.DateSelectMoney.Location = new System.Drawing.Point(591, 468);
             this.DateSelectMoney.Name = "DateSelectMoney";
             this.DateSelectMoney.Size = new System.Drawing.Size(142, 37);
             this.DateSelectMoney.TabIndex = 115;
@@ -57,24 +60,26 @@
             // 
             this.Msg.AutoSize = true;
             this.Msg.Font = new System.Drawing.Font("ＭＳ ゴシック", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Msg.Location = new System.Drawing.Point(93, 105);
+            this.Msg.Location = new System.Drawing.Point(93, 71);
             this.Msg.Name = "Msg";
-            this.Msg.Size = new System.Drawing.Size(0, 24);
+            this.Msg.Size = new System.Drawing.Size(49, 24);
             this.Msg.TabIndex = 114;
+            this.Msg.Text = "Msg";
             // 
-            // totalMsg
+            // TotalMsg
             // 
-            this.totalMsg.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.totalMsg.AutoSize = true;
-            this.totalMsg.Font = new System.Drawing.Font("ＭＳ ゴシック", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.totalMsg.Location = new System.Drawing.Point(145, 143);
-            this.totalMsg.Name = "totalMsg";
-            this.totalMsg.Size = new System.Drawing.Size(0, 24);
-            this.totalMsg.TabIndex = 113;
+            this.TotalMsg.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.TotalMsg.AutoSize = true;
+            this.TotalMsg.Font = new System.Drawing.Font("ＭＳ ゴシック", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.TotalMsg.Location = new System.Drawing.Point(145, 109);
+            this.TotalMsg.Name = "TotalMsg";
+            this.TotalMsg.Size = new System.Drawing.Size(114, 24);
+            this.TotalMsg.TabIndex = 113;
+            this.TotalMsg.Text = "TotalMsg";
             // 
             // DateEnd
             // 
-            this.DateEnd.Location = new System.Drawing.Point(591, 422);
+            this.DateEnd.Location = new System.Drawing.Point(491, 477);
             this.DateEnd.Mask = "0000/00/00";
             this.DateEnd.Name = "DateEnd";
             this.DateEnd.Size = new System.Drawing.Size(69, 19);
@@ -83,7 +88,7 @@
             // 
             // DateStart
             // 
-            this.DateStart.Location = new System.Drawing.Point(488, 422);
+            this.DateStart.Location = new System.Drawing.Point(388, 477);
             this.DateStart.Mask = "0000/00/00";
             this.DateStart.Name = "DateStart";
             this.DateStart.Size = new System.Drawing.Size(74, 19);
@@ -93,7 +98,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(568, 425);
+            this.label7.Location = new System.Drawing.Point(468, 480);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(17, 12);
             this.label7.TabIndex = 110;
@@ -101,7 +106,7 @@
             // 
             // DateSelectCount
             // 
-            this.DateSelectCount.Location = new System.Drawing.Point(591, 457);
+            this.DateSelectCount.Location = new System.Drawing.Point(229, 468);
             this.DateSelectCount.Name = "DateSelectCount";
             this.DateSelectCount.Size = new System.Drawing.Size(130, 37);
             this.DateSelectCount.TabIndex = 109;
@@ -115,7 +120,7 @@
             this.listBox1.ItemHeight = 12;
             this.listBox1.Location = new System.Drawing.Point(20, 63);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(723, 328);
+            this.listBox1.Size = new System.Drawing.Size(723, 376);
             this.listBox1.TabIndex = 108;
             // 
             // label1
@@ -137,20 +142,53 @@
             this.chart1.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(33, 170);
+            this.chart1.Location = new System.Drawing.Point(33, 136);
             this.chart1.Name = "chart1";
-            this.chart1.Size = new System.Drawing.Size(700, 209);
+            this.chart1.Size = new System.Drawing.Size(700, 298);
             this.chart1.TabIndex = 116;
             this.chart1.Text = "chart2";
+            // 
+            // analysis
+            // 
+            this.analysis.Location = new System.Drawing.Point(67, 445);
+            this.analysis.Name = "analysis";
+            this.analysis.Size = new System.Drawing.Size(75, 65);
+            this.analysis.TabIndex = 117;
+            this.analysis.UseVisualStyleBackColor = true;
+            this.analysis.Click += new System.EventHandler(this.analysis_Click);
+            // 
+            // printing
+            // 
+            this.printing.Location = new System.Drawing.Point(615, 11);
+            this.printing.Name = "printing";
+            this.printing.Size = new System.Drawing.Size(118, 49);
+            this.printing.TabIndex = 118;
+            this.printing.Text = "印刷";
+            this.printing.UseVisualStyleBackColor = true;
+            this.printing.Click += new System.EventHandler(this.printing_Click);
+            // 
+            // AddMsg
+            // 
+            this.AddMsg.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.AddMsg.AutoSize = true;
+            this.AddMsg.Font = new System.Drawing.Font("ＭＳ ゴシック", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.AddMsg.Location = new System.Drawing.Point(93, 136);
+            this.AddMsg.Name = "AddMsg";
+            this.AddMsg.Size = new System.Drawing.Size(88, 24);
+            this.AddMsg.TabIndex = 119;
+            this.AddMsg.Text = "AddMsg";
             // 
             // SalMgt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.AddMsg);
+            this.Controls.Add(this.printing);
+            this.Controls.Add(this.analysis);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.DateSelectMoney);
             this.Controls.Add(this.Msg);
-            this.Controls.Add(this.totalMsg);
+            this.Controls.Add(this.TotalMsg);
             this.Controls.Add(this.DateEnd);
             this.Controls.Add(this.DateStart);
             this.Controls.Add(this.label7);
@@ -159,6 +197,7 @@
             this.Controls.Add(this.label1);
             this.Name = "SalMgt";
             this.Size = new System.Drawing.Size(760, 515);
+            this.Load += new System.EventHandler(this.SalMgt_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -169,7 +208,7 @@
 
         private System.Windows.Forms.Button DateSelectMoney;
         private System.Windows.Forms.Label Msg;
-        private System.Windows.Forms.Label totalMsg;
+        private System.Windows.Forms.Label TotalMsg;
         private System.Windows.Forms.MaskedTextBox DateEnd;
         private System.Windows.Forms.MaskedTextBox DateStart;
         private System.Windows.Forms.Label label7;
@@ -177,5 +216,8 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Button analysis;
+        private System.Windows.Forms.Button printing;
+        private System.Windows.Forms.Label AddMsg;
     }
 }
