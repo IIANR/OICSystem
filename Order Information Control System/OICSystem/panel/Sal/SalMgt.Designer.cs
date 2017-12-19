@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.DateSelectMoney = new System.Windows.Forms.Button();
             this.Msg = new System.Windows.Forms.Label();
             this.TotalMsg = new System.Windows.Forms.Label();
@@ -134,14 +134,14 @@
             // 
             // chart1
             // 
-            chartArea2.AxisX.Interval = 1D;
-            chartArea2.AxisX.MajorGrid.Enabled = false;
-            chartArea2.AxisX.MajorGrid.Interval = 1D;
-            chartArea2.AxisY.MajorGrid.Enabled = false;
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea3.AxisX.Interval = 1D;
+            chartArea3.AxisX.MajorGrid.Enabled = false;
+            chartArea3.AxisX.MajorGrid.Interval = 1D;
+            chartArea3.AxisY.MajorGrid.Enabled = false;
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(33, 136);
             this.chart1.Name = "chart1";
             this.chart1.Size = new System.Drawing.Size(700, 298);
@@ -150,10 +150,11 @@
             // 
             // analysis
             // 
-            this.analysis.Location = new System.Drawing.Point(67, 445);
+            this.analysis.Location = new System.Drawing.Point(67, 470);
             this.analysis.Name = "analysis";
-            this.analysis.Size = new System.Drawing.Size(75, 65);
+            this.analysis.Size = new System.Drawing.Size(102, 33);
             this.analysis.TabIndex = 117;
+            this.analysis.Text = "降順に並べ替え";
             this.analysis.UseVisualStyleBackColor = true;
             this.analysis.Click += new System.EventHandler(this.analysis_Click);
             // 

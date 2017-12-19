@@ -422,7 +422,7 @@ namespace WindowsFormsApplication1
             Msg.Visible = false;
             TotalMsg.Visible = false;
             AddMsg.Visible = false;
-            analysis.Text = "↑   多" + Environment.NewLine + "l      " + Environment.NewLine + "l      " + Environment.NewLine + "↓   少";
+            //analysis.Text = "↑   多" + Environment.NewLine + "l      " + Environment.NewLine + "l      " + Environment.NewLine + "↓   少";
         }
 
         private void analysis_Click(object sender, EventArgs e)
@@ -537,9 +537,9 @@ namespace WindowsFormsApplication1
                  */
                 // 並び替える
                 DataView dv = new DataView(goods);
-                // 昇順
-                dv.Sort = "売上";
                 // 降順
+                dv.Sort = "売上";
+                // 昇順
                 //dv.Sort = "売上 DESC";
 
                 // 並び替え後のデータをDataTableに戻す
