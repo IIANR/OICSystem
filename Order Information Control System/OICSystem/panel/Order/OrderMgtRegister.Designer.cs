@@ -275,6 +275,7 @@
             this.NameTextbox.Name = "NameTextbox";
             this.NameTextbox.Size = new System.Drawing.Size(186, 19);
             this.NameTextbox.TabIndex = 75;
+            this.NameTextbox.Leave += new System.EventHandler(this.NameTextbox_Leave);
             // 
             // GoodsidTextBox
             // 

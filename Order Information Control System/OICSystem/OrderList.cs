@@ -79,6 +79,7 @@ namespace WindowsFormsApplication1
             memg.ReleaseHdc(dc2);
             memg.Dispose();
             g.Dispose();
+            img.RotateFlip(RotateFlipType.Rotate270FlipNone);//数字変えれば回転する
             return img;
         }
 
@@ -254,10 +255,6 @@ namespace WindowsFormsApplication1
             OrderListDataGridView4.CurrentCell = null;
         }
 
-        private void OrderList_FormClosing(object sender, FormClosingEventArgs e)
-        {
-        }
-
         private void OrderList_Load_1(object sender, EventArgs e)
         {
             dt.Clear();
@@ -266,15 +263,6 @@ namespace WindowsFormsApplication1
 
             GoodsId = "";
 
-            //dt = new DataTable();
-            //cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-            //da = new OleDbDataAdapter("SELECT 注文テーブル.注文ID, 注文テーブル.注文日, 注文テーブル.商品ID, 顧客テーブル.名前, 顧客テーブル.郵便番号, 顧客テーブル.住所1, 顧客テーブル.住所2, 顧客テーブル.電話番号 FROM 従業員マスタ INNER JOIN(顧客テーブル INNER JOIN 注文テーブル ON 顧客テーブル.顧客ID = 注文テーブル.顧客ID) ON 従業員マスタ.従業員ID = 注文テーブル.従業員ID WHERE 注文テーブル.フラグ = '入金済み' AND 注文テーブル.入金済み = True; ", cn);
-            //da.Fill(dt);
-            //OrderListDataGridView.DataSource = dt;
-
-            //OrderListDataGridView.AllowUserToAddRows = true;
-            //OrderListDataGridView2.AllowUserToAddRows = true;
-
             cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
             cmd.Connection = cn;
             cmd.CommandText = "SELECT 注文テーブル.注文ID, 注文テーブル.注文日, 注文テーブル.商品ID, 顧客テーブル.名前, 顧客テーブル.郵便番号, 顧客テーブル.住所1, 顧客テーブル.住所2, 顧客テーブル.電話番号 FROM 従業員マスタ INNER JOIN(顧客テーブル INNER JOIN 注文テーブル ON 顧客テーブル.顧客ID = 注文テーブル.顧客ID) ON 従業員マスタ.従業員ID = 注文テーブル.従業員ID WHERE 注文テーブル.フラグ = '入金済み' AND 注文テーブル.入金済み = True order by 注文テーブル.注文ID; ";
@@ -282,10 +270,6 @@ namespace WindowsFormsApplication1
             OleDbDataReader dreader = cmd.ExecuteReader();
             OrderListDataGridView.Columns.Add("orderid", "注文ID");
             OrderListDataGridView.Columns.Add("date", "注文日");
-            //OrderListDataGridView.Columns.Add("goodsid", "商品ID");
-            //OrderListDataGridView.Columns.Add("goodsid", "商品ID");
-            //OrderListDataGridView.Columns.Add("goodsname", "商品名");
-            //OrderListDataGridView.Columns.Add("goodsnum", "数量");
             OrderListDataGridView.Columns.Add("membername", "名前");
             OrderListDataGridView.Columns.Add("poscode", "郵便番号");
             OrderListDataGridView.Columns.Add("addres1", "住所1");
@@ -408,7 +392,6 @@ namespace WindowsFormsApplication1
             if (printDialog1.ShowDialog() == DialogResult.OK)
             {
                 PrintDocument pd = new PrintDocument();
-                pd.DefaultPageSettings.Landscape = false; // これでヨコ
 
                 PrintForm(this);
 
