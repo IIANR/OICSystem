@@ -174,12 +174,5 @@ namespace WindowsFormsApplication1
         {
             dataload();
         }
-
-        private void PrintBtn_Click(object sender, EventArgs e)
-        {
-            MemberList f = new MemberList();
-            f.ShowDialog(this);
-            f.Dispose();
-        }
     }
 }
