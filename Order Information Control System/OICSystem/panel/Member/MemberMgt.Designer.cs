@@ -37,6 +37,7 @@
             this.MemberDisLbl = new System.Windows.Forms.Label();
             this.MemberNameTBox = new System.Windows.Forms.TextBox();
             this.MemberNameLbl = new System.Windows.Forms.Label();
+            this.PrintBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MemberDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -128,10 +129,21 @@
             this.MemberNameLbl.TabIndex = 65;
             this.MemberNameLbl.Text = "ﾌﾘｶﾞﾅ：";
             // 
+            // PrintBtn
+            // 
+            this.PrintBtn.Location = new System.Drawing.Point(592, 40);
+            this.PrintBtn.Name = "PrintBtn";
+            this.PrintBtn.Size = new System.Drawing.Size(151, 36);
+            this.PrintBtn.TabIndex = 67;
+            this.PrintBtn.Text = "印刷";
+            this.PrintBtn.UseVisualStyleBackColor = true;
+            this.PrintBtn.Click += new System.EventHandler(this.PrintBtn_Click);
+            // 
             // MemberMgt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.PrintBtn);
             this.Controls.Add(this.MemberDisLbl);
             this.Controls.Add(this.MemberNameTBox);
             this.Controls.Add(this.MemberNameLbl);
@@ -161,5 +173,6 @@
         private System.Windows.Forms.Label MemberDisLbl;
         private System.Windows.Forms.TextBox MemberNameTBox;
         private System.Windows.Forms.Label MemberNameLbl;
+        private System.Windows.Forms.Button PrintBtn;
     }
 }
