@@ -117,22 +117,9 @@ namespace WindowsFormsApplication1
                     "' ,責任者権限 =" + EmpdataGridView[11, i].Value +
                     " ,備考 ='" + EmpdataGridView[12, i].Value.ToString() +
                     "' WHERE 従業員ID=" + (int)EmpdataGridView[0, i].Value ;
-                //try
-                //{
                 cn.Open();
-                //cmd.CommandText = "UPDATE 従業員マスタ SET 責任者権限 =" + EmpdataGridView[11, i].Value +
-                //    " WHERE 従業員ID=" + (int)EmpdataGridView[0, i].Value;
                 cmd.ExecuteNonQuery();
-                //}
-                //catch (Exception ex)
-                //{
-                //    MessageBox.Show(ex.Message, "ok");
-                //}
-            //finally   //●
-            //    {
                 cn.Close();
-            //    }
-
             }
             MessageBox.Show("更新しました", "OICSystem");
             
@@ -156,12 +143,17 @@ namespace WindowsFormsApplication1
         {
             switch (EmpdataGridView.CurrentCell.ColumnIndex)
             {
-                case 0:
-                    EmpIDTextB.Text = EmpdataGridView[0, EmpdataGridView.CurrentCell.RowIndex].Value.ToString();
-                    break;
-                case 2:
-                    EmpNameTextB.Text = EmpdataGridView[2, EmpdataGridView.CurrentCell.RowIndex].Value.ToString();
-                    break;
+            case 2:
+                SetNameTextB.Text=EmpdataGridView[2, EmpdataGridView.CurrentCell.RowIndex].Value.ToString();
+            break;    
+            //case 0:
+                //    EmpIDTextB.Text = EmpdataGridView[0, EmpdataGridView.CurrentCell.RowIndex].Value.ToString();                    
+                //    EmpNameTextB.Text = "";
+                //break;
+                //case 2:
+                //    EmpNameTextB.Text = EmpdataGridView[2, EmpdataGridView.CurrentCell.RowIndex].Value.ToString();
+                //    EmpIDTextB.Text = "";
+                //    break;
             }
         }
 
@@ -185,6 +177,8 @@ namespace WindowsFormsApplication1
             }
             cn.Close();
             dataload(0);
+            EmpIDTextB.Text = "";
+            EmpNameTextB.Text = "";
 
         }
 

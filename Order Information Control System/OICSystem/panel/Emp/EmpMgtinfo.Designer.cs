@@ -39,6 +39,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.UpdateB = new System.Windows.Forms.Button();
             this.DeleteB = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.SetNameTextB = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.EmpdataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,6 +62,8 @@
             this.EmpdataGridView.RowTemplate.Height = 21;
             this.EmpdataGridView.Size = new System.Drawing.Size(754, 298);
             this.EmpdataGridView.TabIndex = 7;
+            this.EmpdataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EmpdataGridView_CellClick);
+            this.EmpdataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EmpdataGridView_CellClick);
             // 
             // EditB
             // 
@@ -143,10 +147,29 @@
             this.DeleteB.UseVisualStyleBackColor = true;
             this.DeleteB.Click += new System.EventHandler(this.DeleteB_Click_1);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(225, 395);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(99, 12);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "選択ている従業員：";
+            // 
+            // SetNameTextB
+            // 
+            this.SetNameTextB.Location = new System.Drawing.Point(330, 392);
+            this.SetNameTextB.Name = "SetNameTextB";
+            this.SetNameTextB.ReadOnly = true;
+            this.SetNameTextB.Size = new System.Drawing.Size(100, 19);
+            this.SetNameTextB.TabIndex = 12;
+            // 
             // EmpMgtInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.SetNameTextB);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.DeleteB);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.UpdateB);
@@ -180,5 +203,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button UpdateB;
         private System.Windows.Forms.Button DeleteB;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox SetNameTextB;
     }
 }
