@@ -225,7 +225,7 @@ namespace WindowsFormsApplication1.panel.IO
 
                     while (rd2.Read())
                     {
-                        if (db_Orderingid == (int)rd2.GetValue(0))
+                        if (int.Parse(IdTextbox.Text) == (int)rd2.GetValue(0))
                         {
                             flag = 1;
                         }
@@ -292,7 +292,7 @@ namespace WindowsFormsApplication1.panel.IO
 
                     else if (flag == 0)
                     {
-                        ErrMsg.Text = "※存在しない注文IDです";
+                        ErrMsg.Text = "※存在しない発注IDです";
                         ErrMsg.Visible = true;
                         IdTextbox.Text = "";
                         InputNumTextbox.Text = "";

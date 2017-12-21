@@ -48,5 +48,13 @@ namespace WindowsFormsApplication1
 
             this.OrderingReport.RefreshReport();
         }
+
+        private void OrderingList_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("注文書の印刷、保存は終わっていますか？", "確認",MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }

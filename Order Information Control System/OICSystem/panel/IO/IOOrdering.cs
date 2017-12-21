@@ -116,7 +116,7 @@ namespace WindowsFormsApplication1
             }
             else if(GoodsidTextBox.Text == null || GoodsidTextBox.Text == "")
             {
-                MessageBox.Show("商品IDを入力してください");
+                MessageBox.Show("発注する商品を選択してください");
             }
             else if(OrderingPayTextbox.Text==null || OrderingPayTextbox.Text == "")
             {
@@ -171,6 +171,9 @@ namespace WindowsFormsApplication1
 
                 OrderingGoodsDataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
+                cmd.Parameters.Clear();
+                cmd2.Parameters.Clear();
+
                 GoodsidTextBox.Text = "";
                 OrderingPayTextbox.Text = "";
                 InputNumTextbox.Text = "";
@@ -182,6 +185,11 @@ namespace WindowsFormsApplication1
             OrderingList f = new OrderingList();
             f.ShowDialog(this);
             f.Dispose();
+        }
+
+        private void ReloadBtn_Click(object sender, EventArgs e)
+        {
+            IOOrdering_Load(null, EventArgs.Empty);
         }
     }
 }

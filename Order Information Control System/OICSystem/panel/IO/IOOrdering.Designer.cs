@@ -49,6 +49,7 @@
             this.PosLabel = new System.Windows.Forms.Label();
             this.Addres1Label = new System.Windows.Forms.Label();
             this.Addres2Label = new System.Windows.Forms.Label();
+            this.ReloadBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.OrderingGoodsDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -241,10 +242,21 @@
             this.Addres2Label.TabIndex = 25;
             this.Addres2Label.Text = "住所2：";
             // 
+            // ReloadBtn
+            // 
+            this.ReloadBtn.Location = new System.Drawing.Point(12, 13);
+            this.ReloadBtn.Name = "ReloadBtn";
+            this.ReloadBtn.Size = new System.Drawing.Size(86, 27);
+            this.ReloadBtn.TabIndex = 26;
+            this.ReloadBtn.Text = "更新";
+            this.ReloadBtn.UseVisualStyleBackColor = true;
+            this.ReloadBtn.Click += new System.EventHandler(this.ReloadBtn_Click);
+            // 
             // IOOrdering
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ReloadBtn);
             this.Controls.Add(this.Addres2Label);
             this.Controls.Add(this.Addres1Label);
             this.Controls.Add(this.PosLabel);
@@ -298,5 +310,6 @@
         private System.Windows.Forms.Label PosLabel;
         private System.Windows.Forms.Label Addres1Label;
         private System.Windows.Forms.Label Addres2Label;
+        private System.Windows.Forms.Button ReloadBtn;
     }
 }
