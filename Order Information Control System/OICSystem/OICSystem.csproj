@@ -122,6 +122,12 @@
     <Compile Include="panel\Goods\GoodsList.Designer.cs">
       <DependentUpon>GoodsList.cs</DependentUpon>
     </Compile>
+    <Compile Include="panel\Goods\GoodsPopularity.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="panel\Goods\GoodsPopularity.Designer.cs">
+      <DependentUpon>GoodsPopularity.cs</DependentUpon>
+    </Compile>
     <Compile Include="panel\Goods\GoodsRegi.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -233,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="panel\Goods\GoodsMgt.resx">
       <DependentUpon>GoodsMgt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="panel\Goods\GoodsPopularity.resx">
+      <DependentUpon>GoodsPopularity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="panel\Goods\GoodsRegi.resx">
       <DependentUpon>GoodsRegi.cs</DependentUpon>

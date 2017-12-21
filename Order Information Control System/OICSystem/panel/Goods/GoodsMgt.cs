@@ -17,6 +17,7 @@ namespace WindowsFormsApplication1
         public static GoodsList ListCtr;
         public static GoodsRegi RegiCtr;
         public static GoodsStock StockCtr;
+        public static GoodsPopularity PopularityCtr;
 
         public GoodsMgt()
         {
@@ -24,14 +25,17 @@ namespace WindowsFormsApplication1
             ListCtr = new GoodsList();
             RegiCtr = new GoodsRegi();
             StockCtr = new GoodsStock();
+            PopularityCtr = new GoodsPopularity();
 
             GoodsPanel.Controls.Add(ListCtr);
             GoodsPanel.Controls.Add(RegiCtr);
             GoodsPanel.Controls.Add(StockCtr);
+            GoodsPanel.Controls.Add(PopularityCtr);
 
             ListCtr.Visible = true;
             RegiCtr.Visible = false;
             StockCtr.Visible = false;
+            PopularityCtr.Visible = false;
 
         }
 
@@ -61,5 +65,12 @@ namespace WindowsFormsApplication1
 
         }
 
+        private void goodsPopularityBtn_Click(object sender, EventArgs e)
+        {
+            ListCtr.Visible = false;
+            RegiCtr.Visible = false;
+            StockCtr.Visible = false;
+            PopularityCtr.Visible = true;
+        }
     }
 }

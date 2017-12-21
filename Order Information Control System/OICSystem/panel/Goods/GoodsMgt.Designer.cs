@@ -32,6 +32,7 @@
             this.goodsRegiBtn = new System.Windows.Forms.Button();
             this.goodsStockBtn = new System.Windows.Forms.Button();
             this.goodsListBtn = new System.Windows.Forms.Button();
+            this.goodsPopularityBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // GoodsPanel
@@ -75,15 +76,27 @@
             this.goodsListBtn.UseVisualStyleBackColor = true;
             this.goodsListBtn.Click += new System.EventHandler(this.goodsListBtn_Click);
             // 
+            // goodsPopularityBtn
+            // 
+            this.goodsPopularityBtn.Location = new System.Drawing.Point(159, 22);
+            this.goodsPopularityBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.goodsPopularityBtn.Name = "goodsPopularityBtn";
+            this.goodsPopularityBtn.Size = new System.Drawing.Size(201, 50);
+            this.goodsPopularityBtn.TabIndex = 58;
+            this.goodsPopularityBtn.Text = "商品需要";
+            this.goodsPopularityBtn.UseVisualStyleBackColor = true;
+            this.goodsPopularityBtn.Click += new System.EventHandler(this.goodsPopularityBtn_Click);
+            // 
             // GoodsMgt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.goodsPopularityBtn);
             this.Controls.Add(this.GoodsPanel);
             this.Controls.Add(this.goodsRegiBtn);
             this.Controls.Add(this.goodsStockBtn);
             this.Controls.Add(this.goodsListBtn);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GoodsMgt";
             this.Size = new System.Drawing.Size(1013, 644);
             this.ResumeLayout(false);
@@ -96,5 +109,6 @@
         private System.Windows.Forms.Button goodsRegiBtn;
         private System.Windows.Forms.Button goodsStockBtn;
         private System.Windows.Forms.Button goodsListBtn;
+        private System.Windows.Forms.Button goodsPopularityBtn;
     }
 }
