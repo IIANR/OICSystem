@@ -32,6 +32,7 @@
             this.goodsListBtn = new System.Windows.Forms.Button();
             this.goodsRegiBtn = new System.Windows.Forms.Button();
             this.GoodsPanel = new System.Windows.Forms.Panel();
+            this.goodsPopularityBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // goodsStockBtn
@@ -71,10 +72,21 @@
             this.GoodsPanel.Size = new System.Drawing.Size(760, 430);
             this.GoodsPanel.TabIndex = 53;
             // 
+            // goodsPopularityBtn
+            // 
+            this.goodsPopularityBtn.Location = new System.Drawing.Point(119, 20);
+            this.goodsPopularityBtn.Name = "goodsPopularityBtn";
+            this.goodsPopularityBtn.Size = new System.Drawing.Size(151, 40);
+            this.goodsPopularityBtn.TabIndex = 54;
+            this.goodsPopularityBtn.Text = "商品需要";
+            this.goodsPopularityBtn.UseVisualStyleBackColor = true;
+            this.goodsPopularityBtn.Click += new System.EventHandler(this.goodsPopularityBtn_Click);
+            // 
             // GoodsMgt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.goodsPopularityBtn);
             this.Controls.Add(this.GoodsPanel);
             this.Controls.Add(this.goodsRegiBtn);
             this.Controls.Add(this.goodsStockBtn);
@@ -91,5 +103,6 @@
         private System.Windows.Forms.Button goodsListBtn;
         private System.Windows.Forms.Button goodsRegiBtn;
         private System.Windows.Forms.Panel GoodsPanel;
+        private System.Windows.Forms.Button goodsPopularityBtn;
     }
 }

@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="panel\Goods\GoodsPopularity.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="panel\Goods\GoodsPopularity.Designer.cs">
+      <DependentUpon>GoodsPopularity.cs</DependentUpon>
+    </Compile>
     <Compile Include="panel\Emp\EmpMgt.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -124,6 +131,9 @@
     <Compile Include="panel\Order\OrderMgtRegister.Designer.cs">
       <DependentUpon>OrderMgtRegister.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="panel\Goods\GoodsPopularity.resx">
+      <DependentUpon>GoodsPopularity.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="panel\Emp\EmpMgt.resx">
       <DependentUpon>EmpMgt.cs</DependentUpon>
     </EmbeddedResource>
