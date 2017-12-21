@@ -308,7 +308,7 @@
         <DataSetName>DataSet1</DataSetName>
         <Top>2.48391cm</Top>
         <Left>1.92547cm</Left>
-        <Height>1.04125cm</Height>
+        <Height>1.04124cm</Height>
         <Width>12.05052cm</Width>
         <Style>
           <Border>
@@ -324,7 +324,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>注文書</Value>
+                <Value>発注書</Value>
                 <Style>
                   <FontFamily>ＭＳ Ｐゴシック</FontFamily>
                   <FontSize>20pt</FontSize>
