@@ -41,6 +41,8 @@
             this.lblid1 = new System.Windows.Forms.Label();
             this.lblid2 = new System.Windows.Forms.Label();
             this.lblid3 = new System.Windows.Forms.Label();
+            this.Next3Btn = new System.Windows.Forms.Button();
+            this.Back3Btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.OrderListDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrderListDataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrderListDataGridView3)).BeginInit();
@@ -117,21 +119,21 @@
             // 
             // NextBtn
             // 
-            this.NextBtn.Location = new System.Drawing.Point(544, 522);
+            this.NextBtn.Location = new System.Drawing.Point(557, 522);
             this.NextBtn.Name = "NextBtn";
-            this.NextBtn.Size = new System.Drawing.Size(75, 23);
+            this.NextBtn.Size = new System.Drawing.Size(25, 23);
             this.NextBtn.TabIndex = 10;
-            this.NextBtn.Text = "次へ";
+            this.NextBtn.Text = ">>";
             this.NextBtn.UseVisualStyleBackColor = true;
             this.NextBtn.Click += new System.EventHandler(this.NextBtn_Click);
             // 
             // BackBtn
             // 
-            this.BackBtn.Location = new System.Drawing.Point(259, 522);
+            this.BackBtn.Location = new System.Drawing.Point(300, 522);
             this.BackBtn.Name = "BackBtn";
-            this.BackBtn.Size = new System.Drawing.Size(75, 23);
+            this.BackBtn.Size = new System.Drawing.Size(27, 23);
             this.BackBtn.TabIndex = 11;
-            this.BackBtn.Text = "前へ";
+            this.BackBtn.Text = "<<";
             this.BackBtn.UseVisualStyleBackColor = true;
             this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
             // 
@@ -159,11 +161,33 @@
             this.lblid3.Size = new System.Drawing.Size(0, 12);
             this.lblid3.TabIndex = 14;
             // 
+            // Next3Btn
+            // 
+            this.Next3Btn.Location = new System.Drawing.Point(588, 522);
+            this.Next3Btn.Name = "Next3Btn";
+            this.Next3Btn.Size = new System.Drawing.Size(69, 23);
+            this.Next3Btn.TabIndex = 15;
+            this.Next3Btn.Text = ">> >> >>";
+            this.Next3Btn.UseVisualStyleBackColor = true;
+            this.Next3Btn.Click += new System.EventHandler(this.Next3Btn_Click);
+            // 
+            // Back3Btn
+            // 
+            this.Back3Btn.Location = new System.Drawing.Point(225, 522);
+            this.Back3Btn.Name = "Back3Btn";
+            this.Back3Btn.Size = new System.Drawing.Size(69, 23);
+            this.Back3Btn.TabIndex = 16;
+            this.Back3Btn.Text = "<< << <<";
+            this.Back3Btn.UseVisualStyleBackColor = true;
+            this.Back3Btn.Click += new System.EventHandler(this.Back3Btn_Click);
+            // 
             // OrderList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 557);
+            this.Controls.Add(this.Back3Btn);
+            this.Controls.Add(this.Next3Btn);
             this.Controls.Add(this.lblid3);
             this.Controls.Add(this.lblid2);
             this.Controls.Add(this.lblid1);
@@ -203,5 +227,7 @@
         private System.Windows.Forms.Label lblid1;
         private System.Windows.Forms.Label lblid2;
         private System.Windows.Forms.Label lblid3;
+        private System.Windows.Forms.Button Next3Btn;
+        private System.Windows.Forms.Button Back3Btn;
     }
 }

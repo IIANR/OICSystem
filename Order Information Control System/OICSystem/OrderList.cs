@@ -417,5 +417,41 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("これより前のデータは存在しません", "範囲外");
             }
         }
+
+        private void Next3Btn_Click(object sender, EventArgs e)
+        {
+            if (poi + 5 < cnt)
+            {
+                poi += 3;
+                OrderListDataGridView.Rows[poi - 1].Selected = false;
+                OrderListDataGridView.Rows[poi - 2].Selected = false;
+                OrderListDataGridView.Rows[poi - 3].Selected = false;
+                DataGrids2(count3[poi], poi);
+                DataGrids3(count3[poi + 1], poi + 1);
+                DataGrids4(count3[poi + 2], poi + 2);
+            }
+            else
+            {
+                MessageBox.Show("これより後に3件以上のデータが存在しません", "範囲外");
+            }
+        }
+
+        private void Back3Btn_Click(object sender, EventArgs e)
+        {
+            if (0 <= poi - 3)
+            {
+                poi -= 3;
+                OrderListDataGridView.Rows[poi + 3].Selected = false;
+                OrderListDataGridView.Rows[poi + 4].Selected = false;
+                OrderListDataGridView.Rows[poi + 5].Selected = false;
+                DataGrids2(count3[poi], poi);
+                DataGrids3(count3[poi + 1], poi + 1);
+                DataGrids4(count3[poi + 2], poi + 2);
+            }
+            else
+            {
+                MessageBox.Show("これより前に3件以上のデータが存在しません", "範囲外");
+            }
+        }
     }
 }
