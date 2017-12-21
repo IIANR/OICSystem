@@ -142,6 +142,10 @@ namespace WindowsFormsApplication1
                         }
                         break;
                     }
+                    else
+                    {
+                        ErrMsg.Text = "従業員IDかパスワードが間違っています。";
+                    }
 
                 }
 

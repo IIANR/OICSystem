@@ -156,7 +156,7 @@ namespace WindowsFormsApplication1
 
                     }
                 }
-                
+
             }
 
             if (check == 0)
@@ -167,7 +167,7 @@ namespace WindowsFormsApplication1
 
                 //Goodsテーブルから商品ID,商品名,単価を商品ID順に取り出す
                 OleDbConnection cn = new OleDbConnection("Provider=microsoft.ace.oledb.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-                OleDbDataAdapter da = new OleDbDataAdapter("SELECT 商品ID,商品名 FROM 商品マスタ ORDER BY 商品ID", cn);
+                OleDbDataAdapter da = new OleDbDataAdapter("SELECT 商品ID,商品名,単価 FROM 商品マスタ ORDER BY 商品ID", cn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
@@ -175,11 +175,16 @@ namespace WindowsFormsApplication1
                 DataRow dtRow;
 
                 var count = new int[dt.Rows.Count];
+                string price;
+                int sum;
                 int total;
+                DateTime dtToday = DateTime.Today;
 
                 goods.Columns.Add("商品ID", Type.GetType("System.String"));
                 goods.Columns.Add("商品名", Type.GetType("System.String"));
+                goods.Columns.Add("単価", Type.GetType("System.Double"));
                 goods.Columns.Add("数量", Type.GetType("System.Double"));
+                goods.Columns.Add("売上", Type.GetType("System.Double"));
 
 
                 //配列の初期化
@@ -204,8 +209,12 @@ namespace WindowsFormsApplication1
                     dtRow = goods.NewRow();
                     dtRow["商品ID"] = dt.Rows[i][0];      //DBから取得したdtの商品IDを示す行の行番号と列番号
                     dtRow["商品名"] = dt.Rows[i][1];  //DBから取得したdtの商品名を示す行の行番号と列番号
+                    dtRow["単価"] = dt.Rows[i][2];        //DBから取得したdtの単価を示す行の行番号と列番号   
+                    price = dt.Rows[i][2].ToString();
+                    sum = int.Parse(price);
                     dtRow["数量"] = count[i];
-                    total += count[i];
+                    total += sum * count[i];
+                    dtRow["売上"] = sum * count[i];
                     goods.Rows.Add(dtRow);
                 }
 
@@ -216,20 +225,19 @@ namespace WindowsFormsApplication1
 
                 chart1.Series.Clear();
                 chart1.Titles.Clear();
-                chart1.Titles.Add("商品別の売上数");
-                chart1.Series.Add("数量");
+                chart1.Titles.Add("商品別の売上金額");
+                chart1.Series.Add("売上");
 
 
-                chart1.Series["数量"].ChartType = SeriesChartType.Bar;       //Bar
-                chart1.Series["数量"].IsValueShownAsLabel = true;
-                chart1.Series["数量"].Color = Color.Green;
-                chart1.ChartAreas["ChartArea1"].AxisY.Interval = 5;
+                chart1.Series["売上"].ChartType = SeriesChartType.Bar;        //Bar
+                chart1.Series["売上"].IsValueShownAsLabel = true;
+                chart1.ChartAreas["ChartArea1"].AxisY.Interval = 500;
 
                 chart1.DataSource = goods;         //チャートに表示するデータテーブルを設定
-                chart1.Series["数量"].XValueMember = goods.Columns["商品名"].ColumnName;
-                chart1.Series["数量"].YValueMembers = goods.Columns["数量"].ColumnName;
+                chart1.Series["売上"].XValueMember = goods.Columns["商品名"].ColumnName;
+                chart1.Series["売上"].YValueMembers = goods.Columns["売上"].ColumnName;
                 chart1.DataBind();   //データバインド
-                TotalMsg.Text = "売上合計数：" + total.ToString() + "個";
+                TotalMsg.Text = "売上合計金額：" + total.ToString() + "円 (" + dtToday.ToString("yyyy/MM/dd") + " 時点)";
                 this.chart1.Visible = true;
                 Msg.Visible = true;
                 TotalMsg.Visible = true;
@@ -329,7 +337,7 @@ namespace WindowsFormsApplication1
 
                 //Goodsテーブルから商品ID,商品名,単価を商品ID順に取り出す
                 OleDbConnection cn = new OleDbConnection("Provider=microsoft.ace.oledb.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-                OleDbDataAdapter da = new OleDbDataAdapter("SELECT 商品ID,商品名,単価 FROM 商品マスタ ORDER BY 商品ID", cn);
+                OleDbDataAdapter da = new OleDbDataAdapter("SELECT 商品ID,商品名 FROM 商品マスタ ORDER BY 商品ID", cn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
@@ -337,16 +345,11 @@ namespace WindowsFormsApplication1
                 DataRow dtRow;
 
                 var count = new int[dt.Rows.Count];
-                string price;
-                int sum;
                 int total;
-                DateTime dtToday = DateTime.Today;
 
                 goods.Columns.Add("商品ID", Type.GetType("System.String"));
                 goods.Columns.Add("商品名", Type.GetType("System.String"));
-                goods.Columns.Add("単価", Type.GetType("System.Double"));
                 goods.Columns.Add("数量", Type.GetType("System.Double"));
-                goods.Columns.Add("売上", Type.GetType("System.Double"));
 
 
                 //配列の初期化
@@ -371,12 +374,8 @@ namespace WindowsFormsApplication1
                     dtRow = goods.NewRow();
                     dtRow["商品ID"] = dt.Rows[i][0];      //DBから取得したdtの商品IDを示す行の行番号と列番号
                     dtRow["商品名"] = dt.Rows[i][1];  //DBから取得したdtの商品名を示す行の行番号と列番号
-                    dtRow["単価"] = dt.Rows[i][2];        //DBから取得したdtの単価を示す行の行番号と列番号   
-                    price = dt.Rows[i][2].ToString();
-                    sum = int.Parse(price);
                     dtRow["数量"] = count[i];
-                    total += sum * count[i];
-                    dtRow["売上"] = sum * count[i];
+                    total += count[i];
                     goods.Rows.Add(dtRow);
                 }
 
@@ -387,19 +386,20 @@ namespace WindowsFormsApplication1
 
                 chart1.Series.Clear();
                 chart1.Titles.Clear();
-                chart1.Titles.Add("商品別の売上金額");
-                chart1.Series.Add("売上");
+                chart1.Titles.Add("商品別の売上数");
+                chart1.Series.Add("数量");
 
 
-                chart1.Series["売上"].ChartType = SeriesChartType.Bar;        //Bar
-                chart1.Series["売上"].IsValueShownAsLabel = true;
-                chart1.ChartAreas["ChartArea1"].AxisY.Interval = 500;
+                chart1.Series["数量"].ChartType = SeriesChartType.Bar;       //Bar
+                chart1.Series["数量"].IsValueShownAsLabel = true;
+                chart1.Series["数量"].Color = Color.Green;
+                chart1.ChartAreas["ChartArea1"].AxisY.Interval = 5;
 
                 chart1.DataSource = goods;         //チャートに表示するデータテーブルを設定
-                chart1.Series["売上"].XValueMember = goods.Columns["商品名"].ColumnName;
-                chart1.Series["売上"].YValueMembers = goods.Columns["売上"].ColumnName;
+                chart1.Series["数量"].XValueMember = goods.Columns["商品名"].ColumnName;
+                chart1.Series["数量"].YValueMembers = goods.Columns["数量"].ColumnName;
                 chart1.DataBind();   //データバインド
-                TotalMsg.Text = "売上合計金額：" + total.ToString() + "円 (" + dtToday.ToString("yyyy/MM/dd") + " 時点)";
+                TotalMsg.Text = "売上合計数：" + total.ToString() + "個";
                 this.chart1.Visible = true;
                 Msg.Visible = true;
                 TotalMsg.Visible = true;
@@ -412,6 +412,7 @@ namespace WindowsFormsApplication1
                 this.chart1.Visible = false;
                 MessageBox.Show("入力された日付は存在しません", "入力エラー");
             }
+            
         }
 
         private void pd_PrintPage(object sender,
