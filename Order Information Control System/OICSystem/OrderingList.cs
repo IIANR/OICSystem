@@ -32,7 +32,7 @@ namespace WindowsFormsApplication1
 
             cn.Open();
             OleDbCommand cmd = new OleDbCommand();
-            string sql = "SELECT 発注テーブル.発注ID, 発注テーブル.商品ID, 商品マスタ.商品名, 発注テーブル.発注数量 FROM 商品マスタ INNER JOIN 発注テーブル ON 商品マスタ.商品ID = 発注テーブル.商品ID ORDER BY 発注テーブル.発注ID;";
+            string sql = "SELECT 発注テーブル.発注ID, 発注テーブル.商品ID, 商品マスタ.商品名, 発注テーブル.発注数量 FROM 商品マスタ INNER JOIN 発注テーブル ON 商品マスタ.商品ID = 発注テーブル.商品ID WHERE 商品マスタ.フラグ='発注済み' AND 発注テーブル.フラグ='発注書未作成' ORDER BY 発注テーブル.発注ID;";
 
             OleDbDataAdapter da = new OleDbDataAdapter(sql, cn);
             da.Fill(ds1.Dt1);
@@ -48,6 +48,26 @@ namespace WindowsFormsApplication1
             this.OrderingReport.LocalReport.DataSources.Add(rds);
 
             this.OrderingReport.RefreshReport();
+        }
+
+        private void OrderingList_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("注文書の印刷、保存は終わっていますか？", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (result == DialogResult.Yes)
+            {
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = "UPDATE 発注テーブル SET フラグ = '発注書作成済み'";
+
+                cmd.ExecuteNonQuery();
+                cn.Close();
+
+                cmd.Parameters.Clear();
+            }
+            else if (result == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

@@ -47,6 +47,7 @@
             this.Controls.Add(this.OrderingReport);
             this.Name = "OrderingList";
             this.Text = "OrderingList";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OrderingList_FormClosing);
             this.Load += new System.EventHandler(this.OrderingList_Load);
             this.ResumeLayout(false);
 

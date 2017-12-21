@@ -49,6 +49,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.OrderingGoodsDataGrid = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
+            this.ReloadBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.OrderingGoodsDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -241,10 +242,21 @@
             this.label1.TabIndex = 26;
             this.label1.Text = "要発注商品";
             // 
+            // ReloadBtn
+            // 
+            this.ReloadBtn.Location = new System.Drawing.Point(20, 15);
+            this.ReloadBtn.Name = "ReloadBtn";
+            this.ReloadBtn.Size = new System.Drawing.Size(81, 27);
+            this.ReloadBtn.TabIndex = 47;
+            this.ReloadBtn.Text = "更新";
+            this.ReloadBtn.UseVisualStyleBackColor = true;
+            this.ReloadBtn.Click += new System.EventHandler(this.ReloadBtn_Click);
+            // 
             // IOOrdering
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ReloadBtn);
             this.Controls.Add(this.Addres2Label);
             this.Controls.Add(this.Addres1Label);
             this.Controls.Add(this.PosLabel);
@@ -298,5 +310,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView OrderingGoodsDataGrid;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button ReloadBtn;
     }
 }
