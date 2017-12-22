@@ -93,7 +93,7 @@ namespace WindowsFormsApplication1
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "おｋ");
+                MessageBox.Show(ex.Message, "OICSystem");
             }
             cn.Close();
             dataload(0);
@@ -125,21 +125,11 @@ namespace WindowsFormsApplication1
             MessageBox.Show("更新しました", "OICSystem");
 
         }
-
-        //dataGridViewのセルをクリック
-        private void EmpdataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void EmpdataGridView_Click(object sender, EventArgs e)
         {
-            switch (EmpdataGridView.CurrentCell.ColumnIndex)
-            {
-                case 0:
-                    EmpIDTextB.Text = EmpdataGridView[0, EmpdataGridView.CurrentCell.RowIndex].Value.ToString();
-                    break;
-                case 2:
-                    EmpNameTextB.Text = EmpdataGridView[2, EmpdataGridView.CurrentCell.RowIndex].Value.ToString();
-                    break;
-            }
+            EmpIDTextB.Text = (string)EmpdataGridView.CurrentRow.Cells[0].Value.ToString();
+            EmpNameTextB.Text = (string)EmpdataGridView.CurrentRow.Cells[2].Value.ToString();
         }
-
         private void dataload(int n)
         {
             EmpdataGridView.Columns.Clear();
@@ -176,5 +166,6 @@ namespace WindowsFormsApplication1
             EmpdataGridView.DataSource = dt;
             EmpdataGridView.AutoResizeColumns();
         }
+
     }
 }
