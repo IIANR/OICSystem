@@ -8,10 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetroFramework.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class Login : Form
+    public partial class Login : MetroForm
     {
         public SystmTop frm2 = new SystmTop();
 
@@ -193,6 +194,26 @@ namespace WindowsFormsApplication1
             {
                 LoginBtn_Click(null, EventArgs.Empty);
             }
+        }
+
+        private void ErrMsg_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PassLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PassTextbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EmpTextbox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
