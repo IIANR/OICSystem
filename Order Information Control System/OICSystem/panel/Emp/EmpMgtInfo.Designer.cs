@@ -133,7 +133,7 @@
             this.EmpdataGridView.RowTemplate.Height = 21;
             this.EmpdataGridView.Size = new System.Drawing.Size(754, 298);
             this.EmpdataGridView.TabIndex = 118;
-            this.EmpdataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EmpdataGridView_CellClick);
+            this.EmpdataGridView.Click += new System.EventHandler(this.EmpdataGridView_Click);
             // 
             // EmpMgtLbl
             // 
