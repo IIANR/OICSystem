@@ -39,6 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.UpdateB = new System.Windows.Forms.Button();
             this.DeleteB = new System.Windows.Forms.Button();
+            this.EditLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.EmpdataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,6 +132,7 @@
             this.UpdateB.TabIndex = 5;
             this.UpdateB.Text = "更新";
             this.UpdateB.UseVisualStyleBackColor = true;
+            this.UpdateB.Visible = false;
             this.UpdateB.Click += new System.EventHandler(this.UpdateB_Click);
             // 
             // DeleteB
@@ -142,12 +144,23 @@
             this.DeleteB.TabIndex = 4;
             this.DeleteB.Text = "削除";
             this.DeleteB.UseVisualStyleBackColor = true;
+            this.DeleteB.Visible = false;
             this.DeleteB.Click += new System.EventHandler(this.DeleteB_Click_1);
+            // 
+            // EditLbl
+            // 
+            this.EditLbl.AutoSize = true;
+            this.EditLbl.ForeColor = System.Drawing.Color.Red;
+            this.EditLbl.Location = new System.Drawing.Point(248, 360);
+            this.EditLbl.Name = "EditLbl";
+            this.EditLbl.Size = new System.Drawing.Size(0, 12);
+            this.EditLbl.TabIndex = 11;
             // 
             // EmpMgtInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.EditLbl);
             this.Controls.Add(this.DeleteB);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.UpdateB);
@@ -181,5 +194,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button UpdateB;
         private System.Windows.Forms.Button DeleteB;
+        private System.Windows.Forms.Label EditLbl;
     }
 }

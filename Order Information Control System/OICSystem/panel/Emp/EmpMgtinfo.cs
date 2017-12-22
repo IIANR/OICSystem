@@ -129,11 +129,17 @@ namespace WindowsFormsApplication1
             {
                 EmpdataGridView.ReadOnly = false;
                 MessageBox.Show("編集可能になりました。", "編集可能");
+                EditLbl.Text="編集中";
+                DeleteB.Visible = true;
+                UpdateB.Visible = true;
             }
             else if(EmpdataGridView.ReadOnly==false)
             {
                 EmpdataGridView.ReadOnly = true;
                 MessageBox.Show("編集不可になりました。", "編集不可");
+                EditLbl.Text = "";
+                DeleteB.Visible = false;
+                UpdateB.Visible = false;
             }
         }
         private void DeleteB_Click_1(object sender, EventArgs e)
