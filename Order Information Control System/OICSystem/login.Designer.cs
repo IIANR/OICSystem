@@ -141,8 +141,6 @@
             this.PassTextbox.SelectionLength = 0;
             this.PassTextbox.SelectionStart = 0;
             this.PassTextbox.ShortcutsEnabled = true;
-            this.PassTextbox.ShowButton = true;
-            this.PassTextbox.ShowClearButton = true;
             this.PassTextbox.Size = new System.Drawing.Size(251, 23);
             this.PassTextbox.TabIndex = 11;
             this.PassTextbox.UseSelectable = true;
