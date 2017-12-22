@@ -119,56 +119,65 @@ namespace WindowsFormsApplication1.panel.Goods
 
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("更新しますか？", "OICSystem", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
-            cn.Open();
-            OleDbCommand cmd = new OleDbCommand();
-            cmd.Connection = cn;
-
-            if (SerchCategory(comboBcate.Text) == true)
-            {
-                cmd.CommandText = "INSERT INTO カテゴリマスタ (カテゴリ名)" + " VALUES (@catename)";
-                OleDbParameter prcatename = new OleDbParameter("@catename", comboBcate.Text);
-                cmd.Parameters.Add(prcatename);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("新規のカテゴリ名を追加");
-            }
-            else
+            if (result == DialogResult.Yes)
             {
 
-            }
-
-            cn.Close();
-
-
-            priceText = double.Parse(textBsupp.Text) * 1.6;
-            price = (int)priceText;
-
-            da = new OleDbDataAdapter("SELECT カテゴリID FROM カテゴリマスタ WHERE カテゴリ名='" + comboBcate.Text + "'", cn);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            cateID = dt.Rows[0][0].ToString();
-            dt.Clear();
-            cn.Close();
-            cmd.Connection = cn;
-            cmd.CommandText = "UPDATE 商品マスタ SET 商品名='" + textBname.Text + "', 単価=" + price + ", カテゴリID=" + cateID + ",安全在庫数=" + int.Parse(textBnumber.Text) + ",画像ファイル='" + textBimage.Text + "',仕入れ値=" + int.Parse(textBsupp.Text) + ",発注数=" + int.Parse(textBodr.Text) + " WHERE 商品ID ='" + textBID.Text + "'";
-            try
-            {
                 cn.Open();
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("更新しました", "OICSystem");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "OICSystem");
-            }
-            finally
-            {
-                cn.Close();
-            }
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.Connection = cn;
 
-            CategoryLoad();
-            GDLoad();
-            Reload();
+                if (SerchCategory(comboBcate.Text) == true)
+                {
+                    cmd.CommandText = "INSERT INTO カテゴリマスタ (カテゴリ名)" + " VALUES (@catename)";
+                    OleDbParameter prcatename = new OleDbParameter("@catename", comboBcate.Text);
+                    cmd.Parameters.Add(prcatename);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("新規のカテゴリ名を追加");
+                }
+                else
+                {
+
+                }
+
+                cn.Close();
+
+
+                priceText = double.Parse(textBsupp.Text) * 1.6;
+                price = (int)priceText;
+
+                da = new OleDbDataAdapter("SELECT カテゴリID FROM カテゴリマスタ WHERE カテゴリ名='" + comboBcate.Text + "'", cn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                cateID = dt.Rows[0][0].ToString();
+                dt.Clear();
+                cn.Close();
+                cmd.Connection = cn;
+                cmd.CommandText = "UPDATE 商品マスタ SET 商品名='" + textBname.Text + "', 単価=" + price + ", カテゴリID=" + cateID + ",安全在庫数=" + int.Parse(textBnumber.Text) + ",画像ファイル='" + textBimage.Text + "',仕入れ値=" + int.Parse(textBsupp.Text) + ",発注数=" + int.Parse(textBodr.Text) + " WHERE 商品ID ='" + textBID.Text + "'";
+                try
+                {
+                    cn.Open();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("更新しました", "OICSystem");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "OICSystem");
+                }
+                finally
+                {
+                    cn.Close();
+                }
+
+                CategoryLoad();
+                GDLoad();
+                Reload();
+            }
+            else if (result == DialogResult.No)
+            {
+
+            }
 
         }
 
@@ -184,23 +193,32 @@ namespace WindowsFormsApplication1.panel.Goods
 
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
-            cn.Open();
-            cmd.Connection = cn;
-            cmd.CommandText = "UPDATE 商品マスタ SET フラグ = '販売中止' WHERE 商品ID='" + textBID.Text + "'";
-            cmd.ExecuteNonQuery();
-            try
+            DialogResult result = MessageBox.Show("削除しますか？", "OICSystem", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+            if (result == DialogResult.Yes)
+            {
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = "UPDATE 商品マスタ SET フラグ = '販売中止' WHERE 商品ID='" + textBID.Text + "'";
+                cmd.ExecuteNonQuery();
+                try
+                {
+
+                    MessageBox.Show("削除しました", "OICSystem");
+
+                    Reload();
+
+                }
+                catch (Exception)
+                {
+                    //MessageBox.Show(ex.Message, "IM2");
+                }
+                cn.Close();
+            }
+            else if (result == DialogResult.No)
             {
 
-                MessageBox.Show("削除しました", "OICSystem");
-
-                Reload();
-
             }
-            catch (Exception)
-            {
-                //MessageBox.Show(ex.Message, "IM2");
-            }
-            cn.Close();
 
         }
         private void BindData(int cnt)  //テキストボックスをバインド

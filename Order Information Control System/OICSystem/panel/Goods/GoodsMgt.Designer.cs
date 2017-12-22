@@ -44,9 +44,9 @@
             // 
             // goodsRegiBtn
             // 
-            this.goodsRegiBtn.Location = new System.Drawing.Point(119, 18);
+            this.goodsRegiBtn.Location = new System.Drawing.Point(488, 18);
             this.goodsRegiBtn.Name = "goodsRegiBtn";
-            this.goodsRegiBtn.Size = new System.Drawing.Size(151, 40);
+            this.goodsRegiBtn.Size = new System.Drawing.Size(81, 40);
             this.goodsRegiBtn.TabIndex = 56;
             this.goodsRegiBtn.Text = "商品登録";
             this.goodsRegiBtn.UseVisualStyleBackColor = true;
@@ -54,9 +54,9 @@
             // 
             // goodsStockBtn
             // 
-            this.goodsStockBtn.Location = new System.Drawing.Point(590, 18);
+            this.goodsStockBtn.Location = new System.Drawing.Point(659, 18);
             this.goodsStockBtn.Name = "goodsStockBtn";
-            this.goodsStockBtn.Size = new System.Drawing.Size(151, 40);
+            this.goodsStockBtn.Size = new System.Drawing.Size(82, 40);
             this.goodsStockBtn.TabIndex = 55;
             this.goodsStockBtn.Text = "商品在庫";
             this.goodsStockBtn.UseVisualStyleBackColor = true;
@@ -64,9 +64,9 @@
             // 
             // goodsListBtn
             // 
-            this.goodsListBtn.Location = new System.Drawing.Point(433, 18);
+            this.goodsListBtn.Location = new System.Drawing.Point(575, 18);
             this.goodsListBtn.Name = "goodsListBtn";
-            this.goodsListBtn.Size = new System.Drawing.Size(151, 40);
+            this.goodsListBtn.Size = new System.Drawing.Size(78, 40);
             this.goodsListBtn.TabIndex = 54;
             this.goodsListBtn.Text = "商品情報";
             this.goodsListBtn.UseVisualStyleBackColor = true;
@@ -74,9 +74,9 @@
             // 
             // goodsPopularityBtn
             // 
-            this.goodsPopularityBtn.Location = new System.Drawing.Point(276, 18);
+            this.goodsPopularityBtn.Location = new System.Drawing.Point(18, 18);
             this.goodsPopularityBtn.Name = "goodsPopularityBtn";
-            this.goodsPopularityBtn.Size = new System.Drawing.Size(151, 40);
+            this.goodsPopularityBtn.Size = new System.Drawing.Size(116, 40);
             this.goodsPopularityBtn.TabIndex = 58;
             this.goodsPopularityBtn.Text = "商品需要";
             this.goodsPopularityBtn.UseVisualStyleBackColor = true;
