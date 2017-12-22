@@ -114,17 +114,15 @@ namespace WindowsFormsApplication1
                     "' ,住所1 ='" + EmpdataGridView[6, i].Value.ToString() +
                     "' ,住所2 ='" + EmpdataGridView[7, i].Value.ToString() +
                     "' ,電話番号 ='" + EmpdataGridView[8, i].Value.ToString() +
-                    "' ,責任者権限 =" + EmpdataGridView[11, i].Value +
+                    "',責任者権限 =" + EmpdataGridView[11, i].Value +
                     " ,備考 ='" + EmpdataGridView[12, i].Value.ToString() +
                     "' WHERE 従業員ID=" + (int)EmpdataGridView[0, i].Value ;
                 cn.Open();
                 cmd.ExecuteNonQuery();
                 cn.Close();
             }
-            MessageBox.Show("更新しました", "OICSystem");
-            
+            MessageBox.Show("更新しました", "OICSystem");   
         }
-
         private void EditB_Click(object sender, EventArgs e)
         {
             if(EmpdataGridView.ReadOnly == true)
@@ -138,25 +136,6 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("編集不可になりました。", "編集不可");
             }
         }
-        //●  dataGridViewのセルをクリック
-        private void EmpdataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            switch (EmpdataGridView.CurrentCell.ColumnIndex)
-            {
-            case 2:
-                SetNameTextB.Text=EmpdataGridView[2, EmpdataGridView.CurrentCell.RowIndex].Value.ToString();
-            break;    
-            //case 0:
-                //    EmpIDTextB.Text = EmpdataGridView[0, EmpdataGridView.CurrentCell.RowIndex].Value.ToString();                    
-                //    EmpNameTextB.Text = "";
-                //break;
-                //case 2:
-                //    EmpNameTextB.Text = EmpdataGridView[2, EmpdataGridView.CurrentCell.RowIndex].Value.ToString();
-                //    EmpIDTextB.Text = "";
-                //    break;
-            }
-        }
-
         private void DeleteB_Click_1(object sender, EventArgs e)
         {
             if (MessageBox.Show(EmpNameTextB.Text + "のデータを削除してもよろしいですか", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
@@ -181,7 +160,10 @@ namespace WindowsFormsApplication1
             EmpNameTextB.Text = "";
 
         }
-
-
+        private void EmpdataGridView_Click(object sender, EventArgs e)
+        {
+                EmpIDTextB.Text=(string)EmpdataGridView.CurrentRow.Cells[0].Value.ToString();
+                EmpNameTextB.Text=(string)EmpdataGridView.CurrentRow.Cells[2].Value.ToString();
+        }
     }
 }
