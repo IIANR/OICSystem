@@ -45,7 +45,7 @@
             this.OrderListBtn.Location = new System.Drawing.Point(649, 376);
             this.OrderListBtn.Name = "OrderListBtn";
             this.OrderListBtn.Size = new System.Drawing.Size(97, 37);
-            this.OrderListBtn.TabIndex = 66;
+            this.OrderListBtn.TabIndex = 5;
             this.OrderListBtn.Text = "入金済み一覧";
             this.OrderListBtn.UseVisualStyleBackColor = true;
             this.OrderListBtn.Click += new System.EventHandler(this.OrderListBtn_Click);
@@ -73,7 +73,7 @@
             this.UpdateBtn.Location = new System.Drawing.Point(443, 376);
             this.UpdateBtn.Name = "UpdateBtn";
             this.UpdateBtn.Size = new System.Drawing.Size(97, 37);
-            this.UpdateBtn.TabIndex = 60;
+            this.UpdateBtn.TabIndex = 3;
             this.UpdateBtn.Text = "入金確認";
             this.UpdateBtn.UseVisualStyleBackColor = true;
             this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click_1);
@@ -94,7 +94,7 @@
             this.SearchBtn.Location = new System.Drawing.Point(340, 376);
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(97, 37);
-            this.SearchBtn.TabIndex = 59;
+            this.SearchBtn.TabIndex = 2;
             this.SearchBtn.Text = "検索";
             this.SearchBtn.UseVisualStyleBackColor = true;
             this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click_1);
@@ -104,14 +104,14 @@
             this.KanaTextbox.Location = new System.Drawing.Point(74, 385);
             this.KanaTextbox.Name = "KanaTextbox";
             this.KanaTextbox.Size = new System.Drawing.Size(117, 19);
-            this.KanaTextbox.TabIndex = 58;
+            this.KanaTextbox.TabIndex = 1;
             // 
             // DeleteBtn
             // 
             this.DeleteBtn.Location = new System.Drawing.Point(546, 376);
             this.DeleteBtn.Name = "DeleteBtn";
             this.DeleteBtn.Size = new System.Drawing.Size(97, 37);
-            this.DeleteBtn.TabIndex = 61;
+            this.DeleteBtn.TabIndex = 4;
             this.DeleteBtn.Text = "注文取消";
             this.DeleteBtn.UseVisualStyleBackColor = true;
             this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click_1);
@@ -155,8 +155,8 @@
         private System.Windows.Forms.Button UpdateBtn;
         private System.Windows.Forms.DataGridView OrderInfoGritview;
         private System.Windows.Forms.Button SearchBtn;
-        private System.Windows.Forms.TextBox KanaTextbox;
         private System.Windows.Forms.Button DeleteBtn;
         private System.Windows.Forms.Label KanaLabel;
+        public System.Windows.Forms.TextBox KanaTextbox;
     }
 }

@@ -45,7 +45,7 @@
             this.InputNumTextbox.Location = new System.Drawing.Point(295, 371);
             this.InputNumTextbox.Name = "InputNumTextbox";
             this.InputNumTextbox.Size = new System.Drawing.Size(100, 19);
-            this.InputNumTextbox.TabIndex = 21;
+            this.InputNumTextbox.TabIndex = 2;
             // 
             // InputNumLabel
             // 
@@ -95,7 +95,7 @@
             this.CompBtn.Location = new System.Drawing.Point(594, 360);
             this.CompBtn.Name = "CompBtn";
             this.CompBtn.Size = new System.Drawing.Size(119, 40);
-            this.CompBtn.TabIndex = 16;
+            this.CompBtn.TabIndex = 3;
             this.CompBtn.Text = "入庫完了";
             this.CompBtn.UseVisualStyleBackColor = true;
             this.CompBtn.Click += new System.EventHandler(this.CompBtn_Click);
@@ -114,7 +114,7 @@
             this.IdTextbox.Location = new System.Drawing.Point(93, 371);
             this.IdTextbox.Name = "IdTextbox";
             this.IdTextbox.Size = new System.Drawing.Size(100, 19);
-            this.IdTextbox.TabIndex = 14;
+            this.IdTextbox.TabIndex = 1;
             // 
             // DataGrid
             // 

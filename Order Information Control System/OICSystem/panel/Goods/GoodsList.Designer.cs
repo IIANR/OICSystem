@@ -69,7 +69,8 @@
             this.textBodr.Location = new System.Drawing.Point(149, 269);
             this.textBodr.Name = "textBodr";
             this.textBodr.Size = new System.Drawing.Size(50, 19);
-            this.textBodr.TabIndex = 85;
+            this.textBodr.TabIndex = 5;
+            this.textBodr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBodr_KeyPress);
             // 
             // Lblodr
             // 
@@ -94,7 +95,8 @@
             this.textBsupp.Location = new System.Drawing.Point(149, 120);
             this.textBsupp.Name = "textBsupp";
             this.textBsupp.Size = new System.Drawing.Size(83, 19);
-            this.textBsupp.TabIndex = 82;
+            this.textBsupp.TabIndex = 2;
+            this.textBsupp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBsupp_KeyPress);
             // 
             // DeleteBtn
             // 
@@ -102,7 +104,8 @@
             this.DeleteBtn.Location = new System.Drawing.Point(572, 346);
             this.DeleteBtn.Name = "DeleteBtn";
             this.DeleteBtn.Size = new System.Drawing.Size(114, 43);
-            this.DeleteBtn.TabIndex = 81;
+            this.DeleteBtn.TabIndex = 7;
+            this.DeleteBtn.TabStop = false;
             this.DeleteBtn.Text = "削除";
             this.DeleteBtn.UseVisualStyleBackColor = true;
             this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
@@ -204,6 +207,7 @@
             this.textBID.ReadOnly = true;
             this.textBID.Size = new System.Drawing.Size(83, 19);
             this.textBID.TabIndex = 69;
+            this.textBID.TabStop = false;
             // 
             // textBimage
             // 
@@ -212,6 +216,7 @@
             this.textBimage.ReadOnly = true;
             this.textBimage.Size = new System.Drawing.Size(83, 19);
             this.textBimage.TabIndex = 70;
+            this.textBimage.TabStop = false;
             this.textBimage.TextChanged += new System.EventHandler(this.textBimage_TextChanged);
             // 
             // panel
@@ -242,7 +247,7 @@
             this.UpdateBtn.Location = new System.Drawing.Point(572, 298);
             this.UpdateBtn.Name = "UpdateBtn";
             this.UpdateBtn.Size = new System.Drawing.Size(114, 43);
-            this.UpdateBtn.TabIndex = 78;
+            this.UpdateBtn.TabIndex = 6;
             this.UpdateBtn.Text = "更新";
             this.UpdateBtn.UseVisualStyleBackColor = true;
             this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
@@ -254,7 +259,7 @@
             this.comboBcate.Location = new System.Drawing.Point(149, 194);
             this.comboBcate.Name = "comboBcate";
             this.comboBcate.Size = new System.Drawing.Size(103, 20);
-            this.comboBcate.TabIndex = 71;
+            this.comboBcate.TabIndex = 3;
             this.comboBcate.ValueMember = "カテゴリID";
             // 
             // textBnumber
@@ -262,7 +267,8 @@
             this.textBnumber.Location = new System.Drawing.Point(149, 232);
             this.textBnumber.Name = "textBnumber";
             this.textBnumber.Size = new System.Drawing.Size(86, 19);
-            this.textBnumber.TabIndex = 77;
+            this.textBnumber.TabIndex = 4;
+            this.textBnumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBnumber_KeyPress);
             // 
             // goodsReginumber
             // 
@@ -289,13 +295,14 @@
             this.textBprice.ReadOnly = true;
             this.textBprice.Size = new System.Drawing.Size(83, 19);
             this.textBprice.TabIndex = 76;
+            this.textBprice.TabStop = false;
             // 
             // textBname
             // 
             this.textBname.Location = new System.Drawing.Point(149, 82);
             this.textBname.Name = "textBname";
             this.textBname.Size = new System.Drawing.Size(125, 19);
-            this.textBname.TabIndex = 75;
+            this.textBname.TabIndex = 1;
             // 
             // goodsRegiPrice
             // 

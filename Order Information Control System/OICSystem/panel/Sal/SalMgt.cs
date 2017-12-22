@@ -488,7 +488,7 @@ namespace WindowsFormsApplication1
 
         private void SalMgt_Load(object sender, EventArgs e)
         {
-            Msg.Visible = false;
+            Msg.Visible = true;
             TotalMsg.Visible = false;
             AddMsg.Visible = false;
             //analysis.Text = "↑   多" + Environment.NewLine + "l      " + Environment.NewLine + "l      " + Environment.NewLine + "↓   少";
@@ -685,6 +685,15 @@ namespace WindowsFormsApplication1
                 this.chart1.Visible = false;
                 MessageBox.Show("入力された日付は存在しません", "入力エラー");
             }
+        }
+
+        private void SalMgt_VisibleChanged(object sender, EventArgs e)
+        {
+            this.ActiveControl = this.DateStart;
+            Msg.Text="指定したい期間を入力後ボタンをクリック！";
+            TotalMsg.Visible = false;
+            AddMsg.Visible = false;
+            chart1.Visible = false;
         }
     }
 }

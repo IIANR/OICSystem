@@ -32,10 +32,7 @@ namespace WindowsFormsApplication1
             GoodsPanel.Controls.Add(StockCtr);
             GoodsPanel.Controls.Add(PopularityCtr);
 
-            ListCtr.Visible = true;
-            RegiCtr.Visible = false;
-            StockCtr.Visible = false;
-            PopularityCtr.Visible = false;
+  
 
         }
 
@@ -60,10 +57,6 @@ namespace WindowsFormsApplication1
             StockCtr.Visible = true;
         }
 
-        private void GoodsMgt_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void goodsPopularityBtn_Click(object sender, EventArgs e)
         {
@@ -71,6 +64,14 @@ namespace WindowsFormsApplication1
             RegiCtr.Visible = false;
             StockCtr.Visible = false;
             PopularityCtr.Visible = true;
+        }
+
+        private void GoodsMgt_VisibleChanged(object sender, EventArgs e)
+        {
+            ListCtr.Visible = true;
+            RegiCtr.Visible = false;
+            StockCtr.Visible = false;
+            PopularityCtr.Visible = false;
         }
     }
 }

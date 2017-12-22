@@ -37,18 +37,16 @@
             // 
             // GoodsPanel
             // 
-            this.GoodsPanel.Location = new System.Drawing.Point(0, 106);
-            this.GoodsPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.GoodsPanel.Location = new System.Drawing.Point(0, 85);
             this.GoodsPanel.Name = "GoodsPanel";
-            this.GoodsPanel.Size = new System.Drawing.Size(1013, 538);
+            this.GoodsPanel.Size = new System.Drawing.Size(760, 430);
             this.GoodsPanel.TabIndex = 57;
             // 
             // goodsRegiBtn
             // 
-            this.goodsRegiBtn.Location = new System.Drawing.Point(368, 22);
-            this.goodsRegiBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.goodsRegiBtn.Location = new System.Drawing.Point(119, 18);
             this.goodsRegiBtn.Name = "goodsRegiBtn";
-            this.goodsRegiBtn.Size = new System.Drawing.Size(201, 50);
+            this.goodsRegiBtn.Size = new System.Drawing.Size(151, 40);
             this.goodsRegiBtn.TabIndex = 56;
             this.goodsRegiBtn.Text = "商品登録";
             this.goodsRegiBtn.UseVisualStyleBackColor = true;
@@ -56,10 +54,9 @@
             // 
             // goodsStockBtn
             // 
-            this.goodsStockBtn.Location = new System.Drawing.Point(786, 22);
-            this.goodsStockBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.goodsStockBtn.Location = new System.Drawing.Point(590, 18);
             this.goodsStockBtn.Name = "goodsStockBtn";
-            this.goodsStockBtn.Size = new System.Drawing.Size(201, 50);
+            this.goodsStockBtn.Size = new System.Drawing.Size(151, 40);
             this.goodsStockBtn.TabIndex = 55;
             this.goodsStockBtn.Text = "商品在庫";
             this.goodsStockBtn.UseVisualStyleBackColor = true;
@@ -67,10 +64,9 @@
             // 
             // goodsListBtn
             // 
-            this.goodsListBtn.Location = new System.Drawing.Point(577, 22);
-            this.goodsListBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.goodsListBtn.Location = new System.Drawing.Point(433, 18);
             this.goodsListBtn.Name = "goodsListBtn";
-            this.goodsListBtn.Size = new System.Drawing.Size(201, 50);
+            this.goodsListBtn.Size = new System.Drawing.Size(151, 40);
             this.goodsListBtn.TabIndex = 54;
             this.goodsListBtn.Text = "商品情報";
             this.goodsListBtn.UseVisualStyleBackColor = true;
@@ -78,10 +74,9 @@
             // 
             // goodsPopularityBtn
             // 
-            this.goodsPopularityBtn.Location = new System.Drawing.Point(159, 22);
-            this.goodsPopularityBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.goodsPopularityBtn.Location = new System.Drawing.Point(276, 18);
             this.goodsPopularityBtn.Name = "goodsPopularityBtn";
-            this.goodsPopularityBtn.Size = new System.Drawing.Size(201, 50);
+            this.goodsPopularityBtn.Size = new System.Drawing.Size(151, 40);
             this.goodsPopularityBtn.TabIndex = 58;
             this.goodsPopularityBtn.Text = "商品需要";
             this.goodsPopularityBtn.UseVisualStyleBackColor = true;
@@ -89,16 +84,16 @@
             // 
             // GoodsMgt
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.goodsPopularityBtn);
             this.Controls.Add(this.GoodsPanel);
             this.Controls.Add(this.goodsRegiBtn);
             this.Controls.Add(this.goodsStockBtn);
             this.Controls.Add(this.goodsListBtn);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GoodsMgt";
-            this.Size = new System.Drawing.Size(1013, 644);
+            this.Size = new System.Drawing.Size(760, 515);
+            this.VisibleChanged += new System.EventHandler(this.GoodsMgt_VisibleChanged);
             this.ResumeLayout(false);
 
         }

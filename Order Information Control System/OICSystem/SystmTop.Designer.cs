@@ -77,6 +77,7 @@
             this.EmpBtn.Name = "EmpBtn";
             this.EmpBtn.Size = new System.Drawing.Size(195, 55);
             this.EmpBtn.TabIndex = 61;
+            this.EmpBtn.TabStop = false;
             this.EmpBtn.Text = "従業員管理";
             this.EmpBtn.UseVisualStyleBackColor = false;
             this.EmpBtn.Click += new System.EventHandler(this.EmpBtn_Click);
@@ -106,6 +107,7 @@
             this.MemberBtn.Name = "MemberBtn";
             this.MemberBtn.Size = new System.Drawing.Size(195, 55);
             this.MemberBtn.TabIndex = 60;
+            this.MemberBtn.TabStop = false;
             this.MemberBtn.Text = "顧客管理";
             this.MemberBtn.UseVisualStyleBackColor = false;
             this.MemberBtn.Click += new System.EventHandler(this.MemberBtn_Click);
@@ -165,6 +167,7 @@
             this.salMgtBtn.Name = "salMgtBtn";
             this.salMgtBtn.Size = new System.Drawing.Size(195, 55);
             this.salMgtBtn.TabIndex = 54;
+            this.salMgtBtn.TabStop = false;
             this.salMgtBtn.Text = "売上管理";
             this.salMgtBtn.UseVisualStyleBackColor = false;
             this.salMgtBtn.Click += new System.EventHandler(this.salMgtBtn_Click);
@@ -179,6 +182,7 @@
             this.goodsMgtBtn.Name = "goodsMgtBtn";
             this.goodsMgtBtn.Size = new System.Drawing.Size(195, 55);
             this.goodsMgtBtn.TabIndex = 53;
+            this.goodsMgtBtn.TabStop = false;
             this.goodsMgtBtn.Text = "商品管理";
             this.goodsMgtBtn.UseVisualStyleBackColor = false;
             this.goodsMgtBtn.Click += new System.EventHandler(this.goodsMgtBtn_Click);
@@ -193,6 +197,7 @@
             this.ioMgtBtn.Name = "ioMgtBtn";
             this.ioMgtBtn.Size = new System.Drawing.Size(195, 55);
             this.ioMgtBtn.TabIndex = 52;
+            this.ioMgtBtn.TabStop = false;
             this.ioMgtBtn.Text = "入出庫管理";
             this.ioMgtBtn.UseVisualStyleBackColor = false;
             this.ioMgtBtn.Click += new System.EventHandler(this.ioMgtBtn_Click);
@@ -207,6 +212,7 @@
             this.orderMgtBtn.Name = "orderMgtBtn";
             this.orderMgtBtn.Size = new System.Drawing.Size(195, 55);
             this.orderMgtBtn.TabIndex = 46;
+            this.orderMgtBtn.TabStop = false;
             this.orderMgtBtn.Text = "注文管理";
             this.orderMgtBtn.UseVisualStyleBackColor = false;
             this.orderMgtBtn.Click += new System.EventHandler(this.orderMgtBtn_Click);

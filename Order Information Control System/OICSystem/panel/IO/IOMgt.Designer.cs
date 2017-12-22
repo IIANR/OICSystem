@@ -93,6 +93,7 @@
             this.Controls.Add(this.label1);
             this.Name = "IOMgt";
             this.Size = new System.Drawing.Size(763, 518);
+            this.VisibleChanged += new System.EventHandler(this.IOMgt_VisibleChanged);
             this.ResumeLayout(false);
 
         }

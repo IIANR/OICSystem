@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.DateSelectMoney = new System.Windows.Forms.Button();
             this.Msg = new System.Windows.Forms.Label();
             this.TotalMsg = new System.Windows.Forms.Label();
@@ -120,7 +120,7 @@
             this.listBox1.ItemHeight = 12;
             this.listBox1.Location = new System.Drawing.Point(20, 63);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(723, 376);
+            this.listBox1.Size = new System.Drawing.Size(723, 400);
             this.listBox1.TabIndex = 108;
             // 
             // label1
@@ -134,17 +134,17 @@
             // 
             // chart1
             // 
-            chartArea3.AxisX.Interval = 1D;
-            chartArea3.AxisX.MajorGrid.Enabled = false;
-            chartArea3.AxisX.MajorGrid.Interval = 1D;
-            chartArea3.AxisY.MajorGrid.Enabled = false;
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
+            chartArea1.AxisX.Interval = 1D;
+            chartArea1.AxisX.MajorGrid.Enabled = false;
+            chartArea1.AxisX.MajorGrid.Interval = 1D;
+            chartArea1.AxisY.MajorGrid.Enabled = false;
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(33, 136);
             this.chart1.Name = "chart1";
-            this.chart1.Size = new System.Drawing.Size(700, 298);
+            this.chart1.Size = new System.Drawing.Size(700, 315);
             this.chart1.TabIndex = 116;
             this.chart1.Text = "chart2";
             // 
@@ -154,7 +154,7 @@
             this.analysis.Name = "analysis";
             this.analysis.Size = new System.Drawing.Size(102, 33);
             this.analysis.TabIndex = 117;
-            this.analysis.Text = "降順に並べ替え";
+            this.analysis.Text = "未販売のデータを降順に並べ替え";
             this.analysis.UseVisualStyleBackColor = true;
             this.analysis.Click += new System.EventHandler(this.analysis_Click);
             // 
@@ -199,6 +199,7 @@
             this.Name = "SalMgt";
             this.Size = new System.Drawing.Size(760, 515);
             this.Load += new System.EventHandler(this.SalMgt_Load);
+            this.VisibleChanged += new System.EventHandler(this.SalMgt_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

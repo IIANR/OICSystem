@@ -297,6 +297,7 @@ namespace WindowsFormsApplication1.panel.Goods
 
         private void GoodsList_Load(object sender, EventArgs e)
         {
+            this.ActiveControl = this.textBname;
             BindData(0);
         }
 
@@ -312,6 +313,35 @@ namespace WindowsFormsApplication1.panel.Goods
             textBodr.DataBindings.Clear();
 
             BindData(0);
+        }
+
+        private void textBsupp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            textBprice.Clear();
+            if (double.TryParse(textBsupp.Text, out priceText))
+            {
+                priceText = priceText * 1.6;
+                price = (int)priceText;
+                textBprice.Text = price.ToString();
+            }
+        }
+
+        private void textBnumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < '0' || '9' < e.KeyChar) && e.KeyChar != '\b')
+            {
+                //押されたキーが 0～9でない場合は、イベントをキャンセルする
+                e.Handled = true;
+            }
+        }
+
+        private void textBodr_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < '0' || '9' < e.KeyChar) && e.KeyChar != '\b')
+            {
+                //押されたキーが 0～9でない場合は、イベントをキャンセルする
+                e.Handled = true;
+            }
         }
     }
 

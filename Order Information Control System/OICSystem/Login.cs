@@ -125,7 +125,7 @@ namespace WindowsFormsApplication1
                     db_id = (int)rd.GetValue(0);
                     db_name = (string)rd.GetValue(1);
                     db_admin = (bool)rd.GetValue(10);
-                    db_pass = (string)rd.GetValue(12);
+                    db_pass = (string)rd.GetValue(11);
                     if (db_id == inid)
                     {
                         inpass = PassTextbox.Text;

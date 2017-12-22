@@ -134,6 +134,7 @@
             this.DeleteBtn.Name = "DeleteBtn";
             this.DeleteBtn.Size = new System.Drawing.Size(102, 40);
             this.DeleteBtn.TabIndex = 96;
+            this.DeleteBtn.TabStop = false;
             this.DeleteBtn.Text = "削除";
             this.DeleteBtn.UseVisualStyleBackColor = true;
             this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click_1);
@@ -160,7 +161,7 @@
             this.NumCombo.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.NumCombo.Name = "NumCombo";
             this.NumCombo.Size = new System.Drawing.Size(42, 20);
-            this.NumCombo.TabIndex = 73;
+            this.NumCombo.TabIndex = 2;
             this.NumCombo.Text = "1";
             this.NumCombo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumCombo_KeyPress_1);
             // 
@@ -181,7 +182,7 @@
             this.KanaTextbox.Location = new System.Drawing.Point(111, 252);
             this.KanaTextbox.Name = "KanaTextbox";
             this.KanaTextbox.Size = new System.Drawing.Size(186, 19);
-            this.KanaTextbox.TabIndex = 76;
+            this.KanaTextbox.TabIndex = 4;
             // 
             // KanaLabel
             // 
@@ -197,7 +198,7 @@
             this.AddressTextbox2.Location = new System.Drawing.Point(111, 336);
             this.AddressTextbox2.Name = "AddressTextbox2";
             this.AddressTextbox2.Size = new System.Drawing.Size(186, 19);
-            this.AddressTextbox2.TabIndex = 79;
+            this.AddressTextbox2.TabIndex = 7;
             // 
             // AddressLabel2
             // 
@@ -231,7 +232,8 @@
             this.AddBtn.Location = new System.Drawing.Point(387, 343);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(102, 40);
-            this.AddBtn.TabIndex = 74;
+            this.AddBtn.TabIndex = 9;
+            this.AddBtn.TabStop = false;
             this.AddBtn.Text = "追加";
             this.AddBtn.UseVisualStyleBackColor = true;
             this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click_1);
@@ -241,7 +243,7 @@
             this.PoscodeTextbox.Location = new System.Drawing.Point(111, 280);
             this.PoscodeTextbox.Name = "PoscodeTextbox";
             this.PoscodeTextbox.Size = new System.Drawing.Size(186, 19);
-            this.PoscodeTextbox.TabIndex = 77;
+            this.PoscodeTextbox.TabIndex = 5;
             this.PoscodeTextbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PoscodeTextbox_KeyDown_1);
             this.PoscodeTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PoscodeTextbox_KeyPress_1);
             // 
@@ -259,7 +261,7 @@
             this.TelTextbox.Location = new System.Drawing.Point(111, 364);
             this.TelTextbox.Name = "TelTextbox";
             this.TelTextbox.Size = new System.Drawing.Size(186, 19);
-            this.TelTextbox.TabIndex = 80;
+            this.TelTextbox.TabIndex = 8;
             this.TelTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TelTextbox_KeyPress_1);
             // 
             // AddressTextbox1
@@ -267,14 +269,14 @@
             this.AddressTextbox1.Location = new System.Drawing.Point(111, 308);
             this.AddressTextbox1.Name = "AddressTextbox1";
             this.AddressTextbox1.Size = new System.Drawing.Size(186, 19);
-            this.AddressTextbox1.TabIndex = 78;
+            this.AddressTextbox1.TabIndex = 6;
             // 
             // NameTextbox
             // 
             this.NameTextbox.Location = new System.Drawing.Point(111, 224);
             this.NameTextbox.Name = "NameTextbox";
             this.NameTextbox.Size = new System.Drawing.Size(186, 19);
-            this.NameTextbox.TabIndex = 75;
+            this.NameTextbox.TabIndex = 3;
             this.NameTextbox.Leave += new System.EventHandler(this.NameTextbox_Leave);
             // 
             // GoodsidTextBox
@@ -282,7 +284,7 @@
             this.GoodsidTextBox.Location = new System.Drawing.Point(111, 88);
             this.GoodsidTextBox.Name = "GoodsidTextBox";
             this.GoodsidTextBox.Size = new System.Drawing.Size(186, 19);
-            this.GoodsidTextBox.TabIndex = 72;
+            this.GoodsidTextBox.TabIndex = 1;
             this.GoodsidTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.GoodsidTextBox_KeyPress);
             // 
             // OrderCompBtn
@@ -291,6 +293,7 @@
             this.OrderCompBtn.Name = "OrderCompBtn";
             this.OrderCompBtn.Size = new System.Drawing.Size(102, 40);
             this.OrderCompBtn.TabIndex = 81;
+            this.OrderCompBtn.TabStop = false;
             this.OrderCompBtn.Text = "注文完了";
             this.OrderCompBtn.UseVisualStyleBackColor = true;
             this.OrderCompBtn.Click += new System.EventHandler(this.OrderCompBtn_Click_1);
@@ -426,7 +429,6 @@
         private System.Windows.Forms.TextBox TelTextbox;
         private System.Windows.Forms.TextBox AddressTextbox1;
         private System.Windows.Forms.TextBox NameTextbox;
-        private System.Windows.Forms.TextBox GoodsidTextBox;
         private System.Windows.Forms.Button OrderCompBtn;
         private System.Windows.Forms.Label TelLabel;
         private System.Windows.Forms.Label AddressLabel1;
@@ -435,5 +437,6 @@
         private System.Windows.Forms.Label NumLabel;
         private System.Windows.Forms.Label GoodsidLabel;
         private System.Windows.Forms.Label OrderGoodsLabel;
+        public System.Windows.Forms.TextBox GoodsidTextBox;
     }
 }

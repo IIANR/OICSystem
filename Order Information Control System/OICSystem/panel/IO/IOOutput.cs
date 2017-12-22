@@ -50,6 +50,7 @@ namespace WindowsFormsApplication1.panel.IO
 
         private void IOOutput_Load(object sender, EventArgs e)
         {
+            this.ActiveControl = this.IdTextbox;
             ErrMsg.Visible = false;
 
             //クリア

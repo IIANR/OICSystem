@@ -69,6 +69,7 @@
             this.Controls.Add(this.button1);
             this.Name = "OrderMgt";
             this.Size = new System.Drawing.Size(760, 515);
+            this.VisibleChanged += new System.EventHandler(this.OrderMgt_VisibleChanged);
             this.ResumeLayout(false);
 
         }

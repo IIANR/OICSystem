@@ -31,6 +31,7 @@ namespace WindowsFormsApplication1
         private void button1_Click(object sender, EventArgs e)
         {
             ctr1.Visible = true;
+            ctr1.ActiveControl = ctr1.GoodsidTextBox;
             ctr2.Visible = false;
         }
 
@@ -38,6 +39,15 @@ namespace WindowsFormsApplication1
         {
             ctr1.Visible = false;
             ctr2.Visible = true;
+            ctr2.ActiveControl = ctr2.KanaTextbox;
         }
+
+        private void OrderMgt_VisibleChanged(object sender, EventArgs e)
+        {
+            ctr1.Visible = true;
+            ctr1.ActiveControl = ctr1.GoodsidTextBox;
+            ctr2.Visible = false;
+        }
+
     }
 }

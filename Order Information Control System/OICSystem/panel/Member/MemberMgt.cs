@@ -172,6 +172,7 @@ namespace WindowsFormsApplication1
 
         private void MemberMgt_Load_1(object sender, EventArgs e)
         {
+            this.ActiveControl = this.MemberNameTBox;
             dataload();
         }
 

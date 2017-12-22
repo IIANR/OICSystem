@@ -36,6 +36,7 @@ namespace WindowsFormsApplication1.panel
 
         private void GoodsRegi_Load(object sender, EventArgs e)
         {
+            this.ActiveControl = this.textBname;
             dataLoad();
             GoodsLoad();
 
@@ -357,7 +358,7 @@ namespace WindowsFormsApplication1.panel
 
         private void textBnumber_KeyPress(object sender, KeyPressEventArgs e)//数値以外キャンセル　安全在庫数
         {
-            if (e.KeyChar < '0' || '9' < e.KeyChar && e.KeyChar != '\b')
+            if ((e.KeyChar < '0' || '9' < e.KeyChar) && e.KeyChar != '\b')
             {
                 //押されたキーが 0～9でない場合は、イベントをキャンセルする
                 e.Handled = true;
@@ -366,7 +367,7 @@ namespace WindowsFormsApplication1.panel
 
         private void textBodr_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar < '0' || '9' < e.KeyChar && e.KeyChar != '\b')
+            if ((e.KeyChar < '0' || '9' < e.KeyChar) && e.KeyChar != '\b')
             {
                 //押されたキーが 0～9でない場合は、イベントをキャンセルする
                 e.Handled = true;
@@ -389,8 +390,7 @@ namespace WindowsFormsApplication1.panel
 
         private void textBsupp_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar < '0' || '9' < e.KeyChar && e.KeyChar != '\b')
-
+            if ((e.KeyChar < '0' || '9' < e.KeyChar) && e.KeyChar != '\b')
             {
                 //押されたキーが 0～9でない場合は、イベントをキャンセルする
                 e.Handled = true;

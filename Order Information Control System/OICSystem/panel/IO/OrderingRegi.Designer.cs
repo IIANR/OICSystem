@@ -48,7 +48,7 @@
             this.RegiBtn.Location = new System.Drawing.Point(617, 360);
             this.RegiBtn.Name = "RegiBtn";
             this.RegiBtn.Size = new System.Drawing.Size(92, 37);
-            this.RegiBtn.TabIndex = 99;
+            this.RegiBtn.TabIndex = 6;
             this.RegiBtn.Text = "登録";
             this.RegiBtn.UseVisualStyleBackColor = true;
             this.RegiBtn.Click += new System.EventHandler(this.RegiBtn_Click);
@@ -69,7 +69,7 @@
             this.AddressTextbox2.Location = new System.Drawing.Point(230, 250);
             this.AddressTextbox2.Name = "AddressTextbox2";
             this.AddressTextbox2.Size = new System.Drawing.Size(223, 27);
-            this.AddressTextbox2.TabIndex = 90;
+            this.AddressTextbox2.TabIndex = 4;
             // 
             // AddressLabel2
             // 
@@ -87,7 +87,7 @@
             this.PoscodeTextbox.Location = new System.Drawing.Point(230, 159);
             this.PoscodeTextbox.Name = "PoscodeTextbox";
             this.PoscodeTextbox.Size = new System.Drawing.Size(223, 27);
-            this.PoscodeTextbox.TabIndex = 88;
+            this.PoscodeTextbox.TabIndex = 2;
             this.PoscodeTextbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PoscodeTextbox_KeyDown);
             this.PoscodeTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PoscodeTextbox_KeyPress);
             // 
@@ -107,7 +107,7 @@
             this.TelTextbox.Location = new System.Drawing.Point(230, 304);
             this.TelTextbox.Name = "TelTextbox";
             this.TelTextbox.Size = new System.Drawing.Size(223, 27);
-            this.TelTextbox.TabIndex = 91;
+            this.TelTextbox.TabIndex = 5;
             // 
             // AddressTextbox1
             // 
@@ -115,7 +115,7 @@
             this.AddressTextbox1.Location = new System.Drawing.Point(230, 201);
             this.AddressTextbox1.Name = "AddressTextbox1";
             this.AddressTextbox1.Size = new System.Drawing.Size(223, 27);
-            this.AddressTextbox1.TabIndex = 89;
+            this.AddressTextbox1.TabIndex = 3;
             // 
             // NameTextbox
             // 
@@ -123,7 +123,7 @@
             this.NameTextbox.Location = new System.Drawing.Point(230, 110);
             this.NameTextbox.Name = "NameTextbox";
             this.NameTextbox.Size = new System.Drawing.Size(223, 27);
-            this.NameTextbox.TabIndex = 87;
+            this.NameTextbox.TabIndex = 1;
             // 
             // TelLabel
             // 

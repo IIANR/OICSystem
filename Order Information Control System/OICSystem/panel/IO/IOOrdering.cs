@@ -27,6 +27,7 @@ namespace WindowsFormsApplication1
 
         private void IOOrdering_Load(object sender, EventArgs e)
         {
+            this.ActiveControl = this.InputNameCombo;
             dt = new DataTable();
             cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
 
@@ -172,6 +173,9 @@ namespace WindowsFormsApplication1
                 OrderingGoodsDataGrid.DataSource = dt;
 
                 OrderingGoodsDataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+                cmd.Parameters.Clear();
+                cmd2.Parameters.Clear();
 
                 GoodsidTextBox.Text = "";
                 OrderingPayTextbox.Text = "";

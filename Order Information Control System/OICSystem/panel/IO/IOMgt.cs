@@ -21,10 +21,6 @@ namespace WindowsFormsApplication1
             ctrPanel.Controls.Add(InOutPanel);
             ctrPanel.Controls.Add(RegiPanel);
             ctrPanel.Controls.Add(orderingPanel);
-
-            InOutPanel.Visible = false;
-            RegiPanel.Visible = false;
-            orderingPanel.Visible = false;
         }
 
         private void RegiBtn_Click(object sender, System.EventArgs e)
@@ -42,6 +38,13 @@ namespace WindowsFormsApplication1
         }
 
         private void InOutPanelBtn_Click(object sender, System.EventArgs e)
+        {
+            InOutPanel.Visible = true;
+            RegiPanel.Visible = false;
+            orderingPanel.Visible = false;
+        }
+
+        private void IOMgt_VisibleChanged(object sender, System.EventArgs e)
         {
             InOutPanel.Visible = true;
             RegiPanel.Visible = false;

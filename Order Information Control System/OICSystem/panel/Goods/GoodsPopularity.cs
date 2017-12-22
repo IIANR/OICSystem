@@ -311,5 +311,10 @@ namespace WindowsFormsApplication1
         {
             PrintForm(this);
         }
+
+        private void GoodsPopularity_Load(object sender, EventArgs e)
+        {
+            this.ActiveControl = this.DateStart;
+        }
     }
 }

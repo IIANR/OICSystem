@@ -87,6 +87,7 @@
             this.Addres2Textbox.ReadOnly = true;
             this.Addres2Textbox.Size = new System.Drawing.Size(175, 19);
             this.Addres2Textbox.TabIndex = 43;
+            this.Addres2Textbox.TabStop = false;
             // 
             // Addres1Textbox
             // 
@@ -95,6 +96,7 @@
             this.Addres1Textbox.ReadOnly = true;
             this.Addres1Textbox.Size = new System.Drawing.Size(175, 19);
             this.Addres1Textbox.TabIndex = 42;
+            this.Addres1Textbox.TabStop = false;
             // 
             // PosTextbox
             // 
@@ -103,13 +105,14 @@
             this.PosTextbox.ReadOnly = true;
             this.PosTextbox.Size = new System.Drawing.Size(175, 19);
             this.PosTextbox.TabIndex = 41;
+            this.PosTextbox.TabStop = false;
             // 
             // OrderingPrintBtn
             // 
             this.OrderingPrintBtn.Location = new System.Drawing.Point(652, 368);
             this.OrderingPrintBtn.Name = "OrderingPrintBtn";
             this.OrderingPrintBtn.Size = new System.Drawing.Size(89, 33);
-            this.OrderingPrintBtn.TabIndex = 40;
+            this.OrderingPrintBtn.TabIndex = 4;
             this.OrderingPrintBtn.Text = "発注書印刷";
             this.OrderingPrintBtn.UseVisualStyleBackColor = true;
             this.OrderingPrintBtn.Click += new System.EventHandler(this.OrderingPrintBtn_Click);
@@ -119,7 +122,7 @@
             this.InputNumTextbox.Location = new System.Drawing.Point(555, 320);
             this.InputNumTextbox.Name = "InputNumTextbox";
             this.InputNumTextbox.Size = new System.Drawing.Size(100, 19);
-            this.InputNumTextbox.TabIndex = 39;
+            this.InputNumTextbox.TabIndex = 2;
             // 
             // label6
             // 
@@ -135,7 +138,7 @@
             this.OrderingCompBtn.Location = new System.Drawing.Point(555, 368);
             this.OrderingCompBtn.Name = "OrderingCompBtn";
             this.OrderingCompBtn.Size = new System.Drawing.Size(89, 33);
-            this.OrderingCompBtn.TabIndex = 37;
+            this.OrderingCompBtn.TabIndex = 3;
             this.OrderingCompBtn.Text = "発注";
             this.OrderingCompBtn.UseVisualStyleBackColor = true;
             this.OrderingCompBtn.Click += new System.EventHandler(this.OrderingCompBtn_Click);
@@ -147,6 +150,7 @@
             this.OrderingPayTextbox.ReadOnly = true;
             this.OrderingPayTextbox.Size = new System.Drawing.Size(100, 19);
             this.OrderingPayTextbox.TabIndex = 36;
+            this.OrderingPayTextbox.TabStop = false;
             // 
             // label5
             // 
@@ -164,6 +168,7 @@
             this.GoodsidTextBox.ReadOnly = true;
             this.GoodsidTextBox.Size = new System.Drawing.Size(100, 19);
             this.GoodsidTextBox.TabIndex = 34;
+            this.GoodsidTextBox.TabStop = false;
             // 
             // label4
             // 
@@ -190,6 +195,7 @@
             this.TelTextBox.ReadOnly = true;
             this.TelTextBox.Size = new System.Drawing.Size(175, 19);
             this.TelTextBox.TabIndex = 31;
+            this.TelTextBox.TabStop = false;
             // 
             // label3
             // 
@@ -207,7 +213,7 @@
             this.InputNameCombo.Location = new System.Drawing.Point(555, 70);
             this.InputNameCombo.Name = "InputNameCombo";
             this.InputNameCombo.Size = new System.Drawing.Size(175, 20);
-            this.InputNameCombo.TabIndex = 29;
+            this.InputNameCombo.TabIndex = 1;
             this.InputNameCombo.TextChanged += new System.EventHandler(this.InputNameCombo_TextChanged);
             // 
             // label2
@@ -247,7 +253,7 @@
             this.ReloadBtn.Location = new System.Drawing.Point(20, 15);
             this.ReloadBtn.Name = "ReloadBtn";
             this.ReloadBtn.Size = new System.Drawing.Size(81, 27);
-            this.ReloadBtn.TabIndex = 47;
+            this.ReloadBtn.TabIndex = 5;
             this.ReloadBtn.Text = "更新";
             this.ReloadBtn.UseVisualStyleBackColor = true;
             this.ReloadBtn.Click += new System.EventHandler(this.ReloadBtn_Click);

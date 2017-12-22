@@ -23,9 +23,6 @@ namespace WindowsFormsApplication1
 
             panel1.Controls.Add(ctr1);
             panel1.Controls.Add(ctr2);
-
-            ctr1.Visible = true;
-            ctr2.Visible = false;
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -38,6 +35,12 @@ namespace WindowsFormsApplication1
         {
             ctr1.Visible = false;
             ctr2.Visible = true;
+        }
+
+        private void EmpMgtHome_VisibleChanged(object sender, EventArgs e)
+        {
+            ctr1.Visible = true;
+            ctr2.Visible = false;
         }
     }
 }

@@ -29,6 +29,7 @@ namespace WindowsFormsApplication1.panel.Goods
 
         private void GoodsStock_Load(object sender, EventArgs e)
         {
+            this.ActiveControl = this.GoodsStockTBox;
             dataload();
         }
 

@@ -69,6 +69,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "EmpMgtHome";
             this.Size = new System.Drawing.Size(760, 515);
+            this.VisibleChanged += new System.EventHandler(this.EmpMgtHome_VisibleChanged);
             this.ResumeLayout(false);
 
         }
