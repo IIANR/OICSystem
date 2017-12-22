@@ -168,6 +168,8 @@ namespace WindowsFormsApplication1.panel.Goods
 
             CategoryLoad();
             GDLoad();
+            Reload();
+
         }
 
 
@@ -191,7 +193,7 @@ namespace WindowsFormsApplication1.panel.Goods
 
                 MessageBox.Show("削除しました", "OICSystem");
 
-                BindData(1);
+                Reload();
 
             }
             catch (Exception)
@@ -292,10 +294,14 @@ namespace WindowsFormsApplication1.panel.Goods
             imageChange();
         }
 
-        private void ReloadBtn_Click(object sender, EventArgs e)
+
+        private void GoodsList_Load(object sender, EventArgs e)
         {
+            BindData(0);
+        }
 
-
+        private void Reload()
+        {
             textBID.DataBindings.Clear();
             textBname.DataBindings.Clear();
             textBsupp.DataBindings.Clear();
@@ -305,11 +311,6 @@ namespace WindowsFormsApplication1.panel.Goods
             textBnumber.DataBindings.Clear();
             textBodr.DataBindings.Clear();
 
-            BindData(0);
-        }
-
-        private void GoodsList_Load(object sender, EventArgs e)
-        {
             BindData(0);
         }
     }

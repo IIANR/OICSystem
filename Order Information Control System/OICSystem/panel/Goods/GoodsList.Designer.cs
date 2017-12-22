@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GoodsList));
-            this.ReloadBtn = new System.Windows.Forms.Button();
             this.textBodr = new System.Windows.Forms.TextBox();
             this.Lblodr = new System.Windows.Forms.Label();
             this.Lblsupp = new System.Windows.Forms.Label();
@@ -65,60 +64,44 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // ReloadBtn
-            // 
-            this.ReloadBtn.Location = new System.Drawing.Point(106, 433);
-            this.ReloadBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.ReloadBtn.Name = "ReloadBtn";
-            this.ReloadBtn.Size = new System.Drawing.Size(152, 54);
-            this.ReloadBtn.TabIndex = 86;
-            this.ReloadBtn.Text = "リロード";
-            this.ReloadBtn.UseVisualStyleBackColor = true;
-            this.ReloadBtn.Click += new System.EventHandler(this.ReloadBtn_Click);
-            // 
             // textBodr
             // 
-            this.textBodr.Location = new System.Drawing.Point(199, 336);
-            this.textBodr.Margin = new System.Windows.Forms.Padding(4);
+            this.textBodr.Location = new System.Drawing.Point(149, 269);
             this.textBodr.Name = "textBodr";
-            this.textBodr.Size = new System.Drawing.Size(65, 22);
+            this.textBodr.Size = new System.Drawing.Size(50, 19);
             this.textBodr.TabIndex = 85;
             // 
             // Lblodr
             // 
             this.Lblodr.AutoSize = true;
-            this.Lblodr.Location = new System.Drawing.Point(130, 344);
-            this.Lblodr.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lblodr.Location = new System.Drawing.Point(98, 275);
             this.Lblodr.Name = "Lblodr";
-            this.Lblodr.Size = new System.Drawing.Size(55, 15);
+            this.Lblodr.Size = new System.Drawing.Size(43, 12);
             this.Lblodr.TabIndex = 84;
             this.Lblodr.Text = "発注数:";
             // 
             // Lblsupp
             // 
             this.Lblsupp.AutoSize = true;
-            this.Lblsupp.Location = new System.Drawing.Point(115, 158);
-            this.Lblsupp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lblsupp.Location = new System.Drawing.Point(86, 126);
             this.Lblsupp.Name = "Lblsupp";
-            this.Lblsupp.Size = new System.Drawing.Size(68, 15);
+            this.Lblsupp.Size = new System.Drawing.Size(54, 12);
             this.Lblsupp.TabIndex = 83;
             this.Lblsupp.Text = "仕入れ値:";
             // 
             // textBsupp
             // 
-            this.textBsupp.Location = new System.Drawing.Point(199, 150);
-            this.textBsupp.Margin = new System.Windows.Forms.Padding(4);
+            this.textBsupp.Location = new System.Drawing.Point(149, 120);
             this.textBsupp.Name = "textBsupp";
-            this.textBsupp.Size = new System.Drawing.Size(109, 22);
+            this.textBsupp.Size = new System.Drawing.Size(83, 19);
             this.textBsupp.TabIndex = 82;
             // 
             // DeleteBtn
             // 
             this.DeleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeleteBtn.Location = new System.Drawing.Point(762, 433);
-            this.DeleteBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.DeleteBtn.Location = new System.Drawing.Point(572, 346);
             this.DeleteBtn.Name = "DeleteBtn";
-            this.DeleteBtn.Size = new System.Drawing.Size(152, 54);
+            this.DeleteBtn.Size = new System.Drawing.Size(114, 43);
             this.DeleteBtn.TabIndex = 81;
             this.DeleteBtn.Text = "削除";
             this.DeleteBtn.UseVisualStyleBackColor = true;
@@ -141,21 +124,21 @@
             this.bindingNavigatorSeparator1,
             this.bindingNavigatorMoveNextItem,
             this.bindingNavigatorMoveLastItem});
-            this.bindingNavigator1.Location = new System.Drawing.Point(362, 486);
+            this.bindingNavigator1.Location = new System.Drawing.Point(272, 389);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
             this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(215, 27);
+            this.bindingNavigator1.Size = new System.Drawing.Size(201, 27);
             this.bindingNavigator1.TabIndex = 80;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(37, 24);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(38, 24);
             this.bindingNavigatorCountItem.Text = "/ {0}";
             this.bindingNavigatorCountItem.ToolTipText = "項目の総数";
             // 
@@ -187,7 +170,7 @@
             this.bindingNavigatorPositionItem.AccessibleName = "位置";
             this.bindingNavigatorPositionItem.AutoSize = false;
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(65, 27);
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 25);
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "現在の場所";
             // 
@@ -216,20 +199,18 @@
             // 
             // textBID
             // 
-            this.textBID.Location = new System.Drawing.Point(199, 57);
-            this.textBID.Margin = new System.Windows.Forms.Padding(4);
+            this.textBID.Location = new System.Drawing.Point(149, 46);
             this.textBID.Name = "textBID";
             this.textBID.ReadOnly = true;
-            this.textBID.Size = new System.Drawing.Size(109, 22);
+            this.textBID.Size = new System.Drawing.Size(83, 19);
             this.textBID.TabIndex = 69;
             // 
             // textBimage
             // 
-            this.textBimage.Location = new System.Drawing.Point(674, 26);
-            this.textBimage.Margin = new System.Windows.Forms.Padding(4);
+            this.textBimage.Location = new System.Drawing.Point(506, 21);
             this.textBimage.Name = "textBimage";
             this.textBimage.ReadOnly = true;
-            this.textBimage.Size = new System.Drawing.Size(109, 22);
+            this.textBimage.Size = new System.Drawing.Size(83, 19);
             this.textBimage.TabIndex = 70;
             this.textBimage.TextChanged += new System.EventHandler(this.textBimage_TextChanged);
             // 
@@ -238,10 +219,9 @@
             this.panel.AllowDrop = true;
             this.panel.BackColor = System.Drawing.Color.White;
             this.panel.Controls.Add(this.pictureBox);
-            this.panel.Location = new System.Drawing.Point(564, 57);
-            this.panel.Margin = new System.Windows.Forms.Padding(4);
+            this.panel.Location = new System.Drawing.Point(423, 46);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(349, 309);
+            this.panel.Size = new System.Drawing.Size(262, 247);
             this.panel.TabIndex = 79;
             this.panel.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel_DragDrop);
             this.panel.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel_DragEnter);
@@ -250,9 +230,8 @@
             // 
             this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(349, 309);
+            this.pictureBox.Size = new System.Drawing.Size(262, 247);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 17;
             this.pictureBox.TabStop = false;
@@ -260,10 +239,9 @@
             // UpdateBtn
             // 
             this.UpdateBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UpdateBtn.Location = new System.Drawing.Point(762, 372);
-            this.UpdateBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.UpdateBtn.Location = new System.Drawing.Point(572, 298);
             this.UpdateBtn.Name = "UpdateBtn";
-            this.UpdateBtn.Size = new System.Drawing.Size(152, 54);
+            this.UpdateBtn.Size = new System.Drawing.Size(114, 43);
             this.UpdateBtn.TabIndex = 78;
             this.UpdateBtn.Text = "更新";
             this.UpdateBtn.UseVisualStyleBackColor = true;
@@ -273,65 +251,58 @@
             // 
             this.comboBcate.DisplayMember = "カテゴリID";
             this.comboBcate.FormattingEnabled = true;
-            this.comboBcate.Location = new System.Drawing.Point(199, 242);
-            this.comboBcate.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBcate.Location = new System.Drawing.Point(149, 194);
             this.comboBcate.Name = "comboBcate";
-            this.comboBcate.Size = new System.Drawing.Size(136, 23);
+            this.comboBcate.Size = new System.Drawing.Size(103, 20);
             this.comboBcate.TabIndex = 71;
             this.comboBcate.ValueMember = "カテゴリID";
             // 
             // textBnumber
             // 
-            this.textBnumber.Location = new System.Drawing.Point(199, 290);
-            this.textBnumber.Margin = new System.Windows.Forms.Padding(4);
+            this.textBnumber.Location = new System.Drawing.Point(149, 232);
             this.textBnumber.Name = "textBnumber";
-            this.textBnumber.Size = new System.Drawing.Size(113, 22);
+            this.textBnumber.Size = new System.Drawing.Size(86, 19);
             this.textBnumber.TabIndex = 77;
             // 
             // goodsReginumber
             // 
             this.goodsReginumber.AutoSize = true;
-            this.goodsReginumber.Location = new System.Drawing.Point(98, 298);
-            this.goodsReginumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.goodsReginumber.Location = new System.Drawing.Point(74, 238);
             this.goodsReginumber.Name = "goodsReginumber";
-            this.goodsReginumber.Size = new System.Drawing.Size(85, 15);
+            this.goodsReginumber.Size = new System.Drawing.Size(67, 12);
             this.goodsReginumber.TabIndex = 74;
             this.goodsReginumber.Text = "定量発注数:";
             // 
             // goodsRegicateID
             // 
             this.goodsRegicateID.AutoSize = true;
-            this.goodsRegicateID.Location = new System.Drawing.Point(103, 252);
-            this.goodsRegicateID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.goodsRegicateID.Location = new System.Drawing.Point(77, 202);
             this.goodsRegicateID.Name = "goodsRegicateID";
-            this.goodsRegicateID.Size = new System.Drawing.Size(80, 15);
+            this.goodsRegicateID.Size = new System.Drawing.Size(63, 12);
             this.goodsRegicateID.TabIndex = 72;
             this.goodsRegicateID.Text = "カテゴリー名:";
             // 
             // textBprice
             // 
-            this.textBprice.Location = new System.Drawing.Point(199, 196);
-            this.textBprice.Margin = new System.Windows.Forms.Padding(4);
+            this.textBprice.Location = new System.Drawing.Point(149, 157);
             this.textBprice.Name = "textBprice";
             this.textBprice.ReadOnly = true;
-            this.textBprice.Size = new System.Drawing.Size(109, 22);
+            this.textBprice.Size = new System.Drawing.Size(83, 19);
             this.textBprice.TabIndex = 76;
             // 
             // textBname
             // 
-            this.textBname.Location = new System.Drawing.Point(199, 103);
-            this.textBname.Margin = new System.Windows.Forms.Padding(4);
+            this.textBname.Location = new System.Drawing.Point(149, 82);
             this.textBname.Name = "textBname";
-            this.textBname.Size = new System.Drawing.Size(165, 22);
+            this.textBname.Size = new System.Drawing.Size(125, 19);
             this.textBname.TabIndex = 75;
             // 
             // goodsRegiPrice
             // 
             this.goodsRegiPrice.AutoSize = true;
-            this.goodsRegiPrice.Location = new System.Drawing.Point(146, 204);
-            this.goodsRegiPrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.goodsRegiPrice.Location = new System.Drawing.Point(110, 163);
             this.goodsRegiPrice.Name = "goodsRegiPrice";
-            this.goodsRegiPrice.Size = new System.Drawing.Size(40, 15);
+            this.goodsRegiPrice.Size = new System.Drawing.Size(31, 12);
             this.goodsRegiPrice.TabIndex = 68;
             this.goodsRegiPrice.Text = "単価:";
             this.goodsRegiPrice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -339,10 +310,9 @@
             // goodsRegiName
             // 
             this.goodsRegiName.AutoSize = true;
-            this.goodsRegiName.Location = new System.Drawing.Point(130, 112);
-            this.goodsRegiName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.goodsRegiName.Location = new System.Drawing.Point(98, 90);
             this.goodsRegiName.Name = "goodsRegiName";
-            this.goodsRegiName.Size = new System.Drawing.Size(55, 15);
+            this.goodsRegiName.Size = new System.Drawing.Size(43, 12);
             this.goodsRegiName.TabIndex = 73;
             this.goodsRegiName.Text = "商品名:";
             this.goodsRegiName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -350,19 +320,17 @@
             // goodsRegiId
             // 
             this.goodsRegiId.AutoSize = true;
-            this.goodsRegiId.Location = new System.Drawing.Point(131, 66);
-            this.goodsRegiId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.goodsRegiId.Location = new System.Drawing.Point(98, 53);
             this.goodsRegiId.Name = "goodsRegiId";
-            this.goodsRegiId.Size = new System.Drawing.Size(54, 15);
+            this.goodsRegiId.Size = new System.Drawing.Size(42, 12);
             this.goodsRegiId.TabIndex = 67;
             this.goodsRegiId.Text = "商品ID:";
             this.goodsRegiId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // GoodsList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.ReloadBtn);
             this.Controls.Add(this.textBodr);
             this.Controls.Add(this.Lblodr);
             this.Controls.Add(this.Lblsupp);
@@ -382,9 +350,8 @@
             this.Controls.Add(this.goodsRegiPrice);
             this.Controls.Add(this.goodsRegiName);
             this.Controls.Add(this.goodsRegiId);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GoodsList";
-            this.Size = new System.Drawing.Size(1013, 538);
+            this.Size = new System.Drawing.Size(760, 430);
             this.Load += new System.EventHandler(this.GoodsList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
@@ -398,7 +365,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button ReloadBtn;
         private System.Windows.Forms.TextBox textBodr;
         private System.Windows.Forms.Label Lblodr;
         private System.Windows.Forms.Label Lblsupp;
