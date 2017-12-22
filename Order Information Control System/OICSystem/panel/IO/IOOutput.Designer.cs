@@ -160,7 +160,7 @@
         private System.Windows.Forms.Label ErrMsg;
         private System.Windows.Forms.Button CompBtn;
         private System.Windows.Forms.Label idLabel;
-        private System.Windows.Forms.TextBox IdTextbox;
         private System.Windows.Forms.DataGridView DataGrid;
+        public System.Windows.Forms.TextBox IdTextbox;
     }
 }

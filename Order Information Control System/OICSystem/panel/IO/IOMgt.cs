@@ -47,6 +47,7 @@ namespace WindowsFormsApplication1
         private void IOMgt_VisibleChanged(object sender, System.EventArgs e)
         {
             InOutPanel.Visible = true;
+            InOutPanel.ActiveControl = InOutPanel.IdTextbox;
             RegiPanel.Visible = false;
             orderingPanel.Visible = false;
         }

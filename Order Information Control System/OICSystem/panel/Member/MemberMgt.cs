@@ -170,17 +170,21 @@ namespace WindowsFormsApplication1
             MessageBox.Show("更新しました", "OICSystem");
         }
 
-        private void MemberMgt_Load_1(object sender, EventArgs e)
-        {
-            this.ActiveControl = this.MemberNameTBox;
-            dataload();
-        }
-
         private void PrintBtn_Click(object sender, EventArgs e)
         {
             MemberList f = new MemberList();
             f.ShowDialog(this);
             f.Dispose();
+        }
+
+        private void MemberMgt_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                this.ActiveControl = this.MemberNameTBox;
+                dataload();
+            }
+            
         }
     }
 }

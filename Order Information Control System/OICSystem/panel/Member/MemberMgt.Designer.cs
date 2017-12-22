@@ -155,7 +155,7 @@
             this.Controls.Add(this.MemberMgrLbl);
             this.Name = "MemberMgt";
             this.Size = new System.Drawing.Size(760, 515);
-            this.Load += new System.EventHandler(this.MemberMgt_Load_1);
+            this.VisibleChanged += new System.EventHandler(this.MemberMgt_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.MemberDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

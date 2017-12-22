@@ -152,9 +152,9 @@
             // 
             this.analysis.Location = new System.Drawing.Point(67, 470);
             this.analysis.Name = "analysis";
-            this.analysis.Size = new System.Drawing.Size(102, 33);
+            this.analysis.Size = new System.Drawing.Size(89, 33);
             this.analysis.TabIndex = 117;
-            this.analysis.Text = "未販売のデータを降順に並べ替え";
+            this.analysis.Text = "降順に並べ替え(販売済みのみ)";
             this.analysis.UseVisualStyleBackColor = true;
             this.analysis.Click += new System.EventHandler(this.analysis_Click);
             // 

@@ -69,6 +69,7 @@ namespace WindowsFormsApplication1
         private void GoodsMgt_VisibleChanged(object sender, EventArgs e)
         {
             ListCtr.Visible = true;
+            ListCtr.ActiveControl = ListCtr.textBname;
             RegiCtr.Visible = false;
             StockCtr.Visible = false;
             PopularityCtr.Visible = false;

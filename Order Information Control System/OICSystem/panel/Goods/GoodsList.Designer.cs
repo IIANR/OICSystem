@@ -396,9 +396,9 @@
         private System.Windows.Forms.Label goodsReginumber;
         private System.Windows.Forms.Label goodsRegicateID;
         private System.Windows.Forms.TextBox textBprice;
-        private System.Windows.Forms.TextBox textBname;
         private System.Windows.Forms.Label goodsRegiPrice;
         private System.Windows.Forms.Label goodsRegiName;
         private System.Windows.Forms.Label goodsRegiId;
+        public System.Windows.Forms.TextBox textBname;
     }
 }
