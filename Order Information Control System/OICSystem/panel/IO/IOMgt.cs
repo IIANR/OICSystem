@@ -9,6 +9,8 @@ namespace WindowsFormsApplication1
         public static OrderingRegi RegiPanel;
         public static IOOrdering orderingPanel;
 
+        bool admin;
+
         public IOMgt()
         {
             InitializeComponent();
@@ -23,18 +25,18 @@ namespace WindowsFormsApplication1
             ctrPanel.Controls.Add(orderingPanel);
         }
 
-        private void RegiBtn_Click(object sender, System.EventArgs e)
-        {
-            InOutPanel.Visible = false;
-            RegiPanel.Visible = true;
-            orderingPanel.Visible = false;
-        }
-
         private void OrderingBtn_Click(object sender, System.EventArgs e)
         {
-            InOutPanel.Visible = false;
-            RegiPanel.Visible = false;
-            orderingPanel.Visible = true;
+            if (admin == true)
+            {
+                InOutPanel.Visible = false;
+                RegiPanel.Visible = false;
+                orderingPanel.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("権限がありません", "OICSystem", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void InOutPanelBtn_Click(object sender, System.EventArgs e)
@@ -50,6 +52,25 @@ namespace WindowsFormsApplication1
             InOutPanel.ActiveControl = InOutPanel.IdTextbox;
             RegiPanel.Visible = false;
             orderingPanel.Visible = false;
+        }
+
+        private void OrderingEditBtn_Click(object sender, System.EventArgs e)
+        {
+            if (admin == true)
+            {
+                InOutPanel.Visible = false;
+                RegiPanel.Visible = true;
+                orderingPanel.Visible = false;
+            }
+            else
+            {
+                MessageBox.Show("権限がありません", "OICSystem", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void IOMgt_Load(object sender, System.EventArgs e)
+        {
+            admin = Login.LoginInstance.Authority;
         }
     }
 }

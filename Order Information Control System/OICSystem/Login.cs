@@ -27,6 +27,7 @@ namespace WindowsFormsApplication1
         public bool db_admin;
 
         private static Login _loginInstance;
+        //private static Login _authorutyInstance;
 
         public static Login LoginInstance
         {
@@ -49,6 +50,30 @@ namespace WindowsFormsApplication1
             set
             {
                 db_id = value;
+            }
+        }
+
+        //public static Login AuthorityInstance
+        //{
+        //    get
+        //    {
+        //        return _authorutyInstance;
+        //    }
+        //    set
+        //    {
+        //        _authorutyInstance = value;
+        //    }
+        //}
+
+        public bool Authority
+        {
+            get
+            {
+                return db_admin;
+            }
+            set
+            {
+                db_admin = value;
             }
         }
 
