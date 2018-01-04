@@ -28,7 +28,6 @@ namespace WindowsFormsApplication1
         {
             cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
             ErrMsg2.Visible = false;
-            DeleteBtn.Visible = false;
             UpdateBtn.Visible = false;
             RegiBtn.Visible = false;
 
@@ -77,7 +76,6 @@ namespace WindowsFormsApplication1
             {
                 OrderingGridview.ReadOnly = false;
                 UpdateBtn.Visible = true;
-                DeleteBtn.Visible = true;
                 RegiBtn.Visible = true;
                 MessageBox.Show("編集可能になりました。", "編集可能");
             }
@@ -85,7 +83,6 @@ namespace WindowsFormsApplication1
             {
                 OrderingGridview.ReadOnly = true;
                 UpdateBtn.Visible = false;
-                DeleteBtn.Visible = false;
                 RegiBtn.Visible = false;
                 MessageBox.Show("編集不可になりました。", "編集不可");
             }
@@ -198,8 +195,19 @@ namespace WindowsFormsApplication1
 
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
-            
-
+            for (int i = 0; i < OrderingGridview.Rows.Count; i++)
+            {
+                cmd.Connection = cn;
+                cmd.CommandText = "UPDATE 入庫先マスタ SET 入庫先名 ='" + (string)OrderingGridview.Rows[i].Cells[1].Value.ToString()
+                    + "' ,郵便番号 ='" + (string)OrderingGridview.Rows[i].Cells[2].Value.ToString()
+                    + "' ,住所1 ='" + (string)OrderingGridview.Rows[i].Cells[3].Value.ToString()
+                    + "' ,住所2 ='" + (string)OrderingGridview.Rows[i].Cells[4].Value.ToString()
+                    + "' ,電話番号 ='" + (string)OrderingGridview.Rows[i].Cells[5].Value.ToString()
+                    + "' WHERE 入庫先ID=" + (int)OrderingGridview.Rows[i].Cells[0].Value + "";
+                cn.Open();
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
             MessageBox.Show("更新しました", "OICSystem");
 
             NameTextbox.Text = "";
@@ -214,32 +222,44 @@ namespace WindowsFormsApplication1
             //現在の日付
             DateTime dtNow = DateTime.Now;
 
-            cmd.Connection = cn;
-            cmd.CommandText = "INSERT INTO 入庫先マスタ (入庫先名,郵便番号,住所1,住所2,電話番号,登録日)" + "VALUES (@name,@pos,@addres1,@addres2,@tel,@date)";
-            OleDbParameter prname = new OleDbParameter("@name", NameTextbox.Text);
-            cmd.Parameters.Add(prname);
-            OleDbParameter prpos = new OleDbParameter("@pos", PoscodeTextbox.Text);
-            cmd.Parameters.Add(prpos);
-            OleDbParameter praddres1 = new OleDbParameter("@addres1", AddressTextbox1.Text);
-            cmd.Parameters.Add(praddres1);
-            OleDbParameter praddres2 = new OleDbParameter("@addres2", AddressTextbox2.Text);
-            cmd.Parameters.Add(praddres2);
-            OleDbParameter prtel = new OleDbParameter("@tel", TelTextbox.Text);
-            cmd.Parameters.Add(prtel);
-            OleDbParameter prdate = new OleDbParameter("@date", dtNow.ToString("MM/dd"));
-            cmd.Parameters.Add(prdate);
+            if (NameTextbox.Text == null || NameTextbox.Text == "" || TelTextbox.Text == null || TelTextbox.Text == "" || PoscodeTextbox.Text == null || PoscodeTextbox.Text == "" || AddressTextbox1.Text == null || AddressTextbox1.Text == "")
+            {
+                ErrMsg2.Visible = true;
+                ErrMsg2.Text = "";
+                ErrMsg2.Text = "※住所2以外で未入力の項目があります";
+            }
 
-            cn.Open();
-            cmd.ExecuteNonQuery();
-            cn.Close();
+            else
+            {
+                cmd.Connection = cn;
+                cmd.CommandText = "INSERT INTO 入庫先マスタ (入庫先名,郵便番号,住所1,住所2,電話番号,登録日)" + "VALUES (@name,@pos,@addres1,@addres2,@tel,@date)";
+                OleDbParameter prname = new OleDbParameter("@name", NameTextbox.Text);
+                cmd.Parameters.Add(prname);
+                OleDbParameter prpos = new OleDbParameter("@pos", PoscodeTextbox.Text);
+                cmd.Parameters.Add(prpos);
+                OleDbParameter praddres1 = new OleDbParameter("@addres1", AddressTextbox1.Text);
+                cmd.Parameters.Add(praddres1);
+                OleDbParameter praddres2 = new OleDbParameter("@addres2", AddressTextbox2.Text);
+                cmd.Parameters.Add(praddres2);
+                OleDbParameter prtel = new OleDbParameter("@tel", TelTextbox.Text);
+                cmd.Parameters.Add(prtel);
+                OleDbParameter prdate = new OleDbParameter("@date", dtNow.ToString("MM/dd"));
+                cmd.Parameters.Add(prdate);
 
-            MessageBox.Show("更新しました", "OICSystem");
+                cn.Open();
+                cmd.ExecuteNonQuery();
+                cn.Close();
 
-            NameTextbox.Text = "";
-            TelTextbox.Text = "";
-            PoscodeTextbox.Text = "";
-            AddressTextbox1.Text = "";
-            AddressTextbox2.Text = "";
+                MessageBox.Show("更新しました", "OICSystem");
+
+                NameTextbox.Text = "";
+                TelTextbox.Text = "";
+                PoscodeTextbox.Text = "";
+                AddressTextbox1.Text = "";
+                AddressTextbox2.Text = "";
+
+                ErrMsg2.Visible = false;
+            }
         }
 
         private void AllBtn_Click(object sender, EventArgs e)

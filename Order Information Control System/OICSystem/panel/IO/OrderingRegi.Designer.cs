@@ -44,7 +44,6 @@
             this.EditBtn = new System.Windows.Forms.Button();
             this.UpdateBtn = new System.Windows.Forms.Button();
             this.SearchBtn = new System.Windows.Forms.Button();
-            this.DeleteBtn = new System.Windows.Forms.Button();
             this.RegiBtn = new System.Windows.Forms.Button();
             this.ClearBtn = new System.Windows.Forms.Button();
             this.AllBtn = new System.Windows.Forms.Button();
@@ -54,7 +53,7 @@
             // ErrMsg2
             // 
             this.ErrMsg2.ForeColor = System.Drawing.Color.Red;
-            this.ErrMsg2.Location = new System.Drawing.Point(213, 304);
+            this.ErrMsg2.Location = new System.Drawing.Point(157, 304);
             this.ErrMsg2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.ErrMsg2.Name = "ErrMsg2";
             this.ErrMsg2.Size = new System.Drawing.Size(210, 18);
@@ -187,7 +186,7 @@
             // 
             // UpdateBtn
             // 
-            this.UpdateBtn.Location = new System.Drawing.Point(552, 316);
+            this.UpdateBtn.Location = new System.Drawing.Point(650, 316);
             this.UpdateBtn.Name = "UpdateBtn";
             this.UpdateBtn.Size = new System.Drawing.Size(92, 39);
             this.UpdateBtn.TabIndex = 89;
@@ -205,19 +204,9 @@
             this.SearchBtn.UseVisualStyleBackColor = true;
             this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
-            // DeleteBtn
-            // 
-            this.DeleteBtn.ForeColor = System.Drawing.Color.Red;
-            this.DeleteBtn.Location = new System.Drawing.Point(650, 316);
-            this.DeleteBtn.Name = "DeleteBtn";
-            this.DeleteBtn.Size = new System.Drawing.Size(92, 39);
-            this.DeleteBtn.TabIndex = 91;
-            this.DeleteBtn.Text = "削除";
-            this.DeleteBtn.UseVisualStyleBackColor = true;
-            // 
             // RegiBtn
             // 
-            this.RegiBtn.Location = new System.Drawing.Point(454, 316);
+            this.RegiBtn.Location = new System.Drawing.Point(552, 316);
             this.RegiBtn.Name = "RegiBtn";
             this.RegiBtn.Size = new System.Drawing.Size(92, 39);
             this.RegiBtn.TabIndex = 92;
@@ -252,7 +241,6 @@
             this.Controls.Add(this.AllBtn);
             this.Controls.Add(this.ClearBtn);
             this.Controls.Add(this.RegiBtn);
-            this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.SearchBtn);
             this.Controls.Add(this.UpdateBtn);
             this.Controls.Add(this.EditBtn);
@@ -296,7 +284,6 @@
         private System.Windows.Forms.Button EditBtn;
         private System.Windows.Forms.Button UpdateBtn;
         private System.Windows.Forms.Button SearchBtn;
-        private System.Windows.Forms.Button DeleteBtn;
         private System.Windows.Forms.Button RegiBtn;
         private System.Windows.Forms.Button ClearBtn;
         private System.Windows.Forms.Button AllBtn;
