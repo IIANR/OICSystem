@@ -59,6 +59,7 @@
             this.NumLabel = new System.Windows.Forms.Label();
             this.GoodsidLabel = new System.Windows.Forms.Label();
             this.OrderGoodsLabel = new System.Windows.Forms.Label();
+            this.ClearBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.OrderRegiDataGridview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,7 +78,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Red;
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(303, 367);
+            this.label5.Location = new System.Drawing.Point(303, 280);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 12);
             this.label5.TabIndex = 101;
@@ -88,7 +89,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Red;
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(303, 312);
+            this.label4.Location = new System.Drawing.Point(303, 337);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 12);
             this.label4.TabIndex = 100;
@@ -99,7 +100,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Red;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(303, 280);
+            this.label3.Location = new System.Drawing.Point(303, 305);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
             this.label3.TabIndex = 99;
@@ -187,7 +188,7 @@
             // KanaLabel
             // 
             this.KanaLabel.AutoSize = true;
-            this.KanaLabel.Location = new System.Drawing.Point(63, 252);
+            this.KanaLabel.Location = new System.Drawing.Point(62, 255);
             this.KanaLabel.Name = "KanaLabel";
             this.KanaLabel.Size = new System.Drawing.Size(42, 12);
             this.KanaLabel.TabIndex = 93;
@@ -195,15 +196,15 @@
             // 
             // AddressTextbox2
             // 
-            this.AddressTextbox2.Location = new System.Drawing.Point(111, 336);
+            this.AddressTextbox2.Location = new System.Drawing.Point(111, 361);
             this.AddressTextbox2.Name = "AddressTextbox2";
             this.AddressTextbox2.Size = new System.Drawing.Size(186, 19);
-            this.AddressTextbox2.TabIndex = 7;
+            this.AddressTextbox2.TabIndex = 8;
             // 
             // AddressLabel2
             // 
             this.AddressLabel2.AutoSize = true;
-            this.AddressLabel2.Location = new System.Drawing.Point(63, 336);
+            this.AddressLabel2.Location = new System.Drawing.Point(64, 364);
             this.AddressLabel2.Name = "AddressLabel2";
             this.AddressLabel2.Size = new System.Drawing.Size(41, 12);
             this.AddressLabel2.TabIndex = 92;
@@ -240,17 +241,17 @@
             // 
             // PoscodeTextbox
             // 
-            this.PoscodeTextbox.Location = new System.Drawing.Point(111, 280);
+            this.PoscodeTextbox.Location = new System.Drawing.Point(111, 305);
             this.PoscodeTextbox.Name = "PoscodeTextbox";
             this.PoscodeTextbox.Size = new System.Drawing.Size(186, 19);
-            this.PoscodeTextbox.TabIndex = 5;
-            this.PoscodeTextbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PoscodeTextbox_KeyDown_1);
+            this.PoscodeTextbox.TabIndex = 6;
             this.PoscodeTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PoscodeTextbox_KeyPress_1);
+            this.PoscodeTextbox.Leave += new System.EventHandler(this.PoscodeTextbox_Leave);
             // 
             // PoscodeLabel
             // 
             this.PoscodeLabel.AutoSize = true;
-            this.PoscodeLabel.Location = new System.Drawing.Point(46, 280);
+            this.PoscodeLabel.Location = new System.Drawing.Point(46, 312);
             this.PoscodeLabel.Name = "PoscodeLabel";
             this.PoscodeLabel.Size = new System.Drawing.Size(59, 12);
             this.PoscodeLabel.TabIndex = 89;
@@ -258,18 +259,19 @@
             // 
             // TelTextbox
             // 
-            this.TelTextbox.Location = new System.Drawing.Point(111, 364);
+            this.TelTextbox.Location = new System.Drawing.Point(111, 277);
             this.TelTextbox.Name = "TelTextbox";
             this.TelTextbox.Size = new System.Drawing.Size(186, 19);
-            this.TelTextbox.TabIndex = 8;
+            this.TelTextbox.TabIndex = 5;
             this.TelTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TelTextbox_KeyPress_1);
+            this.TelTextbox.Leave += new System.EventHandler(this.TelTextbox_Leave);
             // 
             // AddressTextbox1
             // 
-            this.AddressTextbox1.Location = new System.Drawing.Point(111, 308);
+            this.AddressTextbox1.Location = new System.Drawing.Point(111, 333);
             this.AddressTextbox1.Name = "AddressTextbox1";
             this.AddressTextbox1.Size = new System.Drawing.Size(186, 19);
-            this.AddressTextbox1.TabIndex = 6;
+            this.AddressTextbox1.TabIndex = 7;
             // 
             // NameTextbox
             // 
@@ -277,7 +279,6 @@
             this.NameTextbox.Name = "NameTextbox";
             this.NameTextbox.Size = new System.Drawing.Size(186, 19);
             this.NameTextbox.TabIndex = 3;
-            this.NameTextbox.Leave += new System.EventHandler(this.NameTextbox_Leave);
             // 
             // GoodsidTextBox
             // 
@@ -301,7 +302,7 @@
             // TelLabel
             // 
             this.TelLabel.AutoSize = true;
-            this.TelLabel.Location = new System.Drawing.Point(46, 364);
+            this.TelLabel.Location = new System.Drawing.Point(45, 280);
             this.TelLabel.Name = "TelLabel";
             this.TelLabel.Size = new System.Drawing.Size(59, 12);
             this.TelLabel.TabIndex = 88;
@@ -310,7 +311,7 @@
             // AddressLabel1
             // 
             this.AddressLabel1.AutoSize = true;
-            this.AddressLabel1.Location = new System.Drawing.Point(63, 308);
+            this.AddressLabel1.Location = new System.Drawing.Point(64, 337);
             this.AddressLabel1.Name = "AddressLabel1";
             this.AddressLabel1.Size = new System.Drawing.Size(41, 12);
             this.AddressLabel1.TabIndex = 87;
@@ -319,7 +320,7 @@
             // NameLabel
             // 
             this.NameLabel.AutoSize = true;
-            this.NameLabel.Location = new System.Drawing.Point(69, 224);
+            this.NameLabel.Location = new System.Drawing.Point(69, 227);
             this.NameLabel.Name = "NameLabel";
             this.NameLabel.Size = new System.Drawing.Size(35, 12);
             this.NameLabel.TabIndex = 86;
@@ -361,10 +362,21 @@
             this.OrderGoodsLabel.TabIndex = 82;
             this.OrderGoodsLabel.Text = "注文商品";
             // 
+            // ClearBtn
+            // 
+            this.ClearBtn.Location = new System.Drawing.Point(252, 184);
+            this.ClearBtn.Name = "ClearBtn";
+            this.ClearBtn.Size = new System.Drawing.Size(45, 26);
+            this.ClearBtn.TabIndex = 103;
+            this.ClearBtn.Text = "クリア";
+            this.ClearBtn.UseVisualStyleBackColor = true;
+            this.ClearBtn.Click += new System.EventHandler(this.ClearBtn_Click);
+            // 
             // OrderMgtRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ClearBtn);
             this.Controls.Add(this.ErrMsg2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -438,5 +450,6 @@
         private System.Windows.Forms.Label GoodsidLabel;
         private System.Windows.Forms.Label OrderGoodsLabel;
         public System.Windows.Forms.TextBox GoodsidTextBox;
+        private System.Windows.Forms.Button ClearBtn;
     }
 }

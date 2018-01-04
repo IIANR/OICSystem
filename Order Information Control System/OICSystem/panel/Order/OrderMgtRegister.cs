@@ -530,7 +530,57 @@ namespace WindowsFormsApplication1
 
         private void PoscodeTextbox_KeyDown_1(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Enter)
+            
+        }
+
+        private void GoodsidTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < '0' || '9' < e.KeyChar) && e.KeyChar != '\b')
+            {
+                //押されたキーが 0～9でない場合は、イベントをキャンセルする
+                e.Handled = true;
+            }
+        }
+
+        private void OrderMgtRegister_Load(object sender, EventArgs e)
+        {
+            ErrMsg.Visible = false;
+            ErrMsg2.Visible = false;
+            TotalLabel.Visible = false;
+
+            dtclear();
+
+            cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
+            cn.Open();
+
+            cmd.CommandText = "SELECT * FROM 税率マスタ";
+            cmd.Connection = cn;
+
+            OleDbDataReader rd = cmd.ExecuteReader();
+
+
+            dt = CreateSchemaDataTable(rd);
+            DataRow row = dt.NewRow();
+
+            while (rd.Read())
+            {
+                Tax = (double)rd.GetValue(0);
+            }
+
+            cn.Close();
+
+            OrderRegiDataGridview.AllowUserToAddRows = false;
+            OrderRegiDataGridview.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+        private void NameTextbox_Leave(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void PoscodeTextbox_Leave(object sender, EventArgs e)
+        {
+            if (this.PoscodeTextbox.TextLength == 7)
             {
                 string Address;         //住所
                 Boolean blnFlag = false;  //見つかったかどうかのフラグ
@@ -615,51 +665,10 @@ namespace WindowsFormsApplication1
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
                 }
-
             }
         }
 
-        private void GoodsidTextBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((e.KeyChar < '0' || '9' < e.KeyChar) && e.KeyChar != '\b')
-            {
-                //押されたキーが 0～9でない場合は、イベントをキャンセルする
-                e.Handled = true;
-            }
-        }
-
-        private void OrderMgtRegister_Load(object sender, EventArgs e)
-        {
-            ErrMsg.Visible = false;
-            ErrMsg2.Visible = false;
-            TotalLabel.Visible = false;
-
-            dtclear();
-
-            cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
-            cn.Open();
-
-            cmd.CommandText = "SELECT * FROM 税率マスタ";
-            cmd.Connection = cn;
-
-            OleDbDataReader rd = cmd.ExecuteReader();
-
-
-            dt = CreateSchemaDataTable(rd);
-            DataRow row = dt.NewRow();
-
-            while (rd.Read())
-            {
-                Tax = (double)rd.GetValue(0);
-            }
-
-            cn.Close();
-
-            OrderRegiDataGridview.AllowUserToAddRows = false;
-            OrderRegiDataGridview.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        }
-
-        private void NameTextbox_Leave(object sender, EventArgs e)
+        private void TelTextbox_Leave(object sender, EventArgs e)
         {
             try
             {
@@ -669,7 +678,7 @@ namespace WindowsFormsApplication1
                 //すでに顧客情報が登録されている場合
                 dt = new DataTable();
                 cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-                da = new OleDbDataAdapter("SELECT 顧客テーブル.[ﾌﾘｶﾞﾅ],顧客テーブル.郵便番号, 顧客テーブル.住所1, 顧客テーブル.住所2, 顧客テーブル.電話番号,顧客テーブル.顧客ID FROM 顧客テーブル WHERE 名前='" + NameTextbox.Text + "'", cn);
+                da = new OleDbDataAdapter("SELECT 顧客テーブル.[ﾌﾘｶﾞﾅ],顧客テーブル.郵便番号, 顧客テーブル.住所1, 顧客テーブル.住所2, 顧客テーブル.電話番号,顧客テーブル.顧客ID FROM 顧客テーブル WHERE 名前='" + NameTextbox.Text + "' AND 電話番号='" + TelTextbox.Text + "'", cn);
                 da.Fill(dt);
                 KanaTextbox.Text = dt.Rows[0][0].ToString();
                 PoscodeTextbox.Text = dt.Rows[0][1].ToString();
@@ -684,6 +693,16 @@ namespace WindowsFormsApplication1
             {
                 flag = 0;
             }
+        }
+
+        private void ClearBtn_Click(object sender, EventArgs e)
+        {
+            TelTextbox.Text = "";
+            NameTextbox.Text = "";
+            KanaTextbox.Text = "";
+            AddressTextbox1.Text = "";
+            AddressTextbox2.Text = "";
+            PoscodeTextbox.Text = "";
         }
     }
 }
