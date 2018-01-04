@@ -41,7 +41,7 @@ namespace WindowsFormsApplication1
             orderingPanel.Visible = false;
         }
 
-        private void RegiBtn_Click(object sender, System.EventArgs e)
+        private void RegiEditBtn_Click(object sender, System.EventArgs e)
         {
             InOutPanel.Visible = false;
             RegiPanel.Visible = true;

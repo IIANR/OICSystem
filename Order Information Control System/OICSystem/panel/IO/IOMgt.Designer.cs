@@ -31,7 +31,7 @@
             this.InOutPanelBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.ctrPanel = new System.Windows.Forms.Panel();
-            this.RegiBtn = new System.Windows.Forms.Button();
+            this.RegiEditBtn = new System.Windows.Forms.Button();
             this.OrderingBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -61,16 +61,16 @@
             this.ctrPanel.Size = new System.Drawing.Size(760, 430);
             this.ctrPanel.TabIndex = 54;
             // 
-            // RegiBtn
+            // RegiEditBtn
             // 
-            this.RegiBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.RegiBtn.Location = new System.Drawing.Point(643, 18);
-            this.RegiBtn.Name = "RegiBtn";
-            this.RegiBtn.Size = new System.Drawing.Size(103, 40);
-            this.RegiBtn.TabIndex = 41;
-            this.RegiBtn.Text = "入庫先登録";
-            this.RegiBtn.UseVisualStyleBackColor = true;
-            this.RegiBtn.Click += new System.EventHandler(this.RegiBtn_Click);
+            this.RegiEditBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.RegiEditBtn.Location = new System.Drawing.Point(643, 18);
+            this.RegiEditBtn.Name = "RegiEditBtn";
+            this.RegiEditBtn.Size = new System.Drawing.Size(103, 40);
+            this.RegiEditBtn.TabIndex = 41;
+            this.RegiEditBtn.Text = "入庫先管理";
+            this.RegiEditBtn.UseVisualStyleBackColor = true;
+            this.RegiEditBtn.Click += new System.EventHandler(this.RegiEditBtn_Click);
             // 
             // OrderingBtn
             // 
@@ -89,7 +89,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.OrderingBtn);
-            this.Controls.Add(this.RegiBtn);
+            this.Controls.Add(this.RegiEditBtn);
             this.Controls.Add(this.ctrPanel);
             this.Controls.Add(this.InOutPanelBtn);
             this.Controls.Add(this.label1);
@@ -105,7 +105,7 @@
         private System.Windows.Forms.Button InOutPanelBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel ctrPanel;
-        private System.Windows.Forms.Button RegiBtn;
+        private System.Windows.Forms.Button RegiEditBtn;
         private System.Windows.Forms.Button OrderingBtn;
     }
 }
