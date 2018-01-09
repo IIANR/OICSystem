@@ -50,6 +50,7 @@ namespace WindowsFormsApplication1
             MemberDataGridView.DataSource = dt;
             MemberDataGridView.AutoResizeColumns();
 
+            MemberDisLbl.Visible = false;
             MemberEditLbl.Visible = false;
             MemberDataGridView.AllowUserToAddRows = false;
         }
@@ -107,7 +108,7 @@ namespace WindowsFormsApplication1
                 }
 
 
-
+                MemberDisLbl.Visible = true;
                 MemberDisLbl.Text = "その情報は登録されていません";
             }
 
