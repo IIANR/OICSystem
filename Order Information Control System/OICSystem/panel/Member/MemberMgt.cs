@@ -50,6 +50,7 @@ namespace WindowsFormsApplication1
             MemberDataGridView.DataSource = dt;
             MemberDataGridView.AutoResizeColumns();
 
+            MemberEditLbl.Visible = false;
             MemberDataGridView.AllowUserToAddRows = false;
         }
 
@@ -115,6 +116,7 @@ namespace WindowsFormsApplication1
             cn.Close();
         }
 
+        //編集ボタン
         private void MemberEditBtn_Click_1(object sender, EventArgs e)
         {
             if (MemberDataGridView.ReadOnly == true)
@@ -122,21 +124,22 @@ namespace WindowsFormsApplication1
                 MemberDataGridView.ReadOnly = false;
                 MemberDataGridView.Columns[0].ReadOnly = true;
                 MemberDataGridView.Columns[7].ReadOnly = true;
+                MemberUpdateBtn.Visible = false;
+                MemberEditLbl.Visible = true;
+                PrintBtn.Visible = false;
                 MessageBox.Show("編集可能になりました", "OICSystem");
             }
             else if (MemberDataGridView.ReadOnly == false)
             {
                 MemberDataGridView.ReadOnly = true;
+                MemberUpdateBtn.Visible = true;
+                MemberEditLbl.Visible = false;
+                PrintBtn.Visible = true;
                 MessageBox.Show("編集不可になりました", "OICSystem");
             }
         }
 
-        //クリアボタン
-        private void MemberClearBtn_Click_1(object sender, EventArgs e)
-        {
-            dataload();
-            MemberDisLbl.Text = "";
-        }
+        
 
         //更新ボタン
         private void MemberUpdateBtn_Click_1(object sender, EventArgs e)
