@@ -90,88 +90,91 @@ namespace WindowsFormsApplication1
 
         private void PoscodeTextbox_Leave(object sender, EventArgs e)
         {
-            string Address;         //住所
-            Boolean blnFlag = false;  //見つかったかどうかのフラグ
+            if (this.PoscodeTextbox.TextLength == 7)
+            {
+                string Address;         //住所
+                Boolean blnFlag = false;  //見つかったかどうかのフラグ
 
-            //郵便番号が入力されていないとき
-            if (PoscodeTextbox.Text == "")
-            {
-                MessageBox.Show("郵便番号が入力されていません。");
-                this.PoscodeTextbox.Focus();
-                return; //処理を抜ける
-            }
-            //マウスカーソルを砂時計にする
-            Cursor.Current = Cursors.WaitCursor;
-            string sKey = PoscodeTextbox.Text;
-            //文字列の前後のスペースをとる
-            sKey = sKey.Trim(' ');
-            //Microsoft.VisualBasic名前空間のStrConv関数を使って、
-            //全角文字を半角文字に変換
-            //sKey = Strings.StrConv(sKey, VbStrConv.Narrow, 0);
-            // 文字列の長さを取得する
-            int iLength = sKey.Length;
-            if (iLength == 8) //"-"が含まれている
-            {
-                // 先頭文字目の後から '-' を検索し、見つかった位置を取得する
-                int iFind = sKey.IndexOf('-', 0);
-                //左から3文字+"-"文字以降をtmpZip変数に代入
-                sKey = sKey.Substring(0, 3) + sKey.Substring(iFind + 1);
-            }
-            try
-            {
-                //StreamReaderオブジェクトの作成
-                StreamReader sr = new StreamReader(@"..\..\assets\CSV\KEN_ALL.CSV",
-                                                Encoding.Default);
-                //1行ずつ読み込み
-                string dat;
-                while ((dat = sr.ReadLine()) != null)
+                //郵便番号が入力されていないとき
+                if (PoscodeTextbox.Text == "")
                 {
-                    string tmpZip;
-
-                    //カンマで区切られた文字列を取得
-                    string[] sbuf = dat.Split(',');
-                    //配列の3番目が郵便番号
-                    tmpZip = sbuf[2].Trim('"');
-
-                    //入力された郵便番号と比較
-                    if (sKey == tmpZip)
-                    {
-                        //住所を作成
-                        //都道府県名+市区町村名+町域名
-                        Address = sbuf[6].Trim('"') +
-                                  sbuf[7].Trim('"') +
-                                  sbuf[8].Trim('"');
-
-                        //テキストボックスに住所を表示
-                        AddressTextbox1.Text = Address;
-                        blnFlag = true; //フラグをTrueにして
-                        break;          //ループを抜ける
-                    }
-                    Application.DoEvents();
+                    MessageBox.Show("郵便番号が入力されていません。");
+                    this.PoscodeTextbox.Focus();
+                    return; //処理を抜ける
                 }
-                //ファイルを閉じる
-                sr.Close();
-            }
-            catch (Exception ex)
-            {
-                //ファイルエラーが発生
-                MessageBox.Show(ex.Message, "ファイルエラー",
-                               MessageBoxButtons.OK,
-                               MessageBoxIcon.Error);
-                return; //処理を抜ける
-            }
-            finally
-            {
-                //マウスカーソルをデフォルトにする
-                Cursor.Current = Cursors.Default;
+                //マウスカーソルを砂時計にする
+                Cursor.Current = Cursors.WaitCursor;
+                string sKey = PoscodeTextbox.Text;
+                //文字列の前後のスペースをとる
+                sKey = sKey.Trim(' ');
+                //Microsoft.VisualBasic名前空間のStrConv関数を使って、
+                //全角文字を半角文字に変換
+                //sKey = Strings.StrConv(sKey, VbStrConv.Narrow, 0);
+                // 文字列の長さを取得する
+                int iLength = sKey.Length;
+                if (iLength == 8) //"-"が含まれている
+                {
+                    // 先頭文字目の後から '-' を検索し、見つかった位置を取得する
+                    int iFind = sKey.IndexOf('-', 0);
+                    //左から3文字+"-"文字以降をtmpZip変数に代入
+                    sKey = sKey.Substring(0, 3) + sKey.Substring(iFind + 1);
+                }
+                try
+                {
+                    //StreamReaderオブジェクトの作成
+                    StreamReader sr = new StreamReader(@"..\..\assets\CSV\KEN_ALL.CSV",
+                                                    Encoding.Default);
+                    //1行ずつ読み込み
+                    string dat;
+                    while ((dat = sr.ReadLine()) != null)
+                    {
+                        string tmpZip;
 
-            }
-            if (blnFlag == false)
-            {
-                MessageBox.Show("該当の郵便番号は見つかりませんでした。",
-                                "郵便番号検索",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
+                        //カンマで区切られた文字列を取得
+                        string[] sbuf = dat.Split(',');
+                        //配列の3番目が郵便番号
+                        tmpZip = sbuf[2].Trim('"');
+
+                        //入力された郵便番号と比較
+                        if (sKey == tmpZip)
+                        {
+                            //住所を作成
+                            //都道府県名+市区町村名+町域名
+                            Address = sbuf[6].Trim('"') +
+                                      sbuf[7].Trim('"') +
+                                      sbuf[8].Trim('"');
+
+                            //テキストボックスに住所を表示
+                            AddressTextbox1.Text = Address;
+                            blnFlag = true; //フラグをTrueにして
+                            break;          //ループを抜ける
+                        }
+                        Application.DoEvents();
+                    }
+                    //ファイルを閉じる
+                    sr.Close();
+                }
+                catch (Exception ex)
+                {
+                    //ファイルエラーが発生
+                    MessageBox.Show(ex.Message, "ファイルエラー",
+                                   MessageBoxButtons.OK,
+                                   MessageBoxIcon.Error);
+                    return; //処理を抜ける
+                }
+                finally
+                {
+                    //マウスカーソルをデフォルトにする
+                    Cursor.Current = Cursors.Default;
+
+                }
+                if (blnFlag == false)
+                {
+                    MessageBox.Show("該当の郵便番号は見つかりませんでした。",
+                                    "郵便番号検索",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -259,6 +262,8 @@ namespace WindowsFormsApplication1
                 AddressTextbox2.Text = "";
 
                 ErrMsg2.Visible = false;
+
+                cmd.Parameters.Clear();
 
                 AllBtn_Click(null, EventArgs.Empty);
             }
