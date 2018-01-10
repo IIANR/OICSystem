@@ -49,7 +49,7 @@ namespace WindowsFormsApplication1
             DateTime dtNow = DateTime.Now;
             DateTime dtToday = DateTime.Today;
 
-            dateLabel.Text = (dtToday.ToString());
+            dateLabel.Text = (dtToday.ToString("MM月dd日"));
             timeLabel.Text = (dtNow.ToLongTimeString());
 
             timer1.Interval = 1000;
