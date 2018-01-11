@@ -190,11 +190,9 @@ namespace WindowsFormsApplication1.panel
                 textBimage.Text = textBimage.Text;
             }
 
-
-
             cmd.Connection = cn;
-            cmd.CommandText = "INSERT INTO 商品マスタ (商品ID,商品名,単価,カテゴリID,定期発注数,画像ファイル,仕入れ値)" +
-                " VALUES (@id,@name,@price,@cateID,@number,@imagefile,@supp)";
+            cmd.CommandText = "INSERT INTO 商品マスタ (商品ID,商品名,単価,カテゴリID,安全在庫数,画像ファイル,仕入れ値,発注数,フラグ)" +
+                " VALUES (@id,@name,@price,@cateID,@number,@imagefile,@supp,@odr,@flag)";
 
             OleDbParameter gdID = new OleDbParameter("@id", int.Parse(textBID.Text));
             cmd.Parameters.Add(gdID);
@@ -210,6 +208,10 @@ namespace WindowsFormsApplication1.panel
             cmd.Parameters.Add(primagefile);
             OleDbParameter gdsupp = new OleDbParameter("@supp", int.Parse(textBsupp.Text));
             cmd.Parameters.Add(gdsupp);
+            OleDbParameter gdodr = new OleDbParameter("@odr", int.Parse(textBodr.Text));
+            cmd.Parameters.Add(gdodr);
+            OleDbParameter gdflag = new OleDbParameter("@flag", "販売中");
+            cmd.Parameters.Add(gdflag);
 
             OleDbCommand cmd2 = new OleDbCommand();
             cmd2.Connection = cn;
@@ -219,6 +221,7 @@ namespace WindowsFormsApplication1.panel
             cmd2.Parameters.Add(stID);
             OleDbParameter stock = new OleDbParameter("@stock", "0");
             cmd2.Parameters.Add(stock);
+
             try
             {
                 cmd.ExecuteNonQuery();
@@ -276,7 +279,7 @@ namespace WindowsFormsApplication1.panel
             textBimage.Text = "Noimage.png";
             pictureBox.Image = Image.FromFile(@".\IM2image\" + textBimage.Text);
             textBsupp.Text = "";
-
+            textBodr.Text = "";
         }
 
         //下変更なし
@@ -326,40 +329,60 @@ namespace WindowsFormsApplication1.panel
             }
         }
 
+        //private void textBsupp_TextChanged(object sender, EventArgs e)
+        //{
+        //    textBprice.Clear();
+
+        //    if (textBsupp.Text == "0")
+        //    {
+        //        textBprice.Text = "0";
+        //    }
+        //    else if (textBsupp.Text == "")
+        //    {
+        //        textBprice.Text = "";
+        //    }
+        //    else
+        //    {
+        //        //仕入れ値の１.6倍の単価を計算↓
+        //        priceText = double.Parse(textBsupp.Text) * 1.6;
+        //        price = (int)priceText;
+        //    }
+
+        //    textBprice.Text = price.ToString();
+        //}
+
         private void textBsupp_TextChanged(object sender, EventArgs e)
         {
             textBprice.Clear();
-
-            if (textBsupp.Text == "0")
+            if (double.TryParse(textBsupp.Text, out priceText))
             {
-                textBprice.Text = "0";
-            }
-            else if (textBsupp.Text == "")
-            {
-                textBprice.Text = "";
-            }
-            else
-            {
-                //仕入れ値の１.6倍の単価を計算↓
-                priceText = double.Parse(textBsupp.Text) * 1.6;
+                priceText = priceText * 1.6;
                 price = (int)priceText;
+                textBprice.Text = price.ToString();
             }
-
-            textBprice.Text = price.ToString();
         }
 
-        private void textBsupp_KeyPress(object sender, KeyPressEventArgs e)//数値以外キャンセル　仕入れ値
+        private void textBnumber_KeyPress(object sender, KeyPressEventArgs e)//数値以外キャンセル　安全在庫数
         {
-            //0～9と、バックスペース以外の時は、イベントをキャンセルする
-            if ((e.KeyChar < '0' || '9' < e.KeyChar) && e.KeyChar != '\b')
+            if (e.KeyChar < '0' || '9' < e.KeyChar)
             {
+                //押されたキーが 0～9でない場合は、イベントをキャンセルする
                 e.Handled = true;
             }
         }
 
-        private void textBnumber_KeyPress(object sender, KeyPressEventArgs e)//数値以外キャンセル　定期発注数
+        private void textBodr_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar < '0' || '9' < e.KeyChar)
+            if ((e.KeyChar < '0' || '9' < e.KeyChar) && e.KeyChar != '\b')
+            {
+                //押されたキーが 0～9でない場合は、イベントをキャンセルする
+                e.Handled = true;
+            }
+        }
+
+        private void textBsupp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < '0' || '9' < e.KeyChar) && e.KeyChar != '\b')
             {
                 //押されたキーが 0～9でない場合は、イベントをキャンセルする
                 e.Handled = true;

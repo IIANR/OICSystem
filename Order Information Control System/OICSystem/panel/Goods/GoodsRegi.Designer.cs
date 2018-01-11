@@ -44,6 +44,8 @@
             this.Lblsupp = new System.Windows.Forms.Label();
             this.textBsupp = new System.Windows.Forms.TextBox();
             this.textBprice = new System.Windows.Forms.TextBox();
+            this.textBodr = new System.Windows.Forms.TextBox();
+            this.Lblodr = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.panel.SuspendLayout();
             this.SuspendLayout();
@@ -101,7 +103,7 @@
             this.goodsReginumber.Name = "goodsReginumber";
             this.goodsReginumber.Size = new System.Drawing.Size(67, 12);
             this.goodsReginumber.TabIndex = 0;
-            this.goodsReginumber.Text = "定量発注数:";
+            this.goodsReginumber.Text = "安全在庫数:";
             // 
             // textBnumber
             // 
@@ -198,10 +200,29 @@
             this.textBprice.Size = new System.Drawing.Size(83, 19);
             this.textBprice.TabIndex = 22;
             // 
+            // textBodr
+            // 
+            this.textBodr.Location = new System.Drawing.Point(165, 291);
+            this.textBodr.Name = "textBodr";
+            this.textBodr.Size = new System.Drawing.Size(50, 19);
+            this.textBodr.TabIndex = 104;
+            this.textBodr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBodr_KeyPress);
+            // 
+            // Lblodr
+            // 
+            this.Lblodr.AutoSize = true;
+            this.Lblodr.Location = new System.Drawing.Point(116, 298);
+            this.Lblodr.Name = "Lblodr";
+            this.Lblodr.Size = new System.Drawing.Size(43, 12);
+            this.Lblodr.TabIndex = 105;
+            this.Lblodr.Text = "発注数:";
+            // 
             // GoodsRegi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.textBodr);
+            this.Controls.Add(this.Lblodr);
             this.Controls.Add(this.textBprice);
             this.Controls.Add(this.textBsupp);
             this.Controls.Add(this.Lblsupp);
@@ -245,5 +266,7 @@
         private System.Windows.Forms.Label Lblsupp;
         private System.Windows.Forms.TextBox textBsupp;
         private System.Windows.Forms.TextBox textBprice;
+        private System.Windows.Forms.TextBox textBodr;
+        private System.Windows.Forms.Label Lblodr;
     }
 }
