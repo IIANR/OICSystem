@@ -125,7 +125,6 @@ namespace WindowsFormsApplication1
                 MemberDataGridView.ReadOnly = false;
                 MemberDataGridView.Columns[0].ReadOnly = true;
                 MemberDataGridView.Columns[7].ReadOnly = true;
-                MemberUpdateBtn.Visible = false;
                 MemberEditLbl.Visible = true;
                 PrintBtn.Visible = false;
                 MessageBox.Show("編集可能になりました", "OICSystem");
@@ -133,7 +132,6 @@ namespace WindowsFormsApplication1
             else if (MemberDataGridView.ReadOnly == false)
             {
                 MemberDataGridView.ReadOnly = true;
-                MemberUpdateBtn.Visible = true;
                 MemberEditLbl.Visible = false;
                 PrintBtn.Visible = true;
                 MessageBox.Show("編集不可になりました", "OICSystem");
