@@ -79,7 +79,6 @@ namespace WindowsFormsApplication1
                 OrderingGridview.ReadOnly = false;
                 UpdateBtn.Visible = true;
                 RegiBtn.Visible = true;
-                EditMsg.Text = "編集中";
                 EditMsg.Visible = true;
                 MessageBox.Show("編集可能になりました。", "編集可能");
             }
@@ -297,9 +296,6 @@ namespace WindowsFormsApplication1
             PoscodeTextbox.Text = "";
             AddressTextbox1.Text = "";
             AddressTextbox2.Text = "";
-
-            dt.Clear();
-            OrderingGridview.DataSource = null;
         }
 
         private void SearchBtn_Click(object sender, EventArgs e)

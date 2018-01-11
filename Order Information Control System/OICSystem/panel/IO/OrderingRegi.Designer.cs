@@ -138,7 +138,7 @@
             this.AddressTextbox2.Location = new System.Drawing.Point(291, 395);
             this.AddressTextbox2.Name = "AddressTextbox2";
             this.AddressTextbox2.Size = new System.Drawing.Size(152, 19);
-            this.AddressTextbox2.TabIndex = 98;
+            this.AddressTextbox2.TabIndex = 4;
             // 
             // AddressLabel2
             // 
@@ -156,7 +156,7 @@
             this.PoscodeTextbox.Location = new System.Drawing.Point(95, 370);
             this.PoscodeTextbox.Name = "PoscodeTextbox";
             this.PoscodeTextbox.Size = new System.Drawing.Size(135, 19);
-            this.PoscodeTextbox.TabIndex = 96;
+            this.PoscodeTextbox.TabIndex = 2;
             this.PoscodeTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PoscodeTextbox_KeyPress);
             this.PoscodeTextbox.Leave += new System.EventHandler(this.PoscodeTextbox_Leave);
             // 
@@ -176,7 +176,7 @@
             this.TelTextbox.Location = new System.Drawing.Point(308, 344);
             this.TelTextbox.Name = "TelTextbox";
             this.TelTextbox.Size = new System.Drawing.Size(135, 19);
-            this.TelTextbox.TabIndex = 99;
+            this.TelTextbox.TabIndex = 1;
             this.TelTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TelTextbox_KeyPress);
             // 
             // AddressTextbox1
@@ -185,7 +185,7 @@
             this.AddressTextbox1.Location = new System.Drawing.Point(74, 395);
             this.AddressTextbox1.Name = "AddressTextbox1";
             this.AddressTextbox1.Size = new System.Drawing.Size(156, 19);
-            this.AddressTextbox1.TabIndex = 97;
+            this.AddressTextbox1.TabIndex = 3;
             // 
             // NameTextbox
             // 
@@ -193,7 +193,7 @@
             this.NameTextbox.Location = new System.Drawing.Point(95, 344);
             this.NameTextbox.Name = "NameTextbox";
             this.NameTextbox.Size = new System.Drawing.Size(135, 19);
-            this.NameTextbox.TabIndex = 95;
+            this.NameTextbox.TabIndex = 0;
             // 
             // TelLabel
             // 
@@ -240,11 +240,11 @@
             this.EditMsg.AutoSize = true;
             this.EditMsg.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.EditMsg.ForeColor = System.Drawing.Color.Red;
-            this.EditMsg.Location = new System.Drawing.Point(477, 329);
+            this.EditMsg.Location = new System.Drawing.Point(473, 329);
             this.EditMsg.Name = "EditMsg";
-            this.EditMsg.Size = new System.Drawing.Size(46, 16);
+            this.EditMsg.Size = new System.Drawing.Size(56, 16);
             this.EditMsg.TabIndex = 114;
-            this.EditMsg.Text = "label1";
+            this.EditMsg.Text = "編集中";
             // 
             // OrderingRegi
             // 
