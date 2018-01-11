@@ -189,9 +189,9 @@ namespace WindowsFormsApplication1
             timer1.Enabled = true;
 
             Login.LoginInstance = this;
-            //this.MaximumSize = this.Size;
-            //this.MinimumSize = this.Size;
-            //this.FormBorderStyle = FormBorderStyle.FixedSingle;
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = !this.MaximizeBox;
         }
 
         private void EmpTextbox_KeyPress(object sender, KeyPressEventArgs e)

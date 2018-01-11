@@ -47,6 +47,7 @@
             this.AddressLabel1 = new System.Windows.Forms.Label();
             this.NameLabel = new System.Windows.Forms.Label();
             this.MemberLabel = new System.Windows.Forms.Label();
+            this.EditMsg = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.OrderingGridview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -234,10 +235,22 @@
             this.MemberLabel.TabIndex = 100;
             this.MemberLabel.Text = "入庫先管理";
             // 
+            // EditMsg
+            // 
+            this.EditMsg.AutoSize = true;
+            this.EditMsg.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.EditMsg.ForeColor = System.Drawing.Color.Red;
+            this.EditMsg.Location = new System.Drawing.Point(477, 329);
+            this.EditMsg.Name = "EditMsg";
+            this.EditMsg.Size = new System.Drawing.Size(46, 16);
+            this.EditMsg.TabIndex = 114;
+            this.EditMsg.Text = "label1";
+            // 
             // OrderingRegi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.EditMsg);
             this.Controls.Add(this.AllBtn);
             this.Controls.Add(this.ClearBtn);
             this.Controls.Add(this.RegiBtn);
@@ -287,5 +300,6 @@
         private System.Windows.Forms.Label AddressLabel1;
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.Label MemberLabel;
+        private System.Windows.Forms.Label EditMsg;
     }
 }

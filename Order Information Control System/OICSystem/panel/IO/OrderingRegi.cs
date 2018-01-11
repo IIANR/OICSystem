@@ -42,6 +42,8 @@ namespace WindowsFormsApplication1
             da.Fill(dt);
             OrderingGridview.DataSource = dt;
 
+            EditMsg.Visible = false;
+
             OrderingGridview.AllowUserToAddRows = false;
         }
 
@@ -77,6 +79,8 @@ namespace WindowsFormsApplication1
                 OrderingGridview.ReadOnly = false;
                 UpdateBtn.Visible = true;
                 RegiBtn.Visible = true;
+                EditMsg.Text = "編集中";
+                EditMsg.Visible = true;
                 MessageBox.Show("編集可能になりました。", "編集可能");
             }
             else if (OrderingGridview.ReadOnly == false)
@@ -84,6 +88,7 @@ namespace WindowsFormsApplication1
                 OrderingGridview.ReadOnly = true;
                 UpdateBtn.Visible = false;
                 RegiBtn.Visible = false;
+                EditMsg.Visible = false;
                 MessageBox.Show("編集不可になりました。", "編集不可");
             }
         }

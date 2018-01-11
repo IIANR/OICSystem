@@ -146,6 +146,9 @@ namespace WindowsFormsApplication1
 
             timer1.Interval = 1000;
             timer1.Enabled = true;
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = !this.MaximizeBox;
         }
 
         private void LogoutBtn_Click(object sender, EventArgs e)
