@@ -49,7 +49,7 @@
             this.DeleteB.Location = new System.Drawing.Point(450, 392);
             this.DeleteB.Name = "DeleteB";
             this.DeleteB.Size = new System.Drawing.Size(150, 37);
-            this.DeleteB.TabIndex = 127;
+            this.DeleteB.TabIndex = 4;
             this.DeleteB.Text = "削除";
             this.DeleteB.UseVisualStyleBackColor = true;
             this.DeleteB.Visible = false;
@@ -69,7 +69,7 @@
             this.UpdateB.Location = new System.Drawing.Point(607, 392);
             this.UpdateB.Name = "UpdateB";
             this.UpdateB.Size = new System.Drawing.Size(150, 37);
-            this.UpdateB.TabIndex = 125;
+            this.UpdateB.TabIndex = 5;
             this.UpdateB.Text = "更新";
             this.UpdateB.UseVisualStyleBackColor = true;
             this.UpdateB.Visible = false;
@@ -80,7 +80,7 @@
             this.EditB.Location = new System.Drawing.Point(607, 349);
             this.EditB.Name = "EditB";
             this.EditB.Size = new System.Drawing.Size(150, 37);
-            this.EditB.TabIndex = 124;
+            this.EditB.TabIndex = 3;
             this.EditB.Text = "編集";
             this.EditB.UseVisualStyleBackColor = true;
             this.EditB.Click += new System.EventHandler(this.EditB_Click);
@@ -88,23 +88,25 @@
             // EmpIDTextB
             // 
             this.EmpIDTextB.Location = new System.Drawing.Point(86, 359);
+            this.EmpIDTextB.MaxLength = 6;
             this.EmpIDTextB.Name = "EmpIDTextB";
             this.EmpIDTextB.Size = new System.Drawing.Size(117, 19);
-            this.EmpIDTextB.TabIndex = 123;
+            this.EmpIDTextB.TabIndex = 0;
             // 
             // EmpNameTextB
             // 
             this.EmpNameTextB.Location = new System.Drawing.Point(86, 394);
+            this.EmpNameTextB.MaxLength = 20;
             this.EmpNameTextB.Name = "EmpNameTextB";
             this.EmpNameTextB.Size = new System.Drawing.Size(117, 19);
-            this.EmpNameTextB.TabIndex = 122;
+            this.EmpNameTextB.TabIndex = 1;
             // 
             // SearchB
             // 
             this.SearchB.Location = new System.Drawing.Point(450, 349);
             this.SearchB.Name = "SearchB";
             this.SearchB.Size = new System.Drawing.Size(151, 37);
-            this.SearchB.TabIndex = 121;
+            this.SearchB.TabIndex = 2;
             this.SearchB.Text = "検索";
             this.SearchB.UseVisualStyleBackColor = true;
             this.SearchB.Click += new System.EventHandler(this.SearchB_Click);

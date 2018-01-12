@@ -280,7 +280,7 @@ namespace WindowsFormsApplication1
             EmpdataGridView.Columns.Clear();
             EmpdataGridView.DataSource = null;
             cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
-            da = new OleDbDataAdapter("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ", cn);
+            da = new OleDbDataAdapter("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ WHERE フラグ <> '退職'", cn);
             dt.Clear();
             dt = new DataTable();
             da.Fill(dt);
@@ -304,7 +304,32 @@ namespace WindowsFormsApplication1
 
         private void EmpPostTextB_KeyDown_1(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Enter)
+
+        }
+
+        private void ManRB_CheckedChanged_1(object sender, EventArgs e)
+        {
+            tsex = ManRB.Text;
+        }
+
+        private void WomanRB_CheckedChanged_1(object sender, EventArgs e)
+        {
+            tsex = WomanRB.Text;
+        }
+
+        private void YesAuthorityRB_CheckedChanged_1(object sender, EventArgs e)
+        {
+            tAuthority = true;
+        }
+
+        private void NoAuthorityRB_CheckedChanged_1(object sender, EventArgs e)
+        {
+            tAuthority = false;
+        }
+
+        private void EmpPostTextB_Leave(object sender, EventArgs e)
+        {
+            if (this.EmpPostTextB.TextLength == 7)
             {
                 string Address;         //住所
                 Boolean blnFlag = false;  //見つかったかどうかのフラグ
@@ -389,28 +414,16 @@ namespace WindowsFormsApplication1
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
                 }
-
             }
         }
 
-        private void ManRB_CheckedChanged_1(object sender, EventArgs e)
+        private void EmpPostTextB_KeyPress(object sender, KeyPressEventArgs e)
         {
-            tsex = ManRB.Text;
-        }
-
-        private void WomanRB_CheckedChanged_1(object sender, EventArgs e)
-        {
-            tsex = WomanRB.Text;
-        }
-
-        private void YesAuthorityRB_CheckedChanged_1(object sender, EventArgs e)
-        {
-            tAuthority = true;
-        }
-
-        private void NoAuthorityRB_CheckedChanged_1(object sender, EventArgs e)
-        {
-            tAuthority = false;
+            if ((e.KeyChar < '0' || '9' < e.KeyChar) && e.KeyChar != '\b')
+            {
+                //押されたキーが 0～9でない場合は、イベントをキャンセルする
+                e.Handled = true;
+            }
         }
     }
 }

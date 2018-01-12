@@ -573,11 +573,6 @@ namespace WindowsFormsApplication1
             OrderRegiDataGridview.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
-        private void NameTextbox_Leave(object sender, EventArgs e)
-        {
-            
-        }
-
         private void PoscodeTextbox_Leave(object sender, EventArgs e)
         {
             if (this.PoscodeTextbox.TextLength == 7)

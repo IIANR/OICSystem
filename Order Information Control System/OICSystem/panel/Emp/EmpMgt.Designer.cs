@@ -124,6 +124,7 @@
             // EmpAddress2TextB
             // 
             this.EmpAddress2TextB.Location = new System.Drawing.Point(271, 371);
+            this.EmpAddress2TextB.MaxLength = 40;
             this.EmpAddress2TextB.Name = "EmpAddress2TextB";
             this.EmpAddress2TextB.Size = new System.Drawing.Size(117, 19);
             this.EmpAddress2TextB.TabIndex = 4;
@@ -194,6 +195,7 @@
             // EmpTelTextB
             // 
             this.EmpTelTextB.Location = new System.Drawing.Point(458, 371);
+            this.EmpTelTextB.MaxLength = 11;
             this.EmpTelTextB.Name = "EmpTelTextB";
             this.EmpTelTextB.Size = new System.Drawing.Size(117, 19);
             this.EmpTelTextB.TabIndex = 5;
@@ -210,6 +212,7 @@
             // EmpAddressTextB
             // 
             this.EmpAddressTextB.Location = new System.Drawing.Point(84, 371);
+            this.EmpAddressTextB.MaxLength = 40;
             this.EmpAddressTextB.Name = "EmpAddressTextB";
             this.EmpAddressTextB.Size = new System.Drawing.Size(117, 19);
             this.EmpAddressTextB.TabIndex = 3;
@@ -226,10 +229,12 @@
             // EmpPostTextB
             // 
             this.EmpPostTextB.Location = new System.Drawing.Point(458, 346);
+            this.EmpPostTextB.MaxLength = 7;
             this.EmpPostTextB.Name = "EmpPostTextB";
             this.EmpPostTextB.Size = new System.Drawing.Size(117, 19);
             this.EmpPostTextB.TabIndex = 2;
-            this.EmpPostTextB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EmpPostTextB_KeyDown_1);
+            this.EmpPostTextB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EmpPostTextB_KeyPress);
+            this.EmpPostTextB.Leave += new System.EventHandler(this.EmpPostTextB_Leave);
             // 
             // PostalNamLbl
             // 
@@ -243,6 +248,7 @@
             // HuriganaTextB
             // 
             this.HuriganaTextB.Location = new System.Drawing.Point(271, 346);
+            this.HuriganaTextB.MaxLength = 30;
             this.HuriganaTextB.Name = "HuriganaTextB";
             this.HuriganaTextB.Size = new System.Drawing.Size(117, 19);
             this.HuriganaTextB.TabIndex = 1;
@@ -288,6 +294,7 @@
             // EmpNameTextB
             // 
             this.EmpNameTextB.Location = new System.Drawing.Point(84, 346);
+            this.EmpNameTextB.MaxLength = 20;
             this.EmpNameTextB.Name = "EmpNameTextB";
             this.EmpNameTextB.Size = new System.Drawing.Size(117, 19);
             this.EmpNameTextB.TabIndex = 0;
