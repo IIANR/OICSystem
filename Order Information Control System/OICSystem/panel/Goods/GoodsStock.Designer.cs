@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.GoodsStockUpdateBtn = new System.Windows.Forms.Button();
             this.GoodsStockDisLbl = new System.Windows.Forms.Label();
             this.GoodsStockLbl = new System.Windows.Forms.Label();
             this.GoodsStockTBox = new System.Windows.Forms.TextBox();
@@ -36,17 +35,6 @@
             this.GoodsStockDataGridView = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.GoodsStockDataGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // GoodsStockUpdateBtn
-            // 
-            this.GoodsStockUpdateBtn.Location = new System.Drawing.Point(425, 366);
-            this.GoodsStockUpdateBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.GoodsStockUpdateBtn.Name = "GoodsStockUpdateBtn";
-            this.GoodsStockUpdateBtn.Size = new System.Drawing.Size(142, 45);
-            this.GoodsStockUpdateBtn.TabIndex = 18;
-            this.GoodsStockUpdateBtn.Text = "更新";
-            this.GoodsStockUpdateBtn.UseVisualStyleBackColor = true;
-            this.GoodsStockUpdateBtn.Click += new System.EventHandler(this.GoodsStockUpdateBtn_Click);
             // 
             // GoodsStockDisLbl
             // 
@@ -74,7 +62,7 @@
             // 
             this.GoodsStockTBox.ImeMode = System.Windows.Forms.ImeMode.On;
             this.GoodsStockTBox.Location = new System.Drawing.Point(115, 380);
-            this.GoodsStockTBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GoodsStockTBox.Margin = new System.Windows.Forms.Padding(2);
             this.GoodsStockTBox.MaxLength = 3;
             this.GoodsStockTBox.Name = "GoodsStockTBox";
             this.GoodsStockTBox.Size = new System.Drawing.Size(210, 19);
@@ -83,7 +71,7 @@
             // GoodsStockDisBtn
             // 
             this.GoodsStockDisBtn.Location = new System.Drawing.Point(586, 366);
-            this.GoodsStockDisBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GoodsStockDisBtn.Margin = new System.Windows.Forms.Padding(2);
             this.GoodsStockDisBtn.Name = "GoodsStockDisBtn";
             this.GoodsStockDisBtn.Size = new System.Drawing.Size(142, 45);
             this.GoodsStockDisBtn.TabIndex = 14;
@@ -106,7 +94,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.GoodsStockUpdateBtn);
             this.Controls.Add(this.GoodsStockDisLbl);
             this.Controls.Add(this.GoodsStockLbl);
             this.Controls.Add(this.GoodsStockTBox);
@@ -123,7 +110,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button GoodsStockUpdateBtn;
         private System.Windows.Forms.Label GoodsStockDisLbl;
         private System.Windows.Forms.Label GoodsStockLbl;
         private System.Windows.Forms.TextBox GoodsStockTBox;
