@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,8 @@ namespace WindowsFormsApplication1
 
         private void OrderingList_Load(object sender, EventArgs e)
         {
+            DateTime dtNow = DateTime.Now;
+
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
@@ -48,6 +51,18 @@ namespace WindowsFormsApplication1
             this.OrderingReport.LocalReport.DataSources.Add(rds);
 
             this.OrderingReport.RefreshReport();
+
+            string mineType;
+            string encoding;
+            string extension;
+            String[] stringminds;
+            Warning[] warnings;
+
+            byte[] bytes = this.OrderingReport.LocalReport.Render("EXCELOPENXML",
+            null, out mineType, out encoding, out extension, out stringminds, out warnings);
+            FileStream fs = new FileStream(@"..\..\assets\EXCEL\"+dtNow.ToString("yyyyMMddhhmmss")+".xlsx", FileMode.Create);
+            fs.Write(bytes, 0, bytes.Length);
+            fs.Close();
         }
 
         private void OrderingList_FormClosing(object sender, FormClosingEventArgs e)
