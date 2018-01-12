@@ -67,14 +67,14 @@
             this.label1.Location = new System.Drawing.Point(214, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 12);
-            this.label1.TabIndex = 107;
+            this.label1.TabIndex = 13;
             // 
             // BirthdayTextB
             // 
             this.BirthdayTextB.Location = new System.Drawing.Point(84, 396);
             this.BirthdayTextB.Name = "BirthdayTextB";
             this.BirthdayTextB.Size = new System.Drawing.Size(117, 19);
-            this.BirthdayTextB.TabIndex = 106;
+            this.BirthdayTextB.TabIndex = 6;
             // 
             // groupBox2
             // 
@@ -84,7 +84,7 @@
             this.groupBox2.Location = new System.Drawing.Point(375, 393);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(158, 30);
-            this.groupBox2.TabIndex = 105;
+            this.groupBox2.TabIndex = 99;
             this.groupBox2.TabStop = false;
             // 
             // NoAuthorityRB
@@ -94,7 +94,7 @@
             this.NoAuthorityRB.Name = "NoAuthorityRB";
             this.NoAuthorityRB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.NoAuthorityRB.Size = new System.Drawing.Size(35, 16);
-            this.NoAuthorityRB.TabIndex = 63;
+            this.NoAuthorityRB.TabIndex = 102;
             this.NoAuthorityRB.TabStop = true;
             this.NoAuthorityRB.Text = "無";
             this.NoAuthorityRB.UseVisualStyleBackColor = true;
@@ -107,7 +107,7 @@
             this.YesAuthorityRB.Name = "YesAuthorityRB";
             this.YesAuthorityRB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.YesAuthorityRB.Size = new System.Drawing.Size(35, 16);
-            this.YesAuthorityRB.TabIndex = 62;
+            this.YesAuthorityRB.TabIndex = 101;
             this.YesAuthorityRB.Text = "有";
             this.YesAuthorityRB.UseVisualStyleBackColor = true;
             this.YesAuthorityRB.CheckedChanged += new System.EventHandler(this.YesAuthorityRB_CheckedChanged_1);
@@ -118,7 +118,7 @@
             this.AuthorityLbl.Location = new System.Drawing.Point(6, 13);
             this.AuthorityLbl.Name = "AuthorityLbl";
             this.AuthorityLbl.Size = new System.Drawing.Size(71, 12);
-            this.AuthorityLbl.TabIndex = 61;
+            this.AuthorityLbl.TabIndex = 100;
             this.AuthorityLbl.Text = "責任者権限：";
             // 
             // EmpAddress2TextB
@@ -126,7 +126,7 @@
             this.EmpAddress2TextB.Location = new System.Drawing.Point(271, 371);
             this.EmpAddress2TextB.Name = "EmpAddress2TextB";
             this.EmpAddress2TextB.Size = new System.Drawing.Size(117, 19);
-            this.EmpAddress2TextB.TabIndex = 104;
+            this.EmpAddress2TextB.TabIndex = 4;
             // 
             // AddressLbl2
             // 
@@ -134,7 +134,7 @@
             this.AddressLbl2.Location = new System.Drawing.Point(224, 374);
             this.AddressLbl2.Name = "AddressLbl2";
             this.AddressLbl2.Size = new System.Drawing.Size(41, 12);
-            this.AddressLbl2.TabIndex = 103;
+            this.AddressLbl2.TabIndex = 18;
             this.AddressLbl2.Text = "住所2：";
             // 
             // button1
@@ -142,7 +142,7 @@
             this.button1.Location = new System.Drawing.Point(607, 391);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(150, 37);
-            this.button1.TabIndex = 102;
+            this.button1.TabIndex = 8;
             this.button1.Text = "更新";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -155,7 +155,7 @@
             this.groupBox1.Location = new System.Drawing.Point(226, 396);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(121, 30);
-            this.groupBox1.TabIndex = 101;
+            this.groupBox1.TabIndex = 95;
             this.groupBox1.TabStop = false;
             // 
             // SexLbl
@@ -164,7 +164,7 @@
             this.SexLbl.Location = new System.Drawing.Point(4, 13);
             this.SexLbl.Name = "SexLbl";
             this.SexLbl.Size = new System.Drawing.Size(35, 12);
-            this.SexLbl.TabIndex = 68;
+            this.SexLbl.TabIndex = 96;
             this.SexLbl.Text = "性別：";
             // 
             // ManRB
@@ -174,7 +174,7 @@
             this.ManRB.Name = "ManRB";
             this.ManRB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ManRB.Size = new System.Drawing.Size(35, 16);
-            this.ManRB.TabIndex = 69;
+            this.ManRB.TabIndex = 97;
             this.ManRB.Text = "男";
             this.ManRB.UseVisualStyleBackColor = true;
             this.ManRB.CheckedChanged += new System.EventHandler(this.ManRB_CheckedChanged_1);
@@ -186,7 +186,7 @@
             this.WomanRB.Name = "WomanRB";
             this.WomanRB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.WomanRB.Size = new System.Drawing.Size(35, 16);
-            this.WomanRB.TabIndex = 70;
+            this.WomanRB.TabIndex = 98;
             this.WomanRB.Text = "女";
             this.WomanRB.UseVisualStyleBackColor = true;
             this.WomanRB.CheckedChanged += new System.EventHandler(this.WomanRB_CheckedChanged_1);
@@ -196,7 +196,7 @@
             this.EmpTelTextB.Location = new System.Drawing.Point(458, 371);
             this.EmpTelTextB.Name = "EmpTelTextB";
             this.EmpTelTextB.Size = new System.Drawing.Size(117, 19);
-            this.EmpTelTextB.TabIndex = 100;
+            this.EmpTelTextB.TabIndex = 5;
             // 
             // EmpTelLbl
             // 
@@ -204,7 +204,7 @@
             this.EmpTelLbl.Location = new System.Drawing.Point(393, 374);
             this.EmpTelLbl.Name = "EmpTelLbl";
             this.EmpTelLbl.Size = new System.Drawing.Size(59, 12);
-            this.EmpTelLbl.TabIndex = 99;
+            this.EmpTelLbl.TabIndex = 19;
             this.EmpTelLbl.Text = "電話番号：";
             // 
             // EmpAddressTextB
@@ -212,7 +212,7 @@
             this.EmpAddressTextB.Location = new System.Drawing.Point(84, 371);
             this.EmpAddressTextB.Name = "EmpAddressTextB";
             this.EmpAddressTextB.Size = new System.Drawing.Size(117, 19);
-            this.EmpAddressTextB.TabIndex = 98;
+            this.EmpAddressTextB.TabIndex = 3;
             // 
             // AddressLbl
             // 
@@ -220,7 +220,7 @@
             this.AddressLbl.Location = new System.Drawing.Point(37, 374);
             this.AddressLbl.Name = "AddressLbl";
             this.AddressLbl.Size = new System.Drawing.Size(41, 12);
-            this.AddressLbl.TabIndex = 97;
+            this.AddressLbl.TabIndex = 17;
             this.AddressLbl.Text = "住所1：";
             // 
             // EmpPostTextB
@@ -228,7 +228,7 @@
             this.EmpPostTextB.Location = new System.Drawing.Point(458, 346);
             this.EmpPostTextB.Name = "EmpPostTextB";
             this.EmpPostTextB.Size = new System.Drawing.Size(117, 19);
-            this.EmpPostTextB.TabIndex = 96;
+            this.EmpPostTextB.TabIndex = 2;
             this.EmpPostTextB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EmpPostTextB_KeyDown_1);
             // 
             // PostalNamLbl
@@ -237,7 +237,7 @@
             this.PostalNamLbl.Location = new System.Drawing.Point(393, 349);
             this.PostalNamLbl.Name = "PostalNamLbl";
             this.PostalNamLbl.Size = new System.Drawing.Size(59, 12);
-            this.PostalNamLbl.TabIndex = 95;
+            this.PostalNamLbl.TabIndex = 16;
             this.PostalNamLbl.Text = "郵便番号：";
             // 
             // HuriganaTextB
@@ -245,7 +245,7 @@
             this.HuriganaTextB.Location = new System.Drawing.Point(271, 346);
             this.HuriganaTextB.Name = "HuriganaTextB";
             this.HuriganaTextB.Size = new System.Drawing.Size(117, 19);
-            this.HuriganaTextB.TabIndex = 94;
+            this.HuriganaTextB.TabIndex = 1;
             // 
             // HuriganaLbl
             // 
@@ -253,7 +253,7 @@
             this.HuriganaLbl.Location = new System.Drawing.Point(223, 349);
             this.HuriganaLbl.Name = "HuriganaLbl";
             this.HuriganaLbl.Size = new System.Drawing.Size(42, 12);
-            this.HuriganaLbl.TabIndex = 93;
+            this.HuriganaLbl.TabIndex = 15;
             this.HuriganaLbl.Text = "ﾌﾘｶﾞﾅ：";
             // 
             // BirthdayLbl
@@ -262,7 +262,7 @@
             this.BirthdayLbl.Location = new System.Drawing.Point(19, 399);
             this.BirthdayLbl.Name = "BirthdayLbl";
             this.BirthdayLbl.Size = new System.Drawing.Size(59, 12);
-            this.BirthdayLbl.TabIndex = 92;
+            this.BirthdayLbl.TabIndex = 20;
             this.BirthdayLbl.Text = "生年月日：";
             // 
             // EmpdataGridView
@@ -273,14 +273,14 @@
             this.EmpdataGridView.ReadOnly = true;
             this.EmpdataGridView.RowTemplate.Height = 21;
             this.EmpdataGridView.Size = new System.Drawing.Size(754, 296);
-            this.EmpdataGridView.TabIndex = 91;
+            this.EmpdataGridView.TabIndex = 20;
             // 
             // RegistrationB
             // 
             this.RegistrationB.Location = new System.Drawing.Point(607, 348);
             this.RegistrationB.Name = "RegistrationB";
             this.RegistrationB.Size = new System.Drawing.Size(150, 37);
-            this.RegistrationB.TabIndex = 90;
+            this.RegistrationB.TabIndex = 7;
             this.RegistrationB.Text = "登録";
             this.RegistrationB.UseVisualStyleBackColor = true;
             this.RegistrationB.Click += new System.EventHandler(this.RegistrationB_Click);
@@ -290,7 +290,7 @@
             this.EmpNameTextB.Location = new System.Drawing.Point(84, 346);
             this.EmpNameTextB.Name = "EmpNameTextB";
             this.EmpNameTextB.Size = new System.Drawing.Size(117, 19);
-            this.EmpNameTextB.TabIndex = 89;
+            this.EmpNameTextB.TabIndex = 0;
             // 
             // EmpNameLbl
             // 
@@ -298,7 +298,7 @@
             this.EmpNameLbl.Location = new System.Drawing.Point(43, 349);
             this.EmpNameLbl.Name = "EmpNameLbl";
             this.EmpNameLbl.Size = new System.Drawing.Size(35, 12);
-            this.EmpNameLbl.TabIndex = 88;
+            this.EmpNameLbl.TabIndex = 14;
             this.EmpNameLbl.Text = "名前：";
             // 
             // EmpMgtLbl
@@ -306,7 +306,7 @@
             this.EmpMgtLbl.Location = new System.Drawing.Point(3, 1);
             this.EmpMgtLbl.Name = "EmpMgtLbl";
             this.EmpMgtLbl.Size = new System.Drawing.Size(151, 40);
-            this.EmpMgtLbl.TabIndex = 87;
+            this.EmpMgtLbl.TabIndex = 12;
             this.EmpMgtLbl.Text = "従業員管理";
             this.EmpMgtLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 

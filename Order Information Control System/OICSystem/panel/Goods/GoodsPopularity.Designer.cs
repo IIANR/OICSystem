@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.printing = new System.Windows.Forms.Button();
             this.Msg = new System.Windows.Forms.Label();
             this.TotalMsg = new System.Windows.Forms.Label();
@@ -39,6 +39,7 @@
             this.DateSelectCount = new System.Windows.Forms.Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.Btnclean = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +62,6 @@
             this.Msg.Size = new System.Drawing.Size(49, 24);
             this.Msg.TabIndex = 139;
             this.Msg.Text = "Msg";
-            this.Msg.Visible = false;
             // 
             // TotalMsg
             // 
@@ -113,14 +113,14 @@
             // 
             // chart1
             // 
-            chartArea1.AxisX.Interval = 1D;
-            chartArea1.AxisX.MajorGrid.Enabled = false;
-            chartArea1.AxisX.MajorGrid.Interval = 1D;
-            chartArea1.AxisY.MajorGrid.Enabled = false;
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea5.AxisX.Interval = 1D;
+            chartArea5.AxisX.MajorGrid.Enabled = false;
+            chartArea5.AxisX.MajorGrid.Interval = 1D;
+            chartArea5.AxisY.MajorGrid.Enabled = false;
+            chartArea5.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chart1.Legends.Add(legend5);
             this.chart1.Location = new System.Drawing.Point(33, 69);
             this.chart1.Name = "chart1";
             this.chart1.Size = new System.Drawing.Size(700, 298);
@@ -136,10 +136,21 @@
             this.listBox1.Size = new System.Drawing.Size(724, 364);
             this.listBox1.TabIndex = 133;
             // 
+            // Btnclean
+            // 
+            this.Btnclean.Location = new System.Drawing.Point(57, 393);
+            this.Btnclean.Name = "Btnclean";
+            this.Btnclean.Size = new System.Drawing.Size(94, 23);
+            this.Btnclean.TabIndex = 142;
+            this.Btnclean.Text = "初期表示に戻す";
+            this.Btnclean.UseVisualStyleBackColor = true;
+            this.Btnclean.Click += new System.EventHandler(this.Btnclean_Click);
+            // 
             // GoodsPopularity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Btnclean);
             this.Controls.Add(this.printing);
             this.Controls.Add(this.Msg);
             this.Controls.Add(this.TotalMsg);
@@ -149,10 +160,11 @@
             this.Controls.Add(this.DateSelectCount);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.listBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GoodsPopularity";
             this.Size = new System.Drawing.Size(760, 430);
             this.Load += new System.EventHandler(this.GoodsPopularity_Load);
+            this.VisibleChanged += new System.EventHandler(this.GoodsPopularity_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -170,5 +182,6 @@
         private System.Windows.Forms.Button DateSelectCount;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button Btnclean;
     }
 }

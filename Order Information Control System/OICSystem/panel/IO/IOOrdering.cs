@@ -214,5 +214,14 @@ namespace WindowsFormsApplication1
             OrderingPayTextbox.Text = "";
             InputNumTextbox.Text = "";
         }
+
+        private void InputNumTextbox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < '0' || '9' < e.KeyChar) && e.KeyChar != '\b')
+            {
+                //押されたキーが 0～9でない場合は、イベントをキャンセルする
+                e.Handled = true;
+            }
+        }
     }
 }

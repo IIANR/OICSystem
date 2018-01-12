@@ -316,5 +316,25 @@ namespace WindowsFormsApplication1
         {
             this.ActiveControl = this.DateStart;
         }
+
+        private void GoodsPopularity_VisibleChanged(object sender, EventArgs e)
+        {
+            this.ActiveControl = this.DateStart;
+            Msg.Text = "指定したい期間を入力後ボタンをクリック！";
+            TotalMsg.Visible = false;
+            chart1.Visible = false;
+            DateStart.Text = "";
+            DateEnd.Text = "";
+        }
+
+        private void Btnclean_Click(object sender, EventArgs e)
+        {
+            this.ActiveControl = this.DateStart;
+            Msg.Text = "指定したい期間を入力後ボタンをクリック！";
+            TotalMsg.Visible = false;
+            chart1.Visible = false;
+            DateStart.Text = "";
+            DateEnd.Text = "";
+        }
     }
 }

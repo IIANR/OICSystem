@@ -39,6 +39,7 @@
             this.EmpNameLbl = new System.Windows.Forms.Label();
             this.EmpdataGridView = new System.Windows.Forms.DataGridView();
             this.EmpMgtLbl = new System.Windows.Forms.Label();
+            this.EditLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.EmpdataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,6 +52,7 @@
             this.DeleteB.TabIndex = 127;
             this.DeleteB.Text = "削除";
             this.DeleteB.UseVisualStyleBackColor = true;
+            this.DeleteB.Visible = false;
             this.DeleteB.Click += new System.EventHandler(this.DeleteB_Click);
             // 
             // label1
@@ -70,6 +72,7 @@
             this.UpdateB.TabIndex = 125;
             this.UpdateB.Text = "更新";
             this.UpdateB.UseVisualStyleBackColor = true;
+            this.UpdateB.Visible = false;
             this.UpdateB.Click += new System.EventHandler(this.UpdateB_Click);
             // 
             // EditB
@@ -144,10 +147,20 @@
             this.EmpMgtLbl.Text = "従業員管理";
             this.EmpMgtLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // EditLbl
+            // 
+            this.EditLbl.AutoSize = true;
+            this.EditLbl.ForeColor = System.Drawing.Color.Red;
+            this.EditLbl.Location = new System.Drawing.Point(240, 365);
+            this.EditLbl.Name = "EditLbl";
+            this.EditLbl.Size = new System.Drawing.Size(0, 12);
+            this.EditLbl.TabIndex = 128;
+            // 
             // EmpMgtInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.EditLbl);
             this.Controls.Add(this.DeleteB);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.UpdateB);
@@ -181,5 +194,6 @@
         private System.Windows.Forms.Label EmpNameLbl;
         private System.Windows.Forms.DataGridView EmpdataGridView;
         private System.Windows.Forms.Label EmpMgtLbl;
+        private System.Windows.Forms.Label EditLbl;
     }
 }

@@ -45,6 +45,7 @@
             // 
             this.EmpTextbox.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.EmpTextbox.Location = new System.Drawing.Point(292, 233);
+            this.EmpTextbox.MaxLength = 6;
             this.EmpTextbox.Name = "EmpTextbox";
             this.EmpTextbox.Size = new System.Drawing.Size(373, 20);
             this.EmpTextbox.TabIndex = 0;
@@ -54,6 +55,7 @@
             // 
             this.PassTextbox.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.PassTextbox.Location = new System.Drawing.Point(292, 301);
+            this.PassTextbox.MaxLength = 10;
             this.PassTextbox.Name = "PassTextbox";
             this.PassTextbox.PasswordChar = '*';
             this.PassTextbox.Size = new System.Drawing.Size(373, 20);

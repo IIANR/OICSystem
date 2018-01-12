@@ -392,12 +392,12 @@ namespace WindowsFormsApplication1
 
         private void ManRB_CheckedChanged_1(object sender, EventArgs e)
         {
-            tsex = WomanRB.Text;
+            tsex = ManRB.Text;
         }
 
         private void WomanRB_CheckedChanged_1(object sender, EventArgs e)
         {
-            tsex = ManRB.Text;
+            tsex = WomanRB.Text;
         }
 
         private void YesAuthorityRB_CheckedChanged_1(object sender, EventArgs e)
