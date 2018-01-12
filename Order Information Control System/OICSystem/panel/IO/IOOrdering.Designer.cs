@@ -120,9 +120,11 @@
             // InputNumTextbox
             // 
             this.InputNumTextbox.Location = new System.Drawing.Point(555, 320);
+            this.InputNumTextbox.MaxLength = 3;
             this.InputNumTextbox.Name = "InputNumTextbox";
             this.InputNumTextbox.Size = new System.Drawing.Size(100, 19);
             this.InputNumTextbox.TabIndex = 2;
+            this.InputNumTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InputNumTextbox_KeyPress);
             // 
             // label6
             // 

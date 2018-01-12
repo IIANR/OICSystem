@@ -43,6 +43,7 @@
             this.analysis = new System.Windows.Forms.Button();
             this.printing = new System.Windows.Forms.Button();
             this.AddMsg = new System.Windows.Forms.Label();
+            this.Btnclean = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -150,7 +151,7 @@
             // 
             // analysis
             // 
-            this.analysis.Location = new System.Drawing.Point(67, 470);
+            this.analysis.Location = new System.Drawing.Point(33, 469);
             this.analysis.Name = "analysis";
             this.analysis.Size = new System.Drawing.Size(89, 33);
             this.analysis.TabIndex = 117;
@@ -179,10 +180,21 @@
             this.AddMsg.TabIndex = 119;
             this.AddMsg.Text = "AddMsg";
             // 
+            // Btnclean
+            // 
+            this.Btnclean.Location = new System.Drawing.Point(128, 475);
+            this.Btnclean.Name = "Btnclean";
+            this.Btnclean.Size = new System.Drawing.Size(94, 23);
+            this.Btnclean.TabIndex = 143;
+            this.Btnclean.Text = "初期表示に戻す";
+            this.Btnclean.UseVisualStyleBackColor = true;
+            this.Btnclean.Click += new System.EventHandler(this.Btnclean_Click);
+            // 
             // SalMgt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Btnclean);
             this.Controls.Add(this.AddMsg);
             this.Controls.Add(this.printing);
             this.Controls.Add(this.analysis);
@@ -221,5 +233,6 @@
         private System.Windows.Forms.Button analysis;
         private System.Windows.Forms.Button printing;
         private System.Windows.Forms.Label AddMsg;
+        private System.Windows.Forms.Button Btnclean;
     }
 }

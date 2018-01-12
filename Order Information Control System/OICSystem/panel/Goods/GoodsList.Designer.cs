@@ -33,7 +33,6 @@
             this.textBodr = new System.Windows.Forms.TextBox();
             this.Lblodr = new System.Windows.Forms.Label();
             this.Lblsupp = new System.Windows.Forms.Label();
-            this.textBsupp = new System.Windows.Forms.TextBox();
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -58,6 +57,7 @@
             this.goodsRegiPrice = new System.Windows.Forms.Label();
             this.goodsRegiName = new System.Windows.Forms.Label();
             this.goodsRegiId = new System.Windows.Forms.Label();
+            this.textBsupp = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             this.panel.SuspendLayout();
@@ -67,6 +67,7 @@
             // textBodr
             // 
             this.textBodr.Location = new System.Drawing.Point(149, 269);
+            this.textBodr.MaxLength = 3;
             this.textBodr.Name = "textBodr";
             this.textBodr.Size = new System.Drawing.Size(50, 19);
             this.textBodr.TabIndex = 5;
@@ -89,14 +90,6 @@
             this.Lblsupp.Size = new System.Drawing.Size(54, 12);
             this.Lblsupp.TabIndex = 83;
             this.Lblsupp.Text = "仕入れ値:";
-            // 
-            // textBsupp
-            // 
-            this.textBsupp.Location = new System.Drawing.Point(149, 120);
-            this.textBsupp.Name = "textBsupp";
-            this.textBsupp.Size = new System.Drawing.Size(83, 19);
-            this.textBsupp.TabIndex = 2;
-            this.textBsupp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBsupp_KeyPress);
             // 
             // DeleteBtn
             // 
@@ -265,6 +258,7 @@
             // textBnumber
             // 
             this.textBnumber.Location = new System.Drawing.Point(149, 232);
+            this.textBnumber.MaxLength = 2;
             this.textBnumber.Name = "textBnumber";
             this.textBnumber.Size = new System.Drawing.Size(86, 19);
             this.textBnumber.TabIndex = 4;
@@ -300,6 +294,7 @@
             // textBname
             // 
             this.textBname.Location = new System.Drawing.Point(149, 82);
+            this.textBname.MaxLength = 30;
             this.textBname.Name = "textBname";
             this.textBname.Size = new System.Drawing.Size(125, 19);
             this.textBname.TabIndex = 1;
@@ -334,14 +329,24 @@
             this.goodsRegiId.Text = "商品ID:";
             this.goodsRegiId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // textBsupp
+            // 
+            this.textBsupp.Location = new System.Drawing.Point(149, 123);
+            this.textBsupp.MaxLength = 5;
+            this.textBsupp.Name = "textBsupp";
+            this.textBsupp.Size = new System.Drawing.Size(86, 19);
+            this.textBsupp.TabIndex = 85;
+            this.textBsupp.TextChanged += new System.EventHandler(this.textBsupp_TextChanged_1);
+            this.textBsupp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBsupp_KeyPress);
+            // 
             // GoodsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.textBsupp);
             this.Controls.Add(this.textBodr);
             this.Controls.Add(this.Lblodr);
             this.Controls.Add(this.Lblsupp);
-            this.Controls.Add(this.textBsupp);
             this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.bindingNavigator1);
             this.Controls.Add(this.textBID);
@@ -375,7 +380,6 @@
         private System.Windows.Forms.TextBox textBodr;
         private System.Windows.Forms.Label Lblodr;
         private System.Windows.Forms.Label Lblsupp;
-        private System.Windows.Forms.TextBox textBsupp;
         private System.Windows.Forms.Button DeleteBtn;
         private System.Windows.Forms.BindingNavigator bindingNavigator1;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
@@ -400,5 +404,6 @@
         private System.Windows.Forms.Label goodsRegiName;
         private System.Windows.Forms.Label goodsRegiId;
         public System.Windows.Forms.TextBox textBname;
+        private System.Windows.Forms.TextBox textBsupp;
     }
 }
