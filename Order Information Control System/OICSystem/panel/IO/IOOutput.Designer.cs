@@ -43,9 +43,11 @@
             // InputNumTextbox
             // 
             this.InputNumTextbox.Location = new System.Drawing.Point(295, 371);
+            this.InputNumTextbox.MaxLength = 3;
             this.InputNumTextbox.Name = "InputNumTextbox";
             this.InputNumTextbox.Size = new System.Drawing.Size(100, 19);
             this.InputNumTextbox.TabIndex = 2;
+            this.InputNumTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InputNumTextbox_KeyPress);
             // 
             // InputNumLabel
             // 
@@ -112,6 +114,7 @@
             // IdTextbox
             // 
             this.IdTextbox.Location = new System.Drawing.Point(93, 371);
+            this.IdTextbox.MaxLength = 5;
             this.IdTextbox.Name = "IdTextbox";
             this.IdTextbox.Size = new System.Drawing.Size(100, 19);
             this.IdTextbox.TabIndex = 1;

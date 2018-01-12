@@ -102,6 +102,7 @@
             // KanaTextbox
             // 
             this.KanaTextbox.Location = new System.Drawing.Point(74, 385);
+            this.KanaTextbox.MaxLength = 30;
             this.KanaTextbox.Name = "KanaTextbox";
             this.KanaTextbox.Size = new System.Drawing.Size(117, 19);
             this.KanaTextbox.TabIndex = 1;

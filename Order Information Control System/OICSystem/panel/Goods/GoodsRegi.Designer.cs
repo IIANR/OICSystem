@@ -53,6 +53,7 @@
             // textBsupp
             // 
             this.textBsupp.Location = new System.Drawing.Point(144, 154);
+            this.textBsupp.MaxLength = 5;
             this.textBsupp.Name = "textBsupp";
             this.textBsupp.Size = new System.Drawing.Size(86, 19);
             this.textBsupp.TabIndex = 2;
@@ -62,6 +63,7 @@
             // textBodr
             // 
             this.textBodr.Location = new System.Drawing.Point(141, 291);
+            this.textBodr.MaxLength = 3;
             this.textBodr.Name = "textBodr";
             this.textBodr.Size = new System.Drawing.Size(50, 19);
             this.textBodr.TabIndex = 5;
@@ -160,6 +162,7 @@
             // textBnumber
             // 
             this.textBnumber.Location = new System.Drawing.Point(141, 256);
+            this.textBnumber.MaxLength = 2;
             this.textBnumber.Name = "textBnumber";
             this.textBnumber.Size = new System.Drawing.Size(86, 19);
             this.textBnumber.TabIndex = 4;
@@ -186,6 +189,7 @@
             // textBname
             // 
             this.textBname.Location = new System.Drawing.Point(141, 115);
+            this.textBname.MaxLength = 30;
             this.textBname.Name = "textBname";
             this.textBname.Size = new System.Drawing.Size(125, 19);
             this.textBname.TabIndex = 1;

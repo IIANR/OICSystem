@@ -136,6 +136,7 @@
             // 
             this.AddressTextbox2.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.AddressTextbox2.Location = new System.Drawing.Point(291, 395);
+            this.AddressTextbox2.MaxLength = 40;
             this.AddressTextbox2.Name = "AddressTextbox2";
             this.AddressTextbox2.Size = new System.Drawing.Size(152, 19);
             this.AddressTextbox2.TabIndex = 4;
@@ -154,6 +155,7 @@
             // 
             this.PoscodeTextbox.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.PoscodeTextbox.Location = new System.Drawing.Point(95, 370);
+            this.PoscodeTextbox.MaxLength = 8;
             this.PoscodeTextbox.Name = "PoscodeTextbox";
             this.PoscodeTextbox.Size = new System.Drawing.Size(135, 19);
             this.PoscodeTextbox.TabIndex = 2;
@@ -174,6 +176,7 @@
             // 
             this.TelTextbox.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.TelTextbox.Location = new System.Drawing.Point(308, 344);
+            this.TelTextbox.MaxLength = 13;
             this.TelTextbox.Name = "TelTextbox";
             this.TelTextbox.Size = new System.Drawing.Size(135, 19);
             this.TelTextbox.TabIndex = 1;
@@ -183,6 +186,7 @@
             // 
             this.AddressTextbox1.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.AddressTextbox1.Location = new System.Drawing.Point(74, 395);
+            this.AddressTextbox1.MaxLength = 40;
             this.AddressTextbox1.Name = "AddressTextbox1";
             this.AddressTextbox1.Size = new System.Drawing.Size(156, 19);
             this.AddressTextbox1.TabIndex = 3;
@@ -191,6 +195,7 @@
             // 
             this.NameTextbox.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.NameTextbox.Location = new System.Drawing.Point(95, 344);
+            this.NameTextbox.MaxLength = 15;
             this.NameTextbox.Name = "NameTextbox";
             this.NameTextbox.Size = new System.Drawing.Size(135, 19);
             this.NameTextbox.TabIndex = 0;
