@@ -81,7 +81,7 @@ namespace WindowsFormsApplication1
 
                 for (int i = 0; i < GoodsIdArray.Length; i++)
                 {
-                    OleDbDataAdapter daprice = new OleDbDataAdapter("SELECT 単価 FROM 商品マスタ WHERE 商品ID='" + GoodsIdArray[i] + "'", cn);
+                    OleDbDataAdapter daprice = new OleDbDataAdapter("SELECT 単価 FROM 商品マスタ WHERE 商品ID='" + GoodsIdArray[i].PadLeft(4, '0') + "'", cn);
                     DataTable dtprice = new DataTable();
                     daprice.Fill(dtprice);
                     sum += int.Parse(dtprice.Rows[0][0].ToString());
