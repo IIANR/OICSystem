@@ -127,6 +127,7 @@ namespace WindowsFormsApplication1
                 }
                 string id;
                 string pass;
+                string flag="在籍";
                 cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
                 cn.Open();
 
@@ -167,8 +168,8 @@ namespace WindowsFormsApplication1
                 cn.Close();
                 EmpdataGridView.AllowUserToAddRows = true;
                 cmd.Connection = cn;
-                cmd.CommandText = "INSERT INTO 従業員マスタ (従業員ID,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限,パスワード)" +
-                    " VALUES (@empid,@name,@assistname,@sex,@post,@addres,@address2,@tel,@birthday,@day,@authority,@pass)";
+                cmd.CommandText = "INSERT INTO 従業員マスタ (従業員ID,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限,パスワード,フラグ)" +
+                    " VALUES (@empid,@name,@assistname,@sex,@post,@addres,@address2,@tel,@birthday,@day,@authority,@pass,@flag)";
                 OleDbParameter prempid = new OleDbParameter("@empid", int.Parse(id));
                 cmd.Parameters.Add(prempid);
                 OleDbParameter prname = new OleDbParameter("@name", EmpNameTextB.Text);
@@ -193,6 +194,8 @@ namespace WindowsFormsApplication1
                 cmd.Parameters.Add(prauthority);
                 OleDbParameter prpass = new OleDbParameter("@pass", pass);
                 cmd.Parameters.Add(prpass);
+                OleDbParameter prflag = new OleDbParameter("@flag", flag);
+                cmd.Parameters.Add(prflag);
 
                 try
                 {
