@@ -110,11 +110,6 @@ namespace WindowsFormsApplication1.panel.Goods
 
         }
 
-        private void GoodsStockUpdateBtn_Click(object sender, EventArgs e)
-        {
-            dataload();
-            GoodsStockDisLbl.Text = "";
-        }
 
         private void dataload()
         {
