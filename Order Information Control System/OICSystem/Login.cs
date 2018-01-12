@@ -181,6 +181,7 @@ namespace WindowsFormsApplication1
             //入力情報のクリア
             EmpTextbox.Text = "";
             PassTextbox.Text = "";
+            this.ActiveControl = this.EmpTextbox;
         }
 
         private void Login_Load(object sender, EventArgs e)

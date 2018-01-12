@@ -226,7 +226,7 @@ namespace WindowsFormsApplication1.panel.Goods
 
 
             cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-            da = new OleDbDataAdapter("SELECT m.商品ID,m.商品名,m.仕入れ値,m.単価,k.カテゴリ名,m.画像ファイル,m.安全在庫数,m.発注数,m.フラグ FROM 商品マスタ m,カテゴリマスタ k WHERE m.カテゴリID=k.カテゴリID  AND m.フラグ <> '販売中止'", cn);
+            da = new OleDbDataAdapter("SELECT m.商品ID,m.商品名,m.仕入れ値,m.単価,k.カテゴリ名,m.画像ファイル,m.安全在庫数,m.発注数,m.フラグ FROM 商品マスタ m,カテゴリマスタ k WHERE m.カテゴリID=k.カテゴリID  AND m.フラグ <> '販売中止' ORDER BY m.商品ID", cn);
             dt = new DataTable();
             dt.Clear();
             da.Fill(dt);

@@ -21,7 +21,7 @@ namespace WindowsFormsApplication1.panel
         BindingSource bds = new BindingSource();
 
         string priceBtext;
-        string cateID;
+        int cateID;
         //string goodsID;
         int price;
         int goodsid;
@@ -169,13 +169,13 @@ namespace WindowsFormsApplication1.panel
             {
             }
 
-
+            cmd.Parameters.Clear();
 
             //カテゴリIDを入れる↓
             da = new OleDbDataAdapter("SELECT カテゴリID FROM カテゴリマスタ WHERE カテゴリ名='" + comboBcate.Text + "'", cn);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            cateID = dt.Rows[0][0].ToString();
+            cateID = int.Parse(dt.Rows[0][0].ToString());
             dt.Clear();
 
 
@@ -192,16 +192,16 @@ namespace WindowsFormsApplication1.panel
             }
 
 
-
+            
             cmd.Connection = cn;
             cmd.CommandText = "INSERT INTO 商品マスタ (商品ID,商品名,単価,カテゴリID,安全在庫数,画像ファイル,仕入れ値,発注数,フラグ)" +
                 " VALUES (@id,@name,@price,@cateID,@number,@imagefile,@supp,@odr,@flag)";
 
-            OleDbParameter gdID = new OleDbParameter("@id", int.Parse(textBID.Text));
+            OleDbParameter gdID = new OleDbParameter("@id", textBID.Text);
             cmd.Parameters.Add(gdID);
             OleDbParameter gdname = new OleDbParameter("@name", textBname.Text);
             cmd.Parameters.Add(gdname);
-            OleDbParameter gdprice = new OleDbParameter("@price", textBprice.Text);
+            OleDbParameter gdprice = new OleDbParameter("@price", int.Parse(textBprice.Text));
             cmd.Parameters.Add(gdprice);
             OleDbParameter gdcateid = new OleDbParameter("@cateID", cateID);
             cmd.Parameters.Add(gdcateid);
@@ -273,7 +273,7 @@ namespace WindowsFormsApplication1.panel
             da.Fill(dt);
 
             Goodsid();
-            textBID.Text = goodsid.ToString();
+            textBID.Text = goodsid.ToString().PadLeft(4, '0');
             textBname.Text = "";
             textBprice.Text = "";
             comboBcate.Text = "";

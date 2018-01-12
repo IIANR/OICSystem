@@ -393,7 +393,7 @@ namespace WindowsFormsApplication1
                         db_Goodsname = (string)rd.GetValue(1);
                         if (db_Goodsname == Goodsname)
                         {
-                            goodsIDlist += (string)rd.GetValue(0).ToString() + ",";
+                            goodsIDlist += (string)rd.GetValue(0).ToString().TrimStart('0') + ",";
                         }
                     }
 
