@@ -67,7 +67,7 @@ namespace WindowsFormsApplication1
 
         private void SearchB_Click(object sender, EventArgs e)
         {
-            da = new OleDbDataAdapter("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限,備考 FROM 従業員マスタ" +
+            da = new OleDbDataAdapter("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ" +
             " WHERE 従業員ID LIKE '%" + EmpIDTextB.Text + "%'" +
             " AND 名前 LIKE '%" + EmpNameTextB.Text + "%'", cn);
             dt = new DataTable();
@@ -84,7 +84,7 @@ namespace WindowsFormsApplication1
             EmpdataGridView.Columns.Clear();
             EmpdataGridView.DataSource = null;
             cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
-            da = new OleDbDataAdapter("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限,備考 FROM 従業員マスタ", cn);
+            da = new OleDbDataAdapter("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ", cn);
             dt.Clear();
             dt = new DataTable();
             da.Fill(dt);
@@ -115,8 +115,7 @@ namespace WindowsFormsApplication1
                     "' ,住所2 ='" + EmpdataGridView[7, i].Value.ToString() +
                     "' ,電話番号 ='" + EmpdataGridView[8, i].Value.ToString() +
                     "',責任者権限 =" + EmpdataGridView[11, i].Value +
-                    " ,備考 ='" + EmpdataGridView[12, i].Value.ToString() +
-                    "' WHERE 従業員ID=" + (int)EmpdataGridView[0, i].Value ;
+                    " WHERE 従業員ID=" + (int)EmpdataGridView[0, i].Value ;
                 cn.Open();
                 cmd.ExecuteNonQuery();
                 cn.Close();
