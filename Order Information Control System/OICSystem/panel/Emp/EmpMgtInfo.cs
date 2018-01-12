@@ -68,12 +68,20 @@ namespace WindowsFormsApplication1
             if (EmpdataGridView.ReadOnly == true)
             {
                 EmpdataGridView.ReadOnly = false;
+                EmpdataGridView.Columns[0].ReadOnly = true;
+                EmpdataGridView.Columns[10].ReadOnly = true;
                 MessageBox.Show("編集可能になりました。", "編集可能");
+                EditLbl.Text = "編集中";
+                DeleteB.Visible = true;
+                UpdateB.Visible = true;
             }
             else if (EmpdataGridView.ReadOnly == false)
             {
                 EmpdataGridView.ReadOnly = true;
                 MessageBox.Show("編集不可になりました。", "編集不可");
+                EditLbl.Text = "";
+                DeleteB.Visible = false;
+                UpdateB.Visible = false;
             }
         }
 
@@ -97,6 +105,8 @@ namespace WindowsFormsApplication1
             }
             cn.Close();
             dataload(0);
+            EmpIDTextB.Text = "";
+            EmpNameTextB.Text = "";
         }
 
         private void UpdateB_Click(object sender, EventArgs e)
