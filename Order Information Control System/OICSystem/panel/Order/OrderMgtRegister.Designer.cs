@@ -244,7 +244,7 @@
             // PoscodeTextbox
             // 
             this.PoscodeTextbox.Location = new System.Drawing.Point(111, 305);
-            this.PoscodeTextbox.MaxLength = 8;
+            this.PoscodeTextbox.MaxLength = 7;
             this.PoscodeTextbox.Name = "PoscodeTextbox";
             this.PoscodeTextbox.Size = new System.Drawing.Size(186, 19);
             this.PoscodeTextbox.TabIndex = 6;
@@ -263,7 +263,7 @@
             // TelTextbox
             // 
             this.TelTextbox.Location = new System.Drawing.Point(111, 277);
-            this.TelTextbox.MaxLength = 13;
+            this.TelTextbox.MaxLength = 11;
             this.TelTextbox.Name = "TelTextbox";
             this.TelTextbox.Size = new System.Drawing.Size(186, 19);
             this.TelTextbox.TabIndex = 5;
