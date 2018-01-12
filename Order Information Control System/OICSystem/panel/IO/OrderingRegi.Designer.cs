@@ -155,7 +155,7 @@
             // 
             this.PoscodeTextbox.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.PoscodeTextbox.Location = new System.Drawing.Point(95, 370);
-            this.PoscodeTextbox.MaxLength = 8;
+            this.PoscodeTextbox.MaxLength = 7;
             this.PoscodeTextbox.Name = "PoscodeTextbox";
             this.PoscodeTextbox.Size = new System.Drawing.Size(135, 19);
             this.PoscodeTextbox.TabIndex = 2;
@@ -176,7 +176,7 @@
             // 
             this.TelTextbox.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.TelTextbox.Location = new System.Drawing.Point(308, 344);
-            this.TelTextbox.MaxLength = 13;
+            this.TelTextbox.MaxLength = 11;
             this.TelTextbox.Name = "TelTextbox";
             this.TelTextbox.Size = new System.Drawing.Size(135, 19);
             this.TelTextbox.TabIndex = 1;
