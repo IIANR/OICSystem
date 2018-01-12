@@ -67,9 +67,10 @@ namespace WindowsFormsApplication1
 
         private void SearchB_Click(object sender, EventArgs e)
         {
-            da = new OleDbDataAdapter("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ" +
+            da = new OleDbDataAdapter("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ " +
             " WHERE 従業員ID LIKE '%" + EmpIDTextB.Text + "%'" +
-            " AND 名前 LIKE '%" + EmpNameTextB.Text + "%'", cn);
+            " AND 名前 LIKE '%" + EmpNameTextB.Text + "%'" +
+            " AND フラグ <> '退職'", cn);
             dt = new DataTable();
             da.Fill(dt);
 
@@ -84,7 +85,7 @@ namespace WindowsFormsApplication1
             EmpdataGridView.Columns.Clear();
             EmpdataGridView.DataSource = null;
             cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
-            da = new OleDbDataAdapter("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ", cn);
+            da = new OleDbDataAdapter("SELECT 従業員ID,パスワード,名前,ﾌﾘｶﾞﾅ,性別,郵便番号,住所1,住所2,電話番号,生年月日,入社日,責任者権限 FROM 従業員マスタ WHERE フラグ <> '退職'", cn);
             dt.Clear();
             dt = new DataTable();
             da.Fill(dt);
@@ -143,26 +144,34 @@ namespace WindowsFormsApplication1
         }
         private void DeleteB_Click_1(object sender, EventArgs e)
         {
-            if (MessageBox.Show(EmpNameTextB.Text + "のデータを削除してもよろしいですか", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-            {
-                return;
-            }
-            cmd.Connection = cn;
-            cmd.CommandText = "DELETE FROM 従業員マスタ WHERE 名前 ='" + EmpNameTextB.Text + "'";
-            try
+            DialogResult result = MessageBox.Show("削除しますか？", "OICSystem", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+            if (result == DialogResult.Yes)
             {
                 cn.Open();
+                cmd.Connection = cn;
+                cmd.CommandText = "UPDATE 従業員マスタ SET フラグ = '退職' WHERE 名前='" + EmpNameTextB.Text + "'";
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("削除しました", "成功");
+                try
+                {
+
+                    MessageBox.Show("削除しました", "OICSystem");
+
+
+                }
+                catch (Exception)
+                {
+                    //MessageBox.Show(ex.Message, "IM2");
+                }
+                cn.Close();
+                dataload(0);
+                EmpIDTextB.Text = "";
+                EmpNameTextB.Text = "";
             }
-            catch (Exception ex)
+            else if (result == DialogResult.No)
             {
-                MessageBox.Show(ex.Message, "おｋ");
+
             }
-            cn.Close();
-            dataload(0);
-            EmpIDTextB.Text = "";
-            EmpNameTextB.Text = "";
 
         }
         private void EmpdataGridView_Click(object sender, EventArgs e)
