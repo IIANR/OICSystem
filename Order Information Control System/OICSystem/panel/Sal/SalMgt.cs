@@ -231,7 +231,7 @@ namespace WindowsFormsApplication1
 
                 chart1.Series["売上"].ChartType = SeriesChartType.Bar;        //Bar
                 chart1.Series["売上"].IsValueShownAsLabel = true;
-                chart1.ChartAreas["ChartArea1"].AxisY.Interval = 500;
+                chart1.ChartAreas["ChartArea1"].AxisY.Interval = 5000;
 
                 chart1.DataSource = goods;         //チャートに表示するデータテーブルを設定
                 chart1.Series["売上"].XValueMember = goods.Columns["商品名"].ColumnName;
@@ -661,7 +661,7 @@ namespace WindowsFormsApplication1
                 chart1.Series["売上"].IsValueShownAsLabel = true;
                 chart1.Series["数量"].ChartType = SeriesChartType.Bar;       //Bar
                 chart1.Series["数量"].IsValueShownAsLabel = true;
-                chart1.ChartAreas["ChartArea1"].AxisY.Interval = 500;
+                chart1.ChartAreas["ChartArea1"].AxisY.Interval = 5000;
                 chart1.DataSource = goods;         //チャートに表示するデータテーブルを設定
                 chart1.Series["売上"].XValueMember = goods.Columns["商品名"].ColumnName;
                 chart1.Series["売上"].YValueMembers = goods.Columns["売上"].ColumnName;
