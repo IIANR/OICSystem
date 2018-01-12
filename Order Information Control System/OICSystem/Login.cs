@@ -25,6 +25,7 @@ namespace WindowsFormsApplication1
         string db_pass;
         string inpass;
         public bool db_admin;
+        string db_flag;
 
         private static Login _loginInstance;
         //private static Login _authorutyInstance;
@@ -135,7 +136,7 @@ namespace WindowsFormsApplication1
                 cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
                 cn.Open();
 
-                cmd.CommandText = "SELECT * FROM 従業員マスタ";
+                cmd.CommandText = "SELECT 従業員ID,名前,責任者権限,パスワード,フラグ FROM 従業員マスタ";
                 cmd.Connection = cn;
 
                 OleDbDataReader rd = cmd.ExecuteReader();
@@ -149,28 +150,39 @@ namespace WindowsFormsApplication1
                 {
                     db_id = (int)rd.GetValue(0);
                     db_name = (string)rd.GetValue(1);
-                    db_admin = (bool)rd.GetValue(10);
-                    db_pass = (string)rd.GetValue(11);
+                    db_admin = (bool)rd.GetValue(2);
+                    db_pass = (string)rd.GetValue(3);
+                    db_flag = (string)rd.GetValue(4);
+
                     if (db_id == inid)
                     {
                         inpass = PassTextbox.Text;
 
                         if (db_pass == inpass)
                         {
-                            this.Hide();
-                            frm2.frm1 = this;
-                            frm2.Show();
+                            if (db_flag == "在籍")
+                            {
+                                this.Hide();
+                                frm2.frm1 = this;
+                                frm2.Show();
+                            }
+                            else
+                            {
+                                ErrMsg.Text = "無効なIDです";
+                            }
+                            break;
                         }
                         else
                         {
-                            ErrMsg.Text = "従業員IDかパスワードが間違っています。";
+                            ErrMsg.Text = "従業員IDかパスワードが間違っています";
                         }
                         break;
                     }
                     else
                     {
-                        ErrMsg.Text = "従業員IDかパスワードが間違っています。";
+                        ErrMsg.Text = "従業員IDかパスワードが間違っています";
                     }
+
 
                 }
 
