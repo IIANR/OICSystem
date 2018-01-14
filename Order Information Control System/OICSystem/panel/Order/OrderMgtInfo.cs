@@ -17,6 +17,7 @@ namespace WindowsFormsApplication1
         DataTable dt = new DataTable();
         OleDbDataAdapter da = new OleDbDataAdapter();
         OleDbCommand cmd = new OleDbCommand();
+        OleDbCommand cmd2 = new OleDbCommand();
 
         double Tax = 0;
 
@@ -108,11 +109,9 @@ namespace WindowsFormsApplication1
                     cmd.CommandText = "UPDATE 注文テーブル SET 入金済み=" + (bool)OrderInfoGritview.Rows[i].Cells[7].Value + " WHERE 注文ID=" + (int)OrderInfoGritview.Rows[i].Cells[0].Value + "";
                     cn.Open();
                     cmd.ExecuteNonQuery();
-                    cn.Close();
-                    cmd.Connection = cn;
-                    cmd.CommandText = "UPDATE 注文テーブル SET フラグ='入金済み' WHERE 注文ID=" + (int)OrderInfoGritview.Rows[i].Cells[0].Value + " AND 入金済み=True AND フラグ='入金待ち'";
-                    cn.Open();
-                    cmd.ExecuteNonQuery();
+                    cmd2.Connection = cn;
+                    cmd2.CommandText = "UPDATE 注文テーブル SET フラグ='入金済み' WHERE 注文ID=" + (int)OrderInfoGritview.Rows[i].Cells[0].Value + " AND 入金済み=True AND フラグ='入金待ち'";
+                    cmd2.ExecuteNonQuery();
                     cn.Close();
                 }
                 dt = new DataTable();
