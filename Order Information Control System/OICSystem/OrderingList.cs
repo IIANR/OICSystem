@@ -31,15 +31,12 @@ namespace WindowsFormsApplication1
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = !this.MaximizeBox;
 
-            //string inputName = "";
-            //inputName = frm3.send_InputNameCombo;
-
             cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
             DsOrderingList ds1 = new DsOrderingList();
 
             cn.Open();
             OleDbCommand cmd = new OleDbCommand();
-            string sql = "SELECT 発注テーブル.発注ID, 発注テーブル.商品ID, 商品マスタ.商品名, 発注テーブル.発注数量 FROM 商品マスタ INNER JOIN 発注テーブル ON 商品マスタ.商品ID = 発注テーブル.商品ID WHERE 商品マスタ.フラグ='発注済み' AND 発注テーブル.フラグ='発注書未作成' ORDER BY 発注テーブル.発注ID;";
+            string sql = "SELECT 発注テーブル.発注ID, 発注テーブル.商品ID, 商品マスタ.商品名, 商品マスタ.仕入れ値, 発注テーブル.発注数量 FROM 商品マスタ INNER JOIN 発注テーブル ON 商品マスタ.商品ID = 発注テーブル.商品ID WHERE 商品マスタ.フラグ='発注済み' AND 発注テーブル.フラグ='発注書未作成' ORDER BY 発注テーブル.発注ID;";
 
             OleDbDataAdapter da = new OleDbDataAdapter(sql, cn);
             da.Fill(ds1.Dt1);

@@ -12,7 +12,7 @@
   <xs:element name="DsOrderingList" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DsOrderingList" msprop:Generator_UserDSName="DsOrderingList">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Dt2" msprop:Generator_TableClassName="Dt2DataTable" msprop:Generator_TableVarName="tableDt2" msprop:Generator_TablePropName="Dt2" msprop:Generator_RowDeletingName="Dt2RowDeleting" msprop:Generator_RowChangingName="Dt2RowChanging" msprop:Generator_RowEvHandlerName="Dt2RowChangeEventHandler" msprop:Generator_RowDeletedName="Dt2RowDeleted" msprop:Generator_UserTableName="Dt2" msprop:Generator_RowChangedName="Dt2RowChanged" msprop:Generator_RowEvArgName="Dt2RowChangeEvent" msprop:Generator_RowClassName="Dt2Row">
+        <xs:element name="Dt2" msprop:Generator_TableClassName="Dt2DataTable" msprop:Generator_TableVarName="tableDt2" msprop:Generator_RowChangedName="Dt2RowChanged" msprop:Generator_TablePropName="Dt2" msprop:Generator_RowDeletingName="Dt2RowDeleting" msprop:Generator_RowChangingName="Dt2RowChanging" msprop:Generator_RowEvHandlerName="Dt2RowChangeEventHandler" msprop:Generator_RowDeletedName="Dt2RowDeleted" msprop:Generator_RowClassName="Dt2Row" msprop:Generator_UserTableName="Dt2" msprop:Generator_RowEvArgName="Dt2RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="商品ID" msprop:Generator_ColumnVarNameInTable="column商品ID" msprop:Generator_ColumnPropNameInRow="商品ID" msprop:Generator_ColumnPropNameInTable="商品IDColumn" msprop:Generator_UserColumnName="商品ID" type="xs:string" />
@@ -27,7 +27,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Dt1" msprop:Generator_TableClassName="Dt1DataTable" msprop:Generator_TableVarName="tableDt1" msprop:Generator_TablePropName="Dt1" msprop:Generator_RowDeletingName="Dt1RowDeleting" msprop:Generator_RowChangingName="Dt1RowChanging" msprop:Generator_RowEvHandlerName="Dt1RowChangeEventHandler" msprop:Generator_RowDeletedName="Dt1RowDeleted" msprop:Generator_UserTableName="Dt1" msprop:Generator_RowChangedName="Dt1RowChanged" msprop:Generator_RowEvArgName="Dt1RowChangeEvent" msprop:Generator_RowClassName="Dt1Row">
+        <xs:element name="Dt1" msprop:Generator_TableClassName="Dt1DataTable" msprop:Generator_TableVarName="tableDt1" msprop:Generator_RowChangedName="Dt1RowChanged" msprop:Generator_TablePropName="Dt1" msprop:Generator_RowDeletingName="Dt1RowDeleting" msprop:Generator_RowChangingName="Dt1RowChanging" msprop:Generator_RowEvHandlerName="Dt1RowChangeEventHandler" msprop:Generator_RowDeletedName="Dt1RowDeleted" msprop:Generator_RowClassName="Dt1Row" msprop:Generator_UserTableName="Dt1" msprop:Generator_RowEvArgName="Dt1RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="発注ID" msprop:Generator_ColumnVarNameInTable="column発注ID" msprop:Generator_ColumnPropNameInRow="発注ID" msprop:Generator_ColumnPropNameInTable="発注IDColumn" msprop:Generator_UserColumnName="発注ID" type="xs:string" />
@@ -38,6 +38,7 @@
               <xs:element name="合計金額" msprop:Generator_ColumnVarNameInTable="column合計金額" msprop:Generator_ColumnPropNameInRow="合計金額" msprop:Generator_ColumnPropNameInTable="合計金額Column" msprop:Generator_UserColumnName="合計金額" type="xs:string" minOccurs="0" />
               <xs:element name="フラグ" msprop:Generator_ColumnVarNameInTable="columnフラグ" msprop:Generator_ColumnPropNameInRow="フラグ" msprop:Generator_ColumnPropNameInTable="フラグColumn" msprop:Generator_UserColumnName="フラグ" type="xs:string" minOccurs="0" />
               <xs:element name="商品名" msprop:Generator_ColumnVarNameInTable="column商品名" msprop:Generator_ColumnPropNameInRow="商品名" msprop:Generator_ColumnPropNameInTable="商品名Column" msprop:Generator_UserColumnName="商品名" type="xs:string" minOccurs="0" />
+              <xs:element name="仕入れ値" msprop:Generator_ColumnVarNameInTable="column仕入れ値" msprop:Generator_ColumnPropNameInRow="仕入れ値" msprop:Generator_ColumnPropNameInTable="仕入れ値Column" msprop:Generator_UserColumnName="仕入れ値" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -54,7 +55,7 @@
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="Dt1_Dt2" msdata:parent="Dt1" msdata:child="Dt2" msdata:parentkey="商品ID" msdata:childkey="商品ID" msprop:Generator_UserChildTable="Dt2" msprop:Generator_ChildPropName="GetDt2Rows" msprop:Generator_UserRelationName="Dt1_Dt2" msprop:Generator_RelationVarName="relationDt1_Dt2" msprop:Generator_UserParentTable="Dt1" msprop:Generator_ParentPropName="Dt1Row" />
+      <msdata:Relationship name="Dt1_Dt2" msdata:parent="Dt1" msdata:child="Dt2" msdata:parentkey="商品ID" msdata:childkey="商品ID" msprop:Generator_UserChildTable="Dt2" msprop:Generator_ChildPropName="GetDt2Rows" msprop:Generator_UserRelationName="Dt1_Dt2" msprop:Generator_ParentPropName="Dt1Row" msprop:Generator_RelationVarName="relationDt1_Dt2" msprop:Generator_UserParentTable="Dt1" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
