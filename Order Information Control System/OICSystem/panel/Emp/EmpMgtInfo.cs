@@ -186,5 +186,48 @@ namespace WindowsFormsApplication1
             EmpdataGridView.AutoResizeColumns();
         }
 
+        private void EmpdataGridView_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            //チェックボックスの列番号は11で、かつチェック状態が変わったら
+            if (EmpdataGridView.CurrentCellAddress.X == 11 && EmpdataGridView.IsCurrentCellDirty == true)
+            {
+                //dataGridViewをコミットする
+                EmpdataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
+
+                //変更後のチェック状態
+                bool bl = (bool)EmpdataGridView[EmpdataGridView.CurrentCellAddress.X, EmpdataGridView.CurrentCellAddress.Y].Value;
+                // MessageBox.Show(bl.ToString());
+
+                //変更後のチェック状態がfalseなら（trueからfalseに変わったら）
+                if (bl == false)
+                {
+                    //DBに登録されている責任者権限の個数をカウントする
+                    OleDbDataAdapter da = new OleDbDataAdapter("SELECT COUNT(責任者権限) FROM 従業員マスタ WHERE 責任者権限=true", cn);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    int n = dt.Rows.Count;      //DBに登録されている責任者権限の個数
+                                                //    MessageBox.Show(n.ToString());
+
+                    int checkcnt = 0;          //dataGridViewに表示されている責任者権限にチェックが入っている数
+                    for (int i = 0; i < EmpdataGridView.Rows.Count - 1; i++)
+                    {
+                        if ((bool)EmpdataGridView[11, i].Value == true) checkcnt++;
+                    }
+                    //     MessageBox.Show(checkcnt.ToString());
+
+
+                    if (n == 1 && checkcnt == 0)     //DBに登録されている責任者権限の個数が1で、かつdataGridViewのチェック責任者権限数が0なら
+                    {
+                        MessageBox.Show("責任者権限をゼロにすることはできません。");
+                        //責任者権限をtrueに戻す
+                        EmpdataGridView[EmpdataGridView.CurrentCellAddress.X, EmpdataGridView.CurrentCellAddress.Y].Value = true;
+
+                        //フォーカスを移動
+                        UpdateB.Focus();
+                    }
+                }
+            }
+        }
     }
 }
