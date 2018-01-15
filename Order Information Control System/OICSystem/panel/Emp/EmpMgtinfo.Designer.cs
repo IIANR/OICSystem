@@ -61,6 +61,7 @@
             this.EmpdataGridView.RowTemplate.Height = 21;
             this.EmpdataGridView.Size = new System.Drawing.Size(754, 298);
             this.EmpdataGridView.TabIndex = 7;
+            this.EmpdataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.EmpdataGridView_CurrentCellDirtyStateChanged);
             this.EmpdataGridView.Click += new System.EventHandler(this.EmpdataGridView_Click);
             // 
             // EditB
