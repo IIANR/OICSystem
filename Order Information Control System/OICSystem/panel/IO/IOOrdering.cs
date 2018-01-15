@@ -13,6 +13,8 @@ namespace WindowsFormsApplication1
 {
     public partial class IOOrdering : UserControl
     {
+        public OrderingList frm4 = new OrderingList();
+
         OleDbConnection cn = new OleDbConnection();
         DataTable dt = new DataTable();
         OleDbDataAdapter da = new OleDbDataAdapter();
@@ -185,11 +187,8 @@ namespace WindowsFormsApplication1
 
         private void OrderingPrintBtn_Click(object sender, EventArgs e)
         {
-            
-            OrderingList f = new OrderingList();
-            f.ShowDialog(this);
-            f.Dispose();
-            
+            frm4.frm3 = this;
+            frm4.ShowDialog(this);            
         }
 
         private void ReloadBtn_Click(object sender, EventArgs e)

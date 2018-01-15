@@ -122,6 +122,7 @@
             this.InputNumTextbox.Location = new System.Drawing.Point(555, 320);
             this.InputNumTextbox.MaxLength = 3;
             this.InputNumTextbox.Name = "InputNumTextbox";
+            this.InputNumTextbox.ReadOnly = true;
             this.InputNumTextbox.Size = new System.Drawing.Size(100, 19);
             this.InputNumTextbox.TabIndex = 2;
             this.InputNumTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InputNumTextbox_KeyPress);
@@ -300,9 +301,6 @@
         private System.Windows.Forms.Label Addres2Label;
         private System.Windows.Forms.Label Addres1Label;
         private System.Windows.Forms.Label PosLabel;
-        private System.Windows.Forms.TextBox Addres2Textbox;
-        private System.Windows.Forms.TextBox Addres1Textbox;
-        private System.Windows.Forms.TextBox PosTextbox;
         private System.Windows.Forms.Button OrderingPrintBtn;
         private System.Windows.Forms.TextBox InputNumTextbox;
         private System.Windows.Forms.Label label6;
@@ -312,12 +310,15 @@
         private System.Windows.Forms.TextBox GoodsidTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label NameTextBox;
-        private System.Windows.Forms.TextBox TelTextBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox InputNameCombo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView OrderingGoodsDataGrid;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button ReloadBtn;
+        public System.Windows.Forms.ComboBox InputNameCombo;
+        public System.Windows.Forms.TextBox Addres2Textbox;
+        public System.Windows.Forms.TextBox Addres1Textbox;
+        public System.Windows.Forms.TextBox PosTextbox;
+        public System.Windows.Forms.TextBox TelTextBox;
     }
 }

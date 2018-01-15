@@ -257,6 +257,9 @@ namespace WindowsFormsApplication1
 
         private void OrderList_Load_1(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = !this.MaximizeBox;
+
             dt.Clear();
             OrderListDataGridView.Columns.Clear();
             OrderListDataGridView.DataSource = null;

@@ -15,6 +15,8 @@ namespace WindowsFormsApplication1
 {
     public partial class OrderingList : Form
     {
+        public IOOrdering frm3;
+
         OleDbConnection cn = new OleDbConnection();
 
         public OrderingList()
@@ -27,8 +29,10 @@ namespace WindowsFormsApplication1
             DateTime dtNow = DateTime.Now;
 
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.MaximumSize = this.Size;
-            this.MinimumSize = this.Size;
+            this.MaximizeBox = !this.MaximizeBox;
+
+            //string inputName = "";
+            //inputName = frm3.send_InputNameCombo;
 
             cn.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;";
             DsOrderingList ds1 = new DsOrderingList();
@@ -47,6 +51,10 @@ namespace WindowsFormsApplication1
             rds.Name = "DataSet1";
             rds.Value = ds1.Dt1;
 
+            var reportParams = new List<ReportParameter>();
+            reportParams.Add(new ReportParameter("ReportParameter1", frm3.InputNameCombo.Text));
+            this.OrderingReport.LocalReport.SetParameters(reportParams);
+
             //ReportViewerに表示
             this.OrderingReport.LocalReport.DataSources.Add(rds);
 
@@ -62,7 +70,7 @@ namespace WindowsFormsApplication1
             null, out mineType, out encoding, out extension, out stringminds, out warnings);
             FileStream fs = new FileStream(@"..\..\assets\EXCEL\"+dtNow.ToString("yyyyMMddhhmmss")+".xlsx", FileMode.Create);
             fs.Write(bytes, 0, bytes.Length);
-            fs.Close();
+            fs.Close();           
         }
 
         private void OrderingList_FormClosing(object sender, FormClosingEventArgs e)
