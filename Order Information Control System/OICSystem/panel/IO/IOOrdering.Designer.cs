@@ -113,7 +113,7 @@
             this.OrderingPrintBtn.Name = "OrderingPrintBtn";
             this.OrderingPrintBtn.Size = new System.Drawing.Size(89, 33);
             this.OrderingPrintBtn.TabIndex = 4;
-            this.OrderingPrintBtn.Text = "発注書印刷";
+            this.OrderingPrintBtn.Text = "印刷";
             this.OrderingPrintBtn.UseVisualStyleBackColor = true;
             this.OrderingPrintBtn.Click += new System.EventHandler(this.OrderingPrintBtn_Click);
             // 

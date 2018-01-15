@@ -38,7 +38,6 @@
             this.EmpIDLbl = new System.Windows.Forms.Label();
             this.EmpNameLbl = new System.Windows.Forms.Label();
             this.EmpdataGridView = new System.Windows.Forms.DataGridView();
-            this.EmpMgtLbl = new System.Windows.Forms.Label();
             this.EditLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.EmpdataGridView)).BeginInit();
             this.SuspendLayout();
@@ -46,9 +45,9 @@
             // DeleteB
             // 
             this.DeleteB.ForeColor = System.Drawing.Color.Red;
-            this.DeleteB.Location = new System.Drawing.Point(450, 392);
+            this.DeleteB.Location = new System.Drawing.Point(606, 350);
             this.DeleteB.Name = "DeleteB";
-            this.DeleteB.Size = new System.Drawing.Size(150, 37);
+            this.DeleteB.Size = new System.Drawing.Size(72, 37);
             this.DeleteB.TabIndex = 4;
             this.DeleteB.Text = "削除";
             this.DeleteB.UseVisualStyleBackColor = true;
@@ -59,16 +58,16 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(276, 346);
+            this.label1.Location = new System.Drawing.Point(398, 346);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 12);
             this.label1.TabIndex = 126;
             // 
             // UpdateB
             // 
-            this.UpdateB.Location = new System.Drawing.Point(607, 392);
+            this.UpdateB.Location = new System.Drawing.Point(684, 349);
             this.UpdateB.Name = "UpdateB";
-            this.UpdateB.Size = new System.Drawing.Size(150, 37);
+            this.UpdateB.Size = new System.Drawing.Size(72, 37);
             this.UpdateB.TabIndex = 5;
             this.UpdateB.Text = "更新";
             this.UpdateB.UseVisualStyleBackColor = true;
@@ -77,7 +76,7 @@
             // 
             // EditB
             // 
-            this.EditB.Location = new System.Drawing.Point(607, 349);
+            this.EditB.Location = new System.Drawing.Point(606, 390);
             this.EditB.Name = "EditB";
             this.EditB.Size = new System.Drawing.Size(150, 37);
             this.EditB.TabIndex = 3;
@@ -90,7 +89,7 @@
             this.EmpIDTextB.Location = new System.Drawing.Point(86, 359);
             this.EmpIDTextB.MaxLength = 6;
             this.EmpIDTextB.Name = "EmpIDTextB";
-            this.EmpIDTextB.Size = new System.Drawing.Size(117, 19);
+            this.EmpIDTextB.Size = new System.Drawing.Size(145, 19);
             this.EmpIDTextB.TabIndex = 0;
             // 
             // EmpNameTextB
@@ -98,12 +97,12 @@
             this.EmpNameTextB.Location = new System.Drawing.Point(86, 394);
             this.EmpNameTextB.MaxLength = 20;
             this.EmpNameTextB.Name = "EmpNameTextB";
-            this.EmpNameTextB.Size = new System.Drawing.Size(117, 19);
+            this.EmpNameTextB.Size = new System.Drawing.Size(145, 19);
             this.EmpNameTextB.TabIndex = 1;
             // 
             // SearchB
             // 
-            this.SearchB.Location = new System.Drawing.Point(450, 349);
+            this.SearchB.Location = new System.Drawing.Point(450, 392);
             this.SearchB.Name = "SearchB";
             this.SearchB.Size = new System.Drawing.Size(151, 37);
             this.SearchB.TabIndex = 2;
@@ -140,20 +139,11 @@
             this.EmpdataGridView.TabIndex = 118;
             this.EmpdataGridView.Click += new System.EventHandler(this.EmpdataGridView_Click);
             // 
-            // EmpMgtLbl
-            // 
-            this.EmpMgtLbl.Location = new System.Drawing.Point(3, 2);
-            this.EmpMgtLbl.Name = "EmpMgtLbl";
-            this.EmpMgtLbl.Size = new System.Drawing.Size(151, 40);
-            this.EmpMgtLbl.TabIndex = 117;
-            this.EmpMgtLbl.Text = "従業員管理";
-            this.EmpMgtLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // EditLbl
             // 
             this.EditLbl.AutoSize = true;
             this.EditLbl.ForeColor = System.Drawing.Color.Red;
-            this.EditLbl.Location = new System.Drawing.Point(240, 365);
+            this.EditLbl.Location = new System.Drawing.Point(448, 374);
             this.EditLbl.Name = "EditLbl";
             this.EditLbl.Size = new System.Drawing.Size(0, 12);
             this.EditLbl.TabIndex = 128;
@@ -173,7 +163,6 @@
             this.Controls.Add(this.EmpIDLbl);
             this.Controls.Add(this.EmpNameLbl);
             this.Controls.Add(this.EmpdataGridView);
-            this.Controls.Add(this.EmpMgtLbl);
             this.Name = "EmpMgtInfo";
             this.Size = new System.Drawing.Size(760, 430);
             this.Load += new System.EventHandler(this.EmpMgtInfo_Load);
@@ -195,7 +184,6 @@
         private System.Windows.Forms.Label EmpIDLbl;
         private System.Windows.Forms.Label EmpNameLbl;
         private System.Windows.Forms.DataGridView EmpdataGridView;
-        private System.Windows.Forms.Label EmpMgtLbl;
         private System.Windows.Forms.Label EditLbl;
     }
 }

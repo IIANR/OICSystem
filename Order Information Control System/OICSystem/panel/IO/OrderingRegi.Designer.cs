@@ -77,7 +77,7 @@
             this.RegiBtn.Name = "RegiBtn";
             this.RegiBtn.Size = new System.Drawing.Size(92, 39);
             this.RegiBtn.TabIndex = 111;
-            this.RegiBtn.Text = "新規登録";
+            this.RegiBtn.Text = "登録";
             this.RegiBtn.UseVisualStyleBackColor = true;
             this.RegiBtn.Click += new System.EventHandler(this.RegiBtn_Click);
             // 
@@ -245,7 +245,7 @@
             this.EditMsg.AutoSize = true;
             this.EditMsg.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.EditMsg.ForeColor = System.Drawing.Color.Red;
-            this.EditMsg.Location = new System.Drawing.Point(473, 329);
+            this.EditMsg.Location = new System.Drawing.Point(470, 329);
             this.EditMsg.Name = "EditMsg";
             this.EditMsg.Size = new System.Drawing.Size(56, 16);
             this.EditMsg.TabIndex = 114;

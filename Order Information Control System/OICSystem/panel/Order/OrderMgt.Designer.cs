@@ -35,9 +35,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(596, 23);
+            this.button2.Location = new System.Drawing.Point(642, 23);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(151, 40);
+            this.button2.Size = new System.Drawing.Size(100, 40);
             this.button2.TabIndex = 27;
             this.button2.Text = "入金状況";
             this.button2.UseVisualStyleBackColor = true;
@@ -45,9 +45,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(426, 23);
+            this.button1.Location = new System.Drawing.Point(536, 23);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(151, 40);
+            this.button1.Size = new System.Drawing.Size(100, 40);
             this.button1.TabIndex = 26;
             this.button1.Text = "注文登録";
             this.button1.UseVisualStyleBackColor = true;

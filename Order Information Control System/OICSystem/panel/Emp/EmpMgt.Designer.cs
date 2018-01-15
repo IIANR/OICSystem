@@ -54,7 +54,6 @@
             this.RegistrationB = new System.Windows.Forms.Button();
             this.EmpNameTextB = new System.Windows.Forms.TextBox();
             this.EmpNameLbl = new System.Windows.Forms.Label();
-            this.EmpMgtLbl = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EmpdataGridView)).BeginInit();
@@ -308,15 +307,6 @@
             this.EmpNameLbl.TabIndex = 14;
             this.EmpNameLbl.Text = "名前：";
             // 
-            // EmpMgtLbl
-            // 
-            this.EmpMgtLbl.Location = new System.Drawing.Point(3, 1);
-            this.EmpMgtLbl.Name = "EmpMgtLbl";
-            this.EmpMgtLbl.Size = new System.Drawing.Size(151, 40);
-            this.EmpMgtLbl.TabIndex = 12;
-            this.EmpMgtLbl.Text = "従業員管理";
-            this.EmpMgtLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // EmpMgt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -341,7 +331,6 @@
             this.Controls.Add(this.RegistrationB);
             this.Controls.Add(this.EmpNameTextB);
             this.Controls.Add(this.EmpNameLbl);
-            this.Controls.Add(this.EmpMgtLbl);
             this.Name = "EmpMgt";
             this.Size = new System.Drawing.Size(760, 430);
             this.Load += new System.EventHandler(this.EmpMgt_Load);
@@ -383,6 +372,5 @@
         private System.Windows.Forms.Button RegistrationB;
         private System.Windows.Forms.TextBox EmpNameTextB;
         private System.Windows.Forms.Label EmpNameLbl;
-        private System.Windows.Forms.Label EmpMgtLbl;
     }
 }

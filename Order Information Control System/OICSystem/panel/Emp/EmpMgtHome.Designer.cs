@@ -35,21 +35,21 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(426, 9);
+            this.button1.Location = new System.Drawing.Point(540, 9);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(151, 40);
+            this.button1.Size = new System.Drawing.Size(100, 40);
             this.button1.TabIndex = 33;
-            this.button1.Text = "従業員登録";
+            this.button1.Text = "登録";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(596, 9);
+            this.button2.Location = new System.Drawing.Point(646, 9);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(151, 40);
+            this.button2.Size = new System.Drawing.Size(100, 40);
             this.button2.TabIndex = 34;
-            this.button2.Text = "従業員情報編集";
+            this.button2.Text = "従業員情報";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 

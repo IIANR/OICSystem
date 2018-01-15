@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.DateSelectMoney = new System.Windows.Forms.Button();
             this.Msg = new System.Windows.Forms.Label();
             this.TotalMsg = new System.Windows.Forms.Label();
@@ -38,7 +38,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.DateSelectCount = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.analysis = new System.Windows.Forms.Button();
             this.printing = new System.Windows.Forms.Button();
@@ -49,11 +48,11 @@
             // 
             // DateSelectMoney
             // 
-            this.DateSelectMoney.Location = new System.Drawing.Point(591, 468);
+            this.DateSelectMoney.Location = new System.Drawing.Point(633, 468);
             this.DateSelectMoney.Name = "DateSelectMoney";
-            this.DateSelectMoney.Size = new System.Drawing.Size(142, 37);
+            this.DateSelectMoney.Size = new System.Drawing.Size(100, 40);
             this.DateSelectMoney.TabIndex = 115;
-            this.DateSelectMoney.Text = "期間指定(販売金額表示)";
+            this.DateSelectMoney.Text = "販売「金額」表示";
             this.DateSelectMoney.UseVisualStyleBackColor = true;
             this.DateSelectMoney.Click += new System.EventHandler(this.DateSelectMoney_Click);
             // 
@@ -80,7 +79,7 @@
             // 
             // DateEnd
             // 
-            this.DateEnd.Location = new System.Drawing.Point(491, 477);
+            this.DateEnd.Location = new System.Drawing.Point(403, 479);
             this.DateEnd.Mask = "0000/00/00";
             this.DateEnd.Name = "DateEnd";
             this.DateEnd.Size = new System.Drawing.Size(69, 19);
@@ -89,7 +88,7 @@
             // 
             // DateStart
             // 
-            this.DateStart.Location = new System.Drawing.Point(388, 477);
+            this.DateStart.Location = new System.Drawing.Point(300, 479);
             this.DateStart.Mask = "0000/00/00";
             this.DateStart.Name = "DateStart";
             this.DateStart.Size = new System.Drawing.Size(74, 19);
@@ -99,7 +98,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(468, 480);
+            this.label7.Location = new System.Drawing.Point(380, 482);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(17, 12);
             this.label7.TabIndex = 110;
@@ -107,11 +106,11 @@
             // 
             // DateSelectCount
             // 
-            this.DateSelectCount.Location = new System.Drawing.Point(229, 468);
+            this.DateSelectCount.Location = new System.Drawing.Point(527, 469);
             this.DateSelectCount.Name = "DateSelectCount";
-            this.DateSelectCount.Size = new System.Drawing.Size(130, 37);
+            this.DateSelectCount.Size = new System.Drawing.Size(100, 40);
             this.DateSelectCount.TabIndex = 109;
-            this.DateSelectCount.Text = "期間指定(販売数表示)";
+            this.DateSelectCount.Text = "販売「数」表示";
             this.DateSelectCount.UseVisualStyleBackColor = true;
             this.DateSelectCount.Click += new System.EventHandler(this.DateSelectCount_Click);
             // 
@@ -124,25 +123,16 @@
             this.listBox1.Size = new System.Drawing.Size(723, 400);
             this.listBox1.TabIndex = 108;
             // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(18, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 40);
-            this.label1.TabIndex = 107;
-            this.label1.Text = "売上管理";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // chart1
             // 
-            chartArea1.AxisX.Interval = 1D;
-            chartArea1.AxisX.MajorGrid.Enabled = false;
-            chartArea1.AxisX.MajorGrid.Interval = 1D;
-            chartArea1.AxisY.MajorGrid.Enabled = false;
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.AxisX.Interval = 1D;
+            chartArea2.AxisX.MajorGrid.Enabled = false;
+            chartArea2.AxisX.MajorGrid.Interval = 1D;
+            chartArea2.AxisY.MajorGrid.Enabled = false;
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(33, 136);
             this.chart1.Name = "chart1";
             this.chart1.Size = new System.Drawing.Size(700, 315);
@@ -151,19 +141,19 @@
             // 
             // analysis
             // 
-            this.analysis.Location = new System.Drawing.Point(33, 469);
+            this.analysis.Location = new System.Drawing.Point(60, 472);
             this.analysis.Name = "analysis";
-            this.analysis.Size = new System.Drawing.Size(89, 33);
+            this.analysis.Size = new System.Drawing.Size(109, 33);
             this.analysis.TabIndex = 117;
-            this.analysis.Text = "降順に並べ替え(販売済みのみ)";
+            this.analysis.Text = "販売済み表示";
             this.analysis.UseVisualStyleBackColor = true;
             this.analysis.Click += new System.EventHandler(this.analysis_Click);
             // 
             // printing
             // 
-            this.printing.Location = new System.Drawing.Point(615, 11);
+            this.printing.Location = new System.Drawing.Point(666, 28);
             this.printing.Name = "printing";
-            this.printing.Size = new System.Drawing.Size(118, 49);
+            this.printing.Size = new System.Drawing.Size(67, 32);
             this.printing.TabIndex = 118;
             this.printing.Text = "印刷";
             this.printing.UseVisualStyleBackColor = true;
@@ -182,11 +172,11 @@
             // 
             // Btnclean
             // 
-            this.Btnclean.Location = new System.Drawing.Point(128, 475);
+            this.Btnclean.Location = new System.Drawing.Point(202, 475);
             this.Btnclean.Name = "Btnclean";
-            this.Btnclean.Size = new System.Drawing.Size(94, 23);
+            this.Btnclean.Size = new System.Drawing.Size(57, 23);
             this.Btnclean.TabIndex = 143;
-            this.Btnclean.Text = "初期表示に戻す";
+            this.Btnclean.Text = "クリア";
             this.Btnclean.UseVisualStyleBackColor = true;
             this.Btnclean.Click += new System.EventHandler(this.Btnclean_Click);
             // 
@@ -207,7 +197,6 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.DateSelectCount);
             this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.label1);
             this.Name = "SalMgt";
             this.Size = new System.Drawing.Size(760, 515);
             this.Load += new System.EventHandler(this.SalMgt_Load);
@@ -228,7 +217,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button DateSelectCount;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Button analysis;
         private System.Windows.Forms.Button printing;

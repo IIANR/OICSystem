@@ -32,7 +32,6 @@
             this.OrderingEditBtn = new System.Windows.Forms.Button();
             this.ctrPanel = new System.Windows.Forms.Panel();
             this.InOutPanelBtn = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // OrderingBtn
@@ -52,7 +51,7 @@
             this.OrderingEditBtn.Name = "OrderingEditBtn";
             this.OrderingEditBtn.Size = new System.Drawing.Size(103, 40);
             this.OrderingEditBtn.TabIndex = 57;
-            this.OrderingEditBtn.Text = "入庫先管理";
+            this.OrderingEditBtn.Text = "入庫先情報";
             this.OrderingEditBtn.UseVisualStyleBackColor = true;
             this.OrderingEditBtn.Click += new System.EventHandler(this.OrderingEditBtn_Click);
             // 
@@ -73,15 +72,6 @@
             this.InOutPanelBtn.UseVisualStyleBackColor = true;
             this.InOutPanelBtn.Click += new System.EventHandler(this.InOutPanelBtn_Click);
             // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(21, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 40);
-            this.label1.TabIndex = 56;
-            this.label1.Text = "入出庫管理";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // IOMgt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -90,7 +80,6 @@
             this.Controls.Add(this.OrderingEditBtn);
             this.Controls.Add(this.ctrPanel);
             this.Controls.Add(this.InOutPanelBtn);
-            this.Controls.Add(this.label1);
             this.Name = "IOMgt";
             this.Size = new System.Drawing.Size(763, 518);
             this.Load += new System.EventHandler(this.IOMgt_Load);
@@ -105,7 +94,6 @@
         private System.Windows.Forms.Button OrderingEditBtn;
         private System.Windows.Forms.Panel ctrPanel;
         private System.Windows.Forms.Button InOutPanelBtn;
-        private System.Windows.Forms.Label label1;
 
     }
 }

@@ -87,7 +87,7 @@
             this.GoodsStockDataGridView.Name = "GoodsStockDataGridView";
             this.GoodsStockDataGridView.ReadOnly = true;
             this.GoodsStockDataGridView.RowTemplate.Height = 21;
-            this.GoodsStockDataGridView.Size = new System.Drawing.Size(695, 299);
+            this.GoodsStockDataGridView.Size = new System.Drawing.Size(695, 312);
             this.GoodsStockDataGridView.TabIndex = 13;
             // 
             // GoodsStock

@@ -131,7 +131,7 @@
             // 
             // DeleteBtn
             // 
-            this.DeleteBtn.Location = new System.Drawing.Point(506, 343);
+            this.DeleteBtn.Location = new System.Drawing.Point(518, 343);
             this.DeleteBtn.Name = "DeleteBtn";
             this.DeleteBtn.Size = new System.Drawing.Size(102, 40);
             this.DeleteBtn.TabIndex = 96;
@@ -232,7 +232,7 @@
             // 
             // AddBtn
             // 
-            this.AddBtn.Location = new System.Drawing.Point(387, 343);
+            this.AddBtn.Location = new System.Drawing.Point(410, 343);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(102, 40);
             this.AddBtn.TabIndex = 9;
@@ -297,7 +297,7 @@
             // 
             // OrderCompBtn
             // 
-            this.OrderCompBtn.Location = new System.Drawing.Point(625, 343);
+            this.OrderCompBtn.Location = new System.Drawing.Point(626, 343);
             this.OrderCompBtn.Name = "OrderCompBtn";
             this.OrderCompBtn.Size = new System.Drawing.Size(102, 40);
             this.OrderCompBtn.TabIndex = 81;

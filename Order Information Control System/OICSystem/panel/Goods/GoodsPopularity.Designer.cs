@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.printing = new System.Windows.Forms.Button();
             this.Msg = new System.Windows.Forms.Label();
             this.TotalMsg = new System.Windows.Forms.Label();
@@ -45,9 +45,9 @@
             // 
             // printing
             // 
-            this.printing.Location = new System.Drawing.Point(658, 389);
+            this.printing.Location = new System.Drawing.Point(657, 385);
             this.printing.Name = "printing";
-            this.printing.Size = new System.Drawing.Size(48, 28);
+            this.printing.Size = new System.Drawing.Size(76, 28);
             this.printing.TabIndex = 140;
             this.printing.Text = "印刷";
             this.printing.UseVisualStyleBackColor = true;
@@ -107,20 +107,20 @@
             this.DateSelectCount.Name = "DateSelectCount";
             this.DateSelectCount.Size = new System.Drawing.Size(130, 37);
             this.DateSelectCount.TabIndex = 134;
-            this.DateSelectCount.Text = "期間指定(販売数表示)";
+            this.DateSelectCount.Text = "販売数表示";
             this.DateSelectCount.UseVisualStyleBackColor = true;
             this.DateSelectCount.Click += new System.EventHandler(this.DateSelectCount_Click);
             // 
             // chart1
             // 
-            chartArea5.AxisX.Interval = 1D;
-            chartArea5.AxisX.MajorGrid.Enabled = false;
-            chartArea5.AxisX.MajorGrid.Interval = 1D;
-            chartArea5.AxisY.MajorGrid.Enabled = false;
-            chartArea5.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chart1.Legends.Add(legend5);
+            chartArea1.AxisX.Interval = 1D;
+            chartArea1.AxisX.MajorGrid.Enabled = false;
+            chartArea1.AxisX.MajorGrid.Interval = 1D;
+            chartArea1.AxisY.MajorGrid.Enabled = false;
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(33, 69);
             this.chart1.Name = "chart1";
             this.chart1.Size = new System.Drawing.Size(700, 298);
@@ -138,11 +138,11 @@
             // 
             // Btnclean
             // 
-            this.Btnclean.Location = new System.Drawing.Point(57, 393);
+            this.Btnclean.Location = new System.Drawing.Point(57, 389);
             this.Btnclean.Name = "Btnclean";
-            this.Btnclean.Size = new System.Drawing.Size(94, 23);
+            this.Btnclean.Size = new System.Drawing.Size(94, 27);
             this.Btnclean.TabIndex = 142;
-            this.Btnclean.Text = "初期表示に戻す";
+            this.Btnclean.Text = "クリア";
             this.Btnclean.UseVisualStyleBackColor = true;
             this.Btnclean.Click += new System.EventHandler(this.Btnclean_Click);
             // 
