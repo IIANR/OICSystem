@@ -36,6 +36,7 @@
             this.OrderingReport.Dock = System.Windows.Forms.DockStyle.Fill;
             this.OrderingReport.Location = new System.Drawing.Point(0, 0);
             this.OrderingReport.Name = "OrderingReport";
+            this.OrderingReport.ServerReport.BearerToken = null;
             this.OrderingReport.Size = new System.Drawing.Size(625, 712);
             this.OrderingReport.TabIndex = 0;
             // 
@@ -46,7 +47,7 @@
             this.ClientSize = new System.Drawing.Size(625, 712);
             this.Controls.Add(this.OrderingReport);
             this.Name = "OrderingList";
-            this.Text = "OrderingList";
+            this.Text = "発注書";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OrderingList_FormClosing);
             this.Load += new System.EventHandler(this.OrderingList_Load);
             this.ResumeLayout(false);

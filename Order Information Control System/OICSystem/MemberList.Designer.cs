@@ -36,6 +36,7 @@
             this.MemberReport.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MemberReport.Location = new System.Drawing.Point(0, 0);
             this.MemberReport.Name = "MemberReport";
+            this.MemberReport.ServerReport.BearerToken = null;
             this.MemberReport.Size = new System.Drawing.Size(629, 727);
             this.MemberReport.TabIndex = 0;
             // 
@@ -46,7 +47,7 @@
             this.ClientSize = new System.Drawing.Size(629, 727);
             this.Controls.Add(this.MemberReport);
             this.Name = "MemberList";
-            this.Text = "MemberList";
+            this.Text = "顧客リスト";
             this.Load += new System.EventHandler(this.MemberList_Load);
             this.ResumeLayout(false);
 

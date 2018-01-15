@@ -199,7 +199,7 @@
             this.Controls.Add(this.PrintBtn);
             this.Controls.Add(this.OrderListDataGridView);
             this.Name = "OrderList";
-            this.Text = "OrderList";
+            this.Text = "注文一覧";
             this.Load += new System.EventHandler(this.OrderList_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.OrderListDataGridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrderListDataGridView3)).EndInit();
