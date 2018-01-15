@@ -42,9 +42,10 @@
             // 
             // MemberEditBtn
             // 
-            this.MemberEditBtn.Location = new System.Drawing.Point(493, 438);
+            this.MemberEditBtn.Location = new System.Drawing.Point(657, 548);
+            this.MemberEditBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MemberEditBtn.Name = "MemberEditBtn";
-            this.MemberEditBtn.Size = new System.Drawing.Size(122, 36);
+            this.MemberEditBtn.Size = new System.Drawing.Size(163, 45);
             this.MemberEditBtn.TabIndex = 55;
             this.MemberEditBtn.Text = "編集";
             this.MemberEditBtn.UseVisualStyleBackColor = true;
@@ -52,9 +53,10 @@
             // 
             // MemberUpdateBtn
             // 
-            this.MemberUpdateBtn.Location = new System.Drawing.Point(621, 438);
+            this.MemberUpdateBtn.Location = new System.Drawing.Point(828, 548);
+            this.MemberUpdateBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MemberUpdateBtn.Name = "MemberUpdateBtn";
-            this.MemberUpdateBtn.Size = new System.Drawing.Size(122, 36);
+            this.MemberUpdateBtn.Size = new System.Drawing.Size(163, 45);
             this.MemberUpdateBtn.TabIndex = 56;
             this.MemberUpdateBtn.Text = "更新";
             this.MemberUpdateBtn.UseVisualStyleBackColor = true;
@@ -64,18 +66,20 @@
             // 
             this.MemberDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.MemberDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MemberDataGridView.Location = new System.Drawing.Point(20, 88);
+            this.MemberDataGridView.Location = new System.Drawing.Point(27, 110);
+            this.MemberDataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MemberDataGridView.Name = "MemberDataGridView";
             this.MemberDataGridView.ReadOnly = true;
             this.MemberDataGridView.RowTemplate.Height = 21;
-            this.MemberDataGridView.Size = new System.Drawing.Size(723, 286);
+            this.MemberDataGridView.Size = new System.Drawing.Size(964, 358);
             this.MemberDataGridView.TabIndex = 57;
             // 
             // MemberDisBtn
             // 
-            this.MemberDisBtn.Location = new System.Drawing.Point(364, 438);
+            this.MemberDisBtn.Location = new System.Drawing.Point(485, 548);
+            this.MemberDisBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MemberDisBtn.Name = "MemberDisBtn";
-            this.MemberDisBtn.Size = new System.Drawing.Size(122, 36);
+            this.MemberDisBtn.Size = new System.Drawing.Size(163, 45);
             this.MemberDisBtn.TabIndex = 53;
             this.MemberDisBtn.Text = "検索";
             this.MemberDisBtn.UseVisualStyleBackColor = true;
@@ -86,35 +90,39 @@
             this.MemberDisLbl.AutoSize = true;
             this.MemberDisLbl.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.MemberDisLbl.ForeColor = System.Drawing.Color.Red;
-            this.MemberDisLbl.Location = new System.Drawing.Point(55, 403);
+            this.MemberDisLbl.Location = new System.Drawing.Point(73, 504);
+            this.MemberDisLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.MemberDisLbl.Name = "MemberDisLbl";
-            this.MemberDisLbl.Size = new System.Drawing.Size(103, 16);
+            this.MemberDisLbl.Size = new System.Drawing.Size(129, 20);
             this.MemberDisLbl.TabIndex = 66;
             this.MemberDisLbl.Text = "エラーメッセージ";
             // 
             // MemberNameTBox
             // 
-            this.MemberNameTBox.ImeMode = System.Windows.Forms.ImeMode.KatakanaHalf;
-            this.MemberNameTBox.Location = new System.Drawing.Point(140, 447);
+            this.MemberNameTBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.MemberNameTBox.Location = new System.Drawing.Point(187, 559);
+            this.MemberNameTBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MemberNameTBox.MaxLength = 30;
             this.MemberNameTBox.Name = "MemberNameTBox";
-            this.MemberNameTBox.Size = new System.Drawing.Size(149, 19);
+            this.MemberNameTBox.Size = new System.Drawing.Size(197, 22);
             this.MemberNameTBox.TabIndex = 64;
             // 
             // MemberNameLbl
             // 
             this.MemberNameLbl.AutoSize = true;
-            this.MemberNameLbl.Location = new System.Drawing.Point(94, 449);
+            this.MemberNameLbl.Location = new System.Drawing.Point(125, 561);
+            this.MemberNameLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.MemberNameLbl.Name = "MemberNameLbl";
-            this.MemberNameLbl.Size = new System.Drawing.Size(42, 12);
+            this.MemberNameLbl.Size = new System.Drawing.Size(53, 15);
             this.MemberNameLbl.TabIndex = 65;
             this.MemberNameLbl.Text = "ﾌﾘｶﾞﾅ：";
             // 
             // PrintBtn
             // 
-            this.PrintBtn.Location = new System.Drawing.Point(621, 40);
+            this.PrintBtn.Location = new System.Drawing.Point(828, 50);
+            this.PrintBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PrintBtn.Name = "PrintBtn";
-            this.PrintBtn.Size = new System.Drawing.Size(122, 36);
+            this.PrintBtn.Size = new System.Drawing.Size(163, 45);
             this.PrintBtn.TabIndex = 67;
             this.PrintBtn.Text = "印刷";
             this.PrintBtn.UseVisualStyleBackColor = true;
@@ -125,16 +133,15 @@
             this.MemberEditLbl.AutoSize = true;
             this.MemberEditLbl.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.MemberEditLbl.ForeColor = System.Drawing.Color.Red;
-            this.MemberEditLbl.Location = new System.Drawing.Point(528, 403);
-            this.MemberEditLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.MemberEditLbl.Location = new System.Drawing.Point(704, 504);
             this.MemberEditLbl.Name = "MemberEditLbl";
-            this.MemberEditLbl.Size = new System.Drawing.Size(56, 16);
+            this.MemberEditLbl.Size = new System.Drawing.Size(69, 20);
             this.MemberEditLbl.TabIndex = 68;
             this.MemberEditLbl.Text = "編集中";
             // 
             // MemberMgt
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.MemberEditLbl);
             this.Controls.Add(this.PrintBtn);
@@ -145,8 +152,9 @@
             this.Controls.Add(this.MemberUpdateBtn);
             this.Controls.Add(this.MemberDataGridView);
             this.Controls.Add(this.MemberDisBtn);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MemberMgt";
-            this.Size = new System.Drawing.Size(760, 515);
+            this.Size = new System.Drawing.Size(1013, 644);
             this.VisibleChanged += new System.EventHandler(this.MemberMgt_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.MemberDataGridView)).EndInit();
             this.ResumeLayout(false);

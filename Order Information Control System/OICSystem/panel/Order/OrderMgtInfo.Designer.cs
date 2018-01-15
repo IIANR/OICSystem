@@ -42,9 +42,10 @@
             // 
             // OrderListBtn
             // 
-            this.OrderListBtn.Location = new System.Drawing.Point(649, 376);
+            this.OrderListBtn.Location = new System.Drawing.Point(865, 470);
+            this.OrderListBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.OrderListBtn.Name = "OrderListBtn";
-            this.OrderListBtn.Size = new System.Drawing.Size(97, 37);
+            this.OrderListBtn.Size = new System.Drawing.Size(129, 46);
             this.OrderListBtn.TabIndex = 5;
             this.OrderListBtn.Text = "入金済み一覧";
             this.OrderListBtn.UseVisualStyleBackColor = true;
@@ -53,26 +54,29 @@
             // TotalLabel
             // 
             this.TotalLabel.AutoSize = true;
-            this.TotalLabel.Location = new System.Drawing.Point(286, 388);
+            this.TotalLabel.Location = new System.Drawing.Point(381, 485);
+            this.TotalLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.TotalLabel.Name = "TotalLabel";
-            this.TotalLabel.Size = new System.Drawing.Size(23, 12);
+            this.TotalLabel.Size = new System.Drawing.Size(30, 15);
             this.TotalLabel.TabIndex = 65;
             this.TotalLabel.Text = "0円";
             // 
             // TotalTitleLabel
             // 
             this.TotalTitleLabel.AutoSize = true;
-            this.TotalTitleLabel.Location = new System.Drawing.Point(221, 388);
+            this.TotalTitleLabel.Location = new System.Drawing.Point(295, 485);
+            this.TotalTitleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.TotalTitleLabel.Name = "TotalTitleLabel";
-            this.TotalTitleLabel.Size = new System.Drawing.Size(59, 12);
+            this.TotalTitleLabel.Size = new System.Drawing.Size(75, 15);
             this.TotalTitleLabel.TabIndex = 64;
             this.TotalTitleLabel.Text = "合計金額：";
             // 
             // UpdateBtn
             // 
-            this.UpdateBtn.Location = new System.Drawing.Point(443, 376);
+            this.UpdateBtn.Location = new System.Drawing.Point(591, 470);
+            this.UpdateBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.UpdateBtn.Name = "UpdateBtn";
-            this.UpdateBtn.Size = new System.Drawing.Size(97, 37);
+            this.UpdateBtn.Size = new System.Drawing.Size(129, 46);
             this.UpdateBtn.TabIndex = 3;
             this.UpdateBtn.Text = "入金確認";
             this.UpdateBtn.UseVisualStyleBackColor = true;
@@ -82,18 +86,20 @@
             // 
             this.OrderInfoGritview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.OrderInfoGritview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.OrderInfoGritview.Location = new System.Drawing.Point(14, 18);
+            this.OrderInfoGritview.Location = new System.Drawing.Point(19, 22);
+            this.OrderInfoGritview.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.OrderInfoGritview.Name = "OrderInfoGritview";
             this.OrderInfoGritview.RowTemplate.Height = 21;
-            this.OrderInfoGritview.Size = new System.Drawing.Size(732, 334);
+            this.OrderInfoGritview.Size = new System.Drawing.Size(976, 418);
             this.OrderInfoGritview.TabIndex = 63;
             this.OrderInfoGritview.Click += new System.EventHandler(this.OrderInfoGritview_Click_1);
             // 
             // SearchBtn
             // 
-            this.SearchBtn.Location = new System.Drawing.Point(340, 376);
+            this.SearchBtn.Location = new System.Drawing.Point(453, 470);
+            this.SearchBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SearchBtn.Name = "SearchBtn";
-            this.SearchBtn.Size = new System.Drawing.Size(97, 37);
+            this.SearchBtn.Size = new System.Drawing.Size(129, 46);
             this.SearchBtn.TabIndex = 2;
             this.SearchBtn.Text = "検索";
             this.SearchBtn.UseVisualStyleBackColor = true;
@@ -101,17 +107,20 @@
             // 
             // KanaTextbox
             // 
-            this.KanaTextbox.Location = new System.Drawing.Point(74, 385);
+            this.KanaTextbox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.KanaTextbox.Location = new System.Drawing.Point(99, 481);
+            this.KanaTextbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.KanaTextbox.MaxLength = 30;
             this.KanaTextbox.Name = "KanaTextbox";
-            this.KanaTextbox.Size = new System.Drawing.Size(117, 19);
+            this.KanaTextbox.Size = new System.Drawing.Size(155, 22);
             this.KanaTextbox.TabIndex = 1;
             // 
             // DeleteBtn
             // 
-            this.DeleteBtn.Location = new System.Drawing.Point(546, 376);
+            this.DeleteBtn.Location = new System.Drawing.Point(728, 470);
+            this.DeleteBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DeleteBtn.Name = "DeleteBtn";
-            this.DeleteBtn.Size = new System.Drawing.Size(97, 37);
+            this.DeleteBtn.Size = new System.Drawing.Size(129, 46);
             this.DeleteBtn.TabIndex = 4;
             this.DeleteBtn.Text = "注文取消";
             this.DeleteBtn.UseVisualStyleBackColor = true;
@@ -120,15 +129,16 @@
             // KanaLabel
             // 
             this.KanaLabel.AutoSize = true;
-            this.KanaLabel.Location = new System.Drawing.Point(33, 388);
+            this.KanaLabel.Location = new System.Drawing.Point(44, 485);
+            this.KanaLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.KanaLabel.Name = "KanaLabel";
-            this.KanaLabel.Size = new System.Drawing.Size(42, 12);
+            this.KanaLabel.Size = new System.Drawing.Size(53, 15);
             this.KanaLabel.TabIndex = 62;
             this.KanaLabel.Text = "ﾌﾘｶﾞﾅ：";
             // 
             // OrderMgtInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.OrderListBtn);
             this.Controls.Add(this.TotalLabel);
@@ -139,8 +149,9 @@
             this.Controls.Add(this.KanaTextbox);
             this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.KanaLabel);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "OrderMgtInfo";
-            this.Size = new System.Drawing.Size(760, 430);
+            this.Size = new System.Drawing.Size(1013, 538);
             this.Load += new System.EventHandler(this.OrderMgtInfo_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.OrderInfoGritview)).EndInit();
             this.ResumeLayout(false);
