@@ -38,6 +38,7 @@ namespace WindowsFormsApplication1
         private void EmpMgtInfo_Load(object sender, EventArgs e)
         {
             dataload(0);
+            EmpdataGridView.AllowUserToAddRows = false;
         }
 
         private DataTable CreateSchemaDataTable(OleDbDataReader reader)
@@ -102,7 +103,7 @@ namespace WindowsFormsApplication1
 
         private void UpdateB_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < EmpdataGridView.Rows.Count-1; i++)
+            for (int i = 0; i < EmpdataGridView.Rows.Count; i++)
             {
                 cmd.Connection = cn;
 
@@ -144,34 +145,49 @@ namespace WindowsFormsApplication1
         }
         private void DeleteB_Click_1(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("削除しますか？", "OICSystem", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-
-            if (result == DialogResult.Yes)
+            Console.WriteLine("選択されている行");
+            foreach (DataGridViewCell r in EmpdataGridView.SelectedCells)
             {
-                cn.Open();
-                cmd.Connection = cn;
-                cmd.CommandText = "UPDATE 従業員マスタ SET フラグ = '退職' WHERE 名前='" + EmpNameTextB.Text + "'";
-                cmd.ExecuteNonQuery();
-                try
+                Console.WriteLine(r);
+
+                if ((bool)EmpdataGridView[11, r.RowIndex].Value == true)
                 {
-
-                    MessageBox.Show("削除しました", "OICSystem");
-
-
+                    MessageBox.Show("管理者権限があるので削除できません", "OICSystem");
                 }
-                catch (Exception)
+                else
                 {
-                    //MessageBox.Show(ex.Message, "IM2");
-                }
-                cn.Close();
-                dataload(0);
-                EmpIDTextB.Text = "";
-                EmpNameTextB.Text = "";
-            }
-            else if (result == DialogResult.No)
-            {
+                    DialogResult result = MessageBox.Show("削除しますか？", "OICSystem", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
+                    if (result == DialogResult.Yes)
+                    {
+                        cn.Open();
+                        cmd.Connection = cn;
+                        cmd.CommandText = "UPDATE 従業員マスタ SET フラグ = '退職' WHERE 名前='" + EmpNameTextB.Text + "'";
+                        cmd.ExecuteNonQuery();
+                        try
+                        {
+
+                            MessageBox.Show("削除しました", "OICSystem");
+
+
+                        }
+                        catch (Exception)
+                        {
+                            //MessageBox.Show(ex.Message, "IM2");
+                        }
+                        cn.Close();
+                        dataload(0);
+                        EmpIDTextB.Text = "";
+                        EmpNameTextB.Text = "";
+                    }
+                    else if (result == DialogResult.No)
+                    {
+
+                    }
+                }
             }
+
+            
 
         }
         private void EmpdataGridView_Click(object sender, EventArgs e)
