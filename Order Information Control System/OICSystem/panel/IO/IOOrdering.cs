@@ -34,7 +34,7 @@ namespace WindowsFormsApplication1
             cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
 
             //データグリッドビューに表示
-            da = new OleDbDataAdapter("SELECT 商品マスタ.商品ID, 商品マスタ.商品名,商品マスタ.仕入れ値,商品マスタ.発注数 + 商品マスタ.安全在庫数 AS 発注数,在庫テーブル.在庫数 FROM 在庫テーブル INNER JOIN 商品マスタ ON 在庫テーブル.商品ID = 商品マスタ.商品ID WHERE 在庫テーブル.在庫数 < 商品マスタ.安全在庫数 AND 商品マスタ.フラグ <> '発注済み'; ", cn);
+            da = new OleDbDataAdapter("SELECT 商品マスタ.商品ID, 商品マスタ.商品名,商品マスタ.仕入れ値,商品マスタ.発注数 + 商品マスタ.安全在庫数 AS 発注数,在庫テーブル.在庫数 FROM 在庫テーブル INNER JOIN 商品マスタ ON 在庫テーブル.商品ID = 商品マスタ.商品ID WHERE 在庫テーブル.在庫数 < 商品マスタ.安全在庫数 AND 商品マスタ.フラグ <> '発注済み' AND 商品マスタ.フラグ <> '販売中止'; ", cn);
             da.Fill(dt);
             OrderingGoodsDataGrid.DataSource = dt;
 
@@ -170,7 +170,7 @@ namespace WindowsFormsApplication1
                 cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
 
                 //データグリッドビューに表示
-                da = new OleDbDataAdapter("SELECT 商品マスタ.商品ID, 商品マスタ.商品名,商品マスタ.仕入れ値,商品マスタ.発注数 + 商品マスタ.安全在庫数 AS 発注数,在庫テーブル.在庫数 FROM 在庫テーブル INNER JOIN 商品マスタ ON 在庫テーブル.商品ID = 商品マスタ.商品ID WHERE 在庫テーブル.在庫数 < 商品マスタ.安全在庫数 AND 商品マスタ.フラグ <> '発注済み'; ", cn);
+                da = new OleDbDataAdapter("SELECT 商品マスタ.商品ID, 商品マスタ.商品名,商品マスタ.仕入れ値,商品マスタ.発注数 + 商品マスタ.安全在庫数 AS 発注数,在庫テーブル.在庫数 FROM 在庫テーブル INNER JOIN 商品マスタ ON 在庫テーブル.商品ID = 商品マスタ.商品ID WHERE 在庫テーブル.在庫数 < 商品マスタ.安全在庫数 AND 商品マスタ.フラグ <> '発注済み' AND 商品マスタ.フラグ <> '販売中止'; ", cn);
                 da.Fill(dt);
                 OrderingGoodsDataGrid.DataSource = dt;
 
@@ -193,14 +193,6 @@ namespace WindowsFormsApplication1
 
         private void ReloadBtn_Click(object sender, EventArgs e)
         {
-            //dt = new DataTable();
-            //cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-
-            ////データグリッドビューに表示
-            //da = new OleDbDataAdapter("SELECT 商品マスタ.商品ID, 商品マスタ.商品名,商品マスタ.仕入れ値,商品マスタ.発注数 + 商品マスタ.安全在庫数 AS 発注数,在庫テーブル.在庫数 FROM 在庫テーブル INNER JOIN 商品マスタ ON 在庫テーブル.商品ID = 商品マスタ.商品ID WHERE 在庫テーブル.在庫数 < 商品マスタ.安全在庫数 AND 商品マスタ.フラグ <> '発注済み'; ", cn);
-            //da.Fill(dt);
-            //OrderingGoodsDataGrid.DataSource = dt;
-
             InputNameCombo.Items.Clear();
             IOOrdering_Load(null, EventArgs.Empty);
 
