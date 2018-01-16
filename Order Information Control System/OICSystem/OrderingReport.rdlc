@@ -1059,7 +1059,9 @@
               <TextRuns>
                 <TextRun>
                   <Value>=Parameters!ReportParameter1.Value</Value>
-                  <Style />
+                  <Style>
+                    <FontFamily>ＭＳ Ｐゴシック</FontFamily>
+                  </Style>
                 </TextRun>
               </TextRuns>
               <Style>
@@ -1102,7 +1104,9 @@
               <TextRuns>
                 <TextRun>
                   <Value>御中</Value>
-                  <Style />
+                  <Style>
+                    <FontFamily>ＭＳ Ｐゴシック</FontFamily>
+                  </Style>
                 </TextRun>
               </TextRuns>
               <Style />
