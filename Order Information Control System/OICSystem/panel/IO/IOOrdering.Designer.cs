@@ -290,6 +290,7 @@
             this.Name = "IOOrdering";
             this.Size = new System.Drawing.Size(760, 430);
             this.Load += new System.EventHandler(this.IOOrdering_Load);
+            this.VisibleChanged += new System.EventHandler(this.IOOrdering_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.OrderingGoodsDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

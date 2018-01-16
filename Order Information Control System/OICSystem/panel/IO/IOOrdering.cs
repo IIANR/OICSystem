@@ -27,31 +27,7 @@ namespace WindowsFormsApplication1
             InitializeComponent();
         }
 
-        private void IOOrdering_Load(object sender, EventArgs e)
-        {
-            this.ActiveControl = this.InputNameCombo;
-            dt = new DataTable();
-            cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
 
-            //データグリッドビューに表示
-            da = new OleDbDataAdapter("SELECT 商品マスタ.商品ID, 商品マスタ.商品名,商品マスタ.仕入れ値,商品マスタ.発注数 + 商品マスタ.安全在庫数 AS 発注数,在庫テーブル.在庫数 FROM 在庫テーブル INNER JOIN 商品マスタ ON 在庫テーブル.商品ID = 商品マスタ.商品ID WHERE 在庫テーブル.在庫数 < 商品マスタ.安全在庫数 AND 商品マスタ.フラグ <> '発注済み' AND 商品マスタ.フラグ <> '販売中止'; ", cn);
-            da.Fill(dt);
-            OrderingGoodsDataGrid.DataSource = dt;
-
-            cn.Open();
-            cmd.Connection = cn;
-            cmd.CommandText = "SELECT 入庫先名 FROM 入庫先マスタ";
-
-            OleDbDataReader rd = cmd.ExecuteReader();
-            while (rd.Read())
-            {
-                InputNameCombo.Items.Add(rd["入庫先名"].ToString());
-            }
-            cn.Close();
-
-            OrderingGoodsDataGrid.AllowUserToAddRows = false;
-            OrderingGoodsDataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        }
 
         private DataTable CreateSchemaDataTable(OleDbDataReader reader)
         {
@@ -213,6 +189,47 @@ namespace WindowsFormsApplication1
                 //押されたキーが 0～9でない場合は、イベントをキャンセルする
                 e.Handled = true;
             }
+        }
+
+        private void IOOrdering_VisibleChanged(object sender, EventArgs e)
+        {
+            InputNameCombo.Items.Clear();
+            IOOrdering_Load(null, EventArgs.Empty);
+
+            TelTextBox.Text = "";
+            PosTextbox.Text = "";
+            Addres1Textbox.Text = "";
+            Addres2Textbox.Text = "";
+            Addres2Textbox.Text = "";
+            GoodsidTextBox.Text = "";
+            OrderingPayTextbox.Text = "";
+            InputNumTextbox.Text = "";
+        }
+
+        private void IOOrdering_Load(object sender, EventArgs e)
+        {
+            this.ActiveControl = this.InputNameCombo;
+            dt = new DataTable();
+            cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
+
+            //データグリッドビューに表示
+            da = new OleDbDataAdapter("SELECT 商品マスタ.商品ID, 商品マスタ.商品名,商品マスタ.仕入れ値,商品マスタ.発注数 + 商品マスタ.安全在庫数 AS 発注数,在庫テーブル.在庫数 FROM 在庫テーブル INNER JOIN 商品マスタ ON 在庫テーブル.商品ID = 商品マスタ.商品ID WHERE 在庫テーブル.在庫数 < 商品マスタ.安全在庫数 AND 商品マスタ.フラグ <> '発注済み' AND 商品マスタ.フラグ <> '販売中止'; ", cn);
+            da.Fill(dt);
+            OrderingGoodsDataGrid.DataSource = dt;
+
+            cn.Open();
+            cmd.Connection = cn;
+            cmd.CommandText = "SELECT 入庫先名 FROM 入庫先マスタ";
+
+            OleDbDataReader rd = cmd.ExecuteReader();
+            while (rd.Read())
+            {
+                InputNameCombo.Items.Add(rd["入庫先名"].ToString());
+            }
+            cn.Close();
+
+            OrderingGoodsDataGrid.AllowUserToAddRows = false;
+            OrderingGoodsDataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
     }
 }

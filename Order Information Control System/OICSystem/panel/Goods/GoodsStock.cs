@@ -27,12 +27,6 @@ namespace WindowsFormsApplication1.panel.Goods
             InitializeComponent();
         }
 
-        private void GoodsStock_Load(object sender, EventArgs e)
-        {
-            this.ActiveControl = this.GoodsStockTBox;
-            dataload();
-        }
-
         private void selectfunc(string cmdstr)
         {
             dt.Clear();
@@ -124,6 +118,12 @@ namespace WindowsFormsApplication1.panel.Goods
             GoodsStockDataGridView.AutoResizeColumns();
 
             GoodsStockDataGridView.AllowUserToAddRows = false;      //datagridviewの最下行を消す
+        }
+
+        private void GoodsStock_VisibleChanged(object sender, EventArgs e)
+        {
+            this.ActiveControl = this.GoodsStockTBox;
+            dataload();
         }
     }
 }

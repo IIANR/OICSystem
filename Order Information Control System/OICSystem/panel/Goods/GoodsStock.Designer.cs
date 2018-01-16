@@ -101,7 +101,7 @@
             this.Controls.Add(this.GoodsStockDataGridView);
             this.Name = "GoodsStock";
             this.Size = new System.Drawing.Size(760, 430);
-            this.Load += new System.EventHandler(this.GoodsStock_Load);
+            this.VisibleChanged += new System.EventHandler(this.GoodsStock_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.GoodsStockDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

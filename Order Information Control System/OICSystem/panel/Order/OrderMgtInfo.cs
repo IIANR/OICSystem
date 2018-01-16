@@ -192,6 +192,11 @@ namespace WindowsFormsApplication1
             }
         }
 
+        protected void ss()
+        { 
+        
+        }
+
         private void OrderListBtn_Click(object sender, EventArgs e)
         {
             OrderList f = new OrderList();
@@ -266,5 +271,26 @@ namespace WindowsFormsApplication1
             OrderInfoGritview.Columns[5].ReadOnly = true;
             OrderInfoGritview.Columns[6].ReadOnly = true;
         }
+
+        //private void OrderInfoGritview_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        //{
+        //     //チェックボックスの列番号は11で、かつチェック状態が変わったら
+        //    if (OrderInfoGritview.CurrentCellAddress.X == 7 && OrderInfoGritview.IsCurrentCellDirty == true)
+        //    {
+        //        //dataGridViewをコミットする
+        //        OrderInfoGritview.CommitEdit(DataGridViewDataErrorContexts.Commit);
+
+        //        //変更後のチェック状態
+        //        bool bl = (bool)OrderInfoGritview[OrderInfoGritview.CurrentCellAddress.X, OrderInfoGritview.CurrentCellAddress.Y].Value;
+        //        // MessageBox.Show(bl.ToString());
+
+        //        //変更後のチェック状態がfalseなら（trueからfalseに変わったら）
+        //        if (bl == false)
+        //        {
+        //            MessageBox.Show("確定した入金は取り消せませんよ？");
+        //            OrderInfoGritview[OrderInfoGritview.CurrentCellAddress.X, OrderInfoGritview.CurrentCellAddress.Y].Value = true;
+        //        }
+        //    }
+        //}
     }
 }
