@@ -302,7 +302,3 @@ __pycache__/
 
 # OpenCover UI analysis results
 OpenCover/
-
-# 追記
-!SqlServerTypes/x64/
-!SqlServerTypes/x86/
