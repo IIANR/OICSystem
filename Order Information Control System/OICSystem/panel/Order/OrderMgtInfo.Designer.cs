@@ -142,7 +142,7 @@
             this.Controls.Add(this.KanaLabel);
             this.Name = "OrderMgtInfo";
             this.Size = new System.Drawing.Size(760, 430);
-            this.Load += new System.EventHandler(this.OrderMgtInfo_Load_1);
+            this.VisibleChanged += new System.EventHandler(this.OrderMgtInfo_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.OrderInfoGritview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

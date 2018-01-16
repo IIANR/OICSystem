@@ -219,7 +219,7 @@ namespace WindowsFormsApplication1
             TotalLabel.Text = string.Format("{0:#,###}円", sum + sum * Tax);
         }
 
-        private void OrderMgtInfo_Load_1(object sender, EventArgs e)
+        private void OrderMgtInfo_VisibleChanged(object sender, EventArgs e)
         {
             TotalLabel.Visible = true;
             //クリア

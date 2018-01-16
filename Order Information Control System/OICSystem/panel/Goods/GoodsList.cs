@@ -312,13 +312,6 @@ namespace WindowsFormsApplication1.panel.Goods
             imageChange();
         }
 
-
-        private void GoodsList_Load(object sender, EventArgs e)
-        {
-            this.ActiveControl = this.textBname;
-            BindData(0);
-        }
-
         private void Reload()
         {
             textBID.DataBindings.Clear();
@@ -381,6 +374,12 @@ namespace WindowsFormsApplication1.panel.Goods
                 //押されたキーが 0～9でない場合は、イベントをキャンセルする
                 e.Handled = true;
             }
+        }
+
+        private void GoodsList_VisibleChanged(object sender, EventArgs e)
+        {
+            this.ActiveControl = this.textBname;
+            Reload();
         }
     }
 

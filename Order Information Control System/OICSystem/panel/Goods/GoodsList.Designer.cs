@@ -364,7 +364,7 @@
             this.Controls.Add(this.goodsRegiId);
             this.Name = "GoodsList";
             this.Size = new System.Drawing.Size(760, 430);
-            this.Load += new System.EventHandler(this.GoodsList_Load);
+            this.VisibleChanged += new System.EventHandler(this.GoodsList_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
