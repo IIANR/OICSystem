@@ -71,9 +71,11 @@
             // BirthdayTextB
             // 
             this.BirthdayTextB.Location = new System.Drawing.Point(84, 396);
+            this.BirthdayTextB.Mask = "0000/00/00";
             this.BirthdayTextB.Name = "BirthdayTextB";
             this.BirthdayTextB.Size = new System.Drawing.Size(117, 19);
             this.BirthdayTextB.TabIndex = 6;
+            this.BirthdayTextB.ValidatingType = typeof(System.DateTime);
             // 
             // groupBox2
             // 
