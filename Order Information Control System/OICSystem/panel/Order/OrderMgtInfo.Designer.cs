@@ -87,6 +87,8 @@
             this.OrderInfoGritview.RowTemplate.Height = 21;
             this.OrderInfoGritview.Size = new System.Drawing.Size(732, 334);
             this.OrderInfoGritview.TabIndex = 63;
+            this.OrderInfoGritview.CurrentCellDirtyStateChanged += new System.EventHandler(this.OrderInfoGritview_CurrentCellDirtyStateChanged);
+            this.OrderInfoGritview.Click += new System.EventHandler(this.OrderInfoGritview_Click);
             // 
             // SearchBtn
             // 
