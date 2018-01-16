@@ -219,6 +219,18 @@ namespace WindowsFormsApplication1
                         dtRow["売上"] = sum * count[i];
                         goods.Rows.Add(dtRow);
                     }
+                    else if (count[i]!=0)
+                    { 
+                        dtRow["商品ID"] = dt.Rows[i][0];      //DBから取得したdtの商品IDを示す行の行番号と列番号
+                        dtRow["商品名"] = dt.Rows[i][1];  //DBから取得したdtの商品名を示す行の行番号と列番号
+                        dtRow["単価"] = dt.Rows[i][2];        //DBから取得したdtの単価を示す行の行番号と列番号   
+                        price = dt.Rows[i][2].ToString();
+                        sum = int.Parse(price);
+                        dtRow["数量"] = count[i];
+                        total += sum * count[i];
+                        dtRow["売上"] = sum * count[i];
+                        goods.Rows.Add(dtRow);
+                    }
                 }
 
                 Console.WriteLine(count[0]);
@@ -375,6 +387,15 @@ namespace WindowsFormsApplication1
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     if ("販売中止" != (dt.Rows[i][2]).ToString())
+                    {
+                        dtRow = goods.NewRow();
+                        dtRow["商品ID"] = dt.Rows[i][0];      //DBから取得したdtの商品IDを示す行の行番号と列番号
+                        dtRow["商品名"] = dt.Rows[i][1];  //DBから取得したdtの商品名を示す行の行番号と列番号
+                        dtRow["数量"] = count[i];
+                        total += count[i];
+                        goods.Rows.Add(dtRow);
+                    }
+                    else if (count[i] != 0)
                     {
                         dtRow = goods.NewRow();
                         dtRow["商品ID"] = dt.Rows[i][0];      //DBから取得したdtの商品IDを示す行の行番号と列番号
