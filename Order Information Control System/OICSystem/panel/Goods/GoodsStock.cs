@@ -94,7 +94,7 @@ namespace WindowsFormsApplication1.panel.Goods
 
                 if (GSname.Contains(GStname))     //Containsは部分検索
                 {
-                    selectfunc("SELECT Z.商品ID,S.商品名,Z.在庫数,S.安全在庫数 FROM 在庫テーブル Z,商品マスタ S WHERE Z.商品ID=S.商品ID AND 商品名 LIKE '%" + GoodsStockTBox.Text + "%' AND S.フラグ <> '販売中止'");
+                    selectfunc("SELECT Z.商品ID,S.商品名,Z.在庫数,S.安全在庫数 FROM 在庫テーブル Z,商品マスタ S WHERE Z.商品ID=S.商品ID AND 商品名 LIKE '%" + GoodsStockTBox.Text + "%' AND S.フラグ <> '販売中止' ORDER BY S.商品ID");
                     GoodsStockDisLbl.Text = "";
                     break;
                 }

@@ -53,7 +53,7 @@
             // TotalLabel
             // 
             this.TotalLabel.AutoSize = true;
-            this.TotalLabel.Location = new System.Drawing.Point(286, 388);
+            this.TotalLabel.Location = new System.Drawing.Point(271, 388);
             this.TotalLabel.Name = "TotalLabel";
             this.TotalLabel.Size = new System.Drawing.Size(23, 12);
             this.TotalLabel.TabIndex = 65;
@@ -62,7 +62,7 @@
             // TotalTitleLabel
             // 
             this.TotalTitleLabel.AutoSize = true;
-            this.TotalTitleLabel.Location = new System.Drawing.Point(221, 388);
+            this.TotalTitleLabel.Location = new System.Drawing.Point(206, 388);
             this.TotalTitleLabel.Name = "TotalTitleLabel";
             this.TotalTitleLabel.Size = new System.Drawing.Size(59, 12);
             this.TotalTitleLabel.TabIndex = 64;
@@ -91,9 +91,9 @@
             // 
             // SearchBtn
             // 
-            this.SearchBtn.Location = new System.Drawing.Point(315, 376);
+            this.SearchBtn.Location = new System.Drawing.Point(367, 376);
             this.SearchBtn.Name = "SearchBtn";
-            this.SearchBtn.Size = new System.Drawing.Size(97, 37);
+            this.SearchBtn.Size = new System.Drawing.Size(87, 37);
             this.SearchBtn.TabIndex = 2;
             this.SearchBtn.Text = "検索";
             this.SearchBtn.UseVisualStyleBackColor = true;
