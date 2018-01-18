@@ -42,28 +42,31 @@
             // 
             // InputNumTextbox
             // 
-            this.InputNumTextbox.Location = new System.Drawing.Point(295, 371);
+            this.InputNumTextbox.Location = new System.Drawing.Point(393, 464);
+            this.InputNumTextbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.InputNumTextbox.MaxLength = 3;
             this.InputNumTextbox.Name = "InputNumTextbox";
-            this.InputNumTextbox.Size = new System.Drawing.Size(100, 19);
+            this.InputNumTextbox.Size = new System.Drawing.Size(132, 22);
             this.InputNumTextbox.TabIndex = 2;
             this.InputNumTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InputNumTextbox_KeyPress);
             // 
             // InputNumLabel
             // 
             this.InputNumLabel.AutoSize = true;
-            this.InputNumLabel.Location = new System.Drawing.Point(230, 375);
+            this.InputNumLabel.Location = new System.Drawing.Point(307, 469);
+            this.InputNumLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.InputNumLabel.Name = "InputNumLabel";
-            this.InputNumLabel.Size = new System.Drawing.Size(59, 12);
+            this.InputNumLabel.Size = new System.Drawing.Size(75, 15);
             this.InputNumLabel.TabIndex = 20;
             this.InputNumLabel.Text = "入庫数量：";
             // 
             // OutputRadioBtn
             // 
             this.OutputRadioBtn.AutoSize = true;
-            this.OutputRadioBtn.Location = new System.Drawing.Point(114, 337);
+            this.OutputRadioBtn.Location = new System.Drawing.Point(152, 421);
+            this.OutputRadioBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.OutputRadioBtn.Name = "OutputRadioBtn";
-            this.OutputRadioBtn.Size = new System.Drawing.Size(47, 16);
+            this.OutputRadioBtn.Size = new System.Drawing.Size(58, 19);
             this.OutputRadioBtn.TabIndex = 19;
             this.OutputRadioBtn.Text = "出庫";
             this.OutputRadioBtn.UseVisualStyleBackColor = true;
@@ -73,9 +76,10 @@
             // 
             this.InputRadioBtn.AutoSize = true;
             this.InputRadioBtn.Checked = true;
-            this.InputRadioBtn.Location = new System.Drawing.Point(43, 337);
+            this.InputRadioBtn.Location = new System.Drawing.Point(57, 421);
+            this.InputRadioBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.InputRadioBtn.Name = "InputRadioBtn";
-            this.InputRadioBtn.Size = new System.Drawing.Size(47, 16);
+            this.InputRadioBtn.Size = new System.Drawing.Size(58, 19);
             this.InputRadioBtn.TabIndex = 18;
             this.InputRadioBtn.TabStop = true;
             this.InputRadioBtn.Text = "入庫";
@@ -86,17 +90,19 @@
             // 
             this.ErrMsg.AutoSize = true;
             this.ErrMsg.ForeColor = System.Drawing.Color.Red;
-            this.ErrMsg.Location = new System.Drawing.Point(91, 397);
+            this.ErrMsg.Location = new System.Drawing.Point(121, 496);
+            this.ErrMsg.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ErrMsg.Name = "ErrMsg";
-            this.ErrMsg.Size = new System.Drawing.Size(35, 12);
+            this.ErrMsg.Size = new System.Drawing.Size(43, 15);
             this.ErrMsg.TabIndex = 17;
             this.ErrMsg.Text = "label2";
             // 
             // CompBtn
             // 
-            this.CompBtn.Location = new System.Drawing.Point(594, 360);
+            this.CompBtn.Location = new System.Drawing.Point(792, 450);
+            this.CompBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CompBtn.Name = "CompBtn";
-            this.CompBtn.Size = new System.Drawing.Size(119, 40);
+            this.CompBtn.Size = new System.Drawing.Size(159, 50);
             this.CompBtn.TabIndex = 3;
             this.CompBtn.Text = "入庫完了";
             this.CompBtn.UseVisualStyleBackColor = true;
@@ -105,18 +111,20 @@
             // idLabel
             // 
             this.idLabel.AutoSize = true;
-            this.idLabel.Location = new System.Drawing.Point(41, 374);
+            this.idLabel.Location = new System.Drawing.Point(55, 468);
+            this.idLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.idLabel.Name = "idLabel";
-            this.idLabel.Size = new System.Drawing.Size(46, 12);
+            this.idLabel.Size = new System.Drawing.Size(59, 15);
             this.idLabel.TabIndex = 15;
             this.idLabel.Text = "発注ID：";
             // 
             // IdTextbox
             // 
-            this.IdTextbox.Location = new System.Drawing.Point(93, 371);
+            this.IdTextbox.Location = new System.Drawing.Point(124, 464);
+            this.IdTextbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.IdTextbox.MaxLength = 5;
             this.IdTextbox.Name = "IdTextbox";
-            this.IdTextbox.Size = new System.Drawing.Size(100, 19);
+            this.IdTextbox.Size = new System.Drawing.Size(132, 22);
             this.IdTextbox.TabIndex = 1;
             // 
             // DataGrid
@@ -125,16 +133,18 @@
             this.DataGrid.AllowUserToDeleteRows = false;
             this.DataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGrid.Location = new System.Drawing.Point(3, 22);
+            this.DataGrid.Location = new System.Drawing.Point(4, 28);
+            this.DataGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DataGrid.Name = "DataGrid";
             this.DataGrid.ReadOnly = true;
             this.DataGrid.RowTemplate.Height = 21;
-            this.DataGrid.Size = new System.Drawing.Size(754, 308);
+            this.DataGrid.Size = new System.Drawing.Size(1005, 385);
             this.DataGrid.TabIndex = 13;
+            this.DataGrid.TabStop = false;
             // 
             // IOOutput
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.InputNumTextbox);
             this.Controls.Add(this.InputNumLabel);
@@ -145,8 +155,9 @@
             this.Controls.Add(this.idLabel);
             this.Controls.Add(this.IdTextbox);
             this.Controls.Add(this.DataGrid);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "IOOutput";
-            this.Size = new System.Drawing.Size(760, 430);
+            this.Size = new System.Drawing.Size(1013, 538);
             this.Load += new System.EventHandler(this.IOOutput_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid)).EndInit();
             this.ResumeLayout(false);
