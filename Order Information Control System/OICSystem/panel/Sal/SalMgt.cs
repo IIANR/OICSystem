@@ -57,6 +57,13 @@ namespace WindowsFormsApplication1
             }
             else
             {
+
+                if (DateTime.Parse(DateStart.Text) > DateTime.Parse(DateEnd.Text))
+                {
+                    DSCheck = DateEnd.Text;
+                    DECheck = DateStart.Text;
+                }
+
                 OleDbDataAdapter da = new OleDbDataAdapter("SELECT 注文日,商品ID FROM 注文テーブル WHERE 注文日 Between #" + DateStart.Text + "# and #" + DateEnd.Text + "# AND 入金済み in (true) ORDER BY 注文日", cn);
                 Msg.Text = DSCheck + "～" + DECheck + "のデータ";
                 da.Fill(dt);
@@ -482,7 +489,7 @@ namespace WindowsFormsApplication1
             memg.ReleaseHdc(dc2);
             memg.Dispose();
             g.Dispose();
-            img.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            img.RotateFlip(RotateFlipType.RotateNoneFlipNone);
             return img;
         }
 
@@ -510,7 +517,12 @@ namespace WindowsFormsApplication1
 
         private void printing_Click(object sender, EventArgs e)
         {
-            PrintForm(this);
+            DialogResult result = MessageBox.Show("印刷してよろしいですか？", "OICSystem", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+            if (result == DialogResult.Yes)
+            {
+                PrintForm(this);
+            }
         }
 
         private void SalMgt_Load(object sender, EventArgs e)

@@ -79,8 +79,13 @@ namespace WindowsFormsApplication1
             memg.ReleaseHdc(dc2);
             memg.Dispose();
             g.Dispose();
-            img.RotateFlip(RotateFlipType.Rotate270FlipNone);//数字変えれば回転する
-            return img;
+
+            double scale = 1.24;
+            Bitmap bmpResize = new Bitmap(img , (int)(img.Width * scale) , (int)(img.Height * scale) );
+
+            bmpResize.RotateFlip(RotateFlipType.Rotate270FlipNone);//数字変えれば回転する
+            
+            return bmpResize;
         }
 
         //PrintDocument1のPrintPageイベントハンドラ
