@@ -99,7 +99,7 @@ namespace WindowsFormsApplication1
             DateTime dtNow = DateTime.Now;
             if (EmpNameTextB == null || HuriganaTextB == null || tsex == null || EmpPostTextB == null || EmpAddressTextB == null || EmpAddress2TextB == null || EmpTelTextB == null || BirthdayTextB == null)
             {
-                MessageBox.Show("空白の部分があります", "失敗");
+                MessageBox.Show("空白の部分があります", "失敗",MessageBoxButtons.OK,MessageBoxIcon.Error);
 
                 //    try
                 //    {
@@ -337,7 +337,7 @@ namespace WindowsFormsApplication1
                 //郵便番号が入力されていないとき
                 if (EmpPostTextB.Text == "")
                 {
-                    MessageBox.Show("郵便番号が入力されていません。");
+                    MessageBox.Show("郵便番号が入力されていません。","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                     this.EmpPostTextB.Focus();
                     return; //処理を抜ける
                 }
@@ -396,27 +396,20 @@ namespace WindowsFormsApplication1
                 catch (Exception ex)
                 {
                     //ファイルエラーが発生
-                    MessageBox.Show(ex.Message, "ファイルエラー",
-                                   MessageBoxButtons.OK,
-                                   MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "ファイルエラー",MessageBoxButtons.OK,MessageBoxIcon.Error);
                     return; //処理を抜ける
                 }
                 finally
                 {
                     //マウスカーソルをデフォルトにする
                     Cursor.Current = Cursors.Default;
-
                 }
                 if (blnFlag == false)
                 {
-                    MessageBox.Show("該当の郵便番号は見つかりませんでした。",
-                                    "郵便番号検索",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error);
+                    MessageBox.Show("該当の郵便番号は見つかりませんでした。","郵便番号検索",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
             }
         }
-
         private void EmpPostTextB_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((e.KeyChar < '0' || '9' < e.KeyChar) && e.KeyChar != '\b')

@@ -95,7 +95,7 @@ namespace WindowsFormsApplication1
 
                 if ((bool)EmpdataGridView[11, r.RowIndex].Value == true)
                 {
-                    MessageBox.Show("管理者権限があるので削除できません", "OICSystem");
+                    MessageBox.Show("責任者権限があるので削除できません", "OICSystem",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
                 else
                 {
