@@ -215,22 +215,33 @@ namespace WindowsFormsApplication1
                 if (bl == false)
                 {
                     //DBに登録されている責任者権限の個数をカウントする
+                    //     OleDbDataAdapter da = new OleDbDataAdapter("SELECT COUNT(責任者権限) FROM 従業員マスタ WHERE 責任者権限=true", cn);
                     OleDbDataAdapter da = new OleDbDataAdapter("SELECT COUNT(責任者権限) FROM 従業員マスタ WHERE 責任者権限=true", cn);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
 
                     int n = dt.Rows.Count;      //DBに登録されている責任者権限の個数
-                                                //    MessageBox.Show(n.ToString());
+                    //    MessageBox.Show(n.ToString());
+
+                    da = new OleDbDataAdapter("SELECT 従業員ID FROM 従業員マスタ WHERE 責任者権限=true", cn);
+                    dt = new DataTable();
+                    da.Fill(dt);
+                    int chID = int.Parse(dt.Rows[0][0].ToString());
 
                     int checkcnt = 0;          //dataGridViewに表示されている責任者権限にチェックが入っている数
-                    for (int i = 0; i < EmpdataGridView.Rows.Count - 1; i++)
+
+                    int fitID = 99999;
+                    for (int i = 0; i < EmpdataGridView.Rows.Count; i++)
                     {
                         if ((bool)EmpdataGridView[11, i].Value == true) checkcnt++;
+                        if ((int)EmpdataGridView[0, i].Value == chID) fitID = i;
                     }
                     //     MessageBox.Show(checkcnt.ToString());
 
+                    if (fitID == 99999) return;
 
-                    if (n == 1 && checkcnt == 0)     //DBに登録されている責任者権限の個数が1で、かつdataGridViewのチェック責任者権限数が0なら
+                    //    if (n == 1 && checkcnt == 0)     //DBに登録されている責任者権限の個数が1で、かつdataGridViewのチェック責任者権限数が0なら
+                    if (n == 1 && checkcnt == 0 && (int)EmpdataGridView[0, fitID].Value == chID)     //DBに登録されている責任者権限の個数が1で、かつdataGridViewのチェック責任者権限数が0なら
                     {
                         MessageBox.Show("責任者権限をゼロにすることはできません。");
                         //責任者権限をtrueに戻す
