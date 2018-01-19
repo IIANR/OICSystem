@@ -136,9 +136,8 @@
             this.lblid3.Font = new System.Drawing.Font("MS UI Gothic", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.lblid3.Location = new System.Drawing.Point(621, 277);
             this.lblid3.Name = "lblid3";
-            this.lblid3.Size = new System.Drawing.Size(37, 40);
+            this.lblid3.Size = new System.Drawing.Size(0, 40);
             this.lblid3.TabIndex = 39;
-            this.lblid3.Text = "3";
             // 
             // lblid2
             // 
@@ -146,9 +145,8 @@
             this.lblid2.Font = new System.Drawing.Font("MS UI Gothic", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.lblid2.Location = new System.Drawing.Point(333, 277);
             this.lblid2.Name = "lblid2";
-            this.lblid2.Size = new System.Drawing.Size(37, 40);
+            this.lblid2.Size = new System.Drawing.Size(0, 40);
             this.lblid2.TabIndex = 38;
-            this.lblid2.Text = "2";
             // 
             // lblid1
             // 
@@ -156,9 +154,8 @@
             this.lblid1.Font = new System.Drawing.Font("MS UI Gothic", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.lblid1.Location = new System.Drawing.Point(45, 277);
             this.lblid1.Name = "lblid1";
-            this.lblid1.Size = new System.Drawing.Size(37, 40);
+            this.lblid1.Size = new System.Drawing.Size(0, 40);
             this.lblid1.TabIndex = 37;
-            this.lblid1.Text = "1";
             // 
             // NextBtn
             // 
