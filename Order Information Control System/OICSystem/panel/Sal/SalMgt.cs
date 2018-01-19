@@ -57,6 +57,13 @@ namespace WindowsFormsApplication1
             }
             else
             {
+
+                if (DateTime.Parse(DateStart.Text) > DateTime.Parse(DateEnd.Text))
+                {
+                    DSCheck = DateEnd.Text;
+                    DECheck = DateStart.Text;
+                }
+
                 OleDbDataAdapter da = new OleDbDataAdapter("SELECT 注文日,商品ID FROM 注文テーブル WHERE 注文日 Between #" + DateStart.Text + "# and #" + DateEnd.Text + "# AND 入金済み in (true) ORDER BY 注文日", cn);
                 Msg.Text = DSCheck + "～" + DECheck + "のデータ";
                 da.Fill(dt);
@@ -167,7 +174,7 @@ namespace WindowsFormsApplication1
 
                 //Goodsテーブルから商品ID,商品名,単価を商品ID順に取り出す
                 OleDbConnection cn = new OleDbConnection("Provider=microsoft.ace.oledb.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-                OleDbDataAdapter da = new OleDbDataAdapter("SELECT 商品ID,商品名,単価 FROM 商品マスタ ORDER BY 商品ID", cn);
+                OleDbDataAdapter da = new OleDbDataAdapter("SELECT 商品ID,商品名,単価,フラグ FROM 商品マスタ ORDER BY 商品ID", cn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
@@ -207,15 +214,30 @@ namespace WindowsFormsApplication1
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     dtRow = goods.NewRow();
-                    dtRow["商品ID"] = dt.Rows[i][0];      //DBから取得したdtの商品IDを示す行の行番号と列番号
-                    dtRow["商品名"] = dt.Rows[i][1];  //DBから取得したdtの商品名を示す行の行番号と列番号
-                    dtRow["単価"] = dt.Rows[i][2];        //DBから取得したdtの単価を示す行の行番号と列番号   
-                    price = dt.Rows[i][2].ToString();
-                    sum = int.Parse(price);
-                    dtRow["数量"] = count[i];
-                    total += sum * count[i];
-                    dtRow["売上"] = sum * count[i];
-                    goods.Rows.Add(dtRow);
+                    if ("販売中止" != (dt.Rows[i][3]).ToString())
+                    {
+                        dtRow["商品ID"] = dt.Rows[i][0];      //DBから取得したdtの商品IDを示す行の行番号と列番号
+                        dtRow["商品名"] = dt.Rows[i][1];  //DBから取得したdtの商品名を示す行の行番号と列番号
+                        dtRow["単価"] = dt.Rows[i][2];        //DBから取得したdtの単価を示す行の行番号と列番号   
+                        price = dt.Rows[i][2].ToString();
+                        sum = int.Parse(price);
+                        dtRow["数量"] = count[i];
+                        total += sum * count[i];
+                        dtRow["売上"] = sum * count[i];
+                        goods.Rows.Add(dtRow);
+                    }
+                    else if (count[i]!=0)
+                    { 
+                        dtRow["商品ID"] = dt.Rows[i][0];      //DBから取得したdtの商品IDを示す行の行番号と列番号
+                        dtRow["商品名"] = dt.Rows[i][1];  //DBから取得したdtの商品名を示す行の行番号と列番号
+                        dtRow["単価"] = dt.Rows[i][2];        //DBから取得したdtの単価を示す行の行番号と列番号   
+                        price = dt.Rows[i][2].ToString();
+                        sum = int.Parse(price);
+                        dtRow["数量"] = count[i];
+                        total += sum * count[i];
+                        dtRow["売上"] = sum * count[i];
+                        goods.Rows.Add(dtRow);
+                    }
                 }
 
                 Console.WriteLine(count[0]);
@@ -337,7 +359,7 @@ namespace WindowsFormsApplication1
 
                 //Goodsテーブルから商品ID,商品名,単価を商品ID順に取り出す
                 OleDbConnection cn = new OleDbConnection("Provider=microsoft.ace.oledb.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-                OleDbDataAdapter da = new OleDbDataAdapter("SELECT 商品ID,商品名 FROM 商品マスタ ORDER BY 商品ID", cn);
+                OleDbDataAdapter da = new OleDbDataAdapter("SELECT 商品ID,商品名,フラグ FROM 商品マスタ ORDER BY 商品ID", cn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
@@ -371,12 +393,24 @@ namespace WindowsFormsApplication1
 
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    dtRow = goods.NewRow();
-                    dtRow["商品ID"] = dt.Rows[i][0];      //DBから取得したdtの商品IDを示す行の行番号と列番号
-                    dtRow["商品名"] = dt.Rows[i][1];  //DBから取得したdtの商品名を示す行の行番号と列番号
-                    dtRow["数量"] = count[i];
-                    total += count[i];
-                    goods.Rows.Add(dtRow);
+                    if ("販売中止" != (dt.Rows[i][2]).ToString())
+                    {
+                        dtRow = goods.NewRow();
+                        dtRow["商品ID"] = dt.Rows[i][0];      //DBから取得したdtの商品IDを示す行の行番号と列番号
+                        dtRow["商品名"] = dt.Rows[i][1];  //DBから取得したdtの商品名を示す行の行番号と列番号
+                        dtRow["数量"] = count[i];
+                        total += count[i];
+                        goods.Rows.Add(dtRow);
+                    }
+                    else if (count[i] != 0)
+                    {
+                        dtRow = goods.NewRow();
+                        dtRow["商品ID"] = dt.Rows[i][0];      //DBから取得したdtの商品IDを示す行の行番号と列番号
+                        dtRow["商品名"] = dt.Rows[i][1];  //DBから取得したdtの商品名を示す行の行番号と列番号
+                        dtRow["数量"] = count[i];
+                        total += count[i];
+                        goods.Rows.Add(dtRow);
+                    }
                 }
 
                 Console.WriteLine(count[0]);
@@ -455,7 +489,7 @@ namespace WindowsFormsApplication1
             memg.ReleaseHdc(dc2);
             memg.Dispose();
             g.Dispose();
-            img.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            img.RotateFlip(RotateFlipType.RotateNoneFlipNone);
             return img;
         }
 
@@ -483,7 +517,12 @@ namespace WindowsFormsApplication1
 
         private void printing_Click(object sender, EventArgs e)
         {
-            PrintForm(this);
+            DialogResult result = MessageBox.Show("印刷してよろしいですか？", "OICSystem", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+            if (result == DialogResult.Yes)
+            {
+                PrintForm(this);
+            }
         }
 
         private void SalMgt_Load(object sender, EventArgs e)

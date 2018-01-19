@@ -89,7 +89,6 @@ namespace WindowsFormsApplication1
         private void EmpMgt_Load(object sender, EventArgs e)
         {
             dataload(0);
-            BirthdayTextB.Mask = "0000年90月90日";
             EmpdataGridView.AllowUserToAddRows = false;
         }
 

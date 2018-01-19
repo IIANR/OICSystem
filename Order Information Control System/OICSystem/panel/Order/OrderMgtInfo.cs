@@ -192,31 +192,16 @@ namespace WindowsFormsApplication1
             }
         }
 
+        protected void ss()
+        { 
+        
+        }
+
         private void OrderListBtn_Click(object sender, EventArgs e)
         {
             OrderList f = new OrderList();
             f.ShowDialog(this);
             f.Dispose();
-        }
-
-        private void OrderInfoGritview_Click_1(object sender, EventArgs e)
-        {
-            int sum = 0;
-            string GoodsId = "";
-            string[] GoodsIdArray = new string[] { };
-
-            GoodsId = (string)OrderInfoGritview.CurrentRow.Cells[2].Value;
-            GoodsIdArray = GoodsId.Split(',');
-
-            for (int i = 0; i < GoodsIdArray.Length; i++)
-            {
-                OleDbDataAdapter daprice = new OleDbDataAdapter("SELECT 単価 FROM 商品マスタ WHERE 商品ID='" + GoodsIdArray[i].PadLeft(4, '0') + "'", cn);
-                DataTable dtprice = new DataTable();
-                daprice.Fill(dtprice);
-                sum += int.Parse(dtprice.Rows[0][0].ToString());
-                dtprice.Clear();
-            }
-            TotalLabel.Text = string.Format("{0:#,###}円", sum + sum * Tax);
         }
 
         private void OrderMgtInfo_VisibleChanged(object sender, EventArgs e)
@@ -265,6 +250,98 @@ namespace WindowsFormsApplication1
             OrderInfoGritview.Columns[4].ReadOnly = true;
             OrderInfoGritview.Columns[5].ReadOnly = true;
             OrderInfoGritview.Columns[6].ReadOnly = true;
+            OrderInfoGritview.CurrentCell = null;
+        }
+
+        private void OrderInfoGritview_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            //チェックボックスの列番号は11で、かつチェック状態が変わったら
+            if (OrderInfoGritview.CurrentCellAddress.X == 7 && OrderInfoGritview.IsCurrentCellDirty == true)
+            {
+                //dataGridViewをコミットする
+                OrderInfoGritview.CommitEdit(DataGridViewDataErrorContexts.Commit);
+
+                //変更後のチェック状態
+                bool bl = (bool)OrderInfoGritview[OrderInfoGritview.CurrentCellAddress.X, OrderInfoGritview.CurrentCellAddress.Y].Value;
+                // MessageBox.Show(bl.ToString());
+
+                //変更後のチェック状態がfalseなら（trueからfalseに変わったら）
+                if (bl == false)
+                {
+                    if ((string)OrderInfoGritview.CurrentRow.Cells[6].Value != "入金待ち")
+                    {
+                        //MessageBox.Show("確定した入金は取り消せませんよ？");
+                        OrderInfoGritview[OrderInfoGritview.CurrentCellAddress.X, OrderInfoGritview.CurrentCellAddress.Y].Value = true;
+
+                        TotalLabel.Visible = true;
+                        //クリア
+                        dt.Clear();
+                        OrderInfoGritview.Columns.Clear();
+                        OrderInfoGritview.DataSource = null;
+
+                        dt = new DataTable();
+                        cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
+
+                        //税率マスタから税率を取得          
+                        cn.Open();
+
+                        cmd.CommandText = "SELECT * FROM 税率マスタ";
+                        cmd.Connection = cn;
+
+                        OleDbDataReader rd = cmd.ExecuteReader();
+
+
+                        dt = CreateSchemaDataTable(rd);
+                        DataRow row = dt.NewRow();
+
+                        while (rd.Read())
+                        {
+                            Tax = (double)rd.GetValue(0);
+                        }
+
+                        cn.Close();
+
+                        dt = new DataTable();
+                        cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
+
+                        //データグリッドビューに注文状況を表示
+                        da = new OleDbDataAdapter("SELECT 注文テーブル.注文ID,注文テーブル.注文日,注文テーブル.商品ID,顧客テーブル.名前 AS 顧客名,顧客テーブル.ﾌﾘｶﾞﾅ AS ﾌﾘｶﾞﾅ,従業員マスタ.名前 AS 従業員名,注文テーブル.フラグ,注文テーブル.入金済み FROM 注文テーブル,顧客テーブル,従業員マスタ WHERE 注文テーブル.顧客ID=顧客テーブル.顧客ID AND 注文テーブル.従業員ID=従業員マスタ.従業員ID ORDER BY 注文テーブル.入金済み=True,注文テーブル.注文ID", cn);
+                        da.Fill(dt);
+                        OrderInfoGritview.DataSource = dt;
+
+                        OrderInfoGritview.AllowUserToAddRows = false;
+                        OrderInfoGritview.Columns[0].ReadOnly = true;
+                        OrderInfoGritview.Columns[1].ReadOnly = true;
+                        OrderInfoGritview.Columns[2].ReadOnly = true;
+                        OrderInfoGritview.Columns[3].ReadOnly = true;
+                        OrderInfoGritview.Columns[4].ReadOnly = true;
+                        OrderInfoGritview.Columns[5].ReadOnly = true;
+                        OrderInfoGritview.Columns[6].ReadOnly = true;
+
+                        OrderInfoGritview.CurrentCell = null;
+                    }
+                }
+            }
+        }
+
+        private void OrderInfoGritview_Click(object sender, EventArgs e)
+        {
+            int sum = 0;
+            string GoodsId = "";
+            string[] GoodsIdArray = new string[] { };
+
+            GoodsId = (string)OrderInfoGritview.CurrentRow.Cells[2].Value;
+            GoodsIdArray = GoodsId.Split(',');
+
+            for (int i = 0; i < GoodsIdArray.Length; i++)
+            {
+                OleDbDataAdapter daprice = new OleDbDataAdapter("SELECT 単価 FROM 商品マスタ WHERE 商品ID='" + GoodsIdArray[i].PadLeft(4, '0') + "'", cn);
+                DataTable dtprice = new DataTable();
+                daprice.Fill(dtprice);
+                sum += int.Parse(dtprice.Rows[0][0].ToString());
+                dtprice.Clear();
+            }
+            TotalLabel.Text = string.Format("{0:#,###}円", sum + sum * Tax);
         }
     }
 }

@@ -19,8 +19,8 @@ namespace WindowsFormsApplication1
         int poi;
         string GoodsId = "";
         string[] GoodsIdArray = new string[] { };
-        string[,] count2 = new string[10, 12] { { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" } };
-        string[] count3 = new string[10] { "", "", "", "", "", "", "", "", "", "" };
+        string[,] count2 = new string[20, 12] { { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" }, { "", "", "", "", "", "", "", "", "", "", "", "" } };
+        string[] count3 = new string[20] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", };
 
         OleDbConnection cn = new OleDbConnection();
         DataTable dt = new DataTable();
@@ -79,8 +79,13 @@ namespace WindowsFormsApplication1
             memg.ReleaseHdc(dc2);
             memg.Dispose();
             g.Dispose();
-            img.RotateFlip(RotateFlipType.Rotate270FlipNone);//数字変えれば回転する
-            return img;
+
+            double scale = 1.24;
+            Bitmap bmpResize = new Bitmap(img , (int)(img.Width * scale) , (int)(img.Height * scale) );
+
+            bmpResize.RotateFlip(RotateFlipType.Rotate270FlipNone);//数字変えれば回転する
+            
+            return bmpResize;
         }
 
         //PrintDocument1のPrintPageイベントハンドラ
@@ -255,7 +260,7 @@ namespace WindowsFormsApplication1
             OrderListDataGridView4.CurrentCell = null;
         }
 
-        private void OrderList_Load_1(object sender, EventArgs e)
+        private void OrderList_Load(object sender, EventArgs e)
         {
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = !this.MaximizeBox;
@@ -350,7 +355,7 @@ namespace WindowsFormsApplication1
             OrderListDataGridView4.AllowUserToAddRows = false;
         }
 
-        private void BackBtn_Click_1(object sender, EventArgs e)
+        private void BackBtn_Click(object sender, EventArgs e)
         {
             if (0 <= poi - 1)
             {
@@ -366,7 +371,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void NextBtn_Click_1(object sender, EventArgs e)
+        private void NextBtn_Click(object sender, EventArgs e)
         {
             if (poi + 3 < cnt)
             {
@@ -401,7 +406,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void Next3Btn_Click_1(object sender, EventArgs e)
+        private void Next3Btn_Click(object sender, EventArgs e)
         {
             if (poi + 5 < cnt)
             {
@@ -419,7 +424,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void Back3Btn_Click_1(object sender, EventArgs e)
+        private void Back3Btn_Click(object sender, EventArgs e)
         {
             if (0 <= poi - 3)
             {
@@ -436,5 +441,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("これより前に3件以上のデータが存在しません", "範囲外");
             }
         }
+
+        
     }
 }
