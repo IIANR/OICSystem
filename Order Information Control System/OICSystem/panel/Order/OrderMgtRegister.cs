@@ -673,14 +673,16 @@ namespace WindowsFormsApplication1
                 //すでに顧客情報が登録されている場合
                 dt = new DataTable();
                 cn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;" + @"Data Source=.\DB\IM2.accdb;");
-                da = new OleDbDataAdapter("SELECT 顧客テーブル.[ﾌﾘｶﾞﾅ],顧客テーブル.郵便番号, 顧客テーブル.住所1, 顧客テーブル.住所2, 顧客テーブル.電話番号,顧客テーブル.顧客ID FROM 顧客テーブル WHERE 名前='" + NameTextbox.Text + "' AND 電話番号='" + TelTextbox.Text + "'", cn);
+                da = new OleDbDataAdapter("SELECT 顧客テーブル.名前,顧客テーブル.[ﾌﾘｶﾞﾅ],顧客テーブル.郵便番号, 顧客テーブル.住所1, 顧客テーブル.住所2, 顧客テーブル.電話番号,顧客テーブル.顧客ID FROM 顧客テーブル WHERE 電話番号='" + TelTextbox.Text + "'", cn);
+                //da = new OleDbDataAdapter("SELECT 顧客テーブル.[ﾌﾘｶﾞﾅ],顧客テーブル.郵便番号, 顧客テーブル.住所1, 顧客テーブル.住所2, 顧客テーブル.電話番号,顧客テーブル.顧客ID FROM 顧客テーブル WHERE 名前='" + NameTextbox.Text + "' AND 電話番号='" + TelTextbox.Text + "'", cn);
                 da.Fill(dt);
-                KanaTextbox.Text = dt.Rows[0][0].ToString();
-                PoscodeTextbox.Text = dt.Rows[0][1].ToString();
-                AddressTextbox1.Text = dt.Rows[0][2].ToString();
-                AddressTextbox2.Text = dt.Rows[0][3].ToString();
-                TelTextbox.Text = dt.Rows[0][4].ToString();
-                db_memberid = int.Parse(dt.Rows[0][5].ToString());
+                NameTextbox.Text = dt.Rows[0][0].ToString();
+                KanaTextbox.Text = dt.Rows[0][1].ToString();
+                PoscodeTextbox.Text = dt.Rows[0][2].ToString();
+                AddressTextbox1.Text = dt.Rows[0][3].ToString();
+                AddressTextbox2.Text = dt.Rows[0][4].ToString();
+                TelTextbox.Text = dt.Rows[0][5].ToString();
+                db_memberid = int.Parse(dt.Rows[0][6].ToString());
 
                 flag = 1;
             }

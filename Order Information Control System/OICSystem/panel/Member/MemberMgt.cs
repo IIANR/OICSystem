@@ -51,7 +51,7 @@ namespace WindowsFormsApplication1
             MemberDataGridView.AutoResizeColumns();
 
             MemberDisLbl.Visible = false;
-            MemberEditLbl.Visible = false;
+            //MemberEditLbl.Visible = false;
             MemberDataGridView.AllowUserToAddRows = false;
         }
 

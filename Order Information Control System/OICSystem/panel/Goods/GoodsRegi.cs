@@ -149,100 +149,155 @@ namespace WindowsFormsApplication1.panel
 
             cn.Close();
         }
-
+        
         private void InsertBtn_Click(object sender, EventArgs e)
         {
-            cn.Open();
-            OleDbCommand cmd = new OleDbCommand();
-            cmd.Connection = cn;
+            int check;
+            check=0;
 
-
-            if (SerchCategory(comboBcate.Text) == true) // カテゴリ名追加
+            if (textBname.Text == "" || textBsupp.Text == "" || comboBcate.Text == "" || textBnumber.Text == "" || textBodr.Text == "" )
             {
-                cmd.CommandText = "INSERT INTO カテゴリマスタ (カテゴリ名)" + " VALUES (@catename)";
-                OleDbParameter prcatename = new OleDbParameter("@catename", comboBcate.Text);
-                cmd.Parameters.Add(prcatename);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("新規のカテゴリ名を追加");
+                check = 1;
+            }
+
+            for (int i = 0; check == 0 && i < textBname.Text.Length; i++)
+            {
+                if (textBname.Text.Substring(i, 1) == " ")
+                {
+                    check = 1;
+                }
+            }
+
+            for (int i = 0; check == 0 && i < textBsupp.Text.Length; i++)
+            {
+                if (textBsupp.Text.Substring(i, 1) == " ")
+                {
+                    check = 1;
+                }
+            }
+
+            for (int i = 0; check == 0 && i < comboBcate.Text.Length; i++)
+            {
+                if (comboBcate.Text.Substring(i, 1) == " ")
+                {
+                    check = 1;
+                }
+            }
+
+            for (int i = 0; check == 0 && i < textBnumber.Text.Length; i++)
+            {
+                if (textBnumber.Text.Substring(i, 1) == " ")
+                {
+                    check = 1;
+                }
+            }
+
+            for (int i = 0; check == 0 && i < textBodr.Text.Length; i++)
+            {
+                if (textBodr.Text.Substring(i, 1) == " ")
+                {
+                    check = 1;
+                }
+            }
+
+            if (check == 0)
+            {
+                cn.Open();
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.Connection = cn;
+
+
+                if (SerchCategory(comboBcate.Text) == true) // カテゴリ名追加
+                {
+                    cmd.CommandText = "INSERT INTO カテゴリマスタ (カテゴリ名)" + " VALUES (@catename)";
+                    OleDbParameter prcatename = new OleDbParameter("@catename", comboBcate.Text);
+                    cmd.Parameters.Add(prcatename);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("新規のカテゴリ名を追加");
+                }
+                else
+                {
+                }
+
+                cmd.Parameters.Clear();
+
+                //カテゴリIDを入れる↓
+                da = new OleDbDataAdapter("SELECT カテゴリID FROM カテゴリマスタ WHERE カテゴリ名='" + comboBcate.Text + "'", cn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                cateID = int.Parse(dt.Rows[0][0].ToString());
+                dt.Clear();
+
+
+
+
+                if (MessageBox.Show("ID=" + textBID.Text + "のデータを追加してもよろしいですか", "OICSystem", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                {
+                    return;
+                }
+
+                if (textBimage.Text == "")//無かった場合image
+                {
+                    textBimage.Text = textBimage.Text;
+                }
+
+
+
+                cmd.Connection = cn;
+                cmd.CommandText = "INSERT INTO 商品マスタ (商品ID,商品名,単価,カテゴリID,安全在庫数,画像ファイル,仕入れ値,発注数,フラグ)" +
+                    " VALUES (@id,@name,@price,@cateID,@number,@imagefile,@supp,@odr,@flag)";
+
+                OleDbParameter gdID = new OleDbParameter("@id", textBID.Text);
+                cmd.Parameters.Add(gdID);
+                OleDbParameter gdname = new OleDbParameter("@name", textBname.Text);
+                cmd.Parameters.Add(gdname);
+                OleDbParameter gdprice = new OleDbParameter("@price", int.Parse(textBprice.Text));
+                cmd.Parameters.Add(gdprice);
+                OleDbParameter gdcateid = new OleDbParameter("@cateID", cateID);
+                cmd.Parameters.Add(gdcateid);
+                OleDbParameter gdnumber = new OleDbParameter("@number", int.Parse(textBnumber.Text));
+                cmd.Parameters.Add(gdnumber);
+                OleDbParameter primagefile = new OleDbParameter("@imagefile", textBimage.Text);
+                cmd.Parameters.Add(primagefile);
+                OleDbParameter gdsupp = new OleDbParameter("@supp", int.Parse(textBsupp.Text));
+                cmd.Parameters.Add(gdsupp);
+                OleDbParameter gdodr = new OleDbParameter("@odr", int.Parse(textBodr.Text));
+                cmd.Parameters.Add(gdodr);
+                OleDbParameter gdflag = new OleDbParameter("@flag", "販売中");
+                cmd.Parameters.Add(gdflag);
+
+                OleDbCommand cmd2 = new OleDbCommand();
+                cmd2.Connection = cn;
+                cmd2.CommandText = "INSERT INTO 在庫テーブル (商品ID,在庫数)" +
+                              " VALUES (@Id,@stock)";
+                OleDbParameter stID = new OleDbParameter("@Id", textBID.Text);
+                cmd2.Parameters.Add(stID);
+                OleDbParameter stock = new OleDbParameter("@stock", "0");
+                cmd2.Parameters.Add(stock);
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    cmd2.ExecuteNonQuery();
+                    MessageBox.Show("追加しました", "OICSystem");
+                    cmd.Parameters.Clear();
+                    cmd2.Parameters.Clear();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "OICSystem");
+                }
+
+
+                cn.Close();
+                CategoryLoad();
+
+                dataLoad();
+                Goodsid();
             }
             else
             {
+                MessageBox.Show("全ての項目を入力してください。", "OICSystem");
             }
-
-            cmd.Parameters.Clear();
-
-            //カテゴリIDを入れる↓
-            da = new OleDbDataAdapter("SELECT カテゴリID FROM カテゴリマスタ WHERE カテゴリ名='" + comboBcate.Text + "'", cn);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            cateID = int.Parse(dt.Rows[0][0].ToString());
-            dt.Clear();
-
-
-
-
-            if (MessageBox.Show("ID=" + textBID.Text + "のデータを追加してもよろしいですか", "OICSystem", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-            {
-                return;
-            }
-
-            if (textBimage.Text == "")//無かった場合image
-            {
-                textBimage.Text = textBimage.Text;
-            }
-
-
-            
-            cmd.Connection = cn;
-            cmd.CommandText = "INSERT INTO 商品マスタ (商品ID,商品名,単価,カテゴリID,安全在庫数,画像ファイル,仕入れ値,発注数,フラグ)" +
-                " VALUES (@id,@name,@price,@cateID,@number,@imagefile,@supp,@odr,@flag)";
-
-            OleDbParameter gdID = new OleDbParameter("@id", textBID.Text);
-            cmd.Parameters.Add(gdID);
-            OleDbParameter gdname = new OleDbParameter("@name", textBname.Text);
-            cmd.Parameters.Add(gdname);
-            OleDbParameter gdprice = new OleDbParameter("@price", int.Parse(textBprice.Text));
-            cmd.Parameters.Add(gdprice);
-            OleDbParameter gdcateid = new OleDbParameter("@cateID", cateID);
-            cmd.Parameters.Add(gdcateid);
-            OleDbParameter gdnumber = new OleDbParameter("@number", int.Parse(textBnumber.Text));
-            cmd.Parameters.Add(gdnumber);
-            OleDbParameter primagefile = new OleDbParameter("@imagefile", textBimage.Text);
-            cmd.Parameters.Add(primagefile);
-            OleDbParameter gdsupp = new OleDbParameter("@supp", int.Parse(textBsupp.Text));
-            cmd.Parameters.Add(gdsupp);
-            OleDbParameter gdodr = new OleDbParameter("@odr", int.Parse(textBodr.Text));
-            cmd.Parameters.Add(gdodr);
-            OleDbParameter gdflag = new OleDbParameter("@flag", "販売中");
-            cmd.Parameters.Add(gdflag);
-
-            OleDbCommand cmd2 = new OleDbCommand();
-            cmd2.Connection = cn;
-            cmd2.CommandText = "INSERT INTO 在庫テーブル (商品ID,在庫数)" +
-                          " VALUES (@Id,@stock)";
-            OleDbParameter stID = new OleDbParameter("@Id", textBID.Text);
-            cmd2.Parameters.Add(stID);
-            OleDbParameter stock = new OleDbParameter("@stock", "0");
-            cmd2.Parameters.Add(stock);
-            try
-            {
-                cmd.ExecuteNonQuery();
-                cmd2.ExecuteNonQuery();
-                MessageBox.Show("追加しました", "OICSystem");
-                cmd.Parameters.Clear();
-                cmd2.Parameters.Clear();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "OICSystem");
-            }
-
-
-            cn.Close();
-            CategoryLoad();
-
-            dataLoad();
-            Goodsid();
 
         }
 

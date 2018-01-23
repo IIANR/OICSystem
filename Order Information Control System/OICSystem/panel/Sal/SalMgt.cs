@@ -747,6 +747,11 @@ namespace WindowsFormsApplication1
             DateStart.Text = "";
             DateEnd.Text = "";
         }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
