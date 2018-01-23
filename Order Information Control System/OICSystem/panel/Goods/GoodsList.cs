@@ -252,23 +252,36 @@ namespace WindowsFormsApplication1.panel.Goods
 
             if (result == DialogResult.Yes)
             {
-                cn.Open();
-                cmd.Connection = cn;
-                cmd.CommandText = "UPDATE 商品マスタ SET フラグ = '販売中止' WHERE 商品ID='" + textBID.Text + "'";
-                cmd.ExecuteNonQuery();
-                try
+                da = new OleDbDataAdapter("SELECT 在庫数 FROM 在庫テーブル WHERE 商品ID='" + textBID .Text+ "'", cn);
+                dt = new DataTable();
+                da.Fill(dt);
+
+                if (int.Parse(dt.Rows[0][0].ToString()) > 0)
                 {
-
-                    MessageBox.Show("削除しました", "OICSystem");
-
-                    Reload();
-
+                    MessageBox.Show("在庫が残っているため削除できません", "OICSystem", MessageBoxButtons.OK, MessageBoxIcon.Error);                 
                 }
-                catch (Exception)
+                else
                 {
-                    //MessageBox.Show(ex.Message, "IM2");
+                    cn.Open();
+                    cmd.Connection = cn;
+                    cmd.CommandText = "UPDATE 商品マスタ SET フラグ = '販売中止' WHERE 商品ID='" + textBID.Text + "'";
+                    cmd.ExecuteNonQuery();
+                    try
+                    {
+
+                        MessageBox.Show("削除しました", "OICSystem");
+
+                        Reload();
+
+                    }
+                    catch (Exception)
+                    {
+                        //MessageBox.Show(ex.Message, "IM2");
+                    }
+                    cn.Close();
                 }
-                cn.Close();
+
+                
             }
             else if (result == DialogResult.No)
             {
