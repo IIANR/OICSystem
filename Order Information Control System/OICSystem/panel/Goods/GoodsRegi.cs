@@ -296,7 +296,7 @@ namespace WindowsFormsApplication1.panel
             }
             else
             {
-                MessageBox.Show("全ての項目を入力してください。", "OICSystem");
+                MessageBox.Show("全ての項目を入力してください", "OICSystem", MessageBoxButtons.OK, MessageBoxIcon.Hand);
             }
 
         }
